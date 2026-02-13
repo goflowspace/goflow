@@ -1,0 +1,7 @@
+.operations-panel-fixed {
+  position: fixed;
+  right: 20px;
+  bottom: 80px;
+  width: 240px;
+  z-index: 1000;
+}

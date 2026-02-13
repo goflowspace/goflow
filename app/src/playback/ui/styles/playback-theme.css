@@ -1,0 +1,292 @@
+/* Глобальные стили для режима воспроизведения с поддержкой темной темы */
+
+:root {
+  /* Светлая тема (по умолчанию) */
+  --playback-bg-primary: #fff;
+  --playback-bg-secondary: #f8f9fa;
+  --playback-bg-tertiary: #f1f3f5;
+  --playback-text-primary: #212529;
+  --playback-text-secondary: #495057;
+  --playback-text-muted: #6c757d;
+  --playback-border-light: #e9ecef;
+  --playback-border-medium: #dee2e6;
+  --playback-border-strong: #adb5bd;
+  --playback-accent-primary: #06c;
+  --playback-accent-secondary: #049;
+  --playback-accent-light: #e6f2ff;
+  --playback-success: #28a745;
+  --playback-success-light: #d4edda;
+  --playback-warning: #ffc107;
+  --playback-warning-light: #fff3cd;
+  --playback-error: #dc3545;
+  --playback-error-light: #f8d7da;
+
+  /* Цвета для нарративных узлов */
+  --playback-narrative-bg: #f8f8ff;
+  --playback-narrative-border: #e0e0f0;
+  --playback-narrative-text: #5753c6;
+
+  /* Цвета для выборов */
+  --playback-choice-bg: #f3fbf9;
+  --playback-choice-bg-hover: #0567cf;
+  --playback-choice-border: #b8e6d3;
+  --playback-choice-text: #218358;
+
+  /* Цвета для условий */
+  --playback-condition-bg: #f9f9f9;
+  --playback-condition-border: #e5e5e5;
+  --playback-condition-text: #646464;
+
+  /* Цвета для операций */
+  --playback-operation-bg: #fff9e6;
+  --playback-operation-border: #ffd699;
+  --playback-operation-text: #c80;
+
+  /* Тени */
+  --playback-shadow-small: 0 1px 3px rgb(0 0 0 / 10%);
+  --playback-shadow-medium: 0 4px 6px rgb(0 0 0 / 10%);
+  --playback-shadow-large: 0 10px 25px rgb(0 0 0 / 15%);
+
+  /* Панели */
+  --playback-panel-bg: #fff;
+  --playback-panel-border: #e9ecef;
+  --playback-panel-shadow: var(--playback-shadow-medium);
+}
+
+[data-theme='dark'] {
+  /* Темная тема */
+  --playback-bg-primary: #1a1a1a;
+  --playback-bg-secondary: #2d2d2d;
+  --playback-bg-tertiary: #404040;
+  --playback-text-primary: #fff;
+  --playback-text-secondary: #e0e0e0;
+  --playback-text-muted: #a0a0a0;
+  --playback-border-light: #404040;
+  --playback-border-medium: #555;
+  --playback-border-strong: #777;
+  --playback-accent-primary: #4da6ff;
+  --playback-accent-secondary: #0080ff;
+  --playback-accent-light: #1a3d5c;
+  --playback-success: #5cb85c;
+  --playback-success-light: #2d4a2d;
+  --playback-warning: #f0ad4e;
+  --playback-warning-light: #5c4a2d;
+  --playback-error: #d9534f;
+  --playback-error-light: #5c2d2d;
+
+  /* Цвета для нарративных узлов в темной теме */
+  --playback-narrative-bg: #2a2a3a;
+  --playback-narrative-border: #4a4a6a;
+  --playback-narrative-text: #8a86e6;
+
+  /* Цвета для выборов в темной теме */
+  --playback-choice-bg: #253a32;
+  --playback-choice-border: #4a7a5a;
+  --playback-choice-text: #6bc48a;
+
+  /* Цвета для условий в темной теме */
+  --playback-condition-bg: #323232;
+  --playback-condition-border: #555;
+  --playback-condition-text: #b0b0b0;
+
+  /* Цвета для операций в темной теме */
+  --playback-operation-bg: #3d3520;
+  --playback-operation-border: #7a6a40;
+  --playback-operation-text: #fc6;
+
+  /* Тени в темной теме */
+  --playback-shadow-small: 0 1px 3px rgb(0 0 0 / 30%);
+  --playback-shadow-medium: 0 4px 6px rgb(0 0 0 / 40%);
+  --playback-shadow-large: 0 10px 25px rgb(0 0 0 / 50%);
+
+  /* Панели в темной теме */
+  --playback-panel-bg: #2d2d2d;
+  --playback-panel-border: #404040;
+  --playback-panel-shadow: var(--playback-shadow-medium);
+}
+
+/* Глобальные стили для контейнера воспроизведения */
+.playback-container {
+  background-color: var(--playback-bg-primary);
+  color: var(--playback-text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.playback-header {
+  background-color: var(--playback-panel-bg);
+  border-bottom: 1px solid var(--playback-panel-border);
+  box-shadow: var(--playback-panel-shadow);
+  z-index: 100;
+}
+
+.playback-body {
+  flex: 1;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.playback-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: var(--playback-bg-primary);
+}
+
+.playback-footer {
+  background-color: var(--playback-panel-bg);
+  border-top: 1px solid var(--playback-panel-border);
+  box-shadow: 0 -2px 4px rgb(0 0 0 / 10%);
+  z-index: 100;
+}
+
+/* Стили для панелей */
+.playback-panel {
+  background-color: var(--playback-panel-bg);
+  border: 1px solid var(--playback-panel-border);
+  box-shadow: var(--playback-panel-shadow);
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+  z-index: 10;
+}
+
+.playback-panel--left {
+  border-right: 1px solid var(--playback-panel-border);
+}
+
+.playback-panel--right {
+  border-left: 1px solid var(--playback-panel-border);
+}
+
+.playback-panel--collapsed {
+  transform: translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.playback-panel--right.playback-panel--collapsed {
+  transform: translateX(100%);
+}
+
+/* Стили для заголовков панелей */
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--playback-border-light);
+  background-color: var(--playback-panel-bg);
+}
+
+.panel-header__title {
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.21em;
+  color: var(--playback-text-primary);
+  margin: 0;
+}
+
+.panel-header__actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Стили для карточек новеллы */
+.novel-card {
+  background-color: var(--playback-panel-bg) !important;
+  border: 1px solid var(--playback-border-light) !important;
+  box-shadow: var(--playback-shadow-small) !important;
+  transition: all 0.3s ease !important;
+}
+
+.novel-card:hover {
+  box-shadow: var(--playback-shadow-medium) !important;
+}
+
+/* Стили для кнопок выбора */
+.choice-container button {
+  background-color: var(--playback-choice-bg) !important;
+  border: 1px solid var(--playback-choice-border) !important;
+  color: var(--playback-choice-text) !important;
+  transition: all 0.3s ease !important;
+}
+
+.choice-container button:hover {
+  background-color: var(--playback-choice-text) !important;
+  color: var(--playback-choice-bg) !important;
+  box-shadow: var(--playback-shadow-medium) !important;
+}
+
+/* Переопределение стилей Radix для темной темы */
+[data-theme='dark'] .rt-Card {
+  background-color: var(--playback-panel-bg) !important;
+  border: 1px solid var(--playback-border-light) !important;
+  color: var(--playback-text-primary) !important;
+}
+
+[data-theme='dark'] .rt-Button {
+  background-color: var(--playback-bg-secondary) !important;
+  border: 1px solid var(--playback-border-medium) !important;
+  color: var(--playback-text-primary) !important;
+}
+
+[data-theme='dark'] .rt-Button:hover {
+  background-color: var(--playback-bg-tertiary) !important;
+  color: var(--playback-text-primary) !important; /* Такой же цвет как у кнопки "Продолжить" */
+}
+
+[data-theme='dark'] .choice-container button {
+  background-color: var(--playback-choice-bg) !important;
+  color: var(--playback-choice-text) !important; /* Такой же цвет как у кнопки "Продолжить" */
+  box-shadow: var(--playback-shadow-medium) !important;
+}
+
+[data-theme='dark'] .choice-container button:hover {
+  background-color: var(--playback-choice-text) !important;
+  color: var(--playback-choice-bg) !important; /* Такой же цвет как у кнопки "Продолжить" */
+  box-shadow: var(--playback-shadow-medium) !important;
+}
+
+[data-theme='dark'] .rt-Text {
+  color: var(--playback-text-primary) !important;
+}
+
+[data-theme='dark'] .rt-Heading {
+  color: var(--playback-text-primary) !important;
+}
+
+/* Скроллбары для темной темы */
+[data-theme='dark'] ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-track {
+  background: var(--playback-bg-secondary);
+  border-radius: 4px;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb {
+  background: var(--playback-border-medium);
+  border-radius: 4px;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
+  background: var(--playback-border-strong);
+}
+
+/* Переходы для плавного переключения темы */
+* {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}

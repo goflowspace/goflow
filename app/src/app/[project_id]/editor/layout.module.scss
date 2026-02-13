@@ -1,0 +1,66 @@
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.panel_group {
+  display: flex;
+  flex: 1;
+}
+
+.panel_content {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.resize_handle {
+  width: 4px;
+  background-color: var(--gray-4);
+  cursor: col-resize;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  &:hover {
+    background-color: var(--accent-9);
+  }
+
+  &:active {
+    background-color: var(--accent-10);
+  }
+
+  /* Добавляем визуальный индикатор */
+  &::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 40px;
+    background-color: var(--gray-6);
+    border-radius: 1px;
+    opacity: 0.5;
+  }
+
+  &:hover::after {
+    opacity: 1;
+    background-color: var(--accent-9);
+  }
+}
+
+.main_content_wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.canvas_wrapper {
+  flex: 1;
+  position: relative;
+}

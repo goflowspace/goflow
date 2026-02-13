@@ -1,0 +1,414 @@
+/* Левая панель навигации */
+.sidebar {
+  width: 260px;
+  background-color: var(--dashboard-bg-secondary);
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px;
+  border-right: 1px solid var(--dashboard-border-primary);
+  overflow: hidden;
+}
+
+.sidebarHeader {
+  margin-bottom: 32px;
+}
+
+/* Team Selector */
+.teamSelector {
+  position: relative;
+}
+
+.teamButton {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.teamButton:hover {
+  opacity: 0.8;
+}
+
+.teamLogo {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.teamInitials {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+}
+
+.teamName {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--dashboard-text-primary);
+  flex: 1;
+  text-align: left;
+}
+
+.chevron {
+  width: 16px;
+  height: 16px;
+  color: var(--dashboard-text-tertiary);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+/* Team Dropdown */
+.teamDropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--dashboard-bg-card);
+  border: 1px solid var(--dashboard-border-secondary);
+  border-radius: 8px;
+  margin-top: 8px;
+  z-index: 50;
+  box-shadow: var(--dashboard-shadow-xl);
+  overflow: hidden;
+}
+
+.dropdownHeader {
+  padding: 12px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dashboard-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background-color: var(--dashboard-bg-tertiary);
+  border-bottom: 1px solid var(--dashboard-border-secondary);
+}
+
+.teamsList {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.teamItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-align: left;
+}
+
+.teamItem:hover {
+  background-color: var(--dashboard-bg-hover);
+}
+
+.teamItemIcon {
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.teamItemInitials {
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+}
+
+.teamItemName {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dashboard-text-primary);
+  flex: 1;
+}
+
+.checkIcon {
+  width: 16px;
+  height: 16px;
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+.dropdownSeparator {
+  height: 1px;
+  background-color: var(--dashboard-border-secondary);
+  margin: 4px 0;
+}
+
+.createTeamButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dashboard-text-primary);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-align: left;
+}
+
+.createTeamButton:hover {
+  background-color: var(--dashboard-bg-hover);
+}
+
+.plusIcon {
+  width: 16px;
+  height: 16px;
+  color: var(--dashboard-text-tertiary);
+}
+
+.loadingState,
+.emptyTeamsState {
+  padding: 16px;
+  text-align: center;
+}
+
+.loadingState {
+  font-size: 14px;
+  color: var(--dashboard-text-tertiary);
+}
+
+.emptyText {
+  font-size: 14px;
+  color: var(--dashboard-text-tertiary);
+}
+
+/* Прокручиваемый контент */
+.sidebarContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  margin-bottom: 24px;
+}
+
+/* Навигация */
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--dashboard-text-tertiary);
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.navItem:hover {
+  background-color: var(--dashboard-bg-hover);
+  color: var(--dashboard-text-primary);
+}
+
+.navItemActive {
+  background-color: var(--dashboard-nav-active-bg);
+  color: var(--dashboard-nav-active-text);
+}
+
+.navIcon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Секции в боковой панели */
+.sidebarSection {
+  margin-bottom: 32px;
+  flex-shrink: 0;
+}
+
+.sectionTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dashboard-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.sectionText {
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--dashboard-text-tertiary);
+  margin: 0;
+}
+
+/* План использования */
+.planUsage {
+  background-color: var(--dashboard-bg-tertiary);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.planHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.planTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dashboard-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.planBadge {
+  background-color: var(--dashboard-success);
+  color: var(--dashboard-text-inverse);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.planStats {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.planLabel {
+  font-size: 12px;
+  color: var(--dashboard-text-muted);
+}
+
+.planValue {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dashboard-text-primary);
+}
+
+.progressBar {
+  height: 4px;
+  background-color: var(--dashboard-border-secondary);
+  border-radius: 2px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background-color: var(--dashboard-accent-primary);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.planActions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.planButton {
+  background: none;
+  border: none;
+  color: var(--dashboard-text-tertiary);
+  font-size: 12px;
+  text-align: left;
+  cursor: pointer;
+  padding: 4px 0;
+  transition: color 0.2s ease;
+}
+
+.planButton:hover {
+  color: var(--dashboard-text-primary);
+}
+
+.upgradeButton {
+  background-color: var(--dashboard-text-inverse);
+  border: none;
+  color: var(--dashboard-text-primary);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.upgradeButton:hover {
+  background-color: var(--dashboard-bg-active);
+}
+
+/* Футер боковой панели */
+.sidebarFooter {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.themeToggleContainer {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.userInfo:hover {
+  background-color: var(--dashboard-bg-hover);
+}
+
+.userName {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dashboard-text-primary);
+}
+
+/* Адаптивность */
+@media (width <= 1024px) {
+  .sidebar {
+    width: 220px;
+    padding: 20px 12px;
+  }
+}
+
+@media (width <= 768px) {
+  .sidebar {
+    width: 100%;
+    padding: 16px;
+  }
+}

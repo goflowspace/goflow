@@ -1,0 +1,288 @@
+/* Заголовок страницы */
+.header {
+  margin-bottom: 32px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--dashboard-text-primary);
+  margin: 0;
+}
+
+/* Контейнер настроек */
+.settingsContainer {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.settingsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--dashboard-text-primary);
+  margin: 0;
+}
+
+.sectionDescription {
+  font-size: 14px;
+  color: var(--dashboard-text-secondary);
+  margin: 0;
+}
+
+/* Карточка настроек */
+.settingsCard {
+  background-color: var(--dashboard-bg-card);
+  border: 1px solid var(--dashboard-border-primary);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-shadow: var(--dashboard-shadow-sm);
+}
+
+.dangerCard {
+  border-color: var(--dashboard-error);
+  background-color: var(--dashboard-error-light);
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fieldLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dashboard-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fieldIcon {
+  width: 16px;
+  height: 16px;
+  color: var(--dashboard-text-secondary);
+}
+
+.fieldInput {
+  background-color: var(--dashboard-bg-secondary);
+  border: 1px solid var(--dashboard-border-secondary);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: var(--dashboard-text-primary);
+  transition: border-color 0.2s ease;
+}
+
+.fieldInput:focus {
+  outline: none;
+  border-color: var(--dashboard-accent-primary);
+}
+
+.fieldInput::placeholder {
+  color: var(--dashboard-text-muted);
+}
+
+.fieldDescription {
+  font-size: 12px;
+  color: var(--dashboard-text-tertiary);
+  margin: 0;
+}
+
+/* URL группа */
+.urlGroup {
+  display: flex;
+  border: 1px solid var(--dashboard-border-secondary);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--dashboard-bg-secondary);
+}
+
+.urlPrefix {
+  background-color: var(--dashboard-bg-tertiary);
+  padding: 12px 16px;
+  font-size: 14px;
+  color: var(--dashboard-text-tertiary);
+  border-right: 1px solid var(--dashboard-border-secondary);
+}
+
+.urlInput {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: var(--dashboard-text-primary);
+}
+
+.urlInput:focus {
+  outline: none;
+}
+
+.urlInput::placeholder {
+  color: var(--dashboard-text-muted);
+}
+
+/* Toggle группа */
+.toggleGroup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.toggleButton {
+  width: 44px;
+  height: 24px;
+  background-color: var(--dashboard-border-secondary);
+  border: none;
+  border-radius: 12px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.toggleButton.active {
+  background-color: var(--dashboard-accent-primary);
+}
+
+.toggleSlider {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: var(--dashboard-text-inverse);
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.toggleButton.active .toggleSlider {
+  transform: translateX(20px);
+}
+
+.toggleLabel {
+  font-size: 14px;
+  color: var(--dashboard-text-primary);
+}
+
+/* Действия карточки */
+.cardActions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 16px;
+  border-top: 1px solid var(--dashboard-border-primary);
+}
+
+.saveButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--dashboard-button-primary);
+  border: none;
+  color: var(--dashboard-button-primary-text);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.saveButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.saveButton:hover:not(:disabled) {
+  background-color: var(--dashboard-button-primary-hover);
+}
+
+.spinIcon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.dangerButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--dashboard-error);
+  border: none;
+  color: var(--dashboard-text-inverse);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 8px;
+}
+
+.dangerButton:hover {
+  background-color: var(--dashboard-error);
+  opacity: 0.9;
+}
+
+.buttonIcon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Адаптивность */
+@media (width <= 768px) {
+  .title {
+    font-size: 28px;
+  }
+
+  .settingsContainer {
+    gap: 24px;
+  }
+
+  .settingsCard {
+    padding: 20px;
+  }
+
+  .urlGroup {
+    flex-direction: column;
+  }
+
+  .urlPrefix {
+    border-right: none;
+    border-bottom: 1px solid #404040;
+  }
+
+  .cardActions {
+    justify-content: stretch;
+  }
+
+  .saveButton {
+    width: 100%;
+    justify-content: center;
+  }
+}

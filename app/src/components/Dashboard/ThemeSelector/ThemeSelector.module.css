@@ -1,0 +1,124 @@
+/* Theme Selector Component */
+.themeSelector {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.optionLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid var(--dashboard-border-primary);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: var(--dashboard-bg-secondary);
+}
+
+.optionLabel:hover {
+  border-color: var(--dashboard-border-hover);
+  background-color: var(--dashboard-bg-hover);
+}
+
+.optionLabel:has(.radioInput:checked) {
+  border-color: var(--dashboard-accent-primary);
+  background-color: var(--dashboard-accent-light);
+}
+
+.radioInput {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.optionContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.optionHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.optionIcon {
+  width: 20px;
+  height: 20px;
+  color: var(--dashboard-text-secondary);
+  transition: color 0.2s ease;
+}
+
+.optionLabel:has(.radioInput:checked) .optionIcon {
+  color: var(--dashboard-accent-primary);
+}
+
+.optionTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--dashboard-text-primary);
+  margin: 0;
+}
+
+.optionDescription {
+  font-size: 14px;
+  color: var(--dashboard-text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Custom Radio Button */
+.radioCustom {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--dashboard-border-secondary);
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.radioInner {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--dashboard-accent-primary);
+  transform: scale(0);
+  transition: transform 0.2s ease;
+}
+
+.optionLabel:hover .radioCustom {
+  border-color: var(--dashboard-border-hover);
+}
+
+.optionLabel:has(.radioInput:checked) .radioCustom {
+  border-color: var(--dashboard-accent-primary);
+}
+
+.optionLabel:has(.radioInput:checked) .radioInner {
+  transform: scale(1);
+}
+
+/* Адаптивность */
+@media (width <= 768px) {
+  .optionLabel {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .optionTitle {
+    font-size: 14px;
+  }
+
+  .optionDescription {
+    font-size: 13px;
+  }
+}

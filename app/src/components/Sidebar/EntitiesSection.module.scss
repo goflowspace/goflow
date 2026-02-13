@@ -1,0 +1,134 @@
+.entities_section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+// Стили для типа сущности
+.entity_type_item {
+  display: flex;
+  flex-direction: column;
+}
+
+.entity_type_header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: var(--gray-3);
+  }
+}
+
+.entity_type_name {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.entity_count {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.entity_type_content {
+  padding-left: 16px;
+  padding-top: 4px;
+}
+
+// Стили для списка сущностей
+.entities_list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.entity_item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: var(--gray-2);
+  }
+
+  &:active {
+    background-color: var(--gray-4);
+  }
+
+  &[draggable='true'] {
+    cursor: grab;
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+}
+
+.entity_avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--gray-4);
+}
+
+.entity_image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.entity_placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--gray-6);
+  color: var(--gray-11);
+}
+
+.placeholder_icon {
+  width: 12px;
+  height: 12px;
+}
+
+.entity_name {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+// Состояния
+.loading_state,
+.error_state,
+.empty_state {
+  padding: 16px 8px;
+  text-align: center;
+}
+
+.no_entities {
+  padding: 8px;
+  text-align: center;
+  font-style: italic;
+}

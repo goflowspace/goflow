@@ -1,0 +1,777 @@
+{
+  "title": "My awesome story",
+  "data": {
+    "timelines": {
+      "base-timeline": {
+        "layers": {
+          "root": {
+            "id": "root",
+            "name": "Main Layer",
+            "type": "layer",
+            "depth": 0,
+            "nodes": {
+              "6P2UPSWsbsUemTux7VdpL": {
+                "id": "6P2UPSWsbsUemTux7VdpL",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 160,
+                  "y": 420
+                },
+                "data": {
+                  "title": "Начало",
+                  "text": "Это старт некого сюжета."
+                }
+              },
+              "B6sO3mnC-ro6jrpJ8F6pV": {
+                "id": "B6sO3mnC-ro6jrpJ8F6pV",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 500,
+                  "y": 320
+                },
+                "data": {
+                  "title": "Переменные",
+                  "text": "Предположим, что в этой точке сюжета происходят первые операции с переменными."
+                },
+                "operations": [
+                  {
+                    "id": "ipQ0Cqy74-SgNFu-gX2Ur",
+                    "nodeId": "B6sO3mnC-ro6jrpJ8F6pV",
+                    "variableId": "ar291ojyNY3AbRpaYiw2D",
+                    "operationType": "override",
+                    "target": {
+                      "type": "custom",
+                      "value": 150
+                    },
+                    "enabled": true,
+                    "order": 0
+                  },
+                  {
+                    "id": "Qn8f_SXRZRJBKfTIQQcr8",
+                    "nodeId": "B6sO3mnC-ro6jrpJ8F6pV",
+                    "variableId": "ooukn7hcBNEibCLkAn4rK",
+                    "operationType": "addition",
+                    "target": {
+                      "type": "custom",
+                      "value": 77
+                    },
+                    "enabled": true,
+                    "order": 1
+                  },
+                  {
+                    "id": "rKoFKOaz-ACfbVQ25fLau",
+                    "nodeId": "B6sO3mnC-ro6jrpJ8F6pV",
+                    "variableId": "v90BYf-TgB9wdXFD9oT43",
+                    "operationType": "multiply",
+                    "target": {
+                      "type": "custom",
+                      "value": 2
+                    },
+                    "enabled": true,
+                    "order": 2
+                  },
+                  {
+                    "id": "6M-LYwlrrnV9NYiLB2xb9",
+                    "nodeId": "B6sO3mnC-ro6jrpJ8F6pV",
+                    "variableId": "gXy3LAvKKz2MAVmpq5qYu",
+                    "operationType": "divide",
+                    "target": {
+                      "type": "custom",
+                      "value": 2
+                    },
+                    "enabled": true,
+                    "order": 3
+                  },
+                  {
+                    "id": "VTAOa9_yp7vBcwJJGXD-H",
+                    "nodeId": "B6sO3mnC-ro6jrpJ8F6pV",
+                    "variableId": "xAVvzOVHGzBnjFYJaljDE",
+                    "operationType": "subtract",
+                    "target": {
+                      "type": "custom",
+                      "value": 0.1
+                    },
+                    "enabled": true,
+                    "order": 4
+                  },
+                  {
+                    "id": "V14o5U5hMzEQABYuTlada",
+                    "nodeId": "B6sO3mnC-ro6jrpJ8F6pV",
+                    "variableId": "vBJAx0QTQMEWB07_FyX8E",
+                    "operationType": "override",
+                    "target": {
+                      "type": "custom",
+                      "value": 0.6
+                    },
+                    "enabled": true,
+                    "order": 5
+                  },
+                  {
+                    "id": "p-TC-4Gg3p3lJbMjXqzsS",
+                    "nodeId": "B6sO3mnC-ro6jrpJ8F6pV",
+                    "variableId": "v_2nD2yQgXu51b6t5fKAM",
+                    "operationType": "override",
+                    "enabled": true,
+                    "order": 6,
+                    "target": {
+                      "type": "custom",
+                      "value": true
+                    }
+                  },
+                  {
+                    "id": "ANBZYl3cPVv0CGgYRKi_g",
+                    "nodeId": "B6sO3mnC-ro6jrpJ8F6pV",
+                    "variableId": "G-CgMdve09lJ0z1pT7v7C",
+                    "operationType": "override",
+                    "target": {
+                      "type": "custom",
+                      "value": false
+                    },
+                    "enabled": true,
+                    "order": 7
+                  }
+                ]
+              },
+              "HoJOWFCHtXS_ZWD_tjQNj": {
+                "id": "HoJOWFCHtXS_ZWD_tjQNj",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 820,
+                  "y": 420
+                },
+                "data": {
+                  "title": "Прямое ветвление",
+                  "text": "А тут мы даем игроку прямой выбор."
+                }
+              },
+              "FKr7uugSinZunwVvWe0yS": {
+                "id": "FKr7uugSinZunwVvWe0yS",
+                "type": "choice",
+                "coordinates": {
+                  "x": 1200,
+                  "y": 300
+                },
+                "data": {
+                  "text": "Выбор 1",
+                  "height": 40
+                }
+              },
+              "NX7Q7Wpw0Jy6CbJxpCFdj": {
+                "id": "NX7Q7Wpw0Jy6CbJxpCFdj",
+                "type": "choice",
+                "coordinates": {
+                  "x": 1200,
+                  "y": 640
+                },
+                "data": {
+                  "text": "Выбор 2",
+                  "height": 40
+                }
+              },
+              "Asix6unBfAZx7qkxfHOx-": {
+                "id": "Asix6unBfAZx7qkxfHOx-",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 1560,
+                  "y": 240
+                },
+                "data": {
+                  "title": "",
+                  "text": "Мы здесь потому что выбрали выбор 1."
+                }
+              },
+              "feO5a9n6qgdEFmlstAVBO": {
+                "id": "feO5a9n6qgdEFmlstAVBO",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 2080,
+                  "y": 580
+                },
+                "data": {
+                  "title": "",
+                  "text": "И так. Мы оказались тут, так как был выбор 2."
+                }
+              },
+              "7d3U1nW94YgOG7j5xcjOo": {
+                "id": "7d3U1nW94YgOG7j5xcjOo",
+                "type": "choice",
+                "coordinates": {
+                  "x": 1960,
+                  "y": 60
+                },
+                "data": {
+                  "text": "Выбор 1 (после выбора 1)",
+                  "height": 64
+                }
+              },
+              "Eboer8CGeElbd1Nlt23Vy": {
+                "id": "Eboer8CGeElbd1Nlt23Vy",
+                "type": "choice",
+                "coordinates": {
+                  "x": 1960,
+                  "y": 300
+                },
+                "data": {
+                  "text": "Выбор 2 (после выбора 1)",
+                  "height": 64
+                }
+              },
+              "g_IL0adZbkwsdUoM3ESzT": {
+                "id": "g_IL0adZbkwsdUoM3ESzT",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 2300,
+                  "y": 240
+                },
+                "data": {
+                  "title": "",
+                  "text": "А сюжет идет дальше 2."
+                }
+              },
+              "_gYLT2Sdj_nHJYlrwyZ7g": {
+                "id": "_gYLT2Sdj_nHJYlrwyZ7g",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 2300,
+                  "y": 0
+                },
+                "data": {
+                  "title": "",
+                  "text": "А сюжет идет дальше 1."
+                }
+              },
+              "1Il7XCLxJRgRTqiQssy6H": {
+                "id": "1Il7XCLxJRgRTqiQssy6H",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 2520,
+                  "y": 580
+                },
+                "data": {
+                  "title": "",
+                  "text": "Тут мы оказались, потому что условие шанса в 50% не сработало."
+                }
+              },
+              "sUH7CqFGTB0n79fDCOreQ": {
+                "id": "sUH7CqFGTB0n79fDCOreQ",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 2520,
+                  "y": 860
+                },
+                "data": {
+                  "title": "",
+                  "text": "Тут мы можем оказаться, если сработает условие шанса 50%."
+                }
+              },
+              "PaU_mmNMsQaj4eedftOhg": {
+                "id": "PaU_mmNMsQaj4eedftOhg",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 2660,
+                  "y": 120
+                },
+                "data": {
+                  "title": "",
+                  "text": "И так. В следующем узле все ветки сойдутся в одну."
+                }
+              },
+              "UbsmCYEuk7G85Nk2ZG0mq": {
+                "id": "UbsmCYEuk7G85Nk2ZG0mq",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 2880,
+                  "y": 720
+                },
+                "data": {
+                  "title": "",
+                  "text": "В следующий узел сольются все сюжетные ветки."
+                }
+              },
+              "enO_sKvFiIqZLY-macaWR": {
+                "id": "enO_sKvFiIqZLY-macaWR",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 3360,
+                  "y": 720
+                },
+                "data": {
+                  "title": "",
+                  "text": "Все ветки слились в одну, а после пойдут различные концовки. При этом, тут, возможно, появятся выборы."
+                }
+              },
+              "6IJwxC5EOaMFa4CDOvOW1": {
+                "id": "6IJwxC5EOaMFa4CDOvOW1",
+                "type": "choice",
+                "coordinates": {
+                  "x": 3800,
+                  "y": 640
+                },
+                "data": {
+                  "text": "Это выбор 1",
+                  "height": 64
+                }
+              },
+              "8LHa-0k2rPTwLQJzZ9o10": {
+                "id": "8LHa-0k2rPTwLQJzZ9o10",
+                "type": "choice",
+                "coordinates": {
+                  "x": 3800,
+                  "y": 920
+                },
+                "data": {
+                  "text": "Это выбор 2",
+                  "height": 40
+                }
+              },
+              "4ylCJV01mQtg1AllkEm0y": {
+                "id": "4ylCJV01mQtg1AllkEm0y",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 4360,
+                  "y": 340
+                },
+                "data": {
+                  "title": "",
+                  "text": "Концовка 1, если мы оказались тут, это плохой знак и условие (не было последнего выбора 2) не сработало по ошибке."
+                }
+              },
+              "dfFxUY17f9RIZZGN4hE2P": {
+                "id": "dfFxUY17f9RIZZGN4hE2P",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 4360,
+                  "y": 1100
+                },
+                "data": {
+                  "title": "",
+                  "text": "Концовка 4, не должна случиться."
+                }
+              },
+              "qudwpr9k_Ine3dab20_lk": {
+                "id": "qudwpr9k_Ine3dab20_lk",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 4360,
+                  "y": 580
+                },
+                "data": {
+                  "title": "",
+                  "text": "Концовка 2, должно было сработать условие, если мы тут, значит все окей."
+                }
+              },
+              "YduhO9vjQZkNzyko_TFrg": {
+                "id": "YduhO9vjQZkNzyko_TFrg",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 4360,
+                  "y": 860
+                },
+                "data": {
+                  "title": "",
+                  "text": "Концовка 3, сработало условие."
+                }
+              },
+              "AbAQ0Q9rhaQiOEA0MMwig": {
+                "id": "AbAQ0Q9rhaQiOEA0MMwig",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 1640,
+                  "y": 800
+                },
+                "data": {
+                  "title": "",
+                  "text": "Этот узел мы видим, если условие проверки строк сработало (если мы не увидели этот узел, то это плохой знак)."
+                }
+              }
+            },
+            "edges": {
+              "LPbpr5qkB5X1lf0LuMg3N": {
+                "id": "LPbpr5qkB5X1lf0LuMg3N",
+                "startNodeId": "6P2UPSWsbsUemTux7VdpL",
+                "endNodeId": "B6sO3mnC-ro6jrpJ8F6pV",
+                "conditions": [],
+                "type": "link"
+              },
+              "ImjRwtMFyxLUuzdTLE0Pd": {
+                "id": "ImjRwtMFyxLUuzdTLE0Pd",
+                "startNodeId": "B6sO3mnC-ro6jrpJ8F6pV",
+                "endNodeId": "HoJOWFCHtXS_ZWD_tjQNj",
+                "conditions": [],
+                "type": "link"
+              },
+              "G2GPUnMErgA3rbGMdLMSw": {
+                "type": "link",
+                "id": "G2GPUnMErgA3rbGMdLMSw",
+                "startNodeId": "HoJOWFCHtXS_ZWD_tjQNj",
+                "endNodeId": "FKr7uugSinZunwVvWe0yS",
+                "conditions": []
+              },
+              "umYU9_lqQe4MXNaEv9C7h": {
+                "type": "link",
+                "id": "umYU9_lqQe4MXNaEv9C7h",
+                "startNodeId": "HoJOWFCHtXS_ZWD_tjQNj",
+                "endNodeId": "NX7Q7Wpw0Jy6CbJxpCFdj",
+                "conditions": []
+              },
+              "stzbseX_QU7va0TcPF6i2": {
+                "type": "link",
+                "id": "stzbseX_QU7va0TcPF6i2",
+                "startNodeId": "NX7Q7Wpw0Jy6CbJxpCFdj",
+                "endNodeId": "LgoRa7n1cmBghm2BIXwzP",
+                "targetHandle": "LYa5L0WDVeJlC14bjPZJ5",
+                "conditions": []
+              },
+              "8eWoLuxLMac7y8bV41BzS": {
+                "type": "link",
+                "id": "8eWoLuxLMac7y8bV41BzS",
+                "startNodeId": "FKr7uugSinZunwVvWe0yS",
+                "endNodeId": "c0kWxHbD1rOt77cSlfcnF",
+                "targetHandle": "0wIOTM6oS9zy4u6XoNrUu",
+                "conditions": []
+              },
+              "sSQpIu6Aoceq6IMueQ4xu": {
+                "type": "link",
+                "id": "sSQpIu6Aoceq6IMueQ4xu",
+                "startNodeId": "c0kWxHbD1rOt77cSlfcnF",
+                "endNodeId": "Asix6unBfAZx7qkxfHOx-",
+                "sourceHandle": "e3Cf3LbRXM7a16R4PdBqs",
+                "conditions": []
+              },
+              "-uom-HocgJPRke20WUFP8": {
+                "type": "link",
+                "id": "-uom-HocgJPRke20WUFP8",
+                "startNodeId": "LgoRa7n1cmBghm2BIXwzP",
+                "endNodeId": "feO5a9n6qgdEFmlstAVBO",
+                "sourceHandle": "CTgIN9Sxke-dhJ2zLzqax",
+                "conditions": []
+              },
+              "9LfFOPXuxZwOFze5ZdAkG": {
+                "type": "link",
+                "id": "9LfFOPXuxZwOFze5ZdAkG",
+                "startNodeId": "Asix6unBfAZx7qkxfHOx-",
+                "endNodeId": "7d3U1nW94YgOG7j5xcjOo",
+                "conditions": []
+              },
+              "_a_k60ofHF7vKqvOtwdRB": {
+                "type": "link",
+                "id": "_a_k60ofHF7vKqvOtwdRB",
+                "startNodeId": "Asix6unBfAZx7qkxfHOx-",
+                "endNodeId": "Eboer8CGeElbd1Nlt23Vy",
+                "conditions": []
+              },
+              "jZzJ2hIkgO-VVxGejW1AV": {
+                "type": "link",
+                "id": "jZzJ2hIkgO-VVxGejW1AV",
+                "startNodeId": "Eboer8CGeElbd1Nlt23Vy",
+                "endNodeId": "g_IL0adZbkwsdUoM3ESzT",
+                "conditions": []
+              },
+              "WKsjvNEwS9unqReeFVRz5": {
+                "type": "link",
+                "id": "WKsjvNEwS9unqReeFVRz5",
+                "startNodeId": "7d3U1nW94YgOG7j5xcjOo",
+                "endNodeId": "_gYLT2Sdj_nHJYlrwyZ7g",
+                "conditions": []
+              },
+              "M8KrHbY03ZV96qn7TOwHO": {
+                "type": "link",
+                "id": "M8KrHbY03ZV96qn7TOwHO",
+                "startNodeId": "feO5a9n6qgdEFmlstAVBO",
+                "endNodeId": "1Il7XCLxJRgRTqiQssy6H",
+                "conditions": []
+              },
+              "yG9f0bMrzL7F_VPEvISf3": {
+                "type": "link",
+                "id": "yG9f0bMrzL7F_VPEvISf3",
+                "startNodeId": "feO5a9n6qgdEFmlstAVBO",
+                "endNodeId": "sUH7CqFGTB0n79fDCOreQ",
+                "conditions": [
+                  {
+                    "id": "PHjbEehrA0PSU3FC_4Ya8",
+                    "operator": "AND",
+                    "conditions": [
+                      {
+                        "id": "Yro5727uodpN8W5zabsHd",
+                        "type": "probability",
+                        "probability": 0.5
+                      }
+                    ]
+                  }
+                ]
+              },
+              "aDlrGceCdqAEOPLfaGud5": {
+                "type": "link",
+                "id": "aDlrGceCdqAEOPLfaGud5",
+                "startNodeId": "_gYLT2Sdj_nHJYlrwyZ7g",
+                "endNodeId": "PaU_mmNMsQaj4eedftOhg",
+                "conditions": []
+              },
+              "GuSUu5q5jyjSitVYWKT_Z": {
+                "type": "link",
+                "id": "GuSUu5q5jyjSitVYWKT_Z",
+                "startNodeId": "g_IL0adZbkwsdUoM3ESzT",
+                "endNodeId": "PaU_mmNMsQaj4eedftOhg",
+                "conditions": []
+              },
+              "rT1gjPX1-W4jzxRxH3ROC": {
+                "type": "link",
+                "id": "rT1gjPX1-W4jzxRxH3ROC",
+                "startNodeId": "1Il7XCLxJRgRTqiQssy6H",
+                "endNodeId": "UbsmCYEuk7G85Nk2ZG0mq",
+                "conditions": []
+              },
+              "1ZcX_rKFp_W6Bd-vORa_i": {
+                "type": "link",
+                "id": "1ZcX_rKFp_W6Bd-vORa_i",
+                "startNodeId": "sUH7CqFGTB0n79fDCOreQ",
+                "endNodeId": "UbsmCYEuk7G85Nk2ZG0mq",
+                "conditions": []
+              },
+              "QW6lWCMlbgHEdLhnW0lRl": {
+                "type": "link",
+                "id": "QW6lWCMlbgHEdLhnW0lRl",
+                "startNodeId": "PaU_mmNMsQaj4eedftOhg",
+                "endNodeId": "enO_sKvFiIqZLY-macaWR",
+                "conditions": []
+              },
+              "1Eg29PW0SR1tVBusPRo-O": {
+                "type": "link",
+                "id": "1Eg29PW0SR1tVBusPRo-O",
+                "startNodeId": "UbsmCYEuk7G85Nk2ZG0mq",
+                "endNodeId": "enO_sKvFiIqZLY-macaWR",
+                "conditions": []
+              },
+              "Y-xUUXaGYL3v3eHXQjHN5": {
+                "type": "link",
+                "id": "Y-xUUXaGYL3v3eHXQjHN5",
+                "startNodeId": "enO_sKvFiIqZLY-macaWR",
+                "endNodeId": "6IJwxC5EOaMFa4CDOvOW1",
+                "conditions": []
+              },
+              "7F3-iMYNChyulFUjCLyLj": {
+                "type": "link",
+                "id": "7F3-iMYNChyulFUjCLyLj",
+                "startNodeId": "enO_sKvFiIqZLY-macaWR",
+                "endNodeId": "8LHa-0k2rPTwLQJzZ9o10",
+                "conditions": []
+              },
+              "_FUHiTkVvH3NZVBWflLTr": {
+                "type": "link",
+                "id": "_FUHiTkVvH3NZVBWflLTr",
+                "startNodeId": "6IJwxC5EOaMFa4CDOvOW1",
+                "endNodeId": "4ylCJV01mQtg1AllkEm0y",
+                "conditions": []
+              },
+              "_Zrd_GUDRYOHCCsemgpyI": {
+                "type": "link",
+                "id": "_Zrd_GUDRYOHCCsemgpyI",
+                "startNodeId": "8LHa-0k2rPTwLQJzZ9o10",
+                "endNodeId": "dfFxUY17f9RIZZGN4hE2P",
+                "conditions": []
+              },
+              "UGltPKFWLy3w1sM3l28Gt": {
+                "type": "link",
+                "id": "UGltPKFWLy3w1sM3l28Gt",
+                "startNodeId": "6IJwxC5EOaMFa4CDOvOW1",
+                "endNodeId": "qudwpr9k_Ine3dab20_lk",
+                "conditions": [
+                  {
+                    "id": "IRM-s6_Z_-X_01hFYgoH2",
+                    "operator": "AND",
+                    "conditions": [
+                      {
+                        "id": "VUVOfeGfo0bLZCPyNDfzU",
+                        "type": "node_not_happened",
+                        "nodeId": "8LHa-0k2rPTwLQJzZ9o10",
+                        "nodeType": "choice"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "VPeikUDqrvRcl6vY1HbJj": {
+                "type": "link",
+                "id": "VPeikUDqrvRcl6vY1HbJj",
+                "startNodeId": "8LHa-0k2rPTwLQJzZ9o10",
+                "endNodeId": "YduhO9vjQZkNzyko_TFrg",
+                "conditions": [
+                  {
+                    "id": "qL_RQvoG0H1qTaBOHj0tV",
+                    "operator": "AND",
+                    "conditions": [
+                      {
+                        "id": "0M_13cUB0pYsR1aqzPzvB",
+                        "type": "variable_comparison",
+                        "operator": "eq",
+                        "varId": "v_2nD2yQgXu51b6t5fKAM",
+                        "valType": "custom",
+                        "value": true
+                      }
+                    ]
+                  }
+                ]
+              },
+              "p6eDx1asTWagqIo6JWW9k": {
+                "type": "link",
+                "id": "p6eDx1asTWagqIo6JWW9k",
+                "startNodeId": "NX7Q7Wpw0Jy6CbJxpCFdj",
+                "endNodeId": "feO5a9n6qgdEFmlstAVBO",
+                "conditions": []
+              },
+              "KjSiWhfxUpUqPfiyVESbX": {
+                "type": "link",
+                "id": "KjSiWhfxUpUqPfiyVESbX",
+                "startNodeId": "NX7Q7Wpw0Jy6CbJxpCFdj",
+                "endNodeId": "AbAQ0Q9rhaQiOEA0MMwig",
+                "conditions": [
+                  {
+                    "id": "EUTWM8lBXpmhB-hVpETto",
+                    "operator": "AND",
+                    "conditions": [
+                      {
+                        "id": "KJnTkcQFPYGBDTN9xcoVZ",
+                        "type": "variable_comparison",
+                        "operator": "neq",
+                        "valType": "variable",
+                        "varId": "b1vae-agu11tOZZRKU8PJ",
+                        "comparisonVarId": "pZsFModj0a1jU68gBmuNW"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "iQ1NXlg_voUkamWl2QW8_": {
+                "type": "link",
+                "id": "iQ1NXlg_voUkamWl2QW8_",
+                "startNodeId": "AbAQ0Q9rhaQiOEA0MMwig",
+                "endNodeId": "feO5a9n6qgdEFmlstAVBO",
+                "conditions": []
+              },
+              "vjISsz8VyTE2Yd6VTq_p4": {
+                "type": "link",
+                "id": "vjISsz8VyTE2Yd6VTq_p4",
+                "startNodeId": "FKr7uugSinZunwVvWe0yS",
+                "endNodeId": "Asix6unBfAZx7qkxfHOx-",
+                "conditions": []
+              }
+            },
+            "nodeIds": [
+              "6P2UPSWsbsUemTux7VdpL",
+              "B6sO3mnC-ro6jrpJ8F6pV",
+              "HoJOWFCHtXS_ZWD_tjQNj",
+              "FKr7uugSinZunwVvWe0yS",
+              "NX7Q7Wpw0Jy6CbJxpCFdj",
+              "Asix6unBfAZx7qkxfHOx-",
+              "feO5a9n6qgdEFmlstAVBO",
+              "7d3U1nW94YgOG7j5xcjOo",
+              "Eboer8CGeElbd1Nlt23Vy",
+              "g_IL0adZbkwsdUoM3ESzT",
+              "_gYLT2Sdj_nHJYlrwyZ7g",
+              "1Il7XCLxJRgRTqiQssy6H",
+              "sUH7CqFGTB0n79fDCOreQ",
+              "PaU_mmNMsQaj4eedftOhg",
+              "UbsmCYEuk7G85Nk2ZG0mq",
+              "enO_sKvFiIqZLY-macaWR",
+              "6IJwxC5EOaMFa4CDOvOW1",
+              "8LHa-0k2rPTwLQJzZ9o10",
+              "4ylCJV01mQtg1AllkEm0y",
+              "dfFxUY17f9RIZZGN4hE2P",
+              "qudwpr9k_Ine3dab20_lk",
+              "YduhO9vjQZkNzyko_TFrg",
+              "AbAQ0Q9rhaQiOEA0MMwig"
+            ]
+          }
+        },
+        "lastLayerNumber": 4,
+        "variables": [
+          {
+            "id": "ar291ojyNY3AbRpaYiw2D",
+            "name": "Число_1",
+            "internalName": "chislo_1",
+            "type": "integer",
+            "value": 100,
+            "description": ""
+          },
+          {
+            "id": "ooukn7hcBNEibCLkAn4rK",
+            "name": "Число_2",
+            "internalName": "chislo_2",
+            "type": "integer",
+            "value": 123,
+            "description": ""
+          },
+          {
+            "id": "v90BYf-TgB9wdXFD9oT43",
+            "name": "Дробь_1",
+            "internalName": "drob_1",
+            "type": "float",
+            "value": 13.42,
+            "description": ""
+          },
+          {
+            "id": "gXy3LAvKKz2MAVmpq5qYu",
+            "name": "Дробь_2",
+            "internalName": "drob_2",
+            "type": "float",
+            "value": 43.34,
+            "description": ""
+          },
+          {
+            "id": "xAVvzOVHGzBnjFYJaljDE",
+            "name": "Процент_1",
+            "internalName": "protsent_1",
+            "type": "percent",
+            "value": 0.43,
+            "description": ""
+          },
+          {
+            "id": "vBJAx0QTQMEWB07_FyX8E",
+            "name": "Процент_2",
+            "internalName": "protsent_2",
+            "type": "percent",
+            "value": 0.76,
+            "description": ""
+          },
+          {
+            "id": "b1vae-agu11tOZZRKU8PJ",
+            "name": "Строка_1",
+            "internalName": "stroka_1",
+            "type": "string",
+            "value": "Пупа",
+            "description": ""
+          },
+          {
+            "id": "pZsFModj0a1jU68gBmuNW",
+            "name": "Строка_2",
+            "internalName": "stroka_2",
+            "type": "string",
+            "value": "Лупа",
+            "description": ""
+          },
+          {
+            "id": "v_2nD2yQgXu51b6t5fKAM",
+            "name": "Булева_1",
+            "internalName": "buleva_1",
+            "type": "boolean",
+            "value": false,
+            "description": ""
+          },
+          {
+            "id": "G-CgMdve09lJ0z1pT7v7C",
+            "name": "Булева_2",
+            "internalName": "buleva_2",
+            "type": "boolean",
+            "value": true,
+            "description": ""
+          }
+        ]
+      }
+    }
+  },
+  "metadata": {
+    "exportedAt": "2025-06-18T18:00:04.200Z",
+    "version": "1.0",
+    "protocolVersion": 2
+  }
+}

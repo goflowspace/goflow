@@ -1,0 +1,38 @@
+.variables-panel-fixed {
+  position: fixed;
+  left: 20px;
+  bottom: 80px;
+  width: 280px;
+  max-height: 400px;
+  transition:
+    max-height 0.3s ease-in-out,
+    bottom 0.3s ease-in-out;
+  overflow: hidden;
+  z-index: 1000;
+  background-color: transparent;
+}
+
+.variables-panel-content {
+  height: 340px;
+  padding-right: 10px;
+}
+
+.collapsed {
+  max-height: 40px;
+  bottom: 20px;
+}
+
+.variable-value {
+  min-width: 80px;
+  text-align: right;
+}
+
+.variable-percent {
+  min-width: 180px;
+}
+
+.error-message {
+  padding: 0 4px;
+  color: var(--playback-error);
+  font-size: 12px;
+}

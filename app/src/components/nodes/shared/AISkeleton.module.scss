@@ -1,0 +1,323 @@
+/* Скелетон для AI операций с фиолетовой темой */
+.skeleton {
+  width: 100%;
+  opacity: 0.9;
+  position: relative;
+}
+
+/* Классы для разных типов узлов */
+.narrative {
+  /* Класс для narrative узлов */
+}
+
+.choice {
+  /* Класс для choice узлов */
+}
+
+.entities {
+  /* Класс для entities узлов */
+}
+
+/* Заголовок для нарративного узла (одна строка) */
+.titleSkeleton {
+  height: 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f9 50%, #f8f9fa 100%);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  width: 70%;
+  border: 1px solid rgb(148 163 184 / 15%);
+}
+
+/* Контейнер для текста (несколько строк) */
+.textSkeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* Контейнер для выбора */
+.choiceSkeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Строки текста */
+.line {
+  height: 16px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f9 30%, #e2e8f0 60%, #f1f3f9 100%);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgb(148 163 184 / 12%);
+}
+
+/* Разные ширины для строк текста */
+.line1 {
+  width: 100%;
+}
+
+.line2 {
+  width: 85%;
+}
+
+.line3 {
+  width: 60%;
+}
+
+/* Строка для выбора */
+.choiceLine {
+  width: 80%;
+  height: 18px;
+}
+
+/* Контейнер для сущностей */
+.entitiesSkeleton {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  width: 100%;
+  padding: 12px 9px; /* 8px + 4px padding от grid = 12px сверху/снизу, 5px + 4px = 9px слева/справа */
+}
+
+/* Квадратики сущностей */
+.entitySquare {
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f9 50%, #e2e8f0 100%);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  border: 1px solid rgb(148 163 184 / 18%);
+}
+
+/* Анимация shimmer с мягкими оттенками */
+.shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgb(148 163 184 / 25%) 20%, rgb(203 213 225 / 35%) 50%, rgb(148 163 184 / 25%) 80%, transparent 100%);
+  animation: aiShimmer 2s infinite ease-in-out;
+  transform: translateZ(0);
+}
+
+/* Анимации */
+@keyframes aiShimmer {
+  0% {
+    transform: translateX(-100%) skewX(-20deg);
+  }
+
+  50% {
+    transform: translateX(0%) skewX(-20deg);
+  }
+
+  100% {
+    transform: translateX(100%) skewX(-20deg);
+  }
+}
+
+/* Активная анимация для скелетонов во время работы ИИ */
+.skeleton.active .shimmer {
+  animation-duration: 1s;
+  background: linear-gradient(90deg, transparent 0%, rgb(59 130 246 / 30%) 20%, rgb(96 165 250 / 40%) 50%, rgb(59 130 246 / 30%) 80%, transparent 100%);
+}
+
+/* Специальные стили для narrative скелетонов (темно-синие) */
+.skeleton.narrative .titleSkeleton,
+.skeleton.narrative .line {
+  background: linear-gradient(135deg, #f8f9fc 0%, #f1f3f8 30%, #e8ebf2 60%, #f1f3f8 100%);
+  border-color: rgb(30 64 175 / 15%);
+}
+
+.skeleton.narrative .shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgb(30 64 175 / 20%) 20%, rgb(37 99 235 / 25%) 50%, rgb(30 64 175 / 20%) 80%, transparent 100%);
+}
+
+.skeleton.narrative.active .titleSkeleton,
+.skeleton.narrative.active .line {
+  background: linear-gradient(135deg, #f0f4f8 0%, #e6eff7 50%, #f0f4f8 100%);
+  border-color: rgb(30 64 175 / 25%);
+}
+
+.skeleton.narrative.active .shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgb(30 64 175 / 30%) 20%, rgb(37 99 235 / 35%) 50%, rgb(30 64 175 / 30%) 80%, transparent 100%);
+}
+
+/* Специальные стили для entities скелетонов (приглушенные серо-синие) */
+.skeleton.entities .entitySquare {
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #f1f3f9 50%, #e8ebf2 100%);
+  border-radius: 4px;
+  border-color: rgb(71 85 105 / 18%);
+}
+
+.skeleton.entities .shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgb(71 85 105 / 20%) 20%, rgb(100 116 139 / 25%) 50%, rgb(71 85 105 / 20%) 80%, transparent 100%);
+}
+
+.skeleton.entities.active .entitySquare {
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #f1f5f9 100%);
+  border-radius: 4px;
+  border-color: rgb(71 85 105 / 25%);
+}
+
+.skeleton.entities.active .shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgb(71 85 105 / 30%) 20%, rgb(100 116 139 / 35%) 50%, rgb(71 85 105 / 30%) 80%, transparent 100%);
+}
+
+/* Активное состояние - более заметные элементы (fallback для других типов) */
+.skeleton.active .titleSkeleton,
+.skeleton.active .line {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 50%, #eff6ff 100%);
+  border-color: rgb(59 130 246 / 20%);
+}
+
+.skeleton.active .entitySquare {
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 50%, #bfdbfe 100%);
+  border-radius: 4px;
+  border-color: rgb(59 130 246 / 25%);
+}
+
+/* Специальные стили для choice скелетонов (темно-зеленые) */
+.skeleton.choice .line {
+  background: linear-gradient(135deg, #f8faf9 0%, #f1f5f2 30%, #e8f0ea 60%, #f1f5f2 100%);
+  border-color: rgb(22 101 52 / 15%);
+}
+
+.skeleton.choice .shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgb(22 101 52 / 20%) 20%, rgb(34 140 75 / 25%) 50%, rgb(22 101 52 / 20%) 80%, transparent 100%);
+}
+
+.skeleton.choice.active .line {
+  background: linear-gradient(135deg, #f0f9f1 0%, #e6f4e8 50%, #f0f9f1 100%);
+  border-color: rgb(22 101 52 / 25%);
+}
+
+.skeleton.choice.active .shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgb(22 101 52 / 30%) 20%, rgb(34 140 75 / 35%) 50%, rgb(22 101 52 / 30%) 80%, transparent 100%);
+}
+
+/* Темная тема поддержка */
+@media (prefers-color-scheme: dark) {
+  .skeleton {
+    opacity: 0.8;
+  }
+
+  .titleSkeleton {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #1e293b 100%);
+    border-color: rgb(148 163 184 / 30%);
+  }
+
+  .line {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 30%, #475569 60%, #334155 100%);
+    border-color: rgb(148 163 184 / 25%);
+  }
+
+  .entitySquare {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+    border-color: rgb(148 163 184 / 35%);
+  }
+
+  /* Narrative скелетоны в темной теме */
+  .skeleton.narrative .titleSkeleton,
+  .skeleton.narrative .line {
+    background: linear-gradient(135deg, #1a2332 0%, #1e2a3a 30%, #233142 60%, #1e2a3a 100%);
+    border-color: rgb(37 99 235 / 20%);
+  }
+
+  .skeleton.narrative .shimmer {
+    background: linear-gradient(90deg, transparent 0%, rgb(37 99 235 / 25%) 20%, rgb(59 130 246 / 30%) 50%, rgb(37 99 235 / 25%) 80%, transparent 100%);
+  }
+
+  .skeleton.narrative.active .titleSkeleton,
+  .skeleton.narrative.active .line {
+    background: linear-gradient(135deg, #1e2a3a 0%, #233142 50%, #1e2a3a 100%);
+    border-color: rgb(37 99 235 / 35%);
+  }
+
+  .skeleton.narrative.active .shimmer {
+    background: linear-gradient(90deg, transparent 0%, rgb(37 99 235 / 40%) 20%, rgb(59 130 246 / 45%) 50%, rgb(37 99 235 / 40%) 80%, transparent 100%);
+  }
+
+  /* Entities скелетоны в темной теме */
+  .skeleton.entities .entitySquare {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+    border-radius: 4px;
+    border-color: rgb(100 116 139 / 25%);
+  }
+
+  .skeleton.entities .shimmer {
+    background: linear-gradient(90deg, transparent 0%, rgb(100 116 139 / 25%) 20%, rgb(148 163 184 / 30%) 50%, rgb(100 116 139 / 25%) 80%, transparent 100%);
+  }
+
+  .skeleton.entities.active .entitySquare {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, #334155 0%, #475569 50%, #334155 100%);
+    border-radius: 4px;
+    border-color: rgb(100 116 139 / 35%);
+  }
+
+  .skeleton.entities.active .shimmer {
+    background: linear-gradient(90deg, transparent 0%, rgb(100 116 139 / 40%) 20%, rgb(148 163 184 / 45%) 50%, rgb(100 116 139 / 40%) 80%, transparent 100%);
+  }
+
+  /* Активное состояние в темной теме (fallback для других типов) */
+  .skeleton.active .titleSkeleton,
+  .skeleton.active .line {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #1e3a8a 100%);
+    border-color: rgb(59 130 246 / 40%);
+  }
+
+  .skeleton.active .entitySquare {
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #2563eb 100%);
+    border-radius: 4px;
+    border-color: rgb(59 130 246 / 50%);
+  }
+
+  /* Choice скелетоны в темной теме */
+  .skeleton.choice .line {
+    background: linear-gradient(135deg, #1a2e21 0%, #1f3526 30%, #243a2b 60%, #1f3526 100%);
+    border-color: rgb(34 140 75 / 20%);
+  }
+
+  .skeleton.choice .shimmer {
+    background: linear-gradient(90deg, transparent 0%, rgb(34 140 75 / 25%) 20%, rgb(52 168 96 / 30%) 50%, rgb(34 140 75 / 25%) 80%, transparent 100%);
+  }
+
+  .skeleton.choice.active .line {
+    background: linear-gradient(135deg, #1f3526 0%, #243a2b 50%, #1f3526 100%);
+    border-color: rgb(34 140 75 / 35%);
+  }
+
+  .skeleton.choice.active .shimmer {
+    background: linear-gradient(90deg, transparent 0%, rgb(34 140 75 / 40%) 20%, rgb(52 168 96 / 45%) 50%, rgb(34 140 75 / 40%) 80%, transparent 100%);
+  }
+
+  .shimmer {
+    background: linear-gradient(90deg, transparent 0%, rgb(148 163 184 / 30%) 20%, rgb(203 213 225 / 40%) 50%, rgb(148 163 184 / 30%) 80%, transparent 100%);
+  }
+
+  /* Активное состояние shimmer в темной теме */
+  .skeleton.active .shimmer {
+    background: linear-gradient(90deg, transparent 0%, rgb(59 130 246 / 40%) 20%, rgb(96 165 250 / 50%) 50%, rgb(59 130 246 / 40%) 80%, transparent 100%);
+  }
+}
+
+/* Уменьшение анимации для пользователей с предпочтением reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .shimmer {
+    animation-duration: 4s;
+  }
+}

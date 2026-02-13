@@ -1,0 +1,434 @@
+/* Основной контейнер панели */
+.panel {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  height: 100%;
+  background-color: var(--playback-panel-bg);
+  overflow: hidden;
+}
+
+/* Хедер панели */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--playback-border-light);
+  background-color: var(--playback-panel-bg);
+}
+
+.headerTitle {
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.21em;
+  color: var(--playback-text-primary);
+}
+
+.headerControls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Кнопки управления */
+.iconButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 3px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.iconButton:hover {
+  background-color: var(--playback-bg-secondary);
+}
+
+.expandIcon svg {
+  width: 16px;
+  height: 16px;
+  color: var(--playback-narrative-text);
+}
+
+.conditionExpandIcon svg {
+  width: 12px;
+  height: 12px;
+  color: var(--playback-text-muted);
+}
+
+.iconButton svg {
+  width: 16px;
+  height: 16px;
+}
+
+.iconButton.neutral svg {
+  color: var(--playback-text-primary);
+}
+
+.iconButton.error svg {
+  color: var(--playback-error);
+}
+
+/* Контейнер записей */
+.logContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  overflow: hidden auto;
+}
+
+/* Базовые стили для записей */
+.logEntry {
+  border-radius: 6px;
+  padding: 6px;
+  width: 100%;
+}
+
+/* Нарративный узел */
+.narrativeEntry {
+  background-color: var(--playback-narrative-bg);
+}
+
+.narrativeHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+.entryContent {
+  display: flex;
+  align-items: flex-start;
+  gap: 3px;
+  flex: 1;
+  min-width: 0; /* Позволяет содержимому сжиматься */
+}
+
+.entryIndex {
+  font-family: Inter, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.21em;
+  color: var(--playback-text-primary);
+  flex-shrink: 0;
+}
+
+.narrativeMainContent {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-width: 0; /* Позволяет содержимому сжиматься */
+}
+
+.narrativeTypeRow {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.narrativeTextRow {
+  display: flex;
+  align-items: center;
+  min-width: 0; /* Позволяет тексту сжиматься */
+}
+
+.entryType {
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.21em;
+}
+
+.narrativeType {
+  color: var(--playback-narrative-text);
+}
+
+.entryName {
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.21em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.narrativeName {
+  color: var(--playback-narrative-text);
+}
+
+.expandIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+}
+
+.timestamp {
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 1.21em;
+  color: var(--playback-text-muted);
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+/* Операции */
+.operationsContainer {
+  margin-top: 8px;
+  padding: 0 12px;
+}
+
+.operationsHeader {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 3px;
+}
+
+.operationsTitle {
+  font-family: Inter, sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 1.21em;
+  color: var(--playback-operation-text);
+}
+
+.operationsList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.operation {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 0 10px;
+}
+
+.operationIndex {
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.21em;
+  color: var(--playback-text-primary);
+}
+
+.operationVariable {
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 1.21em;
+  color: var(--playback-text-primary);
+}
+
+.operationOperator {
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.21em;
+  color: var(--playback-text-primary);
+}
+
+.operationValue {
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.21em;
+  color: var(--playback-text-primary);
+}
+
+.operationArrow {
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 1.21em;
+  color: var(--playback-text-primary);
+}
+
+.operationResult {
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 1.21em;
+  color: var(--playback-text-primary);
+}
+
+/* Выбор */
+.choiceEntry {
+  background-color: var(--playback-choice-bg);
+}
+
+.choiceHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.choiceType {
+  color: var(--playback-choice-text);
+}
+
+.choiceName {
+  color: var(--playback-choice-text);
+}
+
+/* Условия в отдельных строках */
+.conditionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 3px;
+  padding: 0 10px;
+}
+
+.condition {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.conditionIndex {
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.21em;
+  color: var(--playback-condition-text);
+}
+
+.conditionVariable {
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 1.21em;
+  color: var(--playback-condition-text);
+}
+
+.conditionComparator {
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.21em;
+  color: var(--playback-condition-text);
+}
+
+.conditionValue {
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 1.21em;
+  color: var(--playback-condition-text);
+}
+
+/* Переход */
+.transitionArrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 12px;
+  margin: -2px 0; /* Уменьшаем отступы между элементами */
+}
+
+.transitionEntry {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 0;
+  background: none;
+  margin: -3px 0; /* Уменьшаем отступы между элементами */
+}
+
+.transitionIcon {
+  width: 12px;
+  height: 12px;
+  color: var(--playback-text-primary);
+}
+
+/* Блок условий (отдельный от нарратива) */
+.conditionBlock {
+  background-color: var(--playback-condition-bg);
+  cursor: pointer;
+}
+
+.conditionBlockHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+}
+
+.conditionBlockTitle {
+  font-family: Inter, sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.21em;
+  color: var(--playback-condition-text);
+}
+
+.conditionExpandIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  height: 12px;
+}
+
+/* Появление нарратива */
+.narrativeAppear {
+  background: none;
+}
+
+.narrativeAppearType {
+  font-family: Inter, sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.21em;
+  color: var(--playback-accent-primary);
+}
+
+.narrativeAppearName {
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.21em;
+  color: var(--playback-text-primary);
+}
+
+/* Утилиты */
+.hidden {
+  display: none;
+}
+
+/* Скроллбар */
+.logContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.logContainer::-webkit-scrollbar-track {
+  background: var(--playback-border-light);
+  border-radius: 3px;
+}
+
+.logContainer::-webkit-scrollbar-thumb {
+  background: var(--playback-border-medium);
+  border-radius: 3px;
+}
+
+.logContainer::-webkit-scrollbar-thumb:hover {
+  background: var(--playback-border-strong);
+}

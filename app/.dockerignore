@@ -1,0 +1,22 @@
+# node/npm stuff
+node_modules
+npm-debug.log
+yarn-error.log
+.pnpm-debug.log
+
+# system/editor junk
+.DS_Store
+.vscode
+.idea
+
+# project-specific
+.env*
+*.log
+
+# version control
+.git
+.gitignore
+
+# docker/dev stuff
+Dockerfile*
+docker-compose*

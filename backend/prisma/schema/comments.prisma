@@ -1,0 +1,176 @@
+// =============================================================
+// МОДЕЛИ ДЛЯ СИСТЕМЫ КОММЕНТАРИЕВ
+// Архитектура основана на Liveblocks threads
+// =============================================================
+
+// Thread - основная единица для группировки комментариев
+model Thread {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  projectId   String   @db.ObjectId
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  resolved    Boolean  @default(false)  // Закрыт ли тред
+  
+  // Кто создал тред (автор первого комментария)
+  creatorId   String   @db.ObjectId
+  
+  // Привязка к различным частям системы
+  contextType ThreadContextType
+  contextData Json     // Хранит информацию о контексте (координаты, nodeId, entityId и т.д.)
+  
+  // Метаданные треда
+  metadata    Json     @default("{}")  // Дополнительные метаданные
+  
+  // Связи
+  project     Project  @relation("ProjectThreads", fields: [projectId], references: [id], onDelete: Cascade)
+  creator     User     @relation("CreatedThreads", fields: [creatorId], references: [id])
+  comments    Comment[] @relation("ThreadComments")
+  mentions    ThreadMention[] @relation("ThreadMentions")
+  notifications Notification[] @relation("ThreadNotifications")
+  
+  @@index([projectId, contextType])
+  @@index([projectId, resolved])
+  @@index([projectId, createdAt])
+  
+  @@map("threads")
+}
+
+// Comment - отдельные комментарии в треде
+model Comment {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  threadId  String   @db.ObjectId
+  authorId  String   @db.ObjectId
+  content   String   // Текст комментария
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  editedAt  DateTime?
+  deletedAt DateTime?  // Для soft delete
+  
+  // Связи
+  thread    Thread   @relation("ThreadComments", fields: [threadId], references: [id], onDelete: Cascade)
+  author    User     @relation("UserComments", fields: [authorId], references: [id])
+  mentions  CommentMention[] @relation("CommentMentions")
+  readStatus CommentReadStatus[] @relation("CommentReadStatus")
+  
+  @@index([threadId, createdAt])
+  @@index([authorId])
+  
+  @@map("comments")
+}
+
+// Упоминания в тредах (@team, @user)
+model ThreadMention {
+  id        String        @id @default(auto()) @map("_id") @db.ObjectId
+  threadId  String        @db.ObjectId
+  type      MentionType
+  targetId  String        @db.ObjectId  // teamId или userId
+  
+  createdAt DateTime      @default(now())
+  
+  // Связи
+  thread    Thread        @relation("ThreadMentions", fields: [threadId], references: [id], onDelete: Cascade)
+  
+  @@unique([threadId, type, targetId])
+  @@index([type, targetId])
+  
+  @@map("thread_mentions")
+}
+
+// Упоминания в комментариях
+model CommentMention {
+  id        String        @id @default(auto()) @map("_id") @db.ObjectId
+  commentId String        @db.ObjectId
+  type      MentionType
+  targetId  String        @db.ObjectId  // teamId или userId
+  
+  createdAt DateTime      @default(now())
+  
+  // Связи
+  comment   Comment       @relation("CommentMentions", fields: [commentId], references: [id], onDelete: Cascade)
+  
+  @@unique([commentId, type, targetId])
+  @@index([type, targetId])
+  
+  @@map("comment_mentions")
+}
+
+// Статус прочтения комментариев пользователями
+model CommentReadStatus {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  commentId String   @db.ObjectId
+  userId    String   @db.ObjectId
+  
+  readAt    DateTime @default(now())
+  
+  // Связи
+  comment   Comment  @relation("CommentReadStatus", fields: [commentId], references: [id], onDelete: Cascade)
+  user      User     @relation("UserCommentReadStatus", fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@unique([commentId, userId])
+  @@index([userId])
+  @@index([commentId])
+  
+  @@map("comment_read_status")
+}
+
+// Уведомления о комментариях
+model Notification {
+  id        String            @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String            @db.ObjectId
+  type      NotificationType
+  
+  // Ссылки на источник уведомления
+  threadId  String?           @db.ObjectId
+  commentId String?           @db.ObjectId
+  
+  // Содержимое уведомления
+  title     String
+  message   String
+  data      Json              @default("{}")  // Дополнительные данные (например, для deep linking)
+  
+  read      Boolean           @default(false)
+  readAt    DateTime?
+  
+  createdAt DateTime          @default(now())
+  
+  // Связи
+  user      User              @relation("UserNotifications", fields: [userId], references: [id], onDelete: Cascade)
+  thread    Thread?           @relation("ThreadNotifications", fields: [threadId], references: [id], onDelete: Cascade)
+  
+  @@index([userId, read])
+  @@index([userId, createdAt])
+  @@index([threadId])
+  
+  @@map("notifications")
+}
+
+// Типы контекста для тредов
+enum ThreadContextType {
+  CANVAS_POSITION  // Комментарий на пустом месте канваса
+  NODE             // Комментарий привязан к узлу
+  ENTITY           // Комментарий к сущности (для будущего)
+  BIBLE_SECTION    // Комментарий к разделу библии (для будущего)
+  GENERAL          // Общий комментарий к проекту
+  
+  @@map("thread_context_type")
+}
+
+// Типы упоминаний
+enum MentionType {
+  USER
+  TEAM
+  
+  @@map("mention_type")
+}
+
+// Типы уведомлений
+enum NotificationType {
+  NEW_COMMENT         // Новый комментарий в треде
+  COMMENT_MENTION     // Упоминание в комментарии
+  THREAD_MENTION      // Упоминание в треде
+  THREAD_RESOLVED     // Тред закрыт
+  THREAD_REOPENED     // Тред переоткрыт
+  
+  @@map("notification_type")
+}

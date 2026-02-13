@@ -1,0 +1,14 @@
+@use 'variables' as *;
+
+@mixin toolbar-container {
+  background: $white;
+  box-shadow: 2px 2px 5px 0 $box-shadow;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+}
+
+@mixin separator {
+  background-color: $separator-color;
+  width: 1px;
+  height: 24px;
+}

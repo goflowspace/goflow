@@ -1,0 +1,63 @@
+// Модели для блокнота
+model Note {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String   @default("Untitled Note")
+  content   String   @default("") // Markdown содержимое
+  
+  // Владелец и проект
+  userId    String   @db.ObjectId
+  projectId String?  @db.ObjectId // Опционально связана с проектом
+  
+  // Настройки видимости и организации
+  isPublic  Boolean  @default(false) // Видна команде проекта
+  isPinned  Boolean  @default(false) // Закреплена
+  
+  // Метаданные
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Связи
+  user      User     @relation("UserNotes", fields: [userId], references: [id], onDelete: Cascade)
+  project   Project? @relation("ProjectNotes", fields: [projectId], references: [id], onDelete: Cascade)
+  tags      NoteTag[] @relation("NoteTags")
+  
+  @@map("notes")
+  @@index([userId])
+  @@index([projectId])
+  @@index([createdAt])
+  @@index([isPinned, createdAt])
+}
+
+model Tag {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String   // Название тега
+  color     String?  // Цвет в формате hex (например, "#FF5733")
+  
+  // Владелец тега (теги персональные для каждого пользователя)
+  userId    String   @db.ObjectId
+  
+  // Метаданные
+  createdAt DateTime @default(now())
+  
+  // Связи
+  user      User     @relation("UserTags", fields: [userId], references: [id], onDelete: Cascade)
+  notes     NoteTag[] @relation("TagNotes")
+  
+  @@map("tags")
+  @@unique([userId, name]) // Уникальное имя тега на пользователя
+  @@index([userId])
+}
+
+// Связующая модель Many-to-Many для заметок и тегов
+model NoteTag {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  noteId String @db.ObjectId
+  tagId  String @db.ObjectId
+  
+  // Связи
+  note   Note   @relation("NoteTags", fields: [noteId], references: [id], onDelete: Cascade)
+  tag    Tag    @relation("TagNotes", fields: [tagId], references: [id], onDelete: Cascade)
+  
+  @@map("note_tags")
+  @@unique([noteId, tagId]) // Один тег не может быть привязан к заметке дважды
+}

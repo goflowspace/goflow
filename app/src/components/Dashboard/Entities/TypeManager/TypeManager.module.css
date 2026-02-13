@@ -1,0 +1,555 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background: var(--dashboard-bg-primary);
+}
+
+.header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--dashboard-border-primary);
+}
+
+.title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--dashboard-text-primary);
+}
+
+.closeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--dashboard-text-secondary);
+  transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+  background: var(--dashboard-bg-hover);
+  color: var(--dashboard-text-primary);
+}
+
+.tabs {
+  display: flex;
+  background: var(--dashboard-bg-secondary);
+  border-bottom: 1px solid var(--dashboard-border-primary);
+}
+
+.tab {
+  padding: 12px 24px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dashboard-text-secondary);
+  transition: all 0.2s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.tab:hover {
+  color: var(--dashboard-text-primary);
+  background: var(--dashboard-bg-hover);
+}
+
+.tab.active {
+  color: var(--dashboard-accent-primary);
+  border-bottom-color: var(--dashboard-accent-primary);
+  background: var(--dashboard-bg-primary);
+}
+
+.content {
+  flex: 1;
+  padding: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0;
+}
+
+.sectionTitle {
+  margin: 0 0 16px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--dashboard-text-primary);
+}
+
+.addButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid var(--dashboard-border-primary);
+  background: var(--dashboard-bg-secondary);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--dashboard-text-primary);
+  transition: all 0.2s ease;
+  margin-bottom: 16px;
+}
+
+.addButton:hover {
+  border-color: var(--dashboard-accent-primary);
+  color: var(--dashboard-accent-primary);
+}
+
+.typesList {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  min-height: 0;
+  padding-top: 8px;
+}
+
+.typeInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.typeName {
+  margin: 0 0 4px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.typeDescription {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.typeMeta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  color: #999;
+  margin-top: 4px;
+}
+
+.defaultBadge {
+  padding: 2px 6px;
+  background: #e3f2fd;
+  color: #1976d2;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.typeActions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.editButton {
+  color: #666;
+}
+
+.editButton:hover {
+  background: #f0f8ff;
+  color: #007bff;
+}
+
+.deleteButton {
+  color: #666;
+}
+
+.deleteButton:hover {
+  background: #fff5f5;
+  color: #dc3545;
+}
+
+.settingsButton {
+  color: #666;
+}
+
+.settingsButton:hover {
+  background: #f8f9fa;
+  color: #333;
+}
+
+.form,
+.editingForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
+  border: 1px solid var(--dashboard-border-primary);
+  border-radius: 12px;
+  background: var(--dashboard-bg-secondary);
+  margin-bottom: 24px;
+  box-shadow: var(--dashboard-shadow-sm);
+}
+
+.formTitle {
+  margin: 0 0 16px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--dashboard-text-primary);
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formGroup.fullWidth {
+  grid-column: 1 / -1;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dashboard-text-primary);
+  margin-bottom: 6px;
+}
+
+.label.required::after {
+  content: ' *';
+  color: var(--dashboard-error);
+}
+
+.input,
+.textarea {
+  padding: 12px 16px;
+  border: 1px solid var(--dashboard-border-primary);
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  transition: all 0.2s ease;
+  background: var(--dashboard-bg-secondary);
+  color: var(--dashboard-text-primary);
+  font-family: inherit;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: var(--dashboard-accent-primary);
+  box-shadow: 0 0 0 3px var(--dashboard-accent-primary-alpha);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.formActions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--dashboard-border-primary);
+}
+
+.saveButton {
+  padding: 12px 24px;
+  border: none;
+  background: var(--dashboard-accent-primary);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.saveButton:hover {
+  background: var(--dashboard-accent-hover);
+}
+
+.saveButton:disabled {
+  background: var(--dashboard-text-muted);
+  cursor: not-allowed;
+}
+
+.cancelButton {
+  padding: 12px 24px;
+  border: 1px solid var(--dashboard-border-primary);
+  background: var(--dashboard-bg-secondary);
+  color: var(--dashboard-text-primary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.cancelButton:hover {
+  border-color: var(--dashboard-border-hover);
+  background: var(--dashboard-bg-hover);
+}
+
+.parametersList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.parameterItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: var(--dashboard-bg-tertiary);
+  border: 1px solid var(--dashboard-border-primary);
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.parameterInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.parameterName {
+  color: var(--dashboard-text-primary);
+  font-weight: 500;
+}
+
+.parameterType {
+  color: var(--dashboard-text-secondary);
+  font-size: 12px;
+  padding: 2px 6px;
+  background: var(--dashboard-bg-tertiary);
+  border-radius: 4px;
+}
+
+.requiredBadge {
+  padding: 2px 6px;
+  background: var(--dashboard-warning-bg);
+  color: var(--dashboard-warning);
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.removeParameterButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  color: var(--dashboard-text-secondary);
+  transition: all 0.2s ease;
+}
+
+.removeParameterButton:hover {
+  background: var(--dashboard-error-bg);
+  color: var(--dashboard-error);
+}
+
+.emptyState {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--dashboard-text-secondary);
+}
+
+.emptyText {
+  font-size: 16px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.emptyDescription {
+  font-size: 14px;
+  color: var(--dashboard-text-tertiary);
+  line-height: 1.4;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 48px;
+  color: var(--dashboard-text-secondary);
+}
+
+/* Стили для карточек типов */
+.typeItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  border: 1px solid var(--dashboard-border-primary);
+  border-radius: 12px;
+  background: var(--dashboard-bg-secondary);
+  transition: all 0.2s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.typeItem:hover {
+  border-color: var(--dashboard-border-secondary);
+  box-shadow: var(--dashboard-shadow-md);
+  transform: translateY(-2px);
+}
+
+.typeInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.typeName {
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--dashboard-text-primary);
+  line-height: 1.4;
+}
+
+.typeDescription {
+  margin: 0 0 12px;
+  font-size: 14px;
+  color: var(--dashboard-text-secondary);
+  line-height: 1.5;
+}
+
+.typeMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--dashboard-text-tertiary);
+  margin-top: 8px;
+}
+
+.typeId {
+  font-family: Monaco, Menlo, monospace;
+  background: var(--dashboard-bg-tertiary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--dashboard-text-secondary);
+}
+
+.defaultBadge {
+  padding: 4px 8px;
+  background: var(--dashboard-accent-light);
+  color: var(--dashboard-accent-primary);
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.entityCount {
+  color: var(--dashboard-text-secondary);
+}
+
+.typeActions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+  margin-left: 20px;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.editButton {
+  color: var(--dashboard-text-secondary);
+}
+
+.editButton:hover {
+  background: var(--dashboard-bg-hover);
+  color: var(--dashboard-accent-primary);
+}
+
+.deleteButton {
+  color: var(--dashboard-text-secondary);
+}
+
+.deleteButton:hover {
+  background: var(--dashboard-error-bg);
+  color: var(--dashboard-error);
+}
+
+.settingsButton {
+  color: var(--dashboard-text-secondary);
+}
+
+.settingsButton:hover {
+  background: var(--dashboard-bg-hover);
+  color: var(--dashboard-text-primary);
+}
+
+.mainParametersList {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.parametersList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}

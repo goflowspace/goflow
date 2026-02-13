@@ -1,0 +1,204 @@
+### Тесты API команд
+
+# Переменные
+@baseUrl = http://localhost:3001
+@authToken = {{$dotenv BEARER_TOKEN}}
+
+### Создание команды
+POST {{baseUrl}}/teams
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "name": "Команда разработки",
+  "description": "Основная команда для разработки продукта",
+  "avatar": "https://example.com/avatar.jpg",
+  "settings": {
+    "allowPublicProjects": true,
+    "requireApprovalForInvites": false
+  }
+}
+
+### Получение списка команд пользователя
+GET {{baseUrl}}/teams
+Authorization: Bearer {{authToken}}
+
+### Получение команды по ID
+GET {{baseUrl}}/teams/{{teamId}}
+Authorization: Bearer {{authToken}}
+
+### Обновление команды
+PUT {{baseUrl}}/teams/{{teamId}}
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "name": "Обновленное название команды",
+  "description": "Обновленное описание команды"
+}
+
+### Удаление команды (только владелец)
+DELETE {{baseUrl}}/teams/{{teamId}}
+Authorization: Bearer {{authToken}}
+
+### ===== УЧАСТНИКИ КОМАНДЫ =====
+
+### Приглашение участника в команду
+POST {{baseUrl}}/teams/{{teamId}}/members/invite
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "role": "MEMBER"
+}
+
+### Изменение роли участника
+PUT {{baseUrl}}/teams/{{teamId}}/members/{{memberId}}/role
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "role": "MANAGER"
+}
+
+### Удаление участника из команды
+DELETE {{baseUrl}}/teams/{{teamId}}/members/{{memberId}}
+Authorization: Bearer {{authToken}}
+
+### ===== ПРИГЛАШЕНИЯ =====
+
+### Принятие приглашения
+POST {{baseUrl}}/teams/invitations/{{invitationToken}}/accept
+Authorization: Bearer {{authToken}}
+
+### Отклонение приглашения
+POST {{baseUrl}}/teams/invitations/{{invitationToken}}/decline
+
+### ===== ПРОЕКТЫ КОМАНДЫ =====
+
+### Получение проектов команды
+GET {{baseUrl}}/teams/{{teamId}}/projects
+Authorization: Bearer {{authToken}}
+
+### Добавление проекта в команду
+POST {{baseUrl}}/teams/{{teamId}}/projects
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "projectId": "{{projectId}}",
+  "accessLevel": "OPEN"
+}
+
+### Изменение доступа к проекту
+PUT {{baseUrl}}/teams/{{teamId}}/projects/{{projectId}}/access
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "accessLevel": "RESTRICTED"
+}
+
+### Удаление проекта из команды
+DELETE {{baseUrl}}/teams/{{teamId}}/projects/{{projectId}}
+Authorization: Bearer {{authToken}}
+
+### ===== ВСПОМОГАТЕЛЬНЫЕ МЕТОДЫ =====
+
+### Проверка доступа к команде
+GET {{baseUrl}}/teams/{{teamId}}/access
+Authorization: Bearer {{authToken}}
+
+### Получение роли пользователя в команде
+GET {{baseUrl}}/teams/{{teamId}}/role
+Authorization: Bearer {{authToken}}
+
+### ===== ПРИМЕРЫ С РАЗНЫМИ РОЛЯМИ =====
+
+### Приглашение администратора
+POST {{baseUrl}}/teams/{{teamId}}/members/invite
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "role": "ADMINISTRATOR"
+}
+
+### Приглашение менеджера
+POST {{baseUrl}}/teams/{{teamId}}/members/invite
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "email": "manager@example.com",
+  "role": "MANAGER"
+}
+
+### Приглашение наблюдателя
+POST {{baseUrl}}/teams/{{teamId}}/members/invite
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "email": "observer@example.com",
+  "role": "OBSERVER"
+}
+
+### ===== ПРОЕКТЫ С РАЗНЫМИ УРОВНЯМИ ДОСТУПА =====
+
+### Добавление приватного проекта
+POST {{baseUrl}}/teams/{{teamId}}/projects
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "projectId": "{{projectId}}",
+  "accessLevel": "PRIVATE"
+}
+
+### Добавление ограниченного проекта
+POST {{baseUrl}}/teams/{{teamId}}/projects
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "projectId": "{{projectId}}",
+  "accessLevel": "RESTRICTED"
+}
+
+### ===== ПРИМЕРЫ ОШИБОК =====
+
+### Попытка создать команду без названия (400)
+POST {{baseUrl}}/teams
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "description": "Команда без названия"
+}
+
+### Попытка пригласить с неверным email (400)
+POST {{baseUrl}}/teams/{{teamId}}/members/invite
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "email": "invalid-email",
+  "role": "MEMBER"
+}
+
+### Попытка назначить неверную роль (400)
+POST {{baseUrl}}/teams/{{teamId}}/members/invite
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "role": "INVALID_ROLE"
+}
+
+### Попытка получить несуществующую команду (404)
+GET {{baseUrl}}/teams/000000000000000000000000
+Authorization: Bearer {{authToken}} 

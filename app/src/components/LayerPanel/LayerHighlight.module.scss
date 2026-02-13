@@ -1,0 +1,83 @@
+.layerHighlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+
+  // Стили для отладки
+  // outline: 1px solid red;
+}
+
+.highlightBorder {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border: 6px solid #e9c2ec;
+  z-index: 1;
+}
+
+.layerPanel {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  background-color: #e9c2ec;
+  border-radius: 0 0 4px 4px;
+  padding: 5px 10px;
+  z-index: 10;
+  gap: 5px;
+  pointer-events: auto;
+}
+
+.layerInfo {
+  display: flex;
+  flex-direction: column;
+  padding-right: 5px;
+}
+
+.layerInfoLabel {
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  color: #53195d;
+  line-height: 1.2;
+}
+
+.layerInfoName {
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: #53195d;
+  line-height: 1.2;
+}
+
+.layerActions {
+  display: flex;
+  gap: 5px;
+}
+
+.actionButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
+  background-color: rgb(64 0 75 / 90%);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+
+  &:hover {
+    background-color: rgb(64 0 75 / 100%);
+  }
+
+  // Стиль для иконок
+  svg {
+    width: 16px;
+    height: 16px;
+    color: #f2ede7;
+  }
+}

@@ -1,0 +1,50 @@
+/* Основной контейнер */
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: var(--dashboard-bg-primary);
+  color: var(--dashboard-text-primary);
+}
+
+/* Основная область - двухколоночная, занимает всю высоту */
+.mainArea {
+  display: flex;
+  flex: 1;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+/* Боковая панель проектов */
+.projectsSidebar {
+  background-color: var(--dashboard-bg-card);
+  border-right: 1px solid var(--dashboard-border-primary);
+  overflow-y: auto;
+  flex-shrink: 0;
+  transition: width 0.3s ease;
+}
+
+/* Основная область контента */
+.mainContent {
+  flex: 1;
+  background-color: var(--dashboard-bg-primary);
+  overflow-y: auto;
+}
+
+/* Адаптивность */
+@media (width <= 1024px) {
+  .projectsSidebar {
+    width: 280px;
+  }
+}
+
+@media (width <= 768px) {
+  .mainArea {
+    flex-direction: column;
+  }
+
+  .projectsSidebar {
+    width: 100%;
+    height: 200px;
+  }
+}

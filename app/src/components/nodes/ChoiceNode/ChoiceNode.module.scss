@@ -1,0 +1,163 @@
+.wrapper {
+  position: relative;
+  width: 180px;
+  pointer-events: all;
+  overflow: visible;
+}
+
+.ghost {
+  position: absolute;
+  width: 180px;
+  pointer-events: 'none';
+  opacity: 0.7;
+  z-index: 10;
+}
+
+.card {
+  width: 180px;
+  background: #e9f7ef;
+  outline: 1px solid #abd0a9;
+  outline-offset: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+.selected {
+  outline: 3px solid #295b26ca;
+  outline-offset: 0;
+}
+
+.hovered_while_connecting {
+  outline: 1px solid #5cb85c;
+  outline-offset: 1px;
+  background: #f0fff0;
+  box-shadow: 0 0 4px rgb(92 184 92 / 15%);
+}
+
+.header {
+  background: #f0f0f0;
+  padding: 8px 12px;
+  border-bottom: 1px solid #d9d9d9;
+  border-radius: 10px 10px 0 0;
+}
+
+.content {
+  padding: 8px 8px 9px;
+  min-height: 75px;
+  max-height: 130px;
+  transition: height 0.2s ease-in-out;
+  overflow: hidden; /* Скрытая прокрутка по умолчанию */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.card.editing {
+  pointer-events: none;
+}
+
+.card.editing .content {
+  pointer-events: all;
+  overflow: visible; /* Позволяем text_container управлять прокруткой */
+  padding: 4px; /* Уменьшаем padding в режиме редактирования */
+}
+
+/* Text container for editing mode */
+.text_container {
+  width: 100%;
+  height: 100%;
+  max-height: 122px; /* Высота контента минус padding (130px - 8px) */
+  display: flex;
+  overflow: hidden auto;
+  pointer-events: all;
+  padding: 0; /* Убираем padding из контейнера */
+  flex: 1; /* Занимаем все доступное пространство */
+}
+
+.text_container [class*='rt-TextAreaRoot'] {
+  width: 100%;
+  background: transparent;
+  box-shadow: none;
+  border: none !important;
+  outline: none !important;
+  pointer-events: all;
+}
+
+.text_container [class*='rt-TextAreaInput'] {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  resize: none;
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 4px; /* Возвращаем padding в textarea */
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: #333;
+  overflow-y: auto;
+  height: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
+  pointer-events: all;
+  user-select: text;
+  cursor: text;
+
+  @-moz-document url-prefix() {
+    scrollbar-width: thin;
+  }
+}
+
+.text_container textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  resize: none;
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 4px; /* Возвращаем padding в textarea */
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: #111;
+  overflow-y: auto;
+  height: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
+  touch-action: pan-y !important;
+  pointer-events: auto !important;
+  z-index: 5;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Изменяем на flex-start чтобы текст начинался сверху */
+  cursor: text;
+  user-select: text;
+  font-size: 12px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  width: 100%;
+  touch-action: pan-y !important;
+  pointer-events: auto !important;
+  z-index: 5;
+  padding: 4px;
+
+  /* Убираем прокрутку для статичного текста - как в нарративном узле */
+  overflow-y: hidden;
+  max-height: 130px;
+
+  /* Обеспечиваем отображение текста с начала */
+  text-overflow: clip;
+}
+
+/* Режим фокусировки - полупрозрачность для нерелевантных узлов */
+.faded {
+  opacity: 0.3;
+}

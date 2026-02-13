@@ -1,0 +1,85 @@
+/* Theme Toggle Component */
+.themeToggle {
+  position: relative;
+}
+
+.themeButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: 1px solid var(--dashboard-border-primary);
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--dashboard-text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.themeButton:hover {
+  background-color: var(--dashboard-bg-hover);
+  border-color: var(--dashboard-border-hover);
+  color: var(--dashboard-text-primary);
+}
+
+.themeLabel {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.chevron {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+/* Theme Dropdown */
+.themeDropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background-color: var(--dashboard-bg-card);
+  border: 1px solid var(--dashboard-border-secondary);
+  border-radius: 8px;
+  padding: 4px 0;
+  min-width: 120px;
+  z-index: 50;
+  box-shadow: var(--dashboard-shadow-xl);
+  overflow: hidden;
+}
+
+.themeOption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dashboard-text-primary);
+}
+
+.themeOption:hover {
+  background-color: var(--dashboard-bg-hover);
+}
+
+.themeOptionActive {
+  background-color: var(--dashboard-accent-light);
+  color: var(--dashboard-accent-primary);
+}
+
+.optionIcon {
+  width: 16px;
+  height: 16px;
+}

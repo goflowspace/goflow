@@ -1,0 +1,95 @@
+.widget {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+
+  &.clickable {
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &.small {
+    width: 40px;
+    height: 40px;
+  }
+
+  &.medium {
+    width: 60px;
+    height: 60px;
+  }
+
+  &.error {
+    background-color: #374151;
+    border: 2px solid #ef4444;
+
+    .errorText {
+      color: #ef4444;
+      font-weight: bold;
+      font-size: 16px;
+    }
+  }
+}
+
+.circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.backgroundCircle {
+  opacity: 0.3;
+}
+
+.progressCircle {
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+.score {
+  position: absolute;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  z-index: 1;
+
+  .medium & {
+    font-size: 12px;
+  }
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #374151;
+  border-top: 2px solid #6b7280;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+
+  .medium & {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

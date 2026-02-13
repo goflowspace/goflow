@@ -1,0 +1,115 @@
+// Модели для команд
+model Team {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  description String?
+  avatar      String?  // URL или base64 изображения
+  settings    Json     @default("{}")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  ownerId     String   @db.ObjectId
+  
+  // Связи
+  owner       User           @relation("TeamOwner", fields: [ownerId], references: [id], onDelete: Cascade)
+  members     TeamMember[]
+  invitations TeamInvitation[]
+  projects    TeamProject[]
+  
+  // Связи для AI системы  
+  // Новая архитектура кредитов
+  credits         UserCredits[]     @relation("TeamCredits") 
+  creditPolicies  CreditPolicy[]    @relation("TeamCreditPolicy")
+  usageStats      UsageStats[]      @relation("TeamUsageStats")
+  
+  // Связи для feedback
+  feedbacks       Feedback[]        @relation("TeamFeedback")
+  
+  // Связи для командных кредитов (только для Team тарифов)
+  teamCredits     TeamCredits?      @relation("TeamCreditsBalance")
+  teamUsageStats  TeamUsageStats[]  @relation("TeamUsageStatsRelation")
+  
+  // Связи для платежей
+  subscriptions   StripeSubscription[] @relation("TeamStripeSubscriptions")
+  
+  @@map("teams")
+}
+
+model TeamMember {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  teamId    String   @db.ObjectId
+  userId    String   @db.ObjectId
+  role      TeamRole @default(MEMBER)
+  joinedAt  DateTime @default(now())
+  hasAIAccess Boolean @default(false) // Доступ к ИИ для участника команды
+  
+  // Связи
+  team Team @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  user User @relation("TeamMemberships", fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@unique([teamId, userId])
+  @@map("team_members")
+}
+
+model TeamInvitation {
+  id        String               @id @default(auto()) @map("_id") @db.ObjectId
+  teamId    String               @db.ObjectId
+  email     String
+  role      TeamRole             @default(MEMBER)
+  invitedBy String               @db.ObjectId
+  status    TeamInvitationStatus @default(PENDING)
+  token     String               @unique
+  expiresAt DateTime
+  createdAt DateTime             @default(now())
+  
+  // Связи
+  team    Team @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  inviter User @relation("TeamInvitations", fields: [invitedBy], references: [id], onDelete: Cascade)
+  
+  @@unique([teamId, email])
+  @@map("team_invitations")
+}
+
+model TeamProject {
+  id          String             @id @default(auto()) @map("_id") @db.ObjectId
+  teamId      String             @db.ObjectId
+  projectId   String             @db.ObjectId
+  accessLevel TeamProjectAccess @default(RESTRICTED)
+  addedAt     DateTime           @default(now())
+  addedBy     String             @db.ObjectId
+  
+  // Связи
+  team        Team    @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  project     Project @relation("TeamProjects", fields: [projectId], references: [id], onDelete: Cascade)
+  addedByUser User    @relation("TeamProjectsAdded", fields: [addedBy], references: [id])
+  
+  @@unique([teamId, projectId])
+  @@map("team_projects")
+}
+
+// Перечисления
+enum TeamRole {
+  ADMINISTRATOR // Полный доступ
+  MANAGER       // Создание проектов, управление участниками
+  MEMBER        // Редактирование назначенных проектов
+  OBSERVER      // Только чтение
+  LOCALIZER     // Локализация проектов
+  
+  @@map("team_role")
+}
+
+enum TeamInvitationStatus {
+  PENDING
+  ACCEPTED
+  DECLINED
+  EXPIRED
+  
+  @@map("team_invitation_status")
+}
+
+enum TeamProjectAccess {
+  OPEN       // Все участники команды
+  RESTRICTED // Явно предоставленный доступ
+  PRIVATE    // Только администраторы и владелец
+  
+  @@map("team_project_access")
+} 

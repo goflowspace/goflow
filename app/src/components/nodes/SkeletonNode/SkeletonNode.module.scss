@@ -1,0 +1,66 @@
+.wrapper {
+  position: relative;
+  pointer-events: all;
+  overflow: visible;
+}
+
+.card_wrapper {
+  background: #f7f9ff;
+  outline: 1px solid #b9d0ff;
+  outline-offset: 0;
+  border-radius: 5px;
+  width: 200px;
+}
+
+.card {
+  height: auto;
+  overflow: hidden;
+}
+
+/* Стили для скелетон узла */
+.skeleton_node {
+  opacity: 0.8;
+  pointer-events: none;
+
+  .card {
+    background: linear-gradient(-45deg, #f0f4ff, #e8f0ff, #f0f4ff, #e8f0ff);
+    background-size: 400% 400%;
+    animation: skeletonGradient 2s ease-in-out infinite;
+    border: 1px solid #d9d9d9;
+  }
+
+  .header {
+    padding: 12px;
+    border-bottom: 1px solid #e8f0ff;
+  }
+
+  .header_content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  .content {
+    padding: 12px;
+    min-height: 150px; /* Увеличена высота контента */
+  }
+}
+
+@keyframes skeletonGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Режим фокусировки - полупрозрачность для нерелевантных узлов */
+.faded {
+  opacity: 0.3;
+}

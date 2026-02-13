@@ -1,0 +1,185 @@
+// Платежная система через Stripe
+
+// Модель для продуктов Stripe (планы подписок и разовые покупки)
+model StripeProduct {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  stripeProductId   String   // ID продукта в Stripe
+  
+  // Основная информация
+  name              String   // Название продукта
+  description       String?  // Описание
+  type              StripeProductType // Подписка или разовая покупка
+  
+  // Связи
+  prices            StripePrice[]
+  subscriptions     StripeSubscription[]
+  purchases         StripePurchase[]
+  
+  isActive          Boolean  @default(true)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  @@map("stripe_products")
+  @@index([stripeProductId])
+  @@index([type, isActive])
+}
+
+// Модель для цен Stripe
+model StripePrice {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  stripePriceId   String   // ID цены в Stripe
+  productId       String   @db.ObjectId
+  
+  // Информация о цене
+  unitAmount      Int      // Цена в центах
+  currency        String   @default("usd")
+  interval        String?  // month, year (null для разовых покупок)
+  intervalCount   Int?     @default(1) // каждые N месяцев/лет
+  
+  // Связанные кредиты
+  creditsAmount   Int      // Количество кредитов за эту цену
+  creditType      AICreditType // Тип кредитов (для разовых покупок)
+  
+  // Настройки для планов подписок
+  planType        String?  // "pro" или "team" для подписок
+  maxSeats        Int?     // Максимальное количество участников для Team планов
+  
+  // Связи
+  product         StripeProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
+  subscriptions   StripeSubscription[]
+  purchases       StripePurchase[]
+  
+  isActive        Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  @@map("stripe_prices")
+  @@index([stripePriceId])
+  @@index([productId])
+}
+
+// Модель для подписок команд
+model StripeSubscription {
+  id                    String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId                String   @db.ObjectId  // Покупатель подписки
+  teamId                String   @db.ObjectId  // ID команды для которой была куплена подписка (теперь обязательное поле)
+  stripeSubscriptionId  String   // ID подписки в Stripe
+  stripeCustomerId      String   // ID клиента в Stripe
+  
+  // Дополнительные настройки для Team подписок
+  maxSeats              Int?     // Максимальное количество участников для Team планов (null для Pro)
+  currentSeats          Int      @default(1) // Текущее количество занятых мест
+  
+  // Связи с продуктами
+  productId             String   @db.ObjectId
+  priceId               String   @db.ObjectId
+  
+  // Статус подписки
+  status                StripeSubscriptionStatus
+  currentPeriodStart    DateTime
+  currentPeriodEnd      DateTime
+  canceledAt            DateTime?
+  cancelAtPeriodEnd     Boolean  @default(false)
+  
+  // Пробный период
+  trialStart            DateTime?
+  trialEnd              DateTime?
+  
+  // Связи
+  user                  User            @relation("UserStripeSubscriptions", fields: [userId], references: [id], onDelete: Cascade)
+  team                  Team            @relation("TeamStripeSubscriptions", fields: [teamId], references: [id], onDelete: Cascade)
+  product               StripeProduct   @relation(fields: [productId], references: [id])
+  price                 StripePrice     @relation(fields: [priceId], references: [id])
+  
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+  
+  @@map("stripe_subscriptions")
+  @@index([userId])
+  @@index([teamId])
+  @@index([stripeSubscriptionId])
+  @@index([stripeCustomerId])
+  @@index([status])
+}
+
+// Модель для разовых покупок
+model StripePurchase {
+  id                    String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId                String   @db.ObjectId
+  stripePaymentIntentId String   // ID платежа в Stripe
+  stripeCustomerId      String   // ID клиента в Stripe
+  
+  // Связи с продуктами
+  productId             String   @db.ObjectId
+  priceId               String   @db.ObjectId
+  
+  // Детали платежа
+  amount                Int      // Сумма в центах
+  currency              String   @default("usd")
+  status                StripePaymentStatus
+  creditsGranted        Int      // Количество выданных кредитов
+  creditType            AICreditType // Тип выданных кредитов
+  
+  // Связи
+  user                  User          @relation("UserStripePurchases", fields: [userId], references: [id], onDelete: Cascade)
+  product               StripeProduct @relation(fields: [productId], references: [id])
+  price                 StripePrice   @relation(fields: [priceId], references: [id])
+  
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+  
+  @@map("stripe_purchases")
+  @@index([userId])
+  @@index([stripePaymentIntentId])
+  @@index([stripeCustomerId])
+  @@index([status])
+}
+
+// Модель для клиентов Stripe
+model StripeCustomer {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String   @unique @db.ObjectId
+  stripeCustomerId  String   // ID клиента в Stripe
+  
+  // Связи
+  user              User     @relation("UserStripeCustomer", fields: [userId], references: [id], onDelete: Cascade)
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  @@map("stripe_customers")
+  @@index([stripeCustomerId])
+}
+
+// Перечисления для платежной системы
+enum StripeProductType {
+  SUBSCRIPTION      // Подписка
+  ONE_TIME          // Разовая покупка
+  
+  @@map("stripe_product_type")
+}
+
+enum StripeSubscriptionStatus {
+  INCOMPLETE                // Неполная (требует действий)
+  INCOMPLETE_EXPIRED        // Истекла неполная
+  TRIALING                  // Пробный период
+  ACTIVE                    // Активная
+  PAST_DUE                  // Просрочена
+  CANCELED                  // Отменена
+  UNPAID                    // Неоплачена
+  PAUSED                    // Приостановлена
+  
+  @@map("stripe_subscription_status")
+}
+
+enum StripePaymentStatus {
+  REQUIRES_PAYMENT_METHOD   // Требует способ оплаты
+  REQUIRES_CONFIRMATION     // Требует подтверждения
+  REQUIRES_ACTION           // Требует действий пользователя
+  PROCESSING                // В обработке
+  REQUIRES_CAPTURE          // Требует capture
+  CANCELED                  // Отменен
+  SUCCEEDED                 // Успешен
+  
+  @@map("stripe_payment_status")
+}

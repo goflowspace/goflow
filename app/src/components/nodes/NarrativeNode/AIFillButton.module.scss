@@ -1,0 +1,137 @@
+.aiFillButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 6px 8px 6px 12px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  border: none;
+  border-radius: 24px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgb(99 102 241 / 30%);
+  position: relative;
+  overflow: hidden;
+  min-width: fit-content;
+  white-space: nowrap;
+  line-height: 1;
+
+  &:hover:not(.disabled) {
+    background: linear-gradient(135deg, #5b5bd7, #7c3aed);
+    box-shadow: 0 4px 12px rgb(99 102 241 / 40%);
+    transform: translateY(-1px);
+  }
+
+  &:active:not(.disabled) {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgb(99 102 241 / 30%);
+  }
+
+  &.disabled {
+    background: linear-gradient(135deg, #9ca3af, #d1d5db);
+    box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
+    cursor: not-allowed;
+    transform: none;
+
+    .icon {
+      color: #6b7280; // Серый цвет для молнии в отключенном состоянии
+    }
+
+    .price {
+      color: #6b7280; // Серый цвет для цены в отключенном состоянии
+      background: rgb(0 0 0 / 10%);
+      border-color: rgb(0 0 0 / 20%);
+    }
+  }
+
+  &.processing {
+    background: linear-gradient(135deg, #f59e0b, #f97316);
+    box-shadow: 0 2px 8px rgb(245 158 11 / 30%);
+
+    .icon {
+      color: #fff; // Белый цвет для молнии в процессе обработки
+    }
+
+    .price {
+      color: #fff; // Белый цвет для цены в процессе обработки
+      background: rgb(255 255 255 / 20%);
+      border-color: rgb(255 255 255 / 30%);
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgb(255 255 255 / 20%), transparent);
+      animation: shimmer 1.5s infinite;
+    }
+  }
+}
+
+.icon {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+  color: #fff; // Белый цвет молнии
+  width: 12px;
+  height: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &.spin {
+    animation: spin 2s linear infinite;
+  }
+}
+
+.text {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+}
+
+.price {
+  opacity: 0.9;
+  font-weight: 600;
+  text-transform: none;
+  font-size: 12px;
+  background: rgb(255 255 255 / 20%);
+  padding: 2px 6px 2px 4px;
+  border-radius: 12px;
+  border: 1px solid rgb(255 255 255 / 30%);
+  flex-shrink: 0;
+  color: #fff; // Белый цвет для цены
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}

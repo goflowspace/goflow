@@ -1,0 +1,504 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Go Flow API",
+    "version": "1.0.0",
+    "description": "API для управления пользователями и проектами"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Local server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Auth",
+      "description": "Методы для авторизации и аутентификации"
+    },
+    {
+      "name": "Projects",
+      "description": "Методы для работы с проектами"
+    }
+  ],
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "summary": "Регистрация пользователя",
+        "description": "Создаёт нового пользователя и отправляет письмо с подтверждением email.",
+        "tags": ["Auth"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "user@example.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "securepassword"
+                  }
+                },
+                "required": [
+                  "email",
+                  "password"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Письмо с подтверждением отправлено"
+          },
+          "400": {
+            "description": "Ошибка валидации"
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "Авторизация",
+        "description": "Логин пользователя и получение JWT-токена.",
+        "tags": ["Auth"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "user@example.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "securepassword"
+                  }
+                },
+                "required": [
+                  "email",
+                  "password"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "JWT-токен"
+          },
+          "401": {
+            "description": "Неверные учетные данные"
+          }
+        }
+      }
+    },
+    "/auth/verify-email/{token}": {
+      "get": {
+        "summary": "Подтверждение email",
+        "description": "Подтверждает email по токену.",
+        "tags": ["Auth"],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Email успешно подтверждён"
+          },
+          "400": {
+            "description": "Токен недействителен"
+          }
+        }
+      }
+    },
+    "/auth/resend-verification": {
+      "post": {
+        "summary": "Повторная отправка токена верификации",
+        "description": "Отправляет новый токен для подтверждения email.",
+        "tags": ["Auth"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "user@example.com"
+                  }
+                },
+                "required": [
+                  "email"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Новый токен отправлен"
+          },
+          "400": {
+            "description": "Email уже подтверждён"
+          }
+        }
+      }
+    },
+    "/auth/me": {
+      "get": {
+        "summary": "Проверка авторизации",
+        "description": "Возвращает информацию о текущем пользователе.",
+        "tags": ["Auth"],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Данные пользователя"
+          },
+          "401": {
+            "description": "Неавторизованный доступ"
+          }
+        }
+      }
+    },
+    "/auth/google": {
+      "get": {
+        "summary": "OAuth авторизация через Google",
+        "description": "Перенаправляет пользователя на авторизацию в Google.",
+        "tags": ["Auth"],
+        "responses": {
+          "302": {
+            "description": "Редирект на Google OAuth"
+          }
+        }
+      }
+    },
+    "/auth/google/callback": {
+      "get": {
+        "summary": "Google OAuth Callback",
+        "description": "Обрабатывает авторизацию через Google и возвращает токен.",
+        "tags": ["Auth"],
+        "responses": {
+          "200": {
+            "description": "Успешная авторизация",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Успешная авторизация!"
+                    },
+                    "token": {
+                      "type": "string",
+                      "example": "your-jwt-token"
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "123"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "user@example.com"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "John Doe"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Ошибка авторизации"
+          }
+        }
+      }
+    },
+    "/projects": {
+      "get": {
+        "summary": "Получить все проекты пользователя",
+        "description": "Возвращает список проектов, в которых участвует пользователь.",
+        "tags": ["Projects"],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Список проектов"
+          },
+          "401": {
+            "description": "Неавторизованный доступ"
+          }
+        }
+      },
+      "post": {
+        "summary": "Создать новый проект",
+        "description": "Создаёт новый проект и добавляет создателя как OWNER.",
+        "tags": ["Projects"],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "My New Project"
+                  },
+                  "data": {
+                    "type": "object",
+                    "example": {
+                      "nodes": [{ "id": "1", "type": "text", "content": "hello" }]
+                    }
+                  }
+                },
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Проект создан"
+          },
+          "401": {
+            "description": "Неавторизованный доступ"
+          }
+        }
+      }
+    },
+    "/projects/from-data": {
+      "post": {
+        "summary": "Создать проект из JSON-данных",
+        "description": "Создаёт проект, используя данные, содержащие имя и структуру проекта",
+        "security": [{ "BearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "object",
+                    "example": {
+                      "name": "Проект из JSON",
+                      "nodes": [
+                        { "id": "1", "type": "text", "content": "Привет!" }
+                      ]
+                    }
+                  }
+                },
+                "required": ["data"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Проект создан" },
+          "400": { "description": "Ошибка валидации" }
+        }
+      }
+    },
+
+    "/projects/{id}": {
+      "put": {
+        "summary": "Обновить проект",
+        "description": "Обновляет информацию о проекте (доступно только ADMIN и OWNER).",
+        "tags": ["Projects"],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Updated Project Name"
+                  }
+                },
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Проект обновлён"
+          },
+          "403": {
+            "description": "Недостаточно прав"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Удалить проект",
+        "description": "Удаляет проект (доступно только OWNER).",
+        "tags": ["Projects"],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Проект удалён"
+          },
+          "403": {
+            "description": "Недостаточно прав"
+          }
+        }
+      }
+    },
+    "/projects/{id}/data": {
+      "get": {
+        "summary": "Получить данные проекта",
+        "description": "Возвращает JSON-данные проекта.",
+        "tags": ["Projects"],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "JSON-данные проекта"
+          },
+          "403": {
+            "description": "Нет доступа"
+          }
+        }
+      },
+      "post": {
+        "summary": "Обновить данные проекта",
+        "description": "Сохраняет новые JSON-данные проекта (доступно только OWNER, ADMIN, EDITOR).",
+        "tags": ["Projects"],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "nodes": [
+                    {
+                      "id": "1",
+                      "type": "text",
+                      "content": "Hello"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Данные проекта обновлены"
+          },
+          "403": {
+            "description": "Недостаточно прав"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

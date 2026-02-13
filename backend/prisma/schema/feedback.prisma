@@ -1,0 +1,16 @@
+model Feedback {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String   @db.ObjectId
+  teamId      String?  @db.ObjectId
+  projectId   String?  @db.ObjectId
+  text        String
+  accountType String   // 'free', 'pro', 'team'
+  createdAt   DateTime @default(now())
+  
+  // Связи
+  user        User     @relation("UserFeedback", fields: [userId], references: [id], onDelete: Cascade)
+  team        Team?    @relation("TeamFeedback", fields: [teamId], references: [id], onDelete: SetNull)
+  project     Project? @relation("ProjectFeedback", fields: [projectId], references: [id], onDelete: SetNull)
+
+  @@map("feedback")
+}

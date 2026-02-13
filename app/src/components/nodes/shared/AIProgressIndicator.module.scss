@@ -1,0 +1,67 @@
+.progressIndicator {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--gray-11);
+  margin-bottom: 8px;
+}
+
+.stepInfo {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stepName {
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 140px;
+}
+
+.stepCounter {
+  font-size: 10px;
+  color: var(--gray-9);
+  background: var(--gray-3);
+  padding: 1px 4px;
+  border-radius: 8px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.progressBar {
+  width: 100%;
+  height: 2px;
+  background: var(--gray-4);
+  border-radius: 1px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-9), var(--accent-10));
+  border-radius: 1px;
+  transition: width 0.3s ease;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgb(255 255 255 / 20%), transparent);
+    animation: shimmer 1.5s infinite;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}

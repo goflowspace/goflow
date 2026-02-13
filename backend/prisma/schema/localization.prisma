@@ -1,0 +1,215 @@
+// Система локализации графа
+// Позволяет переводить нарративные тексты на разные языки
+
+// Основные настройки локализации проекта
+model ProjectLocalization {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  projectId   String   @unique @db.ObjectId
+  
+  // Языковые настройки
+  baseLanguage    String   @default("en") // Базовый язык проекта (источник переводов)
+  targetLanguages String[] @default([])   // Целевые языки для перевода ["ru", "es", "fr", "pt"]
+  
+  // Настройки автоматизации
+  autoTranslate   Boolean @default(false) // Автоматически переводить новые тексты
+  preserveMarkup  Boolean @default(true)  // Сохранять HTML/Markdown разметку при переводе
+  requireReview   Boolean @default(true)  // Требовать проверку переводов перед утверждением
+  
+  // Настройки качества
+  minContextWords Int     @default(10)    // Минимум слов контекста для ИИ-перевода
+  maxBatchSize    Int     @default(50)    // Максимум текстов в одном batch-переводе
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Связи
+  project       Project            @relation("ProjectLocalization", fields: [projectId], references: [id], onDelete: Cascade)
+  localizations NodeLocalization[]
+  
+  @@map("project_localizations")
+}
+
+// Локализация отдельного текстового элемента в графе
+model NodeLocalization {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  
+  // Идентификаторы для привязки к элементу графа
+  projectId   String @db.ObjectId
+  timelineId  String // ID таймлайна (например, "base-timeline")
+  layerId     String // ID слоя в графе
+  nodeId      String // ID узла (narrative или choice)
+  nodeType    NodeType? // Тип узла для более эффективной фильтрации (необязательное для обратной совместимости)
+  fieldPath   String // Путь к полю: "data.title", "data.text", "choices.{choiceId}.text"
+  
+  // Языковые данные
+  baseLanguage   String // Язык оригинального текста (обычно совпадает с baseLanguage проекта)
+  targetLanguage String // Язык перевода
+  
+  // Контент
+  originalText   String  // Исходный текст для перевода
+  translatedText String? // Переведенный текст
+  
+  // Метаданные перевода
+  translationStatus LocalizationStatus @default(PENDING)
+  translationMethod TranslationMethod?  // Способ получения перевода
+  quality           Float?              // Оценка качества перевода (0.0-1.0)
+  
+  // Контекст для улучшения переводов
+  contextHash    String? // MD5 хеш контекстных узлов для отслеживания изменений
+  precedingText  String? // Текст предыдущего узла для контекста
+  followingText  String? // Текст следующего узла для контекста
+  entityContext  Json?   // Информация о сущностях в тексте
+  
+  // Статистика
+  wordCount         Int?      // Количество слов в оригинальном тексте
+  characterCount    Int?      // Количество символов
+  translatedWords   Int?      // Количество слов в переводе
+  
+  // Временные метки
+  lastSyncAt    DateTime? // Когда последний раз синхронизировался с оригиналом
+  translatedAt  DateTime? // Когда был сделан перевод
+  reviewedAt    DateTime? // Когда был проверен перевод
+  approvedAt    DateTime? // Когда был утвержден
+  protectedAt   DateTime? // Когда был защищен от изменений
+  
+  // Информация об авторе перевода
+  translatedBy  String? @db.ObjectId // ID пользователя, сделавшего перевод
+  reviewedBy    String? @db.ObjectId // ID пользователя, проверившего перевод
+  approvedBy    String? @db.ObjectId // ID пользователя, утвердившего перевод
+  protectedBy   String? @db.ObjectId // ID пользователя, защитившего перевод
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Связи
+  projectLocalization ProjectLocalization   @relation(fields: [projectId], references: [projectId], onDelete: Cascade)
+  translator          User?                 @relation("TranslatedLocalizations", fields: [translatedBy], references: [id], onDelete: SetNull)
+  reviewer            User?                 @relation("ReviewedLocalizations", fields: [reviewedBy], references: [id], onDelete: SetNull)
+  approver            User?                 @relation("ApprovedLocalizations", fields: [approvedBy], references: [id], onDelete: SetNull)
+  protector           User?                 @relation("ProtectedLocalizations", fields: [protectedBy], references: [id], onDelete: SetNull)
+  history             LocalizationHistory[]
+  
+  // Составной уникальный индекс
+  @@unique([projectId, timelineId, layerId, nodeId, fieldPath, targetLanguage])
+  
+  // Индексы для быстрого поиска
+  @@index([projectId, timelineId])
+  @@index([projectId, targetLanguage])
+  @@index([projectId, translationStatus])
+  @@index([projectId, timelineId, targetLanguage])
+  @@index([projectId, nodeType]) // Индекс для фильтрации по типу узла
+  @@index([translationStatus, updatedAt])
+  
+  @@map("node_localizations")
+}
+
+// Кеш извлеченных текстов для быстрой синхронизации
+model LocalizationTextCache {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  
+  projectId   String @db.ObjectId
+  timelineId  String
+  
+  // Кешированные данные
+  extractedTexts Json      // Все тексты, извлеченные из графа
+  textHashes     Json      // Хеши текстов для быстрого сравнения
+  lastExtracted  DateTime  // Когда были извлечены тексты
+  
+  // Статистика
+  totalTexts     Int // Общее количество текстов
+  totalWords     Int // Общее количество слов
+  totalChars     Int // Общее количество символов
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@unique([projectId, timelineId])
+  @@index([lastExtracted])
+  
+  @@map("localization_text_cache")
+}
+
+// История изменений локализации
+model LocalizationHistory {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  
+  // Связь с основной локализацией
+  localizationId String @db.ObjectId
+  
+  // Тип изменения
+  changeType LocalizationChangeType
+  
+  // Данные до изменения
+  previousValue Json? // Предыдущее значение (статус, текст, и т.д.)
+  
+  // Данные после изменения  
+  newValue Json? // Новое значение
+  
+  // Детали изменения
+  field String? // Какое поле изменилось (status, translatedText, etc.)
+  comment String? // Комментарий к изменению
+  
+  // Метаданные
+  changedBy String? @db.ObjectId // Кто внес изменение
+  changedAt DateTime @default(now())
+  
+  // IP и user agent для аудита
+  ipAddress String?
+  userAgent String?
+  
+  // Связи
+  localization NodeLocalization @relation(fields: [localizationId], references: [id], onDelete: Cascade)
+  user         User?            @relation("LocalizationHistoryChanges", fields: [changedBy], references: [id], onDelete: SetNull)
+  
+  // Индексы
+  @@index([localizationId, changedAt])
+  @@index([changeType, changedAt])
+  @@index([changedBy, changedAt])
+  
+  @@map("localization_history")
+}
+
+// Статусы локализации
+enum LocalizationStatus {
+  PENDING       // Ожидает перевода
+  TRANSLATING   // В процессе перевода (для AI)
+  TRANSLATED    // Переведен, требует проверки
+  REVIEWED      // Проверен, готов к утверждению
+  APPROVED      // Утвержден и готов к использованию
+  PROTECTED     // Защищен от изменений (только для утвержденных переводов)
+  REJECTED      // Отклонен при проверке
+  OUTDATED      // Устарел (оригинал изменился)
+  ARCHIVED      // Архивирован (больше не используется)
+}
+
+// Способы получения перевода
+enum TranslationMethod {
+  MANUAL        // Ручной перевод пользователем
+  AI_GENERATED  // Сгенерирован ИИ
+  AI_ASSISTED   // ИИ-помощь при ручном переводе
+  IMPORTED      // Импортирован из файла
+  COPIED        // Скопирован с другого языка
+  TEMPLATE      // Создан из шаблона
+}
+
+// Типы изменений в истории локализации
+enum LocalizationChangeType {
+  STATUS_CHANGED        // Изменение статуса
+  TRANSLATION_CREATED   // Создание перевода
+  TRANSLATION_UPDATED   // Обновление перевода
+  TRANSLATION_DELETED   // Удаление перевода
+  TRANSLATION_APPROVED  // Утверждение перевода
+  TRANSLATION_REJECTED  // Отклонение перевода
+  TRANSLATION_PROTECTED // Защита перевода
+  TRANSLATION_UNPROTECTED // Снятие защиты
+  REVIEW_COMPLETED     // Завершение проверки
+  QUALITY_UPDATED      // Обновление оценки качества
+  CONTEXT_UPDATED      // Обновление контекста
+  BULK_OPERATION       // Массовая операция
+}
+
+// Типы узлов в графе
+enum NodeType {
+  NARRATIVE // Нарративный узел (с текстом истории)
+  CHOICE    // Узел выбора (с вариантом действия)
+}

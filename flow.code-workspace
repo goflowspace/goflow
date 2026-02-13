@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "backend"
+		},
+		{
+			"path": "app"
+		},
+		{
+			"path": "landing"
+		}
+	],
+	"settings": {
+		"typescript.tsdk": "app/node_modules/typescript/lib"
+	}
+}

@@ -1,0 +1,366 @@
+.format_option {
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: var(--gray-3);
+  }
+}
+
+.dialog_overlay {
+  background-color: rgb(0 0 0 / 50%);
+  position: fixed;
+  inset: 0;
+  animation: overlay-show 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dialog_content {
+  background-color: white;
+  border-radius: 12px;
+  border: 1px solid rgb(0 0 51 / 6%);
+  box-shadow:
+    0 12px 60px 0 rgb(0 0 0 / 15%),
+    0 16px 64px 0 rgb(0 0 85 / 2%),
+    0 16px 36px -20px rgb(0 6 46 / 20%);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  max-width: 500px;
+  max-height: 85vh;
+  animation: content-show 150ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  @media (prefers-color-scheme: dark) {
+    background-color: var(--gray-1);
+  }
+}
+
+.dialog_title {
+  font-family:
+    'SF Pro',
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25em;
+  letter-spacing: -0.4167%;
+  color: #1c2024;
+  margin: 0;
+}
+
+.dialog_close_button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--gray-11);
+
+  &:hover {
+    background-color: var(--gray-3);
+  }
+}
+
+@keyframes overlay-show {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes content-show {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.modal_container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 24px;
+  padding: 32px 0;
+}
+
+.text_container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 32px;
+  gap: 12px;
+  width: 100%;
+}
+
+.slot_container {
+  padding: 0 32px;
+  width: 100%;
+}
+
+.button_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+  padding: 0 32px;
+}
+
+.description {
+  font-family:
+    'SF Pro',
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5em;
+  color: #1c2024;
+}
+
+.export_options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.radio_group_root {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.radio_option {
+  margin-bottom: 12px;
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+.radio_label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-family:
+    'SF Pro',
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #1c2024;
+}
+
+.radio_item {
+  all: unset;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  border: 1px solid rgb(0 6 46 / 20%);
+  background-color: rgb(255 255 255 / 90%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:focus {
+    box-shadow: 0 0 0 2px rgb(0 0 0 / 10%);
+  }
+
+  &[data-state='checked'] {
+    border-color: #3e63dd;
+    background-color: #3e63dd;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-color: rgb(0 6 46 / 10%);
+    background-color: rgb(255 255 255 / 50%);
+  }
+}
+
+.radio_indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: white;
+  }
+}
+
+.check_icon {
+  color: white;
+  display: none;
+}
+
+.format_description {
+  font-family:
+    'SF Pro',
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4em;
+  color: #000;
+  margin-top: 8px;
+}
+
+.cancel_button {
+  background-color: rgb(0 0 51 / 6%);
+  color: #60646c;
+  height: 48px;
+  border-radius: 8px;
+  padding: 0 24px;
+  font-family:
+    'SF Pro',
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  font-size: 18px;
+  font-weight: 510;
+  line-height: 1.44em;
+  letter-spacing: -0.2222%;
+}
+
+.export_button {
+  background-color: #3e63dd;
+  color: #fff;
+  height: 48px;
+  border-radius: 8px;
+  padding: 0 24px;
+  font-family:
+    'SF Pro',
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  font-size: 18px;
+  font-weight: 510;
+  line-height: 1.44em;
+  letter-spacing: -0.2222%;
+}
+
+.export_button_content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.download_icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* JSON экспорт опции */
+.json_options {
+  margin-top: 16px;
+  padding: 16px;
+  background-color: rgb(0 0 51 / 3%);
+  border-radius: 8px;
+  border: 1px solid rgb(0 0 51 / 8%);
+}
+
+.options_title {
+  font-family:
+    'SF Pro',
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1c2024;
+  margin-bottom: 12px;
+}
+
+.checkbox_group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checkbox_label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-family:
+    'SF Pro',
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #1c2024;
+
+  &:has(input:disabled) {
+    cursor: default;
+    opacity: 0.7;
+  }
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  border: 1px solid rgb(0 6 46 / 30%);
+  background-color: white;
+  cursor: pointer;
+
+  &:checked {
+    background-color: #3e63dd;
+    border-color: #3e63dd;
+  }
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.7;
+  }
+}
+
+.checkbox_text {
+  flex: 1;
+}
+
+.required_label {
+  font-style: italic;
+  margin-left: 4px;
+}

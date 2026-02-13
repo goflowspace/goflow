@@ -1,0 +1,143 @@
+model ProjectTemplate {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  type           String   @unique // Уникальный идентификатор (например, "interactive_story")
+  categories     String[] @default([]) // Категории (множественные, например: ["creative", "gaming"])
+  isDefault      Boolean  @default(false) // Предустановленный шаблон
+  isActive       Boolean  @default(true)  // Активен ли шаблон
+  order          Int      @default(0) // Порядок отображения
+  
+  // Мультиязычные названия и описания
+  nameTranslations        Json // {"en": "Interactive Story", "ru": "Интерактивная история"}
+  descriptionTranslations Json // {"en": "Template with...", "ru": "Шаблон с..."}
+  
+  // Конфигурация шаблона
+  config         Json     // Конфигурация: сущности, параметры, библия проекта
+  
+  // Превью и демонстрация
+  previewImage   String?  // URL превью изображения
+  demoProjectId  String?  @db.ObjectId // ID демо-проекта (опционально)
+  
+  // Мета-данные
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  
+  // Связи
+  projects       Project[] @relation("ProjectTemplate") // Проекты, созданные по этому шаблону
+  
+  @@map("project_templates")
+  @@index([categories, isActive])
+  @@index([isDefault, isActive])
+}
+
+model Project {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String   @default("Untitled")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  creator   User     @relation(fields: [creatorId], references: [id])
+  creatorId String   @db.ObjectId
+
+  data Json?
+  snapshot Json? // Полный JSON снимок графа для быстрого чтения
+
+  // Добавляем связь с шаблоном
+  templateId String?         @db.ObjectId
+  template   ProjectTemplate? @relation("ProjectTemplate", fields: [templateId], references: [id])
+
+  members ProjectMember[]
+  
+  // Новые связи для системы синхронизации
+  operations     Operation[]
+  graphSnapshots GraphSnapshot[]
+  projectVersion ProjectVersion?
+  
+  // Связи для команд
+  teamProjects   TeamProject[] @relation("TeamProjects")
+
+  // Информация о проекте
+  projectInfo    ProjectInfo?
+
+  // Система сущностей
+  entityParameters EntityParameter[] @relation("ProjectEntityParameters")
+  entityTypes      EntityType[]      @relation("ProjectEntityTypes")
+  entities         Entity[]          @relation("ProjectEntities")
+
+  // Связи для AI системы
+  aiRequests       AIRequest[]       @relation("ProjectAIRequests")
+  aiSuggestions    AISuggestion[]    @relation("ProjectAISuggestions")
+  aiPipelineExecutions AIPipelineExecution[] @relation("ProjectPipelineExecutions")
+  // Оценка качества библии
+  bibleQuality     BibleQuality?
+  
+  // Связи для feedback
+  feedbacks        Feedback[]        @relation("ProjectFeedback")
+  
+  // Связи для локализации
+  localization     ProjectLocalization? @relation("ProjectLocalization")
+  // Связи для комментариев
+  threads          Thread[]          @relation("ProjectThreads")
+  
+  // Связи для блокнота
+  notes            Note[]            @relation("ProjectNotes")
+
+  @@map("projects")
+  @@index([templateId])
+}
+
+model ProjectInfo {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  projectId String   @unique @db.ObjectId
+  
+  // Основная информация
+  logline     String?  // Логлайн
+  synopsis    String?  // Синопсис
+  
+  // Категоризация
+  genres      String[] @default([])  // Жанры проекта
+  formats     String[] @default([])  // Форматы проекта
+  status      String   @default("concept")  // Статус проекта
+  
+  // Мир и сеттинг
+  setting         String?  // Сеттинг
+  targetAudience  String?  // Целевая аудитория
+  mainThemes      String?  // Основные темы
+  message         String?  // Посыл
+  references      String?  // Референсы
+  uniqueFeatures  String?  // Уникальные особенности
+  atmosphere      String?  // Атмосфера
+  visualStyle     String?  // Визуальный стиль
+  constraints     String?  // Основные ограничения проекта
+  
+  // Метаданные
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Связи
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  
+  @@map("project_info")
+}
+
+model ProjectMember {
+  id        String      @id @default(auto()) @map("_id") @db.ObjectId
+  projectId String      @db.ObjectId
+  userId    String      @db.ObjectId
+  role      ProjectRole @default(VIEWER)
+
+  project Project @relation(fields: [projectId], references: [id])
+  user    User    @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+
+  @@unique([projectId, userId])
+
+  @@map("project_members")
+}
+
+enum ProjectRole {
+  VIEWER
+  EDITOR
+  ADMIN
+  OWNER
+  LOCALIZER
+}

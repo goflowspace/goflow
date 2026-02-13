@@ -1,0 +1,584 @@
+/* Основная рабочая область */
+.workspace {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--dashboard-bg-primary);
+}
+
+/* Верхняя панель - полноширинная */
+.topPanel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  height: 68px;
+  background-color: var(--dashboard-bg-primary);
+  border-bottom: 1px solid var(--dashboard-border-primary);
+  flex-shrink: 0;
+}
+
+/* Основная область под верхней панелью */
+.mainContent {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.topPanelLeft {
+  flex: 1;
+}
+
+.topPanelRight {
+  flex-shrink: 0;
+}
+
+.projectTitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--dashboard-text-primary);
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Кнопка редактора в верхней панели */
+.topPanel .editorButton {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, rgb(115 159 254) 0%, rgb(78 128 238) 100%);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgb(102 126 234 / 30%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 180px;
+  justify-content: center;
+}
+
+.topPanel .editorButton:hover {
+  background: linear-gradient(135deg, rgb(125 155 221) 0%, rgb(62 104 194) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgb(102 126 234 / 40%);
+}
+
+.topPanel .editorButton:disabled,
+.topPanel .editorButton.loading {
+  cursor: not-allowed;
+  opacity: 0.8;
+  transform: none;
+}
+
+.topPanel .editorButton.loading:hover {
+  transform: none;
+  background: linear-gradient(135deg, rgb(125 155 221) 0%, rgb(62 104 194) 100%);
+  box-shadow: 0 2px 8px rgb(102 126 234 / 30%);
+}
+
+.editorIcon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* Центральная область контента */
+.contentArea {
+  flex: 1;
+  overflow: hidden;
+  background-color: var(--dashboard-bg-primary);
+}
+
+/* Левая панель с разделами проекта - показывается только при выбранном проекте */
+.sectionsPanel {
+  width: 280px;
+  background-color: var(--dashboard-bg-secondary);
+  border-right: 1px solid var(--dashboard-border-primary);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.sectionsPanelContent {
+  flex: 1;
+  padding: 24px 20px;
+  overflow-y: auto;
+}
+
+/* Заголовок секции */
+.sectionHeader {
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--dashboard-text-primary);
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* Контент секции */
+.sectionContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Навигация по разделам */
+.sectionNavigation {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.navButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dashboard-text-tertiary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  width: 100%;
+}
+
+.navButton:hover {
+  background-color: var(--dashboard-bg-hover);
+  color: var(--dashboard-text-primary);
+}
+
+.navButtonActive {
+  background-color: var(--dashboard-bg-active);
+  color: var(--dashboard-text-primary);
+}
+
+.navButtonActive:hover {
+  background-color: var(--dashboard-bg-active);
+  color: var(--dashboard-text-primary);
+}
+
+.comingSoonText {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--dashboard-text-muted);
+  opacity: 0.6;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.navButtonContent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navIcon {
+  width: 16px;
+  height: 16px;
+  color: currentcolor;
+}
+
+.subsection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.subsectionTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--dashboard-text-primary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Список сущностей */
+.entityList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.entityGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.entityGroupTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dashboard-text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.entityItem {
+  font-size: 14px;
+  color: var(--dashboard-text-tertiary);
+  padding: 6px 0;
+  line-height: 1.4;
+  border-bottom: 1px solid var(--dashboard-border-primary);
+}
+
+.entityItem:last-child {
+  border-bottom: none;
+}
+
+/* Дополнительные разделы */
+.additionalSections {
+  padding: 20px;
+  border-top: 1px solid var(--dashboard-border-primary);
+  flex-shrink: 0;
+}
+
+/* Кнопка "В редактор" */
+.editorButton {
+  padding: 20px;
+  border-top: 1px solid var(--dashboard-border-primary);
+  background-color: var(--dashboard-bg-secondary);
+}
+
+.editorButtonLink {
+  width: 100%;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgb(102 126 234 / 40%);
+}
+
+.editorButtonLink:hover {
+  background: linear-gradient(135deg, #5a6fd8 0%, #6b42a0 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgb(102 126 234 / 50%);
+}
+
+.editorButtonLink:disabled,
+.editorButtonLink.loading {
+  cursor: not-allowed;
+  opacity: 0.8;
+  transform: none;
+}
+
+.editorButtonLink.loading:hover {
+  transform: none;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 4px 12px rgb(102 126 234 / 40%);
+}
+
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgb(255 255 255 / 30%);
+  border-top: 2px solid #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Адаптивность */
+@media (width <= 1024px) {
+  .sectionsPanel {
+    width: 240px;
+  }
+
+  .sectionsPanelContent {
+    padding: 20px 16px;
+  }
+
+  .editorButton {
+    padding: 16px;
+  }
+}
+
+@media (width <= 768px) {
+  .workspace {
+    flex-direction: column;
+  }
+
+  .sectionsPanel {
+    width: 100%;
+    height: 200px;
+    border-right: none;
+    border-bottom: 1px solid var(--dashboard-border-primary);
+  }
+
+  .sectionsPanelContent {
+    padding: 16px;
+  }
+
+  .sectionTitle {
+    font-size: 16px;
+  }
+
+  .subsectionTitle {
+    font-size: 15px;
+  }
+
+  .sectionNavigation {
+    flex-direction: row;
+    gap: 4px;
+  }
+
+  .navButton {
+    flex: 1;
+    text-align: center;
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .editorButton {
+    padding: 12px 16px;
+  }
+}
+
+/* Стили для раздела сущностей */
+.entitiesSection {
+  margin-top: 8px;
+  padding-left: 16px;
+}
+
+.entitiesLoading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  font-size: 12px;
+  color: var(--dashboard-text-tertiary);
+}
+
+.loadingSpinner {
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--dashboard-border-secondary);
+  border-top: 1px solid var(--dashboard-accent-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.emptyEntityTypes {
+  padding: 12px 16px;
+  font-size: 12px;
+  color: var(--dashboard-text-tertiary);
+  font-style: italic;
+}
+
+/* Элемент типа сущности */
+.entityTypeItem {
+  /* Убираем границы */
+}
+
+/* Заголовок типа */
+.entityTypeHeader {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.entityTypeToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 40px;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.entityTypeToggle:hover {
+  background-color: var(--dashboard-bg-hover);
+}
+
+.chevron {
+  width: 12px;
+  height: 12px;
+  color: var(--dashboard-text-tertiary);
+  transition: transform 0.2s ease;
+}
+
+.entityTypeButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  padding: 10px 12px 10px 8px;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  min-height: 40px;
+}
+
+.entityTypeButton:hover {
+  background-color: var(--dashboard-bg-hover);
+}
+
+.entityTypeName {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--dashboard-text-primary);
+  flex: 1;
+  text-align: left;
+}
+
+.entityCount {
+  font-size: 11px;
+  color: var(--dashboard-text-tertiary);
+  background-color: var(--dashboard-bg-tertiary);
+  padding: 2px 6px;
+  border-radius: 10px;
+  min-width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* Список сущностей внутри типа */
+.entitiesList {
+  /* Убираем фон и границы */
+}
+
+.typeLoading {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 24px;
+  font-size: 11px;
+  color: var(--dashboard-text-tertiary);
+}
+
+.miniSpinner {
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--dashboard-border-secondary);
+  border-top: 1px solid var(--dashboard-accent-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.emptyEntities {
+  padding: 10px 24px;
+  font-size: 11px;
+  color: var(--dashboard-text-tertiary);
+  text-align: center;
+  font-style: italic;
+}
+
+/* Элемент сущности */
+.entityItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 24px;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.entityItem:hover {
+  background-color: var(--dashboard-bg-hover);
+}
+
+/* Аватар сущности */
+.entityAvatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background-color: var(--dashboard-bg-secondary);
+  overflow: hidden;
+}
+
+.entityImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+.entityInitials {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--dashboard-text-tertiary);
+  text-transform: uppercase;
+}
+
+/* Информация о сущности */
+.entityInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.entityName {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--dashboard-text-primary);
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.entityDescription {
+  font-size: 10px;
+  color: var(--dashboard-text-tertiary);
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

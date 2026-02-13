@@ -1,0 +1,169 @@
+// AI Pipeline Execution Results Schema
+// Схема для хранения результатов выполнения AI пайплайнов
+
+// Основная модель для хранения выполнения пайплайна
+model AIPipelineExecution {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  
+  // Идентификаторы пайплайна и контекста
+  pipelineId    String   // ID пайплайна (например, "bible-generation")
+  pipelineName  String   // Название пайплайна для удобства
+  version       String   // Версия пайплайна
+  
+  // Контекст выполнения
+  userId        String   @db.ObjectId
+  projectId     String   @db.ObjectId
+  requestId     String?  // ID запроса для трекинга
+  sessionId     String?  // ID сессии пользователя
+  traceId       String?  // ID для трекинга в логах
+  
+  // Входные данные пайплайна
+  input         Json     // Исходные входные данные пайплайна
+  
+  // Контекст качества и провайдера
+  qualityLevel  String   // FAST, BALANCED, QUALITY
+  
+  // Статус выполнения
+  status        AIPipelineStatus @default(RUNNING)
+  
+  // Временные метрики
+  startedAt     DateTime @default(now())
+  completedAt   DateTime?
+  totalDuration Int?     // Общее время выполнения в миллисекундах
+  
+  // Агрегированные метрики
+  totalSteps    Int      @default(0)
+  completedSteps Int     @default(0)
+  skippedSteps  Int      @default(0)
+  failedSteps   Int      @default(0)
+  
+  // Агрегированные затраты
+  totalInputTokens  Int    @default(0)
+  totalOutputTokens Int    @default(0)
+  totalRealCostUSD  Float  @default(0)
+  totalCreditsCharged Int  @default(0)
+  
+  // Финальный результат пайплайна
+  result        Json?    // Агрегированный результат всех шагов
+  
+  // Ошибка пайплайна (если есть)
+  error         Json?    // { name, message, stack }
+  
+  // Связи
+  user          User     @relation("UserPipelineExecutions", fields: [userId], references: [id], onDelete: Cascade)
+  project       Project  @relation("ProjectPipelineExecutions", fields: [projectId], references: [id], onDelete: Cascade)
+  steps         AIPipelineStepExecution[]
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  @@map("ai_pipeline_executions")
+  @@index([userId, createdAt])
+  @@index([projectId, createdAt])
+  @@index([status, createdAt])
+  @@index([pipelineId, status])
+  @@index([requestId])
+}
+
+// Модель для хранения выполнения отдельного шага пайплайна
+model AIPipelineStepExecution {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  
+  // Связь с выполнением пайплайна
+  executionId   String   @db.ObjectId
+  
+  // Идентификация шага
+  stepId        String   // ID шага в пайплайне
+  stepIndex     Int      // Порядковый номер шага (для сортировки)
+  
+  // Информация об операции
+  operationId   String   // ID операции (например, "logline-generation")
+  operationName String   // Название операции
+  operationVersion String // Версия операции
+  
+  // Зависимости
+  dependencies  String[] @default([]) // Массив ID шагов-зависимостей
+  
+  // Входные данные для шага
+  input         Json     // Входные данные для операции
+  
+  // Промпты (очень важно для анализа)
+  systemPrompt  String?  // Системный промпт
+  userPrompt    String?  // Пользовательский промпт
+  
+  // Конфигурация модели
+  provider      String   // OPENAI, ANTHROPIC, GEMINI, etc.
+  model         String   // Конкретная модель
+  temperature   Float?   // Параметры генерации
+  maxTokens     Int?
+  qualityLevel  String   // Уровень качества операции (STANDARD, EXPERT)
+  
+  // Статус выполнения шага
+  status        AIPipelineStepStatus @default(PENDING)
+  
+  // Временные метрики
+  startedAt     DateTime?
+  completedAt   DateTime?
+  duration      Int?     // Время выполнения в миллисекундах
+  
+  // Детали валидации
+  validationDuration Int? // Время валидации в миллисекундах
+  validationErrors String[] @default([]) // Ошибки валидации
+  
+  // Детали провайдера
+  providerCallDuration Int? // Время вызова провайдера
+  inputTokens   Int?    // Количество входных токенов
+  outputTokens  Int?    // Количество выходных токенов
+  realCostUSD   Float?  // Реальная стоимость вызова
+  creditsCharged Int?   // Списанные кредиты
+  
+  // Сырой ответ от AI
+  rawAIResponse String? // Сырой ответ от провайдера
+  
+  // Обработанный результат
+  result        Json?   // Результат операции
+  
+  // Информация о пропуске или ошибке
+  skipped       Boolean @default(false)
+  skipReason    String? // Причина пропуска (если применимо)
+  
+  error         Json?   // Детали ошибки { name, message, stack }
+  errorStep     String? // На каком этапе произошла ошибка (validation, provider-call, parsing)
+  
+  // Детали о подозрительном контенте (если был обнаружен)
+  suspiciousContent Json? // { reasons: string[], detected: boolean }
+  
+  // Связь с выполнением пайплайна
+  execution     AIPipelineExecution @relation(fields: [executionId], references: [id], onDelete: Cascade)
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  @@map("ai_pipeline_step_executions")
+  @@index([executionId, stepIndex])
+  @@index([operationId, status])
+  @@index([status, createdAt])
+  @@index([provider, model])
+}
+
+// Статусы выполнения пайплайна
+enum AIPipelineStatus {
+  RUNNING       // Выполняется
+  COMPLETED     // Успешно завершен
+  FAILED        // Завершен с ошибкой
+  CANCELLED     // Отменен пользователем
+  TIMEOUT       // Превышено время ожидания
+  
+  @@map("ai_pipeline_status")
+}
+
+// Статусы выполнения шага пайплайна
+enum AIPipelineStepStatus {
+  PENDING       // Ожидает выполнения
+  RUNNING       // Выполняется
+  COMPLETED     // Успешно завершен
+  SKIPPED       // Пропущен (условие не выполнено)
+  FAILED        // Завершен с ошибкой
+  
+  @@map("ai_pipeline_step_status")
+}

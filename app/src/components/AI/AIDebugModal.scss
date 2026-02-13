@@ -1,0 +1,113 @@
+.ai-debug-modal-overlay {
+  background-color: rgb(0 0 0 / 50%);
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ai-debug-modal-content {
+  background-color: var(--gray-1);
+  border-radius: 8px;
+  box-shadow:
+    hsl(206deg 22% 7% / 35%) 0 10px 38px -10px,
+    hsl(206deg 22% 7% / 20%) 0 10px 20px -15px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  max-width: 1000px;
+  max-height: 85vh;
+  padding: 0;
+  z-index: 10000;
+  animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--gray-6);
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.ai-debug-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--gray-6);
+  flex-shrink: 0;
+  background-color: var(--gray-1);
+}
+
+.ai-debug-modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--gray-12);
+  margin: 0;
+}
+
+.ai-debug-modal-close {
+  all: unset;
+  font-family: inherit;
+  border-radius: 4px;
+  height: 24px;
+  width: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray-11);
+  cursor: pointer;
+  transition: all 150ms ease;
+
+  &:hover {
+    background-color: var(--gray-4);
+    color: var(--gray-12);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 2px var(--accent-7);
+  }
+}
+
+.ai-debug-modal-body {
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+  background-color: var(--gray-1);
+}
+
+.modal-debug-panel {
+  height: 100%;
+  max-height: calc(85vh - 80px);
+  overflow-y: auto;
+  border: none;
+  border-radius: 0;
+
+  .debug-header {
+    display: none; // Скрываем заголовок панели, так как он есть в модальном окне
+  }
+}
+
+@keyframes overlayShow {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes contentShow {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}

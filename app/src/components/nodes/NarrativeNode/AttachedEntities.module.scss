@@ -1,0 +1,155 @@
+.attached_entities {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 5px;
+  background-color: transparent;
+  border-radius: 0;
+  border: none;
+  border-top: 1px solid #d0e0ff;
+  min-height: 66px; // Высота одной строки: 16px (padding контейнера) + 8px (padding сетки) + 42px (высота сущности)
+  box-sizing: border-box;
+
+  &.drag_over .empty_drop_zone {
+    border-color: #10b981;
+    background-color: #f0fdf4;
+  }
+}
+
+.entities_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  width: 100%;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.entity_item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 4px;
+  background-color: transparent;
+  border: 1px solid var(--gray-5);
+  transition: all 0.15s ease;
+
+  &:hover {
+    background-color: var(--gray-4);
+    border-color: var(--gray-6);
+
+    .remove_button {
+      opacity: 1;
+    }
+  }
+}
+
+.entity_avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.entity_image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.entity_placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--gray-6);
+  color: var(--gray-11);
+}
+
+.placeholder_icon {
+  width: 12px;
+  height: 12px;
+}
+
+.remove_button {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--red-9);
+  border: 1px solid var(--red-10);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+
+  &:hover {
+    background-color: var(--red-10);
+  }
+}
+
+.remove_icon {
+  width: 8px;
+  height: 8px;
+}
+
+.expand_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 100%;
+  height: 24px;
+  background: none;
+  border: none;
+  border-radius: 3px;
+  color: var(--gray-11);
+  cursor: pointer;
+  font-size: 11px;
+  transition: all 0.15s ease;
+
+  &:hover {
+    background-color: var(--gray-4);
+    color: var(--gray-12);
+  }
+}
+
+.expand_icon {
+  width: 12px;
+  height: 12px;
+}
+
+.hidden_count {
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.empty_drop_zone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px; // 42px (высота сущности) + 8px (padding сетки) для выравнивания высот
+  border: 1px dashed var(--gray-6);
+  border-radius: 4px;
+  background-color: transparent;
+  transition: all 0.15s ease;
+  margin: 0 7px;
+}
+
+.drop_zone_text {
+  font-size: 11px;
+  color: var(--gray-9);
+  font-style: italic;
+}

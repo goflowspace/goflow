@@ -1,0 +1,952 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stats {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.sortControls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.sortSelect {
+  padding: 8px 12px;
+  border: 1px solid var(--border-primary);
+  border-radius: 6px;
+  background: var(--background-secondary);
+  color: var(--text-primary);
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+}
+
+.gridContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 4px;
+}
+
+.entitiesGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.entityCard {
+  background: var(--background-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  padding: 0;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 4%);
+  width: 100%;
+  overflow: hidden;
+}
+
+.entityCard:hover {
+  border-color: var(--border-secondary);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 8%);
+  transform: translateY(-1px);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border-bottom: 1px solid rgb(0 0 0 / 4%);
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.entityInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.entityName {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 4px;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+.entityTypeContainer {
+  margin-bottom: 8px;
+}
+
+.entityType {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Цвета генерируются динамически через JS */
+
+.cardActions {
+  display: flex;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.entityCard:hover .cardActions {
+  opacity: 1;
+}
+
+.editButton,
+.deleteButton {
+  padding: 8px;
+  background: var(--background-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+.editButton:hover {
+  color: var(--primary-color);
+  background: var(--background-secondary);
+  border-color: var(--primary-color);
+  transform: scale(1.05);
+}
+
+.deleteButton:hover {
+  color: var(--error-color);
+  background: var(--background-secondary);
+  border-color: var(--error-color);
+  transform: scale(1.05);
+}
+
+.entityImage {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  border: 1px solid var(--border-primary);
+  overflow: hidden;
+}
+
+.entityImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.entityAvatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid var(--border-primary);
+  background: var(--background-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.entityAvatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Плейсхолдер только для пустых аватаров */
+.entityAvatar.noImage::after {
+  content: '🖼️';
+  font-size: 20px;
+  opacity: 0.4;
+}
+
+.entityDescription {
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.entityParameters {
+  padding: 16px;
+  background: rgb(0 0 0 / 1%);
+}
+
+.parametersHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.parametersTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.parametersCount {
+  font-size: 11px;
+  color: var(--text-secondary);
+  background: var(--background-secondary);
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.parametersGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 6px;
+}
+
+.parameterRow {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 10px;
+  background: var(--dashboard-bg-secondary);
+  border: 1px solid var(--dashboard-border-primary);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  min-width: 0;
+}
+
+.parameterRow:hover {
+  background: var(--background-secondary);
+  border-color: var(--border-secondary);
+}
+
+.parameterName {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.parameterValue {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  min-width: 0;
+}
+
+.parameterValueText {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 0;
+}
+
+.parameterValueImage {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  object-fit: cover;
+  border: 1px solid var(--border-primary);
+}
+
+.moreParameters {
+  margin-top: 6px;
+  padding: 6px 10px;
+  background: var(--background-secondary);
+  border: 1px dashed var(--border-primary);
+  border-radius: 6px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.moreParameters:hover {
+  background: var(--primary-color);
+  color: white;
+  border-style: solid;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.emptyIcon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 16px;
+  opacity: 0.3;
+}
+
+.emptyTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 8px;
+}
+
+.emptyDescription {
+  font-size: 16px;
+  margin: 0 0 24px;
+  max-width: 400px;
+}
+
+.createButton {
+  padding: 14px 28px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgb(59 130 246 / 30%);
+}
+
+.createButton:hover {
+  background: var(--primary-color-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgb(59 130 246 / 40%);
+}
+
+.listView {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  background: var(--background-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.listItem:hover {
+  border-color: var(--border-secondary);
+  background: var(--background-secondary);
+}
+
+.listItemImage {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  object-fit: cover;
+  margin-right: 16px;
+  border: 1px solid var(--border-primary);
+}
+
+.listItemInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.listItemName {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.listItemMeta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.viewToggle {
+  display: flex;
+  gap: 4px;
+  border: 1px solid var(--border-primary);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.viewButton {
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.viewButton.active {
+  background: var(--primary-color);
+  color: white;
+}
+
+.viewButton:not(.active):hover {
+  background: var(--background-secondary);
+  color: var(--text-primary);
+}
+
+/* Responsive design */
+@media (width <= 768px) {
+  .gridContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .sortControls {
+    justify-content: space-between;
+  }
+
+  .entityCard {
+    padding: 16px;
+  }
+
+  .cardActions {
+    opacity: 1;
+  }
+
+  .cardHeader {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .parameterRow:last-child {
+    margin-bottom: 12px;
+  }
+}
+
+/* Улучшения для пустого состояния аватара */
+.entityAvatar.noImage {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: var(--text-secondary);
+  font-size: 24px;
+  position: relative;
+}
+
+/* Темный градиент для плейсхолдера аватара в темной теме */
+[data-theme='dark'] .entityAvatar.noImage {
+  background: linear-gradient(135deg, #2a2a2a 0%, #404040 100%);
+}
+
+/* Скелетон для загрузки изображений */
+.imageLoading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+/* Темный скелетон для темной темы */
+[data-theme='dark'] .imageLoading {
+  background: linear-gradient(90deg, #2a2a2a 25%, #404040 50%, #2a2a2a 75%);
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Улучшенные tooltips */
+.actionButton {
+  position: relative;
+}
+
+.actionButton:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  background: rgb(0 0 0 / 80%);
+  color: white;
+  font-size: 11px;
+  border-radius: 4px;
+  white-space: nowrap;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Анимация появления карточек */
+.entityCard {
+  opacity: 0;
+  animation: fadeInUp 0.2s ease forwards;
+}
+
+.entityCard:nth-child(1) {
+  animation-delay: 0ms;
+}
+
+.entityCard:nth-child(2) {
+  animation-delay: 20ms;
+}
+
+.entityCard:nth-child(3) {
+  animation-delay: 40ms;
+}
+
+.entityCard:nth-child(4) {
+  animation-delay: 60ms;
+}
+
+.entityCard:nth-child(5) {
+  animation-delay: 80ms;
+}
+
+.entityCard:nth-child(6) {
+  animation-delay: 100ms;
+}
+
+.entityCard:nth-child(n + 7) {
+  animation-delay: 120ms;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive улучшения */
+@media (width <= 768px) {
+  .gridContainer {
+    gap: 16px;
+  }
+
+  .entitiesGrid {
+    gap: 10px;
+  }
+
+  .cardHeader {
+    padding: 14px;
+  }
+
+  .entityParameters {
+    padding: 14px;
+  }
+
+  .cardActions {
+    opacity: 1; /* Всегда показываем на мобильных */
+  }
+
+  .entityName {
+    font-size: 15px;
+  }
+
+  .entityAvatar {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (width <= 1200px) {
+  .parametersGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (width <= 768px) {
+  .parametersGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (width <= 480px) {
+  .cardHeader {
+    padding: 12px;
+  }
+
+  .entityParameters {
+    padding: 12px;
+  }
+
+  .parametersGrid {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .parameterRow {
+    padding: 6px 8px;
+    gap: 2px;
+  }
+
+  .parameterValueText {
+    text-align: left;
+  }
+
+  .entityName {
+    font-size: 14px;
+  }
+
+  .entityAvatar {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Улучшения accessibility */
+.entityCard:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.editButton:focus,
+.deleteButton:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 1px;
+}
+
+/* Анимация для счетчика параметров */
+.parametersCount {
+  transition: all 0.2s ease;
+}
+
+.entityCard:hover .parametersCount {
+  background: var(--primary-color);
+  color: white;
+  transform: scale(1.05);
+}
+
+/* ========== ТАБЛИЧНЫЙ РЕЖИМ ========== */
+
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid var(--border-primary);
+  background: var(--background-primary);
+}
+
+.entitiesTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+.entitiesTable thead {
+  background: var(--background-secondary);
+  border-bottom: 2px solid var(--border-primary);
+}
+
+.entitiesTable th,
+.entitiesTable td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-primary);
+  vertical-align: middle;
+}
+
+.entitiesTable th {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.nameColumn {
+  min-width: 250px;
+  width: 30%;
+}
+
+.typeColumn {
+  min-width: 120px;
+  width: 15%;
+}
+
+.paramColumn {
+  min-width: 120px;
+  width: auto;
+}
+
+.actionsColumn {
+  min-width: 100px;
+  width: 100px;
+}
+
+.tableRow {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tableRow:hover {
+  background: var(--background-secondary);
+}
+
+.tableRow:hover .tableActions {
+  opacity: 1;
+}
+
+/* Ячейка с именем и аватаркой */
+.nameCell {
+  padding: 8px 16px;
+}
+
+.nameWithAvatar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tableAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid var(--border-primary);
+  background: var(--background-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tableAvatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tableAvatar.noImage::after {
+  content: '🖼️';
+  font-size: 14px;
+  opacity: 0.4;
+}
+
+.nameInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.tableName {
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tableDescription {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Ячейка с типом */
+.typeCell {
+  padding: 8px 16px;
+}
+
+.tableEntityType {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* Ячейка с параметром */
+.paramCell {
+  padding: 8px 16px;
+  max-width: 200px;
+}
+
+.tableParamValue {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tableParamText {
+  font-size: 13px;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.3;
+}
+
+.tableParamImage {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  object-fit: cover;
+  border: 1px solid var(--border-primary);
+  flex-shrink: 0;
+}
+
+.emptyValue {
+  color: var(--text-secondary);
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+/* Ячейка с действиями */
+.actionsCell {
+  padding: 8px 16px;
+}
+
+.tableActions {
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.tableActionButton {
+  padding: 6px;
+  background: var(--background-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: 4px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+}
+
+.tableActionButton:hover {
+  background: var(--background-secondary);
+  border-color: var(--border-secondary);
+  transform: scale(1.05);
+}
+
+.tableActionButton.editButton:hover {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.tableActionButton.deleteButton:hover {
+  color: var(--error-color);
+  border-color: var(--error-color);
+}
+
+/* Responsive для таблицы */
+@media (width <= 1200px) {
+  .entitiesTable {
+    min-width: 900px;
+  }
+
+  .nameColumn {
+    min-width: 200px;
+  }
+
+  .paramColumn {
+    min-width: 100px;
+  }
+}
+
+@media (width <= 768px) {
+  .tableContainer {
+    margin: 0 -16px;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  .entitiesTable th,
+  .entitiesTable td {
+    padding: 8px 12px;
+  }
+
+  .tableAvatar {
+    width: 28px;
+    height: 28px;
+  }
+
+  .tableName {
+    font-size: 13px;
+  }
+
+  .tableDescription {
+    font-size: 11px;
+  }
+
+  .tableActions {
+    opacity: 1; /* Всегда показываем на мобильных */
+  }
+}

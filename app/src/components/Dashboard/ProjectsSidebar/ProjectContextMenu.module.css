@@ -1,0 +1,66 @@
+/* Контекстное меню */
+.contextMenu {
+  background-color: var(--dashboard-bg-card);
+  border: 1px solid var(--dashboard-border-secondary);
+  border-radius: 8px;
+  box-shadow: var(--dashboard-shadow-xl);
+  min-width: 180px;
+  overflow: hidden;
+  animation: fade-in 0.15s ease-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  color: var(--dashboard-text-primary);
+  transition: background-color 0.15s ease;
+  user-select: none;
+}
+
+.menuItem:hover {
+  background-color: var(--dashboard-bg-hover);
+}
+
+.menuItem:first-child {
+  border-radius: 8px 8px 0 0;
+}
+
+.menuItem:last-child {
+  border-radius: 0 0 8px 8px;
+}
+
+.menuItemDanger {
+  color: var(--dashboard-error);
+}
+
+.menuItemDanger:hover {
+  background-color: rgb(239 68 68 / 10%);
+}
+
+.menuIcon {
+  margin-right: 8px;
+  width: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--dashboard-border-secondary);
+  margin: 4px 0;
+}

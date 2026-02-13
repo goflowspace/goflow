@@ -1,0 +1,431 @@
+/* Основной контейнер формы */
+.formContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--dashboard-bg-primary);
+}
+
+/* Заголовок формы */
+.formHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 32px;
+  border-bottom: 1px solid var(--dashboard-border-primary);
+  background-color: var(--dashboard-bg-card);
+  flex-shrink: 0;
+}
+
+.formTitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--dashboard-text-primary);
+  margin: 0;
+}
+
+.saveButton {
+  background-color: var(--dashboard-button-primary);
+  border: none;
+  border-radius: 6px;
+  color: var(--dashboard-button-primary-text);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.saveButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.saveButton:hover:not(:disabled) {
+  background-color: var(--dashboard-button-primary-hover);
+  transform: translateY(-1px);
+}
+
+.spinner {
+  margin-right: 8px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Контент формы */
+.formContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 32px;
+}
+
+/* Секции формы */
+.section {
+  margin-bottom: 40px;
+  background-color: var(--dashboard-bg-card);
+  border: 1px solid var(--dashboard-border-primary);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: var(--dashboard-shadow-sm);
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--dashboard-text-primary);
+  margin: 0 0 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--dashboard-border-primary);
+}
+
+/* Поля формы */
+.field {
+  margin-bottom: 20px;
+}
+
+.field:last-child {
+  margin-bottom: 0;
+}
+
+.fieldHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dashboard-text-secondary);
+  margin: 0;
+}
+
+/* Кнопки ИИ */
+.aiButtonContainer {
+  flex-shrink: 0;
+}
+
+/* Контейнер для поля ввода и счетчика */
+.fieldInputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Счетчик символов */
+.characterCounter {
+  align-self: flex-end;
+  font-size: 12px;
+  font-family: 'SF Mono', Monaco, Inconsolata, 'Roboto Mono', monospace;
+  margin-top: 4px;
+}
+
+/* Глобальные стили для скелетона */
+.container :global(.skeleton-textarea) {
+  background-color: #f5f5f5 !important;
+  animation: none !important; /* Убираем конфликтующую анимацию */
+
+  /* Дополнительные стили для стабильности */
+  transform: translateZ(0); /* Принудительное использование GPU */
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Оптимизация для анимации скелетона */
+.container :global(.skeleton-shimmer) {
+  transform: translateZ(0); /* GPU acceleration */
+  will-change: transform;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+/* Убеждаемся, что анимация не конфликтует с другими элементами */
+.fieldInputContainer .skeleton-textarea {
+  position: relative;
+  z-index: 1;
+}
+
+/* Дополнительные keyframes для плавности */
+@keyframes skeleton-wave-stable {
+  0% {
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+@keyframes skeleton-pulse-stable {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 0.9;
+  }
+}
+
+/* Элементы ввода */
+.input,
+.select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--dashboard-border-secondary);
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: var(--dashboard-bg-primary);
+  color: var(--dashboard-text-primary);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.input:focus,
+.select:focus {
+  outline: none;
+  border-color: var(--dashboard-accent-primary);
+  box-shadow: 0 0 0 3px rgb(102 126 234 / 10%);
+}
+
+.textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--dashboard-border-secondary);
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: var(--dashboard-bg-primary);
+  color: var(--dashboard-text-primary);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    height 0.3s ease;
+  resize: vertical;
+  min-height: 80px;
+  font-family: inherit;
+  line-height: 1.4;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--dashboard-accent-primary);
+  box-shadow: 0 0 0 3px rgb(102 126 234 / 10%);
+}
+
+.textarea::placeholder,
+.input::placeholder {
+  color: var(--dashboard-text-muted);
+}
+
+/* Группы чекбоксов */
+.checkboxGroup {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 12px 16px;
+  margin-top: 8px;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.checkboxLabel:hover {
+  background-color: var(--dashboard-bg-hover);
+}
+
+.checkbox {
+  margin-right: 8px;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.checkboxText {
+  font-size: 14px;
+  color: var(--dashboard-text-primary);
+  line-height: 1.4;
+  user-select: none;
+}
+
+/* Адаптивность */
+@media (width <= 1024px) {
+  .formHeader {
+    padding: 20px 24px;
+  }
+
+  .formContent {
+    padding: 24px;
+  }
+
+  .section {
+    padding: 20px;
+  }
+
+  .checkboxGroup {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px 12px;
+  }
+}
+
+@media (width <= 768px) {
+  .formHeader {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 16px 20px;
+  }
+
+  .formContent {
+    padding: 20px;
+  }
+
+  .section {
+    padding: 16px;
+    margin-bottom: 24px;
+  }
+
+  .formTitle {
+    font-size: 20px;
+  }
+
+  .sectionTitle {
+    font-size: 16px;
+  }
+
+  .checkboxGroup {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+@media (width <= 480px) {
+  .formHeader {
+    padding: 12px 16px;
+  }
+
+  .formContent {
+    padding: 16px;
+  }
+
+  .section {
+    padding: 12px;
+    margin-bottom: 20px;
+  }
+}
+
+/* Карточка комплексной генерации */
+.comprehensiveGenerationCard {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 16px 0 24px;
+  color: white;
+  box-shadow: 0 4px 15px rgb(102 126 234 / 30%);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.comprehensiveGenerationCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgb(102 126 234 / 40%);
+}
+
+.comprehensiveGenerationContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.comprehensiveGenerationIcon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.comprehensiveGenerationText {
+  flex: 1;
+}
+
+.comprehensiveGenerationTitle {
+  margin: 0 0 4px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+}
+
+.comprehensiveGenerationDesc {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgb(255 255 255 / 90%);
+}
+
+.comprehensiveGenerationBtn {
+  background: rgb(255 255 255 / 20%);
+  border: 1px solid rgb(255 255 255 / 30%);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  flex-shrink: 0;
+  min-width: 200px;
+}
+
+.comprehensiveGenerationBtn:hover:not(:disabled) {
+  background: rgb(255 255 255 / 30%);
+  border-color: rgb(255 255 255 / 50%);
+  transform: translateY(-1px);
+}
+
+.comprehensiveGenerationBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.comprehensiveGenerationBtn.loading {
+  opacity: 0.8;
+}
+
+@media (width <= 768px) {
+  .comprehensiveGenerationContent {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .comprehensiveGenerationBtn {
+    width: 100%;
+    min-width: auto;
+  }
+}

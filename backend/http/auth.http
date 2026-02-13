@@ -1,0 +1,48 @@
+### 🔐 Регистрация нового пользователя
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "securepassword"
+}
+
+### 🔐 Регистрация нового пользователя
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+  "email": "artem@goflow.space",
+  "password": "securepassword"
+}
+
+### 🔄 Запросить новый токен подтверждения email
+POST http://localhost:3000/auth/resend-verification
+Content-Type: application/json
+
+{
+  "email": "artem@goflow.space"
+}
+
+
+### 🔑 Логин (получение токена)
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "securepassword"
+}
+
+### 🔑 Логин (получение токена)
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "artem@goflow.space",
+  "password": "securepassword"
+}
+
+### 👤 Проверка профиля (требуется токен)
+GET http://localhost:3000/auth/me
+Authorization: Bearer {{TOKEN}}

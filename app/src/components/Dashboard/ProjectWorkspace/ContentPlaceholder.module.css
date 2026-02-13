@@ -1,0 +1,130 @@
+/* Основная заглушка */
+.placeholder {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background-color: var(--dashboard-bg-primary);
+}
+
+.content {
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+/* Иконка проекта */
+.iconWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.projectIcon {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconSvg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 8px 32px rgb(102 126 234 / 30%));
+}
+
+/* Текстовый контент */
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--dashboard-text-primary);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: var(--dashboard-text-tertiary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Кнопка действия */
+.actionButton {
+  display: flex;
+  justify-content: center;
+}
+
+.createProjectButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--dashboard-button-primary);
+  border: none;
+  border-radius: 8px;
+  color: var(--dashboard-button-primary-text);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--dashboard-shadow-sm);
+}
+
+.createProjectButton:hover {
+  background-color: var(--dashboard-button-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--dashboard-shadow-md);
+}
+
+.buttonIcon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Адаптивность */
+@media (width <= 768px) {
+  .placeholder {
+    padding: 24px 16px;
+  }
+
+  .content {
+    gap: 24px;
+  }
+
+  .projectIcon {
+    width: 100px;
+    height: 100px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+  }
+}
+
+@media (width <= 480px) {
+  .title {
+    font-size: 22px;
+  }
+
+  .projectIcon {
+    width: 80px;
+    height: 80px;
+  }
+}

@@ -1,0 +1,249 @@
+.toolbar_wrapper {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 100%;
+  z-index: 999;
+  max-width: 325px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.moved_toolbar {
+  transform: translateX(250px);
+}
+
+.toolbar_container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px 0 rgb(217 217 217 / 100%);
+  height: 50px;
+}
+
+.icon_button {
+  margin: 0;
+  color: var(--gray-12);
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+.separator {
+  @include separator;
+}
+
+// Красивые стили для уведомлений
+.toast_viewport {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 360px;
+  max-width: calc(100vw - 40px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  z-index: 10000;
+  outline: none;
+  pointer-events: none;
+}
+
+.toast_root {
+  background: linear-gradient(135deg, rgb(255 255 255 / 95%) 0%, rgb(255 255 255 / 90%) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgb(255 255 255 / 20%);
+  border-radius: 16px;
+  box-shadow:
+    0 20px 25px -5px rgb(0 0 0 / 10%),
+    0 10px 10px -5px rgb(0 0 0 / 4%),
+    0 0 0 1px rgb(255 255 255 / 5%);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  pointer-events: auto;
+
+  // Анимации появления и исчезновения
+  &[data-state='open'] {
+    animation: slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  &[data-state='closed'] {
+    animation: slide-down 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  // Эффект при наведении
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 25px 50px -12px rgb(0 0 0 / 15%),
+      0 0 0 1px rgb(255 255 255 / 10%);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  // Анимированная линия слева для типа уведомления
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--toast-accent), var(--toast-accent-dark));
+    border-radius: 0 2px 2px 0;
+    animation: grow-bar 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+// Стили для разных типов уведомлений
+.toast_success {
+  --toast-accent: #10b981;
+  --toast-accent-dark: #059669;
+  --toast-bg-overlay: rgb(16 185 129 / 5%);
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--toast-bg-overlay);
+    border-radius: 16px;
+    pointer-events: none;
+  }
+}
+
+.toast_error {
+  --toast-accent: #ef4444;
+  --toast-accent-dark: #dc2626;
+  --toast-bg-overlay: rgb(239 68 68 / 5%);
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--toast-bg-overlay);
+    border-radius: 16px;
+    pointer-events: none;
+  }
+}
+
+.toast_content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.toast_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  svg {
+    filter: drop-shadow(0 2px 4px rgb(0 0 0 / 10%));
+    animation: icon-pop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+}
+
+.toast_title {
+  font-weight: 500;
+  color: var(--gray-12);
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 0;
+  text-shadow: 0 1px 2px rgb(255 255 255 / 80%);
+}
+
+.kbd_style {
+  display: flex;
+  align-items: center;
+  font-size: 0.8em;
+  color: var(--gray-7);
+  margin-top: 4px;
+}
+
+// Анимации
+@keyframes slide-up {
+  from {
+    transform: translateY(100%) scale(0.95);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-down {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(100%) scale(0.95);
+    opacity: 0;
+  }
+}
+
+@keyframes grow-bar {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+
+  to {
+    height: 100%;
+    opacity: 1;
+  }
+}
+
+@keyframes icon-pop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+// Адаптивные стили для мобильных устройств
+@media (width <= 768px) {
+  .toast_viewport {
+    width: calc(100vw - 20px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .toast_root {
+    padding: 14px 16px;
+  }
+
+  .toast_title {
+    font-size: 13px;
+  }
+
+  .toast_icon svg {
+    width: 18px;
+    height: 18px;
+  }
+}

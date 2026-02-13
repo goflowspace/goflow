@@ -1,0 +1,70 @@
+/* SimpleMenu Component */
+.menuButton {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--dashboard-text-secondary);
+  font-size: 20px;
+  transition: all 0.2s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.menuButton:hover {
+  background-color: var(--dashboard-bg-hover);
+  color: var(--dashboard-text-primary);
+}
+
+/* Menu Dropdown */
+.menuDropdown {
+  position: fixed;
+  background-color: var(--dashboard-bg-card);
+  border: 1px solid var(--dashboard-border-secondary);
+  border-radius: 8px;
+  box-shadow: var(--dashboard-shadow-xl);
+  width: 200px;
+  z-index: 1000;
+  min-width: 180px;
+  overflow: visible;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--dashboard-border-primary);
+  color: var(--dashboard-text-primary);
+  transition: background-color 150ms ease;
+}
+
+.menuItem:hover {
+  background-color: var(--dashboard-bg-hover);
+}
+
+.menuItem:last-child {
+  border-bottom: none;
+}
+
+.menuItemDanger {
+  color: var(--dashboard-error);
+}
+
+.menuDivider {
+  height: 1px;
+  background-color: var(--dashboard-border-secondary);
+  margin: 4px 0;
+}
+
+.menuIcon {
+  margin-right: 8px;
+  width: 20px;
+  text-align: center;
+}

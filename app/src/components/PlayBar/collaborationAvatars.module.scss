@@ -1,0 +1,32 @@
+.collaboration_avatars {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.avatar_wrapper {
+  position: relative;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+  overflow: hidden; /* Обрезаем изображение по кругу */
+
+  &:hover {
+    transform: scale(1.1);
+    z-index: 10;
+  }
+
+  /* Делаем аватар внутри круглым */
+  :global(.rt-Avatar) {
+    border-radius: 50% !important;
+  }
+
+  :global(.rt-AvatarImage) {
+    border-radius: 50% !important;
+    object-fit: cover; /* Обрезаем изображение пропорционально */
+  }
+
+  :global(.rt-AvatarFallback) {
+    border-radius: 50% !important;
+  }
+}

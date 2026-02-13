@@ -1,0 +1,56 @@
+.projectIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  border: 1px solid rgb(0 0 0 / 8%);
+}
+
+.projectIcon:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
+}
+
+/* Размеры */
+.small {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+}
+
+.small .emoji {
+  font-size: 12px;
+}
+
+.medium {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+}
+
+.medium .emoji {
+  font-size: 16px;
+}
+
+.large {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+}
+
+.large .emoji {
+  font-size: 24px;
+}
+
+/* Эмодзи */
+.emoji {
+  line-height: 1;
+  font-style: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: brightness(1.1) contrast(1.1);
+}

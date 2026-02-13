@@ -1,0 +1,235 @@
+.container {
+  width: 100%;
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  gap: 16px;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--border);
+  border-top: 3px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  color: var(--text-secondary);
+}
+
+.chartsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.chartSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.chartTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+.rechartsWrapper {
+  background: var(--background-secondary);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Кастомный tooltip для Recharts */
+.customTooltip {
+  background: var(--background) !important;
+  border: 2px solid var(--border) !important;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 25%) !important;
+  max-width: 250px;
+  opacity: 1 !important;
+  position: relative;
+  z-index: 1000;
+  backdrop-filter: none !important;
+  filter: none !important;
+}
+
+.tooltipLabel {
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+  font-size: 13px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+}
+
+.tooltipContent {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tooltipEntry {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tooltipColor {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.tooltipName {
+  color: var(--text-secondary);
+  font-size: 12px;
+  flex: 1;
+}
+
+.tooltipValue {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.tooltipTotal {
+  border-top: 1px solid var(--border);
+  font-weight: 600;
+  color: var(--primary);
+  text-align: center;
+  font-size: 13px;
+  background: var(--background-secondary);
+  padding: 6px 8px;
+  border-radius: 4px;
+  margin: 8px -2px 0;
+}
+
+/* Enterprise upgrade блок */
+.enterpriseUpgrade {
+  background: var(--background-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px;
+  text-align: center;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upgradeContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 320px;
+}
+
+.upgradeContent h4 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.upgradeContent p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.upgradeButton {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.upgradeButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgb(102 126 234 / 40%);
+}
+
+.upgradeButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Адаптивность */
+@media (width <= 768px) {
+  .chartsGrid {
+    gap: 24px;
+  }
+
+  .rechartsWrapper {
+    padding: 12px;
+  }
+
+  .chartTitle {
+    font-size: 16px;
+  }
+
+  .tooltipLabel {
+    font-size: 12px;
+  }
+
+  .tooltipName,
+  .tooltipValue {
+    font-size: 11px;
+  }
+
+  .tooltipTotal {
+    font-size: 12px;
+  }
+
+  .enterpriseUpgrade {
+    padding: 24px;
+  }
+
+  .upgradeContent h4 {
+    font-size: 16px;
+  }
+
+  .upgradeContent p {
+    font-size: 13px;
+  }
+}

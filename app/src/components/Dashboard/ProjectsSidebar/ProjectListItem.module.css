@@ -1,0 +1,65 @@
+/* Элемент проекта в списке */
+.projectItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--dashboard-border-primary);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  position: relative;
+  min-height: 72px; /* Минимальная высота карточки */
+}
+
+.projectItem:hover {
+  background-color: var(--dashboard-bg-hover);
+}
+
+.projectItem:last-child {
+  border-bottom: none;
+}
+
+.projectItemSelected {
+  background-color: var(--dashboard-bg-active);
+  border-left: 3px solid var(--dashboard-accent-primary);
+}
+
+.projectItemSelected:hover {
+  background-color: var(--dashboard-bg-active);
+}
+
+/* Иконка проекта */
+.projectIcon {
+  margin-top: 2px; /* Выравниваем с первой строкой названия */
+}
+
+/* Информация о проекте */
+.projectInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.projectName {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dashboard-text-primary);
+  margin: 0 0 4px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.projectDescription {
+  font-size: 12px;
+  color: var(--dashboard-text-tertiary);
+  margin: 0;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Изменяю с 1 на 2 строки */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

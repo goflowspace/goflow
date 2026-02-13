@@ -1,0 +1,265 @@
+/* Modal Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgb(0 0 0 / 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal {
+  background-color: var(--dashboard-bg-primary);
+  border: 1px solid var(--dashboard-border-primary);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  box-shadow: var(--dashboard-shadow-xl);
+  position: relative;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--dashboard-border-primary);
+  background-color: var(--dashboard-bg-secondary);
+  border-radius: 8px 8px 0 0;
+}
+
+.title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--dashboard-text-primary);
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dashboard-text-tertiary);
+  transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+  background-color: var(--dashboard-bg-hover);
+  color: var(--dashboard-text-primary);
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.section {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--dashboard-border-primary);
+}
+
+.section:last-child {
+  border-bottom: none;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--dashboard-text-primary);
+  margin: 0;
+}
+
+.field {
+  margin-bottom: 16px;
+}
+
+.field:last-child {
+  margin-bottom: 0;
+}
+
+.label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dashboard-text-primary);
+}
+
+.input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--dashboard-border-primary);
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: var(--dashboard-bg-secondary);
+  color: var(--dashboard-text-primary);
+  transition: border-color 0.2s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--dashboard-accent-primary);
+  box-shadow: 0 0 0 3px var(--dashboard-accent-primary-alpha);
+}
+
+.select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--dashboard-border-primary);
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: var(--dashboard-bg-secondary);
+  color: var(--dashboard-text-primary);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.select:focus {
+  outline: none;
+  border-color: var(--dashboard-accent-primary);
+  box-shadow: 0 0 0 3px var(--dashboard-accent-primary-alpha);
+}
+
+.optionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.optionItem {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.optionItem .input {
+  flex: 1;
+}
+
+.removeOptionButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ef4444;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.removeOptionButton:hover {
+  background-color: #fef2f2;
+  color: #dc2626;
+}
+
+.addOptionButton {
+  background: none;
+  border: 1px dashed #d1d5db;
+  cursor: pointer;
+  padding: 12px 16px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #6b7280;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.addOptionButton:hover {
+  border-color: #3b82f6;
+  color: #3b82f6;
+  background-color: #eff6ff;
+}
+
+.emptyOptions {
+  padding: 20px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+  background-color: #f9fafb;
+  border: 1px dashed #d1d5db;
+  border-radius: 4px;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 20px 24px;
+  border-top: 1px solid var(--dashboard-border-primary);
+  background-color: var(--dashboard-bg-secondary);
+  border-radius: 0 0 8px 8px;
+}
+
+.cancelButton {
+  background: var(--dashboard-bg-primary);
+  border: 1px solid var(--dashboard-border-primary);
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--dashboard-text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.cancelButton:hover {
+  background-color: var(--dashboard-bg-hover);
+  border-color: var(--dashboard-border-hover);
+}
+
+.saveButton {
+  background: var(--dashboard-accent-primary);
+  border: 1px solid var(--dashboard-accent-primary);
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.saveButton:hover:not(:disabled) {
+  background: var(--dashboard-accent-hover);
+  border-color: var(--dashboard-accent-hover);
+}
+
+.saveButton:disabled {
+  cursor: not-allowed;
+  background: var(--dashboard-text-muted);
+  border-color: var(--dashboard-text-muted);
+}

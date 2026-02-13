@@ -1,0 +1,60 @@
+.commentContent {
+  line-height: 1.5;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.mention {
+  display: inline;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &.user {
+    background-color: #e3f2fd;
+    color: #1976d2;
+    border: 1px solid rgb(25 118 210 / 20%);
+
+    &:hover {
+      background-color: #bbdefb;
+    }
+  }
+
+  &.team {
+    background-color: #f3e5f5;
+    color: #7b1fa2;
+    border: 1px solid rgb(123 31 162 / 20%);
+
+    &:hover {
+      background-color: #e1bee7;
+    }
+  }
+}
+
+// Темная тема
+[data-theme='dark'] {
+  .mention {
+    &.user {
+      background-color: rgb(25 118 210 / 20%);
+      color: #90caf9;
+      border-color: rgb(25 118 210 / 30%);
+
+      &:hover {
+        background-color: rgb(25 118 210 / 30%);
+      }
+    }
+
+    &.team {
+      background-color: rgb(123 31 162 / 20%);
+      color: #ce93d8;
+      border-color: rgb(123 31 162 / 30%);
+
+      &:hover {
+        background-color: rgb(123 31 162 / 30%);
+      }
+    }
+  }
+}

@@ -1,0 +1,77 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: goflow-mongodb
+    restart: unless-stopped
+    command: ["--replSet", "rs0", "--bind_ip_all"]
+    volumes:
+      - mongodb_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mongodb-setup:
+    image: mongo:7.0
+    container_name: goflow-mongodb-setup
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    entrypoint: >
+      bash -c "
+        echo 'Waiting for MongoDB to start...';
+        sleep 5;
+        echo 'Initializing replica set...';
+        mongosh --host mongodb:27017 --eval '
+          rs.initiate({
+            _id: \"rs0\",
+            members: [{ _id: 0, host: \"mongodb:27017\" }]
+          })
+        ';
+        echo 'Waiting for replica set to initialize...';
+        sleep 5;
+        echo 'Replica set initialization completed!';
+      "
+    restart: "no"
+
+  backend:
+    build: ./backend
+    container_name: goflow-backend
+    restart: unless-stopped
+    depends_on:
+      mongodb-setup:
+        condition: service_completed_successfully
+    environment:
+      EDITION: oss
+      NODE_ENV: production
+      PORT: 8080
+      DATABASE_URL: mongodb://mongodb:27017/goflow?replicaSet=rs0&directConnection=true
+      FRONTEND_URL: http://localhost:3000
+      LOCAL_UPLOAD_DIR: /data/uploads
+    ports:
+      - "3001:8080"
+    volumes:
+      - uploads_data:/data/uploads
+
+  frontend:
+    build:
+      context: ./app
+      args:
+        NEXT_PUBLIC_EDITION: oss
+        NEXT_PUBLIC_API_URL: http://localhost:3001
+    container_name: goflow-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    environment:
+      NEXT_PUBLIC_EDITION: oss
+      NEXT_PUBLIC_API_URL: http://localhost:3001
+    ports:
+      - "3000:3000"
+
+volumes:
+  mongodb_data:
+  uploads_data:

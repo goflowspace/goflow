@@ -1,0 +1,350 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  --dropdown-background: var(--background-primary);
+  --dropdown-border: var(--border-primary);
+  --dropdown-text: var(--text-primary);
+  --dropdown-hover: var(--background-secondary);
+  --checkbox-tick: var(--text-primary);
+  --dropdown-selected-text: var(--primary-color);
+  --tag-text-color: white;
+
+  /* Переменные для селектора в темной теме */
+  --dashboard-bg-secondary: var(--background-secondary);
+  --dashboard-border-secondary: var(--border-secondary);
+  --dashboard-border-primary: var(--border-primary);
+  --dashboard-bg-hover: var(--background-secondary);
+  --dashboard-accent-primary: var(--primary-color);
+}
+
+/* Светлая тема - различные способы определения */
+@media (prefers-color-scheme: light) {
+  .container {
+    --dropdown-background: var(--background-primary);
+    --dropdown-border: var(--border-primary);
+    --dropdown-text: var(--text-primary);
+    --dropdown-hover: var(--background-secondary);
+    --checkbox-tick: var(--text-primary);
+    --dropdown-selected-text: var(--primary-color);
+    --tag-text-color: white;
+
+    /* Переменные для селектора в светлой теме */
+    --dashboard-bg-secondary: var(--background-secondary);
+    --dashboard-border-secondary: var(--border-secondary);
+    --dashboard-border-primary: var(--border-primary);
+    --dashboard-bg-hover: var(--background-secondary);
+    --dashboard-accent-primary: var(--primary-color);
+  }
+}
+
+/* Для случаев когда тема задается классом на body */
+/* stylelint-disable selector-pseudo-class-no-unknown */
+:global(.light) .container,
+:global([data-theme='light']) .container,
+:global(body.light) .container {
+  /* stylelint-enable selector-pseudo-class-no-unknown */
+  --dropdown-background: var(--background-primary);
+  --dropdown-border: var(--border-primary);
+  --dropdown-text: var(--text-primary);
+  --dropdown-hover: var(--background-secondary);
+  --checkbox-tick: var(--text-primary);
+  --dropdown-selected-text: var(--primary-color);
+  --tag-text-color: var(--text-primary);
+
+  /* Переменные для селектора в светлой теме */
+  --dashboard-bg-secondary: var(--background-secondary);
+  --dashboard-border-secondary: var(--border-secondary);
+  --dashboard-border-primary: var(--border-primary);
+  --dashboard-bg-hover: var(--background-secondary);
+  --dashboard-accent-primary: var(--primary-color);
+}
+
+/* Стили для лейбла */
+.label {
+  font-weight: 500;
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+.multiSelect {
+  position: relative;
+  width: 100%;
+}
+
+.selector {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--dashboard-bg-secondary, #f8f9fa);
+  border: 1px solid var(--dashboard-border-secondary, #d0d7de);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 48px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 5%);
+}
+
+.selector:hover {
+  border-color: var(--dashboard-border-primary, #a1a8b0);
+  background: var(--dashboard-bg-hover, #f1f3f5);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
+}
+
+.selector.open {
+  border-color: var(--dashboard-accent-primary, #3b82f6);
+  box-shadow:
+    0 0 0 3px rgb(59 130 246 / 10%),
+    0 2px 4px rgb(0 0 0 / 10%);
+}
+
+.selector.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: var(--dashboard-bg-secondary, #f8f9fa);
+}
+
+.selector.disabled:hover {
+  border-color: var(--dashboard-border-secondary, #d0d7de);
+  background: var(--dashboard-bg-secondary, #f8f9fa);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 5%);
+}
+
+.selectedContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 20px;
+}
+
+.displayText {
+  color: var(--text-primary);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.selectedTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: linear-gradient(135deg, #64748b 0%, #475569 100%);
+  color: white;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid rgb(255 255 255 / 15%);
+  box-shadow:
+    0 2px 4px rgb(71 85 105 / 15%),
+    0 1px 2px rgb(0 0 0 / 8%);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.tag::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 20%), transparent);
+  transition: left 0.5s ease-in-out;
+}
+
+.tag:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 4px 8px rgb(71 85 105 / 25%),
+    0 2px 4px rgb(0 0 0 / 12%);
+  background: linear-gradient(135deg, #475569 0%, #374151 100%);
+}
+
+.tag:hover::before {
+  left: 100%;
+}
+
+.removeTag {
+  background: rgb(255 255 255 / 15%);
+  border: 1px solid rgb(255 255 255 / 30%);
+  color: white;
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+  position: relative;
+  z-index: 1;
+}
+
+.removeTag:hover:not(:disabled) {
+  background: rgb(255 255 255 / 25%);
+  border-color: rgb(255 255 255 / 50%);
+  transform: scale(1.1);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 20%);
+}
+
+.removeTag:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.arrow {
+  color: var(--text-secondary);
+  font-size: 12px;
+  transition: transform 0.2s ease;
+  margin-left: 8px;
+}
+
+.arrowUp {
+  transform: rotate(180deg);
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--dropdown-background);
+  border: 1px solid var(--dropdown-border);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+  margin-top: 4px;
+  animation: dropdown-fade-in 0.2s ease;
+}
+
+@keyframes dropdown-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.optionsList {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  position: relative;
+}
+
+.option:hover {
+  background: var(--dropdown-hover);
+}
+
+.option.selected {
+  background: rgb(59 130 246 / 10%);
+}
+
+.checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--dropdown-border);
+  border-radius: 4px;
+  position: relative;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.option:hover .checkmark {
+  border-color: var(--primary-color);
+}
+
+.checkbox:checked + .checkmark {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.checkbox:checked + .checkmark::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid var(--checkbox-tick);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.optionLabel {
+  color: var(--dropdown-text);
+  font-size: 14px;
+  font-weight: 400;
+  flex: 1;
+}
+
+.option.selected .optionLabel {
+  color: var(--dropdown-selected-text);
+  font-weight: 500;
+}
+
+/* Scrollbar styling */
+.optionsList::-webkit-scrollbar {
+  width: 6px;
+}
+
+.optionsList::-webkit-scrollbar-track {
+  background: var(--background-secondary);
+  border-radius: 3px;
+}
+
+.optionsList::-webkit-scrollbar-thumb {
+  background: var(--border-primary);
+  border-radius: 3px;
+}
+
+.optionsList::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Responsive design */
+@media (width <= 768px) {
+  .selectedTags {
+    max-height: 80px;
+    overflow-y: auto;
+  }
+
+  .optionsList {
+    max-height: 250px;
+  }
+}

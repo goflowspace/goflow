@@ -1,0 +1,80 @@
+### Variables
+@baseUrl = {{$dotenv BASE_URL}}
+@token = {{$dotenv ACCESS_TOKEN}}
+
+### Get available products and prices
+GET {{baseUrl}}/payments/products
+Content-Type: application/json
+
+### Get user credits balance
+GET {{baseUrl}}/payments/credits
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+### Get user subscriptions
+GET {{baseUrl}}/payments/subscriptions  
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+### Get user purchases history
+GET {{baseUrl}}/payments/purchases?limit=10
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+### Get credit transactions
+GET {{baseUrl}}/payments/credits/transactions?limit=20
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+### Create subscription checkout session
+POST {{baseUrl}}/payments/checkout/subscription
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "priceId": "price_1234567890",
+  "successUrl": "http://localhost:3000/dashboard/billing/success",
+  "cancelUrl": "http://localhost:3000/dashboard/billing/cancel"
+}
+
+### Create one-time purchase checkout session
+POST {{baseUrl}}/payments/checkout/purchase
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "priceId": "price_0987654321",
+  "successUrl": "http://localhost:3000/dashboard/billing/success",
+  "cancelUrl": "http://localhost:3000/dashboard/billing/cancel"
+}
+
+### Cancel subscription (at period end)
+POST {{baseUrl}}/payments/subscriptions/sub_1234567890/cancel
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+### Resume subscription
+POST {{baseUrl}}/payments/subscriptions/sub_1234567890/resume
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+### Get checkout session info
+GET {{baseUrl}}/payments/checkout/session/cs_1234567890
+Content-Type: application/json
+
+### Sync products from Stripe (admin)
+POST {{baseUrl}}/payments/admin/sync-products
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+### Test webhook (Stripe will call this)
+# POST {{baseUrl}}/payments/webhooks/stripe
+# Stripe-Signature: whsec_...
+# Content-Type: application/json
+# 
+# {
+#   "id": "evt_...",
+#   "object": "event",
+#   "type": "customer.subscription.created",
+#   "data": {...}
+# }

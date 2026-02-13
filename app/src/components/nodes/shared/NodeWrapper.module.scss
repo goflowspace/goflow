@@ -1,0 +1,33 @@
+.wrapper {
+  position: relative;
+  border-radius: 5px;
+  background-color: white;
+  transition: box-shadow 0.2s ease-in-out;
+  border: 1px solid rgb(0 0 0 / 5%);
+
+  &.interactive {
+    cursor: pointer;
+  }
+
+  &.minimal {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+  }
+}
+
+.handle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 2px solid #7c7c86;
+  transition:
+    background-color 0.2s,
+    transform 0.2s;
+
+  &:hover {
+    background-color: #e6f0ff;
+    transform: scale(1.2);
+  }
+}

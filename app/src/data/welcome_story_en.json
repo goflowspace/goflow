@@ -1,0 +1,1019 @@
+{
+  "title": "My awesome story",
+  "data": {
+    "timelines": {
+      "base-timeline": {
+        "layers": {
+          "root": {
+            "type": "layer",
+            "id": "root",
+            "name": "root",
+            "depth": 0,
+            "nodeIds": [
+              "J5c4loS0ZrUFkL3h_TdKI",
+              "eoOVWLFClRlD274YGYqU9",
+              "VWt1I0hkFLMgxJ-lkn3oI",
+              "QYFwPYm5gkmiciVHWhstd",
+              "YWnInkkgR6Y0BJXtTquIP",
+              "P9XpkCQtoenNYvi3Guoqc",
+              "hxwxrhaWAFNHQdzu-87km",
+              "DmBZLZiEXKmTVKY2GdRI2",
+              "llLBTDnbbFBO4O3bRxPx2",
+              "lAs0oEz8kxYHc760KKI1Y",
+              "q7WO2tINEGiH4RqK2TYu9",
+              "Rj_h7hjgaq7jdc_RV9IA8",
+              "_rlbqzpsVZenm0Yds66VW",
+              "CqzeH4QrmxfHJAKR6nQyj",
+              "3OLGPQnKLpmYw1TwFpAZl",
+              "qAznBkmHFKNdqlZwQ5MLZ",
+              "qjlSaG_eq3N3V75MD0gy3",
+              "XJ-k0dzhLFTkPIaDh2jQT",
+              "MWsqP1_L7wkfrFi2vuSng",
+              "3qij8ReE9-77hONnI-oF7",
+              "xGxKVlrrDTuJ_g_skRdXS",
+              "7qSUAEvXgZk1QrfT-iF02",
+              "EYvRW3-NiyTldq8wVH6rS",
+              "qfubxyGHgkAUC3ZEgThKY",
+              "o-Pw59JXP9HxsWh87EaCH",
+              "0DPaoei-1Xb9rQ7iiHbPg",
+              "6XRqIM0op2_U5gw8ilZhI"
+            ],
+            "nodes": {
+              "J5c4loS0ZrUFkL3h_TdKI": {
+                "id": "J5c4loS0ZrUFkL3h_TdKI",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 700,
+                  "y": 280
+                },
+                "data": {
+                  "title": "Start of Adventure",
+                  "text": "Beginning of an epic story."
+                }
+              },
+              "eoOVWLFClRlD274YGYqU9": {
+                "id": "eoOVWLFClRlD274YGYqU9",
+                "type": "note",
+                "coordinates": {
+                  "x": 320,
+                  "y": 280
+                },
+                "data": {
+                  "text": "1. Welcome to Go Flow!",
+                  "color": "#fffad1"
+                }
+              },
+              "VWt1I0hkFLMgxJ-lkn3oI": {
+                "id": "VWt1I0hkFLMgxJ-lkn3oI",
+                "type": "note",
+                "coordinates": {
+                  "x": 360,
+                  "y": 360
+                },
+                "data": {
+                  "text": "2. This welcome story will help you understand how our tool works.",
+                  "color": "#fffad1"
+                }
+              },
+              "QYFwPYm5gkmiciVHWhstd": {
+                "id": "QYFwPYm5gkmiciVHWhstd",
+                "type": "note",
+                "coordinates": {
+                  "x": 660,
+                  "y": 80
+                },
+                "data": {
+                  "text": "3. Let's start with a simple narrative node. You can add it using the toolbar on the left.",
+                  "color": "#fffad1"
+                }
+              },
+              "YWnInkkgR6Y0BJXtTquIP": {
+                "id": "YWnInkkgR6Y0BJXtTquIP",
+                "type": "note",
+                "coordinates": {
+                  "x": 660,
+                  "y": 520
+                },
+                "data": {
+                  "text": "3.1. A narrative node is the main container for narrative text.\n\nThis can be any text that describes something, or a character's dialogue line.\n\nBesides the main text, a narrative node can also have a name. Plus, variable operations are performed in narrative nodes, but more on that later.",
+                  "color": "#fffad1"
+                }
+              },
+              "P9XpkCQtoenNYvi3Guoqc": {
+                "id": "P9XpkCQtoenNYvi3Guoqc",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 1280,
+                  "y": 280
+                },
+                "data": {
+                  "title": "",
+                  "text": "We learned how connections help build a story graph."
+                }
+              },
+              "hxwxrhaWAFNHQdzu-87km": {
+                "id": "hxwxrhaWAFNHQdzu-87km",
+                "type": "note",
+                "coordinates": {
+                  "x": 1000,
+                  "y": 220
+                },
+                "data": {
+                  "text": "4. Nodes are connected by links. This is how a story graph is built.",
+                  "color": "#fffad1"
+                }
+              },
+              "DmBZLZiEXKmTVKY2GdRI2": {
+                "id": "DmBZLZiEXKmTVKY2GdRI2",
+                "type": "note",
+                "coordinates": {
+                  "x": 1000,
+                  "y": 420
+                },
+                "data": {
+                  "text": "4.1. There are several ways to connect links between nodes.\n\nLinks are automatically connected when creating new nodes through the dialog when a node is selected, as well as when moving nodes that have free connection pins.\n\nYou can also connect links simply by clicking on a pin on one node and then clicking on a pin on another.\n\nOf course, you can connect links completely manually by holding a pin and dragging the cursor to another.",
+                  "color": "#fffad1"
+                }
+              },
+              "llLBTDnbbFBO4O3bRxPx2": {
+                "id": "llLBTDnbbFBO4O3bRxPx2",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 1680,
+                  "y": 280
+                },
+                "data": {
+                  "title": "Incredible Fork",
+                  "text": "And we thought that the plot could be non-linear, at least in part."
+                }
+              },
+              "lAs0oEz8kxYHc760KKI1Y": {
+                "id": "lAs0oEz8kxYHc760KKI1Y",
+                "type": "choice",
+                "coordinates": {
+                  "x": 2040,
+                  "y": 260
+                },
+                "data": {
+                  "text": "Difficult but still epic choice",
+                  "height": 64
+                }
+              },
+              "q7WO2tINEGiH4RqK2TYu9": {
+                "id": "q7WO2tINEGiH4RqK2TYu9",
+                "type": "choice",
+                "coordinates": {
+                  "x": 2040,
+                  "y": 420
+                },
+                "data": {
+                  "text": "Simple but morally difficult choice",
+                  "height": 40
+                }
+              },
+              "Rj_h7hjgaq7jdc_RV9IA8": {
+                "id": "Rj_h7hjgaq7jdc_RV9IA8",
+                "type": "note",
+                "coordinates": {
+                  "x": 1640,
+                  "y": -40
+                },
+                "data": {
+                  "text": "6. But now our story is developing too straightforwardly. Choice nodes will allow creating branches. They can be added by selecting the tool or through the new node creation dialog when a node without outgoing connections is selected.",
+                  "color": "#fffad1"
+                }
+              },
+              "_rlbqzpsVZenm0Yds66VW": {
+                "id": "_rlbqzpsVZenm0Yds66VW",
+                "type": "note",
+                "coordinates": {
+                  "x": 2000,
+                  "y": 540
+                },
+                "data": {
+                  "text": "6.1. Choice nodes are a way to create direct story branching, when the person going through the story needs to click on a choice option themselves, and the story will flow in that direction.\n\nChoice nodes contain only text.\n\nIn this case, both choices are attached to one narrative node, they will be displayed together with it.",
+                  "color": "#fffad1"
+                }
+              },
+              "CqzeH4QrmxfHJAKR6nQyj": {
+                "id": "CqzeH4QrmxfHJAKR6nQyj",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 2360,
+                  "y": 140
+                },
+                "data": {
+                  "title": "",
+                  "text": "Epic consequences of a difficult choice."
+                }
+              },
+              "3OLGPQnKLpmYw1TwFpAZl": {
+                "id": "3OLGPQnKLpmYw1TwFpAZl",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 2360,
+                  "y": 420
+                },
+                "data": {
+                  "title": "",
+                  "text": "Morally difficult consequences of a simple choice."
+                }
+              },
+              "qAznBkmHFKNdqlZwQ5MLZ": {
+                "id": "qAznBkmHFKNdqlZwQ5MLZ",
+                "type": "note",
+                "coordinates": {
+                  "x": 1340,
+                  "y": 120
+                },
+                "data": {
+                  "text": "5. Narrative nodes, as a general rule, are played one after another through the \"Continue\" button.",
+                  "color": "#fffad1"
+                }
+              },
+              "qjlSaG_eq3N3V75MD0gy3": {
+                "id": "qjlSaG_eq3N3V75MD0gy3",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 2700,
+                  "y": 280
+                },
+                "data": {
+                  "title": "",
+                  "text": "Lazy ending of the story. Or not?"
+                }
+              },
+              "XJ-k0dzhLFTkPIaDh2jQT": {
+                "id": "XJ-k0dzhLFTkPIaDh2jQT",
+                "type": "note",
+                "coordinates": {
+                  "x": 2660,
+                  "y": 80
+                },
+                "data": {
+                  "text": "7. Story branches or any dialogue don't have to be developed, they can always converge at a single point.",
+                  "color": "#fffad1"
+                }
+              },
+              "MWsqP1_L7wkfrFi2vuSng": {
+                "id": "MWsqP1_L7wkfrFi2vuSng",
+                "type": "layer",
+                "coordinates": {
+                  "x": 3080,
+                  "y": 280
+                },
+                "name": "Story Layer",
+                "startingNodes": [
+                  {
+                    "id": "Op5L5DGm8YFCL1RYZ8Y5L",
+                    "type": "narrative",
+                    "coordinates": {
+                      "x": 740,
+                      "y": 280
+                    },
+                    "data": {
+                      "title": "",
+                      "text": "Beginning of the story layer."
+                    },
+                    "operations": [],
+                    "isConnected": true
+                  }
+                ],
+                "endingNodes": [
+                  {
+                    "id": "4jhmlhGMOYR16I1gExSAq",
+                    "type": "narrative",
+                    "coordinates": {
+                      "x": 2880,
+                      "y": 260
+                    },
+                    "data": {
+                      "title": "",
+                      "text": "Exiting the dream within a dream. Or the act of our adventure."
+                    },
+                    "isConnected": true,
+                    "connectionIds": ["S6T8Xq7Xpvo0CXG5Yq_eC"]
+                  }
+                ],
+                "parentLayerId": "root",
+                "description": "Short description"
+              },
+              "3qij8ReE9-77hONnI-oF7": {
+                "id": "3qij8ReE9-77hONnI-oF7",
+                "type": "note",
+                "coordinates": {
+                  "x": 3040,
+                  "y": -260
+                },
+                "data": {
+                  "text": "8. When the story converges to a point, it's not the end yet.\n\nAt this stage, we want to show you layers. They can also be added using the toolbar or through the creation dialog.\n\nYou can enter a layer by clicking on it in the side panel on the right or by clicking the button in the layer object.\n\nPlease enter the layer to continue getting acquainted with our tool.",
+                  "color": "#fffad1"
+                }
+              },
+              "xGxKVlrrDTuJ_g_skRdXS": {
+                "id": "xGxKVlrrDTuJ_g_skRdXS",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 3500,
+                  "y": 280
+                },
+                "data": {
+                  "title": "Real Ending",
+                  "text": "Thank you for the adventure!"
+                }
+              },
+              "7qSUAEvXgZk1QrfT-iF02": {
+                "id": "7qSUAEvXgZk1QrfT-iF02",
+                "type": "note",
+                "coordinates": {
+                  "x": 3000,
+                  "y": 700
+                },
+                "data": {
+                  "text": "8.1. Layers are containers for nodes and graph objects in general.\n\nLayers are designed not only to bring visual order to the canvas, but also to structurally divide the story. For example, into acts, chapters, or any other structures.",
+                  "color": "#fffad1"
+                }
+              },
+              "EYvRW3-NiyTldq8wVH6rS": {
+                "id": "EYvRW3-NiyTldq8wVH6rS",
+                "type": "note",
+                "coordinates": {
+                  "x": 3780,
+                  "y": 220
+                },
+                "data": {
+                  "text": "17. Finally, all that's left is to test our story by launching it from the panel located at the top right.\n\nThen you can export the story from the menu in the top bar at the top left to share it or integrate it somewhere.",
+                  "color": "#fffad1"
+                }
+              },
+              "qfubxyGHgkAUC3ZEgThKY": {
+                "id": "qfubxyGHgkAUC3ZEgThKY",
+                "type": "note",
+                "coordinates": {
+                  "x": 3440,
+                  "y": 40
+                },
+                "data": {
+                  "text": "16. Our adventure is coming to an end. It wasn't very branching, but we're sure you already have brilliant stories that can be implemented in our tool.",
+                  "color": "#fffad1"
+                }
+              },
+              "o-Pw59JXP9HxsWh87EaCH": {
+                "id": "o-Pw59JXP9HxsWh87EaCH",
+                "type": "note",
+                "coordinates": {
+                  "x": 3461.377084042543,
+                  "y": 533.3849160728621
+                },
+                "data": {
+                  "text": "16.1. By the way, there can be multiple endings. All nodes that don't have outgoing connections are essentially the end of the graph – the end of the story.",
+                  "color": "#fffad1"
+                }
+              },
+              "0DPaoei-1Xb9rQ7iiHbPg": {
+                "id": "0DPaoei-1Xb9rQ7iiHbPg",
+                "type": "note",
+                "coordinates": {
+                  "x": 3220,
+                  "y": 700
+                },
+                "data": {
+                  "text": "8.2. Layers don't divide the graph but are part of it.\n\nTherefore, layers have starting and ending nodes so that the story can enter and exit the layer if needed.\n\nIt's also important that a layer can have multiple starting nodes.",
+                  "color": "#fffad1"
+                }
+              },
+              "6XRqIM0op2_U5gw8ilZhI": {
+                "id": "6XRqIM0op2_U5gw8ilZhI",
+                "type": "note",
+                "coordinates": {
+                  "x": 4014.680800972148,
+                  "y": 322.3520299335137
+                },
+                "data": {
+                  "text": "Happy creating!",
+                  "color": "#fffad1"
+                }
+              }
+            },
+            "edges": {
+              "DVbZnJOBYDlT79AHsXOGR": {
+                "type": "link",
+                "id": "DVbZnJOBYDlT79AHsXOGR",
+                "startNodeId": "J5c4loS0ZrUFkL3h_TdKI",
+                "endNodeId": "P9XpkCQtoenNYvi3Guoqc",
+                "conditions": []
+              },
+              "RzEpayWCJrNhzYJOYofSr": {
+                "type": "link",
+                "id": "RzEpayWCJrNhzYJOYofSr",
+                "startNodeId": "P9XpkCQtoenNYvi3Guoqc",
+                "endNodeId": "llLBTDnbbFBO4O3bRxPx2",
+                "conditions": []
+              },
+              "4J4F6unFC-8OyauX0Ngwn": {
+                "type": "link",
+                "id": "4J4F6unFC-8OyauX0Ngwn",
+                "startNodeId": "llLBTDnbbFBO4O3bRxPx2",
+                "endNodeId": "lAs0oEz8kxYHc760KKI1Y",
+                "conditions": []
+              },
+              "rQlBe15K5Lem4DGqUEiX9": {
+                "type": "link",
+                "id": "rQlBe15K5Lem4DGqUEiX9",
+                "startNodeId": "llLBTDnbbFBO4O3bRxPx2",
+                "endNodeId": "q7WO2tINEGiH4RqK2TYu9",
+                "conditions": []
+              },
+              "6adL9Xwnim3v0zrnckDW9": {
+                "type": "link",
+                "id": "6adL9Xwnim3v0zrnckDW9",
+                "startNodeId": "lAs0oEz8kxYHc760KKI1Y",
+                "endNodeId": "CqzeH4QrmxfHJAKR6nQyj",
+                "conditions": []
+              },
+              "Q2HATx74Xqdu0I2FE1hFY": {
+                "type": "link",
+                "id": "Q2HATx74Xqdu0I2FE1hFY",
+                "startNodeId": "q7WO2tINEGiH4RqK2TYu9",
+                "endNodeId": "3OLGPQnKLpmYw1TwFpAZl",
+                "conditions": []
+              },
+              "BMlzu3SS_ns26HzCs5ezX": {
+                "type": "link",
+                "id": "BMlzu3SS_ns26HzCs5ezX",
+                "startNodeId": "CqzeH4QrmxfHJAKR6nQyj",
+                "endNodeId": "qjlSaG_eq3N3V75MD0gy3",
+                "conditions": []
+              },
+              "q42NeRgmHMwux9QqAw0Gw": {
+                "type": "link",
+                "id": "q42NeRgmHMwux9QqAw0Gw",
+                "startNodeId": "3OLGPQnKLpmYw1TwFpAZl",
+                "endNodeId": "qjlSaG_eq3N3V75MD0gy3",
+                "conditions": []
+              },
+              "WnFLYY4KWcR7i7Kd3YiCt": {
+                "type": "link",
+                "id": "WnFLYY4KWcR7i7Kd3YiCt",
+                "startNodeId": "qjlSaG_eq3N3V75MD0gy3",
+                "endNodeId": "MWsqP1_L7wkfrFi2vuSng",
+                "targetHandle": "Op5L5DGm8YFCL1RYZ8Y5L",
+                "conditions": []
+              },
+              "S6T8Xq7Xpvo0CXG5Yq_eC": {
+                "type": "link",
+                "id": "S6T8Xq7Xpvo0CXG5Yq_eC",
+                "startNodeId": "MWsqP1_L7wkfrFi2vuSng",
+                "endNodeId": "xGxKVlrrDTuJ_g_skRdXS",
+                "sourceHandle": "4jhmlhGMOYR16I1gExSAq",
+                "conditions": []
+              }
+            }
+          },
+          "MWsqP1_L7wkfrFi2vuSng": {
+            "type": "layer",
+            "id": "MWsqP1_L7wkfrFi2vuSng",
+            "parentLayerId": "root",
+            "name": "Story Layer",
+            "depth": 1,
+            "nodeIds": [
+              "Op5L5DGm8YFCL1RYZ8Y5L",
+              "rNEh-iagouBcgHKvPb929",
+              "z8OkOrowpoHAdnV9Vy5HY",
+              "Ewyeh0Hf3BlE5NyM3rDBk",
+              "SFKR8szbhVQgDBM5FPtLq",
+              "bRPDGXk3MD0Q9RL2MrRkP",
+              "Z5JJkK8F-R2hcriLequbA",
+              "KsoVn5Q1rygRVAzLc3BBK",
+              "tEuA7A9qUPCXJhYU2YhQS",
+              "bD5W2Dbrk9WC62L_OC7BA",
+              "i7OiY0-47IVUMaURznE2x",
+              "UIz0zG7cuWf-9q-QwHlP9",
+              "QrlDQc_wqTdN9V9byOqEl",
+              "kkT-jab7K8EJmv1mtRsHy",
+              "K6jnhA2iE5vSyjp1g1TkD",
+              "4jhmlhGMOYR16I1gExSAq",
+              "vZOi1ML38i6HSPbzAQcl6",
+              "ENCDt3vaRUDOT800d_TZv"
+            ],
+            "nodes": {
+              "Op5L5DGm8YFCL1RYZ8Y5L": {
+                "id": "Op5L5DGm8YFCL1RYZ8Y5L",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 740,
+                  "y": 280
+                },
+                "data": {
+                  "title": "",
+                  "text": "Beginning of the story layer."
+                },
+                "operations": []
+              },
+              "rNEh-iagouBcgHKvPb929": {
+                "id": "rNEh-iagouBcgHKvPb929",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 1080,
+                  "y": 280
+                },
+                "data": {
+                  "title": "",
+                  "text": "It turns out we have coins and other variables."
+                }
+              },
+              "z8OkOrowpoHAdnV9Vy5HY": {
+                "id": "z8OkOrowpoHAdnV9Vy5HY",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 1600,
+                  "y": 140
+                },
+                "data": {
+                  "title": "",
+                  "text": "We'll get here easily."
+                }
+              },
+              "Ewyeh0Hf3BlE5NyM3rDBk": {
+                "id": "Ewyeh0Hf3BlE5NyM3rDBk",
+                "type": "note",
+                "coordinates": {
+                  "x": 400,
+                  "y": 280
+                },
+                "data": {
+                  "text": "9. Welcome to the story layer!",
+                  "color": "#fffad1"
+                }
+              },
+              "SFKR8szbhVQgDBM5FPtLq": {
+                "id": "SFKR8szbhVQgDBM5FPtLq",
+                "type": "note",
+                "coordinates": {
+                  "x": 440,
+                  "y": 360
+                },
+                "data": {
+                  "text": "10. As you can see, inside is a familiar environment: canvas, nodes, and the continuation of our story.",
+                  "color": "#fffad1"
+                }
+              },
+              "bRPDGXk3MD0Q9RL2MrRkP": {
+                "id": "bRPDGXk3MD0Q9RL2MrRkP",
+                "type": "note",
+                "coordinates": {
+                  "x": 700,
+                  "y": 20
+                },
+                "data": {
+                  "text": "11. We already know how to make direct branches using choices.\n\nBut this is not the only way to control the story direction.",
+                  "color": "#fffad1"
+                }
+              },
+              "Z5JJkK8F-R2hcriLequbA": {
+                "id": "Z5JJkK8F-R2hcriLequbA",
+                "type": "note",
+                "coordinates": {
+                  "x": 1040,
+                  "y": 0
+                },
+                "data": {
+                  "text": "12. To create story branches without choices (or track character states, events in the story, etc.) you need variables.\n\nWe already have one – coins.",
+                  "color": "#fffad1"
+                }
+              },
+              "KsoVn5Q1rygRVAzLc3BBK": {
+                "id": "KsoVn5Q1rygRVAzLc3BBK",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 1600,
+                  "y": 420
+                },
+                "data": {
+                  "title": "",
+                  "text": "We'll never get here."
+                },
+                "operations": []
+              },
+              "tEuA7A9qUPCXJhYU2YhQS": {
+                "id": "tEuA7A9qUPCXJhYU2YhQS",
+                "type": "note",
+                "coordinates": {
+                  "x": 1060,
+                  "y": 520
+                },
+                "data": {
+                  "text": "12.1. Variables can be viewed, created, or edited in the side panel on the right.\n\nVariables come in different types: integers, floats, percentages, strings, or booleans (true/false toggle).",
+                  "color": "#fffad1"
+                }
+              },
+              "bD5W2Dbrk9WC62L_OC7BA": {
+                "id": "bD5W2Dbrk9WC62L_OC7BA",
+                "type": "note",
+                "coordinates": {
+                  "x": 1340,
+                  "y": -180
+                },
+                "data": {
+                  "text": "13. But variables just store various information.\n\nTo apply this information, conditions exist.\n\nIn the situation below, we see that the story will go along the upper path, after checking the condition for the lower path. The lower condition won't work because we don't have enough coins.",
+                  "color": "#fffad1"
+                }
+              },
+              "i7OiY0-47IVUMaURznE2x": {
+                "id": "i7OiY0-47IVUMaURznE2x",
+                "type": "note",
+                "coordinates": {
+                  "x": 1350.9555072098744,
+                  "y": 573.0496182224077
+                },
+                "data": {
+                  "text": "13.1. Conditions are like a \"guard at the door\". They check if the story can proceed further.\n\nConditions can be created directly on links. Exception – a direct single link from node to node. Because a condition on such a link can easily stop story development.\n\nConditions come in different types: variable checks, probability of passage, and others.\n\nConditions can also be combined.",
+                  "color": "#fffad1"
+                }
+              },
+              "UIz0zG7cuWf-9q-QwHlP9": {
+                "id": "UIz0zG7cuWf-9q-QwHlP9",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 1980,
+                  "y": 260
+                },
+                "data": {
+                  "title": "",
+                  "text": "Earning coins."
+                },
+                "operations": [
+                  {
+                    "id": "lgVskYHME7nwVqVRYRJUm",
+                    "nodeId": "UIz0zG7cuWf-9q-QwHlP9",
+                    "variableId": "iEBsuoI5xwvg-i4vmXErA",
+                    "operationType": "addition",
+                    "target": {
+                      "type": "custom",
+                      "value": 1000
+                    },
+                    "enabled": true,
+                    "order": 0
+                  }
+                ]
+              },
+              "QrlDQc_wqTdN9V9byOqEl": {
+                "id": "QrlDQc_wqTdN9V9byOqEl",
+                "type": "note",
+                "coordinates": {
+                  "x": 1940,
+                  "y": -60
+                },
+                "data": {
+                  "text": "14. But how do we \"earn\" coins to meet the conditions and let the \"link guard\" pass us?\n\nVariable operations in nodes are a way to manage variable values as the story develops.",
+                  "color": "#fffad1"
+                }
+              },
+              "kkT-jab7K8EJmv1mtRsHy": {
+                "id": "kkT-jab7K8EJmv1mtRsHy",
+                "type": "note",
+                "coordinates": {
+                  "x": 1940,
+                  "y": 540
+                },
+                "data": {
+                  "text": "14.1. Variable operations can be created inside nodes.\n\nOperations come in different types: arithmetic, string concatenation, and others.\n\nOperations trigger when we arrive at a node, they don't need additional conditions (all conditions for story arrival at a node are stored on links).",
+                  "color": "#fffad1"
+                }
+              },
+              "K6jnhA2iE5vSyjp1g1TkD": {
+                "id": "K6jnhA2iE5vSyjp1g1TkD",
+                "type": "layer",
+                "coordinates": {
+                  "x": 2440,
+                  "y": 260
+                },
+                "name": "Layer within a layer?",
+                "startingNodes": [
+                  {
+                    "id": "z4PXaW0Lbe2HZPQvOyP6V",
+                    "type": "narrative",
+                    "coordinates": {
+                      "x": 680,
+                      "y": 260
+                    },
+                    "data": {
+                      "title": "",
+                      "text": "Yes, this is a layer within a layer."
+                    },
+                    "isConnected": true
+                  },
+                  {
+                    "id": "syaASL-QkIDNlngCodhYU",
+                    "type": "narrative",
+                    "coordinates": {
+                      "x": 680,
+                      "y": 560
+                    },
+                    "data": {
+                      "title": "",
+                      "text": "Definitely, a layer within a layer."
+                    },
+                    "isConnected": true
+                  }
+                ],
+                "endingNodes": [
+                  {
+                    "id": "4s5sd6no5VdmshS3Wg944",
+                    "type": "narrative",
+                    "coordinates": {
+                      "x": 1457.2210642994587,
+                      "y": 235.4577418930471
+                    },
+                    "data": {
+                      "title": "",
+                      "text": "Exiting the layer through this path if the other path with 75% chance didn't work."
+                    },
+                    "isConnected": true
+                  },
+                  {
+                    "id": "zYOM_VRjjreeVxBY7HM5x",
+                    "type": "narrative",
+                    "coordinates": {
+                      "x": 1460,
+                      "y": 560
+                    },
+                    "data": {
+                      "title": "",
+                      "text": "The 75% chance worked, and we exit the layer through this path."
+                    },
+                    "isConnected": true
+                  }
+                ],
+                "parentLayerId": "MWsqP1_L7wkfrFi2vuSng",
+                "description": ""
+              },
+              "4jhmlhGMOYR16I1gExSAq": {
+                "id": "4jhmlhGMOYR16I1gExSAq",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 2880,
+                  "y": 260
+                },
+                "data": {
+                  "title": "",
+                  "text": "Exiting the dream within a dream. Or the act of our adventure."
+                }
+              },
+              "vZOi1ML38i6HSPbzAQcl6": {
+                "id": "vZOi1ML38i6HSPbzAQcl6",
+                "type": "note",
+                "coordinates": {
+                  "x": 2400,
+                  "y": 100
+                },
+                "data": {
+                  "text": "15. You can also create layers within a layer. And within a layer that's within a layer...",
+                  "color": "#fffad1"
+                }
+              },
+              "ENCDt3vaRUDOT800d_TZv": {
+                "id": "ENCDt3vaRUDOT800d_TZv",
+                "type": "note",
+                "coordinates": {
+                  "x": 2400,
+                  "y": 760
+                },
+                "data": {
+                  "text": "15.1. Meanwhile, a layer can have multiple beginnings and endings.\n\nAll nodes inside a layer that don't have incoming connections are starting nodes.\n\nAll nodes inside a layer that don't have outgoing connections are ending nodes.",
+                  "color": "#fffad1"
+                }
+              }
+            },
+            "edges": {
+              "t3iwk8V8eow79py79Nebu": {
+                "type": "link",
+                "id": "t3iwk8V8eow79py79Nebu",
+                "startNodeId": "Op5L5DGm8YFCL1RYZ8Y5L",
+                "endNodeId": "rNEh-iagouBcgHKvPb929",
+                "conditions": []
+              },
+              "Qee4WJysfM4WamA99qyDO": {
+                "type": "link",
+                "id": "Qee4WJysfM4WamA99qyDO",
+                "startNodeId": "rNEh-iagouBcgHKvPb929",
+                "endNodeId": "z8OkOrowpoHAdnV9Vy5HY",
+                "conditions": []
+              },
+              "zuZTg4TKTgGGlutgojjwu": {
+                "type": "link",
+                "id": "zuZTg4TKTgGGlutgojjwu",
+                "startNodeId": "rNEh-iagouBcgHKvPb929",
+                "endNodeId": "KsoVn5Q1rygRVAzLc3BBK",
+                "conditions": [
+                  {
+                    "id": "FiPZlwPo3v1P_qI4nufRe",
+                    "operator": "AND",
+                    "conditions": [
+                      {
+                        "id": "ibZDQ7-VCS-8FOJhFhRDe",
+                        "type": "variable_comparison",
+                        "operator": "gte",
+                        "valType": "custom",
+                        "varId": "iEBsuoI5xwvg-i4vmXErA",
+                        "value": 1234
+                      }
+                    ]
+                  }
+                ]
+              },
+              "5n0jOCJr2NkuvG_xxs7jm": {
+                "type": "link",
+                "id": "5n0jOCJr2NkuvG_xxs7jm",
+                "startNodeId": "z8OkOrowpoHAdnV9Vy5HY",
+                "endNodeId": "UIz0zG7cuWf-9q-QwHlP9",
+                "conditions": []
+              },
+              "Zw-DbcEmjjqoyAqL8MXQA": {
+                "type": "link",
+                "id": "Zw-DbcEmjjqoyAqL8MXQA",
+                "startNodeId": "KsoVn5Q1rygRVAzLc3BBK",
+                "endNodeId": "UIz0zG7cuWf-9q-QwHlP9",
+                "conditions": []
+              },
+              "dIzVcB52-KuOIejri969N": {
+                "type": "link",
+                "id": "dIzVcB52-KuOIejri969N",
+                "startNodeId": "UIz0zG7cuWf-9q-QwHlP9",
+                "endNodeId": "K6jnhA2iE5vSyjp1g1TkD",
+                "targetHandle": "z4PXaW0Lbe2HZPQvOyP6V",
+                "conditions": []
+              },
+              "pQQQuV0vXoV1P2PCcobeS": {
+                "type": "link",
+                "id": "pQQQuV0vXoV1P2PCcobeS",
+                "startNodeId": "UIz0zG7cuWf-9q-QwHlP9",
+                "endNodeId": "K6jnhA2iE5vSyjp1g1TkD",
+                "targetHandle": "syaASL-QkIDNlngCodhYU",
+                "conditions": [
+                  {
+                    "id": "RZP4OtbvMdOc5sWwIeohk",
+                    "operator": "AND",
+                    "conditions": [
+                      {
+                        "id": "CwHpmbFxUg1GrOIQFHOYa",
+                        "type": "probability",
+                        "probability": 0.5
+                      }
+                    ]
+                  }
+                ]
+              },
+              "VbSpn5tBRtMhV1fDK-GFE": {
+                "type": "link",
+                "id": "VbSpn5tBRtMhV1fDK-GFE",
+                "startNodeId": "K6jnhA2iE5vSyjp1g1TkD",
+                "endNodeId": "4jhmlhGMOYR16I1gExSAq",
+                "sourceHandle": "4s5sd6no5VdmshS3Wg944",
+                "conditions": []
+              },
+              "nCjmT4HGPcGX2x4UKAsaB": {
+                "type": "link",
+                "id": "nCjmT4HGPcGX2x4UKAsaB",
+                "startNodeId": "K6jnhA2iE5vSyjp1g1TkD",
+                "endNodeId": "4jhmlhGMOYR16I1gExSAq",
+                "sourceHandle": "zYOM_VRjjreeVxBY7HM5x",
+                "conditions": []
+              }
+            },
+            "description": "Short description"
+          },
+          "K6jnhA2iE5vSyjp1g1TkD": {
+            "type": "layer",
+            "id": "K6jnhA2iE5vSyjp1g1TkD",
+            "parentLayerId": "MWsqP1_L7wkfrFi2vuSng",
+            "name": "Layer within a layer?",
+            "depth": 2,
+            "nodeIds": ["z4PXaW0Lbe2HZPQvOyP6V", "U1ucvxVzHSdbtpBG-92zU", "syaASL-QkIDNlngCodhYU", "4s5sd6no5VdmshS3Wg944", "zYOM_VRjjreeVxBY7HM5x"],
+            "nodes": {
+              "z4PXaW0Lbe2HZPQvOyP6V": {
+                "id": "z4PXaW0Lbe2HZPQvOyP6V",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 680,
+                  "y": 260
+                },
+                "data": {
+                  "title": "",
+                  "text": "Yes, this is a layer within a layer."
+                }
+              },
+              "U1ucvxVzHSdbtpBG-92zU": {
+                "id": "U1ucvxVzHSdbtpBG-92zU",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 1000,
+                  "y": 400
+                },
+                "data": {
+                  "title": "",
+                  "text": "Like in the movie Inception. Or like in a good story."
+                }
+              },
+              "syaASL-QkIDNlngCodhYU": {
+                "id": "syaASL-QkIDNlngCodhYU",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 680,
+                  "y": 560
+                },
+                "data": {
+                  "title": "",
+                  "text": "Definitely, a layer within a layer."
+                }
+              },
+              "4s5sd6no5VdmshS3Wg944": {
+                "id": "4s5sd6no5VdmshS3Wg944",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 1457.2210642994587,
+                  "y": 235.4577418930471
+                },
+                "data": {
+                  "title": "",
+                  "text": "Exiting the layer through this path if the other path with 75% chance didn't work."
+                }
+              },
+              "zYOM_VRjjreeVxBY7HM5x": {
+                "id": "zYOM_VRjjreeVxBY7HM5x",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 1460,
+                  "y": 560
+                },
+                "data": {
+                  "title": "",
+                  "text": "The 75% chance worked, and we exit the layer through this path."
+                }
+              }
+            },
+            "edges": {
+              "PtgVP2VoDeKdqpuA0FIvl": {
+                "id": "PtgVP2VoDeKdqpuA0FIvl",
+                "startNodeId": "z4PXaW0Lbe2HZPQvOyP6V",
+                "endNodeId": "U1ucvxVzHSdbtpBG-92zU",
+                "conditions": [],
+                "type": "link"
+              },
+              "C0f9xRxe4HFVl6aGqPEqM": {
+                "type": "link",
+                "id": "C0f9xRxe4HFVl6aGqPEqM",
+                "startNodeId": "syaASL-QkIDNlngCodhYU",
+                "endNodeId": "U1ucvxVzHSdbtpBG-92zU",
+                "conditions": []
+              },
+              "3ARXvKt8vpctwkpRdLrM1": {
+                "type": "link",
+                "id": "3ARXvKt8vpctwkpRdLrM1",
+                "startNodeId": "U1ucvxVzHSdbtpBG-92zU",
+                "endNodeId": "4s5sd6no5VdmshS3Wg944",
+                "conditions": []
+              },
+              "GrhnmaLEpNEd6cEZZqGId": {
+                "type": "link",
+                "id": "GrhnmaLEpNEd6cEZZqGId",
+                "startNodeId": "U1ucvxVzHSdbtpBG-92zU",
+                "endNodeId": "zYOM_VRjjreeVxBY7HM5x",
+                "conditions": [
+                  {
+                    "id": "y-cIonVylUjZ-GcBuSRdD",
+                    "operator": "AND",
+                    "conditions": [
+                      {
+                        "id": "kZlyjfVCz1LKxvIrdaySP",
+                        "type": "probability",
+                        "probability": 0.75
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            "description": ""
+          }
+        },
+        "lastLayerNumber": 3,
+        "variables": [
+          {
+            "id": "iEBsuoI5xwvg-i4vmXErA",
+            "name": "Coins",
+            "internalName": "monety",
+            "type": "integer",
+            "value": 1000,
+            "description": ""
+          }
+        ]
+      }
+    }
+  },
+  "metadata": {
+    "exportedAt": "2025-05-21T17:56:30.133Z",
+    "version": "1.0",
+    "protocolVersion": 2
+  }
+}

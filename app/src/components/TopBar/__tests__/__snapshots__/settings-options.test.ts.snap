@@ -1,0 +1,186 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`settings-options contains expected values (snapshot) 1`] = `
+[
+  {
+    "label": "editor_settings.theme_section_dark",
+    "value": "dark",
+  },
+  {
+    "label": "editor_settings.theme_section_light",
+    "value": "light",
+  },
+  {
+    "label": "editor_settings.theme_section_auto",
+    "value": "auto",
+  },
+]
+`;
+
+exports[`settings-options contains expected values (snapshot) 2`] = `
+[
+  {
+    "label": "editor_settings.grid_section_dots",
+    "value": "dots",
+  },
+  {
+    "label": "editor_settings.grid_section_lines",
+    "value": "lines",
+  },
+  {
+    "label": "editor_settings.grid_section_clean",
+    "value": "clean",
+  },
+]
+`;
+
+exports[`settings-options contains expected values (snapshot) 3`] = `
+[
+  {
+    "label": "10px",
+    "value": "10",
+  },
+  {
+    "label": "20px",
+    "value": "20",
+  },
+  {
+    "label": "30px",
+    "value": "30",
+  },
+  {
+    "label": "40px",
+    "value": "40",
+  },
+  {
+    "label": "50px",
+    "value": "50",
+  },
+]
+`;
+
+exports[`settings-options contains expected values (snapshot) 4`] = `
+[
+  {
+    "color": "#f7f3f2",
+    "label": "editor_settings.canvas_color_section_lgray",
+    "value": "lgray",
+  },
+  {
+    "color": "#d1d1d1",
+    "label": "editor_settings.canvas_color_section_gray",
+    "value": "gray",
+  },
+  {
+    "color": "#23272f",
+    "label": "editor_settings.canvas_color_section_dgray",
+    "value": "dgray",
+  },
+  {
+    "color": "#fffbe6",
+    "label": "editor_settings.canvas_color_section_lyellow",
+    "value": "lyellow",
+  },
+  {
+    "color": "#e6ffe6",
+    "label": "editor_settings.canvas_color_section_lgreen",
+    "value": "lgreen",
+  },
+  {
+    "color": "#e6f0ff",
+    "label": "editor_settings.canvas_color_section_lblue",
+    "value": "lblue",
+  },
+  {
+    "color": "#ffe6f0",
+    "label": "editor_settings.canvas_color_section_lpink",
+    "value": "lpink",
+  },
+  {
+    "color": "#f0e6ff",
+    "label": "editor_settings.canvas_color_section_lpurple",
+    "value": "lpurple",
+  },
+]
+`;
+
+exports[`settings-options contains expected values (snapshot) 5`] = `
+[
+  {
+    "label": "editor_settings.obj_section_link_thickness_thin",
+    "value": "thin",
+  },
+  {
+    "label": "editor_settings.obj_section_link_thickness_regular",
+    "value": "regular",
+  },
+  {
+    "label": "editor_settings.obj_section_link_thickness_thick",
+    "value": "thick",
+  },
+]
+`;
+
+exports[`settings-options contains expected values (snapshot) 6`] = `
+[
+  {
+    "label": "editor_settings.obj_section_link_style_solid",
+    "value": "solid",
+  },
+  {
+    "label": "editor_settings.obj_section_link_style_dash",
+    "value": "dash",
+  },
+]
+`;
+
+exports[`settings-options contains expected values (snapshot) 7`] = `
+[
+  {
+    "label": "editor_settings.controls_section_mouse",
+    "value": "mouse",
+  },
+  {
+    "label": "editor_settings.controls_section_touchpad",
+    "value": "touchpad",
+  },
+]
+`;
+
+exports[`settings-options contains expected values (snapshot) 8`] = `
+[
+  {
+    "label": "editor_settings.tools_hotkeys_section_num",
+    "value": "num",
+  },
+  {
+    "label": "editor_settings.tools_hotkeys_section_sym",
+    "value": "sym",
+  },
+]
+`;
+
+exports[`settings-options contains expected values (snapshot) 9`] = `
+[
+  {
+    "label": "English",
+    "value": "en",
+  },
+  {
+    "label": "Русский",
+    "value": "ru",
+  },
+  {
+    "label": "Français",
+    "value": "fr",
+  },
+  {
+    "label": "Español",
+    "value": "es",
+  },
+  {
+    "label": "Português",
+    "value": "pt",
+  },
+]
+`;

@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--dashboard-bg-primary, #f8fafc);
+  padding: 20px;
+}
+
+.card {
+  padding: 48px;
+  border-radius: 12px;
+  background-color: var(--dashboard-bg-card, white);
+  border: 1px solid var(--dashboard-border-primary, #e2e8f0);
+  box-shadow: var(--dashboard-shadow-lg, 0 10px 25px rgb(0 0 0 / 10%));
+  text-align: center;
+  max-width: 480px;
+  width: 100%;
+}
+
+.card h2 {
+  color: var(--dashboard-text-primary, #1e293b);
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 16px;
+}
+
+.card p {
+  color: var(--dashboard-text-secondary, #64748b);
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (width <= 768px) {
+  .card {
+    padding: 32px 24px;
+    margin: 20px;
+  }
+
+  .card h2 {
+    font-size: 20px;
+  }
+
+  .card p {
+    font-size: 14px;
+  }
+}

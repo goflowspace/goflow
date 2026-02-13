@@ -1,0 +1,103 @@
+model User {
+  id            String          @id @default(auto()) @map("_id") @db.ObjectId
+  email         String          @unique
+  password      String?
+  name          String?
+  picture       String?         // URL аватарки пользователя
+  profile       Profile?
+  projects      Project[] // Проекты пользователя
+  ProjectMember ProjectMember[] // Где пользователь участник
+  operations    Operation[]     // Операции пользователя
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  googleId String? @unique
+
+  isVerified        Boolean             @default(false)
+  verificationToken VerificationToken[]
+  refreshTokens     RefreshToken[]
+  liveblocksAccessToken String? // Access Token Liveblocks
+  
+  // Связи для команд
+  ownedTeams         Team[]           @relation("TeamOwner")
+  teamMemberships    TeamMember[]     @relation("TeamMemberships")
+  teamInvitations    TeamInvitation[] @relation("TeamInvitations")
+  teamProjectsAdded  TeamProject[]    @relation("TeamProjectsAdded")
+
+  // Связи для AI системы
+  aiRequests         AIRequest[]      @relation("UserAIRequests")
+  aiSuggestions      AISuggestion[]   @relation("UserAISuggestions")
+  aiSettings         AIUserSettings?  @relation("UserAISettings")
+  // Новая архитектура кредитов
+  credits            UserCredits[]     @relation("UserCredits")
+  creditPolicies     CreditPolicy[]    @relation("UserCreditPolicy")  
+  usageStats         UsageStats[]      @relation("UserUsageStats")
+  aiPipelineExecutions AIPipelineExecution[] @relation("UserPipelineExecutions")
+  
+  // Связи для платежной системы
+  stripeCustomer     StripeCustomer?  @relation("UserStripeCustomer")
+  stripeSubscriptions StripeSubscription[] @relation("UserStripeSubscriptions")
+  stripePurchases    StripePurchase[] @relation("UserStripePurchases")
+  
+  // Связи для командных кредитов
+  purchasedTeamCredits TeamCredits[]        @relation("TeamCreditsPurchaser")
+  teamCreditTransactions TeamCreditTransaction[] @relation("TeamCreditTransactionPerformer")
+  
+  // Связи для feedback
+  feedbacks          Feedback[]       @relation("UserFeedback")
+  
+  // Связи для локализации
+  translatedLocalizations NodeLocalization[]   @relation("TranslatedLocalizations")
+  reviewedLocalizations   NodeLocalization[]   @relation("ReviewedLocalizations") 
+  approvedLocalizations   NodeLocalization[]   @relation("ApprovedLocalizations")
+  protectedLocalizations  NodeLocalization[]   @relation("ProtectedLocalizations")
+  localizationHistory     LocalizationHistory[] @relation("LocalizationHistoryChanges")
+  
+  // Связи для комментариев
+  createdThreads     Thread[]         @relation("CreatedThreads")
+  comments           Comment[]        @relation("UserComments") 
+  notifications      Notification[]   @relation("UserNotifications")
+  commentReadStatus  CommentReadStatus[] @relation("UserCommentReadStatus")
+  
+  // Связи для блокнота
+  notes              Note[]           @relation("UserNotes")
+  tags               Tag[]            @relation("UserTags")
+
+  @@map("users")
+}
+
+model Profile {
+  id     String  @id @default(auto()) @map("_id") @db.ObjectId
+  bio    String?
+  user   User    @relation(fields: [userId], references: [id])
+  userId String  @unique @db.ObjectId
+
+  @@map("profiles")
+}
+
+model VerificationToken {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String   @db.ObjectId
+  token     String   @unique
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("verification_tokens")
+}
+
+model RefreshToken {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String   @db.ObjectId
+  token     String   @unique
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+  
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([userId])
+
+  @@map("refresh_tokens")
+}

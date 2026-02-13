@@ -1,0 +1,724 @@
+/* Основная панель проектов */
+.sidebar {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--dashboard-bg-card);
+  transition: width 0.3s ease;
+  overflow: hidden; /* Предотвращаем выпирание содержимого при анимации */
+}
+
+/* Сжатое состояние панели */
+.sidebarCollapsed {
+  width: 64px;
+}
+
+.sidebarExpanded {
+  width: 320px;
+}
+
+/* Секция команд */
+.teamSection {
+  padding: 20px 16px 16px;
+  border-bottom: 1px solid var(--dashboard-border-primary);
+  flex-shrink: 0;
+}
+
+/* Селектор команд */
+.teamSelector {
+  position: relative;
+}
+
+.teamButton {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.teamButton:hover {
+  opacity: 0.8;
+}
+
+.teamLogoWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.teamLogo {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.teamInitials {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+}
+
+.memberIcon {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 12px;
+  height: 12px;
+  color: #6b7280;
+  background: white;
+  border-radius: 50%;
+  padding: 1px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 10%);
+}
+
+.teamInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.teamName {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--dashboard-text-primary);
+  text-align: left;
+}
+
+.chevron {
+  width: 16px;
+  height: 16px;
+  color: var(--dashboard-text-tertiary);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+/* Выпадающий список команд */
+.teamDropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--dashboard-bg-card);
+  border: 1px solid var(--dashboard-border-secondary);
+  border-radius: 8px;
+  margin-top: 8px;
+  z-index: 50;
+  box-shadow: var(--dashboard-shadow-xl);
+  overflow: hidden;
+}
+
+.dropdownHeader {
+  padding: 12px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dashboard-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background-color: var(--dashboard-bg-tertiary);
+  border-bottom: 1px solid var(--dashboard-border-secondary);
+}
+
+.teamsList {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.teamItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-align: left;
+}
+
+.teamItem:hover {
+  background-color: var(--dashboard-bg-hover);
+}
+
+.teamItemIconWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.teamItemIcon {
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.teamMemberIcon {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 10px;
+  height: 10px;
+  color: #6b7280;
+  background: white;
+  border-radius: 50%;
+  padding: 1px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 10%);
+}
+
+.teamItemInitials {
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+}
+
+.teamItemInfo {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.teamItemNameRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.teamItemName {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dashboard-text-primary);
+  flex: 1;
+  min-width: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.checkIcon {
+  width: 16px;
+  height: 16px;
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+.dropdownSeparator {
+  height: 1px;
+  background-color: var(--dashboard-border-secondary);
+  margin: 4px 0;
+}
+
+.createTeamButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dashboard-text-primary);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-align: left;
+}
+
+.createTeamButton:hover {
+  background-color: var(--dashboard-bg-hover);
+}
+
+.plusIcon {
+  width: 16px;
+  height: 16px;
+  color: var(--dashboard-text-tertiary);
+}
+
+.loadingState,
+.emptyTeamsState {
+  padding: 16px;
+  text-align: center;
+}
+
+.loadingState {
+  font-size: 14px;
+  color: var(--dashboard-text-tertiary);
+}
+
+.emptyText {
+  font-size: 14px;
+  color: var(--dashboard-text-tertiary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Заголовок панели */
+.header {
+  padding: 20px 16px 16px;
+  border-bottom: 1px solid var(--dashboard-border-primary);
+  flex-shrink: 0;
+  height: 68px; /* Фиксированная высота */
+  box-sizing: border-box;
+  overflow: hidden; /* Скрываем выпирающий контент */
+}
+
+/* Когда команды скрыты, делаем header первым элементом */
+.sidebar .hidden + .header {
+  padding-top: 20px;
+  border-top: none;
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.titleSection {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--dashboard-text-primary);
+  margin: 0;
+  line-height: 1.4;
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap; /* Запрещаем перенос текста */
+  overflow: hidden; /* Скрываем переполнение */
+  text-overflow: ellipsis; /* Добавляем многоточие если текст не помещается */
+}
+
+.collapseButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  color: var(--dashboard-text-secondary);
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.collapseButton:hover {
+  background-color: var(--dashboard-bg-hover);
+  color: var(--dashboard-text-primary);
+}
+
+.collapseButton svg {
+  width: 20px;
+  height: 20px;
+}
+
+.createButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background-color: var(--dashboard-button-primary);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  padding: 8px 12px;
+  min-width: auto;
+}
+
+.createButton:hover {
+  background-color: var(--dashboard-button-primary-hover);
+  transform: translateY(-1px);
+}
+
+.createButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.createIcon {
+  width: 14px;
+  height: 14px;
+  color: var(--dashboard-button-primary-text);
+}
+
+.createText {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--dashboard-button-primary-text);
+  white-space: nowrap;
+}
+
+/* Список проектов */
+.projectsList {
+  flex: 1;
+  overflow: hidden auto;
+}
+
+/* Пустое состояние */
+.emptyState {
+  padding: 32px 20px;
+  text-align: center;
+}
+
+/* Состояние загрузки */
+.loadingState {
+  padding: 32px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.loadingText {
+  font-size: 14px;
+  color: var(--dashboard-text-tertiary);
+  margin: 0;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--dashboard-border-primary);
+  border-top: 2px solid var(--dashboard-accent-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Дополнительные разделы */
+.additionalSections {
+  border-top: 1px solid var(--dashboard-border-primary);
+  padding: 16px;
+  flex-shrink: 0;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--dashboard-text-tertiary);
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.navItem:hover {
+  background-color: var(--dashboard-bg-hover);
+  color: var(--dashboard-text-primary);
+}
+
+.navItemActive {
+  background-color: var(--dashboard-nav-active-bg);
+  color: var(--dashboard-nav-active-text);
+}
+
+.navIcon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Класс для скрытия элементов (для возможности легкого восстановления) */
+.hidden {
+  display: none !important;
+}
+
+/* Footer с аватаром пользователя */
+.footer {
+  border-top: 1px solid var(--dashboard-border-primary);
+  padding: 16px;
+  margin-top: auto;
+  flex-shrink: 0;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 100%;
+}
+
+.userInfo:hover {
+  background-color: var(--dashboard-bg-hover);
+}
+
+.userName {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dashboard-text-primary);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Usage Navigation */
+.usageNavigation {
+  border-top: 1px solid var(--dashboard-border-primary);
+  padding: 16px;
+  flex-shrink: 0;
+}
+
+.usageNavItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--dashboard-text-tertiary);
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.usageNavItem:hover {
+  background-color: var(--dashboard-bg-hover);
+  color: var(--dashboard-text-primary);
+  transform: translateY(-1px);
+}
+
+.usageNavItemActive {
+  background-color: var(--dashboard-nav-active-bg);
+  color: var(--dashboard-nav-active-text);
+}
+
+.usageNavItemActive:hover {
+  background-color: var(--dashboard-nav-active-bg);
+  color: var(--dashboard-nav-active-text);
+}
+
+.usageNavIcon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.usageNavLabel {
+  font-weight: 600;
+}
+
+/* Адаптивность */
+@media (width <= 768px) {
+  .teamSection {
+    padding: 16px 12px 12px;
+  }
+
+  .header {
+    padding: 16px 12px 12px;
+  }
+
+  .title {
+    font-size: 15px;
+  }
+
+  .createButton {
+    padding: 6px 10px;
+  }
+
+  .createIcon {
+    width: 12px;
+    height: 12px;
+  }
+
+  .createText {
+    font-size: 12px;
+  }
+
+  .emptyState {
+    padding: 24px 16px;
+  }
+
+  .additionalSections {
+    padding: 12px;
+  }
+
+  .footer {
+    padding: 12px;
+  }
+}
+
+/* Стили для сжатого состояния */
+.collapsedHeader {
+  padding: 16px 8px;
+  border-bottom: 1px solid var(--dashboard-border-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.expandButton {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background-color: var(--dashboard-bg-secondary);
+  color: var(--dashboard-text-tertiary);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.expandButton:hover {
+  background-color: var(--dashboard-bg-hover);
+  color: var(--dashboard-text-primary);
+  transform: translateY(-1px);
+}
+
+.expandButton svg {
+  width: 20px;
+  height: 20px;
+}
+
+.collapsedProjectsList {
+  flex: 1;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+}
+
+.collapsedProjectItem {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  background-color: var(--dashboard-bg-secondary);
+  color: var(--dashboard-text-tertiary);
+  font-size: 14px;
+  font-weight: 600;
+  border: 2px solid transparent;
+}
+
+.collapsedProjectItem:hover {
+  background-color: var(--dashboard-bg-hover);
+  color: var(--dashboard-text-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+}
+
+.collapsedProjectItemSelected {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  border-color: var(--dashboard-accent-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgb(99 102 241 / 40%);
+}
+
+.collapsedProjectItemSelected:hover {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgb(99 102 241 / 50%);
+}
+
+.collapsedProjectInitials {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.collapsedUserSection {
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid var(--dashboard-border-primary);
+}
+
+.collapsedUserInfo {
+  cursor: pointer;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.collapsedUserInfo:hover {
+  transform: scale(1.05);
+}
+
+/* Скрытие элементов в сжатом состоянии */
+.sidebarCollapsed .teamSection,
+.sidebarCollapsed .header,
+.sidebarCollapsed .projectsList,
+.sidebarCollapsed .additionalSections,
+.sidebarCollapsed .usageNavigation,
+.sidebarCollapsed .footer {
+  display: none;
+}
+
+/* Адаптивность */

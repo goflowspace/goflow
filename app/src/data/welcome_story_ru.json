@@ -1,0 +1,1019 @@
+{
+  "title": "My awesome story",
+  "data": {
+    "timelines": {
+      "base-timeline": {
+        "layers": {
+          "root": {
+            "type": "layer",
+            "id": "root",
+            "name": "root",
+            "depth": 0,
+            "nodeIds": [
+              "J5c4loS0ZrUFkL3h_TdKI",
+              "eoOVWLFClRlD274YGYqU9",
+              "VWt1I0hkFLMgxJ-lkn3oI",
+              "QYFwPYm5gkmiciVHWhstd",
+              "YWnInkkgR6Y0BJXtTquIP",
+              "P9XpkCQtoenNYvi3Guoqc",
+              "hxwxrhaWAFNHQdzu-87km",
+              "DmBZLZiEXKmTVKY2GdRI2",
+              "llLBTDnbbFBO4O3bRxPx2",
+              "lAs0oEz8kxYHc760KKI1Y",
+              "q7WO2tINEGiH4RqK2TYu9",
+              "Rj_h7hjgaq7jdc_RV9IA8",
+              "_rlbqzpsVZenm0Yds66VW",
+              "CqzeH4QrmxfHJAKR6nQyj",
+              "3OLGPQnKLpmYw1TwFpAZl",
+              "qAznBkmHFKNdqlZwQ5MLZ",
+              "qjlSaG_eq3N3V75MD0gy3",
+              "XJ-k0dzhLFTkPIaDh2jQT",
+              "MWsqP1_L7wkfrFi2vuSng",
+              "3qij8ReE9-77hONnI-oF7",
+              "xGxKVlrrDTuJ_g_skRdXS",
+              "7qSUAEvXgZk1QrfT-iF02",
+              "EYvRW3-NiyTldq8wVH6rS",
+              "qfubxyGHgkAUC3ZEgThKY",
+              "o-Pw59JXP9HxsWh87EaCH",
+              "0DPaoei-1Xb9rQ7iiHbPg",
+              "6XRqIM0op2_U5gw8ilZhI"
+            ],
+            "nodes": {
+              "J5c4loS0ZrUFkL3h_TdKI": {
+                "id": "J5c4loS0ZrUFkL3h_TdKI",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 700,
+                  "y": 280
+                },
+                "data": {
+                  "title": "Старт приключения",
+                  "text": "Начало эпической истории."
+                }
+              },
+              "eoOVWLFClRlD274YGYqU9": {
+                "id": "eoOVWLFClRlD274YGYqU9",
+                "type": "note",
+                "coordinates": {
+                  "x": 320,
+                  "y": 280
+                },
+                "data": {
+                  "text": "1. Добро пожаловать во Go Flow!",
+                  "color": "#fffad1"
+                }
+              },
+              "VWt1I0hkFLMgxJ-lkn3oI": {
+                "id": "VWt1I0hkFLMgxJ-lkn3oI",
+                "type": "note",
+                "coordinates": {
+                  "x": 360,
+                  "y": 360
+                },
+                "data": {
+                  "text": "2. Эта приветственная история поможет вам понять как работает наш инструмент.",
+                  "color": "#fffad1"
+                }
+              },
+              "QYFwPYm5gkmiciVHWhstd": {
+                "id": "QYFwPYm5gkmiciVHWhstd",
+                "type": "note",
+                "coordinates": {
+                  "x": 660,
+                  "y": 80
+                },
+                "data": {
+                  "text": "3. Начнем с простого нарративного узла. Его можно добавить с помощью панели инструментов, которая находится слева.",
+                  "color": "#fffad1"
+                }
+              },
+              "YWnInkkgR6Y0BJXtTquIP": {
+                "id": "YWnInkkgR6Y0BJXtTquIP",
+                "type": "note",
+                "coordinates": {
+                  "x": 660,
+                  "y": 520
+                },
+                "data": {
+                  "text": "3.1. Нарративный узел – это основной контейнер нарративного текста.\n\nЭто может быть любой текст, который описывает что-либо, или же реплика персонажа в диалоге.\n\nНарративный узел, кроме основного текста, также может иметь имя. Плюс в нарративном узле выполняются операции с переменными, но об этом позже.",
+                  "color": "#fffad1"
+                }
+              },
+              "P9XpkCQtoenNYvi3Guoqc": {
+                "id": "P9XpkCQtoenNYvi3Guoqc",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 1280,
+                  "y": 280
+                },
+                "data": {
+                  "title": "",
+                  "text": "Мы узнали о том, как связи помогают строить граф сюжета."
+                }
+              },
+              "hxwxrhaWAFNHQdzu-87km": {
+                "id": "hxwxrhaWAFNHQdzu-87km",
+                "type": "note",
+                "coordinates": {
+                  "x": 1000,
+                  "y": 220
+                },
+                "data": {
+                  "text": "4. Узлы связываются между собой связями. Именно так строится граф сюжета.",
+                  "color": "#fffad1"
+                }
+              },
+              "DmBZLZiEXKmTVKY2GdRI2": {
+                "id": "DmBZLZiEXKmTVKY2GdRI2",
+                "type": "note",
+                "coordinates": {
+                  "x": 1000,
+                  "y": 420
+                },
+                "data": {
+                  "text": "4.1. Есть несколько способов подключать связи между узлами.\n\nАвтоматически связи подключаются при создании новых узлов через диалог, когда узел выделен, а также при перемещении узлов, у которых есть свободные пины подключения.\n\nТакже можно подключать связи просто кликнув по пину на одном узле, а затем кливнув по пину на другом.\n\nКонечно, можно подключать связи полностью вручную, зажав пин и проведя курсором в другой.",
+                  "color": "#fffad1"
+                }
+              },
+              "llLBTDnbbFBO4O3bRxPx2": {
+                "id": "llLBTDnbbFBO4O3bRxPx2",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 1680,
+                  "y": 280
+                },
+                "data": {
+                  "title": "Невероятная развилка",
+                  "text": "И подумали, что сюжет может быть нелинейным, хотя бы от части."
+                }
+              },
+              "lAs0oEz8kxYHc760KKI1Y": {
+                "id": "lAs0oEz8kxYHc760KKI1Y",
+                "type": "choice",
+                "coordinates": {
+                  "x": 2040,
+                  "y": 260
+                },
+                "data": {
+                  "text": "Непростой, но все же эпический выбор",
+                  "height": 64
+                }
+              },
+              "q7WO2tINEGiH4RqK2TYu9": {
+                "id": "q7WO2tINEGiH4RqK2TYu9",
+                "type": "choice",
+                "coordinates": {
+                  "x": 2040,
+                  "y": 420
+                },
+                "data": {
+                  "text": "Простой, но морально тяжелый выбор",
+                  "height": 40
+                }
+              },
+              "Rj_h7hjgaq7jdc_RV9IA8": {
+                "id": "Rj_h7hjgaq7jdc_RV9IA8",
+                "type": "note",
+                "coordinates": {
+                  "x": 1640,
+                  "y": -40
+                },
+                "data": {
+                  "text": "6. Но сейчас наша история развивается слишком прямолинейно. Узлы выборов позволят создать ветвления. Их можно добавить, выбрав инструмент или же через диалог создания нового узла, когда выделен узел без исходящих связей.",
+                  "color": "#fffad1"
+                }
+              },
+              "_rlbqzpsVZenm0Yds66VW": {
+                "id": "_rlbqzpsVZenm0Yds66VW",
+                "type": "note",
+                "coordinates": {
+                  "x": 2000,
+                  "y": 540
+                },
+                "data": {
+                  "text": "6.1. Узлы выборов – это способ сделать прямое ветвление сюжета, когда тому, кто проходит сюжет, необходимо самому нажать на вариант выбора, и сюжет будет течь имеено в эту сторону.\n\nУзлы выборов содержат только текст.\n\nВ данном случае оба выбора прикреплены к одному нарративному узлу, они отобразятся вместе с ним.",
+                  "color": "#fffad1"
+                }
+              },
+              "CqzeH4QrmxfHJAKR6nQyj": {
+                "id": "CqzeH4QrmxfHJAKR6nQyj",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 2360,
+                  "y": 140
+                },
+                "data": {
+                  "title": "",
+                  "text": "Эпичные последствия непростого выбора."
+                }
+              },
+              "3OLGPQnKLpmYw1TwFpAZl": {
+                "id": "3OLGPQnKLpmYw1TwFpAZl",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 2360,
+                  "y": 420
+                },
+                "data": {
+                  "title": "",
+                  "text": "Морально тяжелые последствия простого выбора."
+                }
+              },
+              "qAznBkmHFKNdqlZwQ5MLZ": {
+                "id": "qAznBkmHFKNdqlZwQ5MLZ",
+                "type": "note",
+                "coordinates": {
+                  "x": 1340,
+                  "y": 120
+                },
+                "data": {
+                  "text": "5. Нарративные узлы, по общему правилу, проигрываются один за другим через кнопку \"Продолжить\".",
+                  "color": "#fffad1"
+                }
+              },
+              "qjlSaG_eq3N3V75MD0gy3": {
+                "id": "qjlSaG_eq3N3V75MD0gy3",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 2700,
+                  "y": 280
+                },
+                "data": {
+                  "title": "",
+                  "text": "Ленивая концовка сюжета. Или нет?"
+                }
+              },
+              "XJ-k0dzhLFTkPIaDh2jQT": {
+                "id": "XJ-k0dzhLFTkPIaDh2jQT",
+                "type": "note",
+                "coordinates": {
+                  "x": 2660,
+                  "y": 80
+                },
+                "data": {
+                  "text": "7. Ветви сюжета или же какого-либо диалога необязательно развивать, они всегда могут сойтись в единой точке.",
+                  "color": "#fffad1"
+                }
+              },
+              "MWsqP1_L7wkfrFi2vuSng": {
+                "id": "MWsqP1_L7wkfrFi2vuSng",
+                "type": "layer",
+                "coordinates": {
+                  "x": 3080,
+                  "y": 280
+                },
+                "name": "Сюжетный слой",
+                "startingNodes": [
+                  {
+                    "id": "Op5L5DGm8YFCL1RYZ8Y5L",
+                    "type": "narrative",
+                    "coordinates": {
+                      "x": 740,
+                      "y": 280
+                    },
+                    "data": {
+                      "title": "",
+                      "text": "Начало сюжетного слоя."
+                    },
+                    "operations": [],
+                    "isConnected": true
+                  }
+                ],
+                "endingNodes": [
+                  {
+                    "id": "4jhmlhGMOYR16I1gExSAq",
+                    "type": "narrative",
+                    "coordinates": {
+                      "x": 2880,
+                      "y": 260
+                    },
+                    "data": {
+                      "title": "",
+                      "text": "Выходим из сна во сне. Или из акта нашего приключения."
+                    },
+                    "isConnected": true,
+                    "connectionIds": ["S6T8Xq7Xpvo0CXG5Yq_eC"]
+                  }
+                ],
+                "parentLayerId": "root",
+                "description": "Короткое описание"
+              },
+              "3qij8ReE9-77hONnI-oF7": {
+                "id": "3qij8ReE9-77hONnI-oF7",
+                "type": "note",
+                "coordinates": {
+                  "x": 3040,
+                  "y": -260
+                },
+                "data": {
+                  "text": "8. Когда сюжет сходится в точку, это еще не конец.\n\nНа этом этапе мы хотим показать вам слои. Их также можно добавить с помощью панели инструментов или через диалог создания.\n\nВойти в слой можно нажав на него в боковой панели справа или нажав на кнопку в объекте слоя.\n\nПожалуйста, войдите в слой, чтобы продолжить ознакомление в нашим инструментом.",
+                  "color": "#fffad1"
+                }
+              },
+              "xGxKVlrrDTuJ_g_skRdXS": {
+                "id": "xGxKVlrrDTuJ_g_skRdXS",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 3500,
+                  "y": 280
+                },
+                "data": {
+                  "title": "Реальная концовка",
+                  "text": "Спасибо за приключение!"
+                }
+              },
+              "7qSUAEvXgZk1QrfT-iF02": {
+                "id": "7qSUAEvXgZk1QrfT-iF02",
+                "type": "note",
+                "coordinates": {
+                  "x": 3000,
+                  "y": 700
+                },
+                "data": {
+                  "text": "8.1. Слои – это контейнеры узлов и объектов графа в целом.\n\nСлои призваны не только навести визуальный порядок на холсте, но и структурно разделить сюжет. К примеру, на акты, главы или какие угодно структуры.",
+                  "color": "#fffad1"
+                }
+              },
+              "EYvRW3-NiyTldq8wVH6rS": {
+                "id": "EYvRW3-NiyTldq8wVH6rS",
+                "type": "note",
+                "coordinates": {
+                  "x": 3780,
+                  "y": 220
+                },
+                "data": {
+                  "text": "17. Напоследок осталось только протестировать нашу историю, запустив ее с панели, которая находится сверху справа.\n\nА затем можно экспортировать историю из меню в верхней панели сверху слева, чтобы поделиться ей или интегрировать куда-либо.",
+                  "color": "#fffad1"
+                }
+              },
+              "qfubxyGHgkAUC3ZEgThKY": {
+                "id": "qfubxyGHgkAUC3ZEgThKY",
+                "type": "note",
+                "coordinates": {
+                  "x": 3440,
+                  "y": 40
+                },
+                "data": {
+                  "text": "16. Наше приключение подходит к концу. Оно получилось не очень ветвистым, но мы уверены, что у вас уже есть гениальные сюжеты, которые можно реализовать в нашем инструменте.",
+                  "color": "#fffad1"
+                }
+              },
+              "o-Pw59JXP9HxsWh87EaCH": {
+                "id": "o-Pw59JXP9HxsWh87EaCH",
+                "type": "note",
+                "coordinates": {
+                  "x": 3461.377084042543,
+                  "y": 533.3849160728621
+                },
+                "data": {
+                  "text": "16.1. Кстати, концовок может быть множество. Все узлы, которые не имеют исходящей связи по сути являются концом графа – концом сюжета.",
+                  "color": "#fffad1"
+                }
+              },
+              "0DPaoei-1Xb9rQ7iiHbPg": {
+                "id": "0DPaoei-1Xb9rQ7iiHbPg",
+                "type": "note",
+                "coordinates": {
+                  "x": 3220,
+                  "y": 700
+                },
+                "data": {
+                  "text": "8.2. Слои не делят граф, а являются его частью.\n\nПоэтому слои имеют начальные и конечные узлы, чтобы сюжет мог войти и выйти из слоя, если потребуется.\n\nВажно и то, что начальных узлов у слоя может быть множество.",
+                  "color": "#fffad1"
+                }
+              },
+              "6XRqIM0op2_U5gw8ilZhI": {
+                "id": "6XRqIM0op2_U5gw8ilZhI",
+                "type": "note",
+                "coordinates": {
+                  "x": 4014.680800972148,
+                  "y": 322.3520299335137
+                },
+                "data": {
+                  "text": "Успешного творчества!",
+                  "color": "#fffad1"
+                }
+              }
+            },
+            "edges": {
+              "DVbZnJOBYDlT79AHsXOGR": {
+                "type": "link",
+                "id": "DVbZnJOBYDlT79AHsXOGR",
+                "startNodeId": "J5c4loS0ZrUFkL3h_TdKI",
+                "endNodeId": "P9XpkCQtoenNYvi3Guoqc",
+                "conditions": []
+              },
+              "RzEpayWCJrNhzYJOYofSr": {
+                "type": "link",
+                "id": "RzEpayWCJrNhzYJOYofSr",
+                "startNodeId": "P9XpkCQtoenNYvi3Guoqc",
+                "endNodeId": "llLBTDnbbFBO4O3bRxPx2",
+                "conditions": []
+              },
+              "4J4F6unFC-8OyauX0Ngwn": {
+                "type": "link",
+                "id": "4J4F6unFC-8OyauX0Ngwn",
+                "startNodeId": "llLBTDnbbFBO4O3bRxPx2",
+                "endNodeId": "lAs0oEz8kxYHc760KKI1Y",
+                "conditions": []
+              },
+              "rQlBe15K5Lem4DGqUEiX9": {
+                "type": "link",
+                "id": "rQlBe15K5Lem4DGqUEiX9",
+                "startNodeId": "llLBTDnbbFBO4O3bRxPx2",
+                "endNodeId": "q7WO2tINEGiH4RqK2TYu9",
+                "conditions": []
+              },
+              "6adL9Xwnim3v0zrnckDW9": {
+                "type": "link",
+                "id": "6adL9Xwnim3v0zrnckDW9",
+                "startNodeId": "lAs0oEz8kxYHc760KKI1Y",
+                "endNodeId": "CqzeH4QrmxfHJAKR6nQyj",
+                "conditions": []
+              },
+              "Q2HATx74Xqdu0I2FE1hFY": {
+                "type": "link",
+                "id": "Q2HATx74Xqdu0I2FE1hFY",
+                "startNodeId": "q7WO2tINEGiH4RqK2TYu9",
+                "endNodeId": "3OLGPQnKLpmYw1TwFpAZl",
+                "conditions": []
+              },
+              "BMlzu3SS_ns26HzCs5ezX": {
+                "type": "link",
+                "id": "BMlzu3SS_ns26HzCs5ezX",
+                "startNodeId": "CqzeH4QrmxfHJAKR6nQyj",
+                "endNodeId": "qjlSaG_eq3N3V75MD0gy3",
+                "conditions": []
+              },
+              "q42NeRgmHMwux9QqAw0Gw": {
+                "type": "link",
+                "id": "q42NeRgmHMwux9QqAw0Gw",
+                "startNodeId": "3OLGPQnKLpmYw1TwFpAZl",
+                "endNodeId": "qjlSaG_eq3N3V75MD0gy3",
+                "conditions": []
+              },
+              "WnFLYY4KWcR7i7Kd3YiCt": {
+                "type": "link",
+                "id": "WnFLYY4KWcR7i7Kd3YiCt",
+                "startNodeId": "qjlSaG_eq3N3V75MD0gy3",
+                "endNodeId": "MWsqP1_L7wkfrFi2vuSng",
+                "targetHandle": "Op5L5DGm8YFCL1RYZ8Y5L",
+                "conditions": []
+              },
+              "S6T8Xq7Xpvo0CXG5Yq_eC": {
+                "type": "link",
+                "id": "S6T8Xq7Xpvo0CXG5Yq_eC",
+                "startNodeId": "MWsqP1_L7wkfrFi2vuSng",
+                "endNodeId": "xGxKVlrrDTuJ_g_skRdXS",
+                "sourceHandle": "4jhmlhGMOYR16I1gExSAq",
+                "conditions": []
+              }
+            }
+          },
+          "MWsqP1_L7wkfrFi2vuSng": {
+            "type": "layer",
+            "id": "MWsqP1_L7wkfrFi2vuSng",
+            "parentLayerId": "root",
+            "name": "Сюжетный слой",
+            "depth": 1,
+            "nodeIds": [
+              "Op5L5DGm8YFCL1RYZ8Y5L",
+              "rNEh-iagouBcgHKvPb929",
+              "z8OkOrowpoHAdnV9Vy5HY",
+              "Ewyeh0Hf3BlE5NyM3rDBk",
+              "SFKR8szbhVQgDBM5FPtLq",
+              "bRPDGXk3MD0Q9RL2MrRkP",
+              "Z5JJkK8F-R2hcriLequbA",
+              "KsoVn5Q1rygRVAzLc3BBK",
+              "tEuA7A9qUPCXJhYU2YhQS",
+              "bD5W2Dbrk9WC62L_OC7BA",
+              "i7OiY0-47IVUMaURznE2x",
+              "UIz0zG7cuWf-9q-QwHlP9",
+              "QrlDQc_wqTdN9V9byOqEl",
+              "kkT-jab7K8EJmv1mtRsHy",
+              "K6jnhA2iE5vSyjp1g1TkD",
+              "4jhmlhGMOYR16I1gExSAq",
+              "vZOi1ML38i6HSPbzAQcl6",
+              "ENCDt3vaRUDOT800d_TZv"
+            ],
+            "nodes": {
+              "Op5L5DGm8YFCL1RYZ8Y5L": {
+                "id": "Op5L5DGm8YFCL1RYZ8Y5L",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 740,
+                  "y": 280
+                },
+                "data": {
+                  "title": "",
+                  "text": "Начало сюжетного слоя."
+                },
+                "operations": []
+              },
+              "rNEh-iagouBcgHKvPb929": {
+                "id": "rNEh-iagouBcgHKvPb929",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 1080,
+                  "y": 280
+                },
+                "data": {
+                  "title": "",
+                  "text": "Оказывается, у нас есть монеты и другие переменные."
+                }
+              },
+              "z8OkOrowpoHAdnV9Vy5HY": {
+                "id": "z8OkOrowpoHAdnV9Vy5HY",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 1600,
+                  "y": 140
+                },
+                "data": {
+                  "title": "",
+                  "text": "Сюда мы попадем запросто."
+                }
+              },
+              "Ewyeh0Hf3BlE5NyM3rDBk": {
+                "id": "Ewyeh0Hf3BlE5NyM3rDBk",
+                "type": "note",
+                "coordinates": {
+                  "x": 400,
+                  "y": 280
+                },
+                "data": {
+                  "text": "9. Добро пожаловать в сюжетный слой!",
+                  "color": "#fffad1"
+                }
+              },
+              "SFKR8szbhVQgDBM5FPtLq": {
+                "id": "SFKR8szbhVQgDBM5FPtLq",
+                "type": "note",
+                "coordinates": {
+                  "x": 440,
+                  "y": 360
+                },
+                "data": {
+                  "text": "10. Как видно, внутри знакомая обстановка: холст, узлы и продолжение нашей истории.",
+                  "color": "#fffad1"
+                }
+              },
+              "bRPDGXk3MD0Q9RL2MrRkP": {
+                "id": "bRPDGXk3MD0Q9RL2MrRkP",
+                "type": "note",
+                "coordinates": {
+                  "x": 700,
+                  "y": 20
+                },
+                "data": {
+                  "text": "11. Мы уже знаем, как делать прямые ветвления с помощью выборов.\n\nНо это не единственный способ управлять направлением сюжета.",
+                  "color": "#fffad1"
+                }
+              },
+              "Z5JJkK8F-R2hcriLequbA": {
+                "id": "Z5JJkK8F-R2hcriLequbA",
+                "type": "note",
+                "coordinates": {
+                  "x": 1040,
+                  "y": 0
+                },
+                "data": {
+                  "text": "12. Чтобы делать ветвления сюжета без выборов (или отслеживать состояние персонажей, событий в сюжете и так далее) нужны переменные.\n\nУ нас уже есть одна – монеты.",
+                  "color": "#fffad1"
+                }
+              },
+              "KsoVn5Q1rygRVAzLc3BBK": {
+                "id": "KsoVn5Q1rygRVAzLc3BBK",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 1600,
+                  "y": 420
+                },
+                "data": {
+                  "title": "",
+                  "text": "Сюда мы никогда не попадем."
+                },
+                "operations": []
+              },
+              "tEuA7A9qUPCXJhYU2YhQS": {
+                "id": "tEuA7A9qUPCXJhYU2YhQS",
+                "type": "note",
+                "coordinates": {
+                  "x": 1060,
+                  "y": 520
+                },
+                "data": {
+                  "text": "12.1. Переменные можно посмотреть, создать или отредактировать в боковой панели справа.\n\nПеременные бывают разных типов: числовые, дробные, проценты, строки или же булевы (переключатель true/false).",
+                  "color": "#fffad1"
+                }
+              },
+              "bD5W2Dbrk9WC62L_OC7BA": {
+                "id": "bD5W2Dbrk9WC62L_OC7BA",
+                "type": "note",
+                "coordinates": {
+                  "x": 1340,
+                  "y": -180
+                },
+                "data": {
+                  "text": "13. Но переменные всего лишь хранят различную информацию.\n\nЧтобы применять эту информацию существуют условия.\n\nВ ситуации ниже мы видим, что сюжет пойдет по верхнему пути, перед этим проверив условие прохода по-нижнему. Нижнее условие не сработает, так как у нас не хватает монет.",
+                  "color": "#fffad1"
+                }
+              },
+              "i7OiY0-47IVUMaURznE2x": {
+                "id": "i7OiY0-47IVUMaURznE2x",
+                "type": "note",
+                "coordinates": {
+                  "x": 1350.9555072098744,
+                  "y": 573.0496182224077
+                },
+                "data": {
+                  "text": "13.1. Условия – это \"охранник у двери\". Оно проверяет, сможет ли сюжет пройти дальше.\n\nУсловия можно создавать прямо на связях. Исключение – прямая одиночная связь от узла к узлу. Так как условие на такой связи может запросто остановить развитие сюжета.\n\nУсловия бывают разные: проверка переменных, вероятность прохождения и другие.\n\nТакже условия можно комбинировать.",
+                  "color": "#fffad1"
+                }
+              },
+              "UIz0zG7cuWf-9q-QwHlP9": {
+                "id": "UIz0zG7cuWf-9q-QwHlP9",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 1980,
+                  "y": 260
+                },
+                "data": {
+                  "title": "",
+                  "text": "Зарабатываем монеты."
+                },
+                "operations": [
+                  {
+                    "id": "lgVskYHME7nwVqVRYRJUm",
+                    "nodeId": "UIz0zG7cuWf-9q-QwHlP9",
+                    "variableId": "iEBsuoI5xwvg-i4vmXErA",
+                    "operationType": "addition",
+                    "target": {
+                      "type": "custom",
+                      "value": 1000
+                    },
+                    "enabled": true,
+                    "order": 0
+                  }
+                ]
+              },
+              "QrlDQc_wqTdN9V9byOqEl": {
+                "id": "QrlDQc_wqTdN9V9byOqEl",
+                "type": "note",
+                "coordinates": {
+                  "x": 1940,
+                  "y": -60
+                },
+                "data": {
+                  "text": "14. Но как же нам \"заработать\" монеты, чтобы соблюсти условия и \"охрана связи\" пропустила нас?\n\nОперации с перменными в узлах – способ управлять значениями переменных по ходу развития сюжета.",
+                  "color": "#fffad1"
+                }
+              },
+              "kkT-jab7K8EJmv1mtRsHy": {
+                "id": "kkT-jab7K8EJmv1mtRsHy",
+                "type": "note",
+                "coordinates": {
+                  "x": 1940,
+                  "y": 540
+                },
+                "data": {
+                  "text": "14.1. Операции с переменными можно создавать внутри узлов.\n\nОперации бывают разные: арифметические, объединение строк и другие.\n\nОперации срабатывают, когда мы приходим в узел, им не нужны дополнительные условия (все условия прихода сюжета в узел хранятся на связях).",
+                  "color": "#fffad1"
+                }
+              },
+              "K6jnhA2iE5vSyjp1g1TkD": {
+                "id": "K6jnhA2iE5vSyjp1g1TkD",
+                "type": "layer",
+                "coordinates": {
+                  "x": 2440,
+                  "y": 260
+                },
+                "name": "Слой в слое?",
+                "startingNodes": [
+                  {
+                    "id": "z4PXaW0Lbe2HZPQvOyP6V",
+                    "type": "narrative",
+                    "coordinates": {
+                      "x": 680,
+                      "y": 260
+                    },
+                    "data": {
+                      "title": "",
+                      "text": "Да, это слой в слое."
+                    },
+                    "isConnected": true
+                  },
+                  {
+                    "id": "syaASL-QkIDNlngCodhYU",
+                    "type": "narrative",
+                    "coordinates": {
+                      "x": 680,
+                      "y": 560
+                    },
+                    "data": {
+                      "title": "",
+                      "text": "Определенно, слой в слое."
+                    },
+                    "isConnected": true
+                  }
+                ],
+                "endingNodes": [
+                  {
+                    "id": "4s5sd6no5VdmshS3Wg944",
+                    "type": "narrative",
+                    "coordinates": {
+                      "x": 1457.2210642994587,
+                      "y": 235.4577418930471
+                    },
+                    "data": {
+                      "title": "",
+                      "text": "Выходим из слоя через этот путь, если другой путь с шансов 75% не сработал."
+                    },
+                    "isConnected": true
+                  },
+                  {
+                    "id": "zYOM_VRjjreeVxBY7HM5x",
+                    "type": "narrative",
+                    "coordinates": {
+                      "x": 1460,
+                      "y": 560
+                    },
+                    "data": {
+                      "title": "",
+                      "text": "Cработал шанс в 75%, и мы выходим из слоя через этот путь."
+                    },
+                    "isConnected": true
+                  }
+                ],
+                "parentLayerId": "MWsqP1_L7wkfrFi2vuSng",
+                "description": ""
+              },
+              "4jhmlhGMOYR16I1gExSAq": {
+                "id": "4jhmlhGMOYR16I1gExSAq",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 2880,
+                  "y": 260
+                },
+                "data": {
+                  "title": "",
+                  "text": "Выходим из сна во сне. Или из акта нашего приключения."
+                }
+              },
+              "vZOi1ML38i6HSPbzAQcl6": {
+                "id": "vZOi1ML38i6HSPbzAQcl6",
+                "type": "note",
+                "coordinates": {
+                  "x": 2400,
+                  "y": 100
+                },
+                "data": {
+                  "text": "15. Также можно создавать слои внутри слоя. И внутри слоя, который внутри слоя...",
+                  "color": "#fffad1"
+                }
+              },
+              "ENCDt3vaRUDOT800d_TZv": {
+                "id": "ENCDt3vaRUDOT800d_TZv",
+                "type": "note",
+                "coordinates": {
+                  "x": 2400,
+                  "y": 760
+                },
+                "data": {
+                  "text": "15.1. При этом у слоя может быть несколько начал и концовок.\n\nВсе узлы внутри слоя, которые не имеют входящих связей – начальные.\n\nВсе узлы внутри слоя которые не имеют исходящих связей – конечные.",
+                  "color": "#fffad1"
+                }
+              }
+            },
+            "edges": {
+              "t3iwk8V8eow79py79Nebu": {
+                "type": "link",
+                "id": "t3iwk8V8eow79py79Nebu",
+                "startNodeId": "Op5L5DGm8YFCL1RYZ8Y5L",
+                "endNodeId": "rNEh-iagouBcgHKvPb929",
+                "conditions": []
+              },
+              "Qee4WJysfM4WamA99qyDO": {
+                "type": "link",
+                "id": "Qee4WJysfM4WamA99qyDO",
+                "startNodeId": "rNEh-iagouBcgHKvPb929",
+                "endNodeId": "z8OkOrowpoHAdnV9Vy5HY",
+                "conditions": []
+              },
+              "zuZTg4TKTgGGlutgojjwu": {
+                "type": "link",
+                "id": "zuZTg4TKTgGGlutgojjwu",
+                "startNodeId": "rNEh-iagouBcgHKvPb929",
+                "endNodeId": "KsoVn5Q1rygRVAzLc3BBK",
+                "conditions": [
+                  {
+                    "id": "FiPZlwPo3v1P_qI4nufRe",
+                    "operator": "AND",
+                    "conditions": [
+                      {
+                        "id": "ibZDQ7-VCS-8FOJhFhRDe",
+                        "type": "variable_comparison",
+                        "operator": "gte",
+                        "valType": "custom",
+                        "varId": "iEBsuoI5xwvg-i4vmXErA",
+                        "value": 1234
+                      }
+                    ]
+                  }
+                ]
+              },
+              "5n0jOCJr2NkuvG_xxs7jm": {
+                "type": "link",
+                "id": "5n0jOCJr2NkuvG_xxs7jm",
+                "startNodeId": "z8OkOrowpoHAdnV9Vy5HY",
+                "endNodeId": "UIz0zG7cuWf-9q-QwHlP9",
+                "conditions": []
+              },
+              "Zw-DbcEmjjqoyAqL8MXQA": {
+                "type": "link",
+                "id": "Zw-DbcEmjjqoyAqL8MXQA",
+                "startNodeId": "KsoVn5Q1rygRVAzLc3BBK",
+                "endNodeId": "UIz0zG7cuWf-9q-QwHlP9",
+                "conditions": []
+              },
+              "dIzVcB52-KuOIejri969N": {
+                "type": "link",
+                "id": "dIzVcB52-KuOIejri969N",
+                "startNodeId": "UIz0zG7cuWf-9q-QwHlP9",
+                "endNodeId": "K6jnhA2iE5vSyjp1g1TkD",
+                "targetHandle": "z4PXaW0Lbe2HZPQvOyP6V",
+                "conditions": []
+              },
+              "pQQQuV0vXoV1P2PCcobeS": {
+                "type": "link",
+                "id": "pQQQuV0vXoV1P2PCcobeS",
+                "startNodeId": "UIz0zG7cuWf-9q-QwHlP9",
+                "endNodeId": "K6jnhA2iE5vSyjp1g1TkD",
+                "targetHandle": "syaASL-QkIDNlngCodhYU",
+                "conditions": [
+                  {
+                    "id": "RZP4OtbvMdOc5sWwIeohk",
+                    "operator": "AND",
+                    "conditions": [
+                      {
+                        "id": "CwHpmbFxUg1GrOIQFHOYa",
+                        "type": "probability",
+                        "probability": 0.5
+                      }
+                    ]
+                  }
+                ]
+              },
+              "VbSpn5tBRtMhV1fDK-GFE": {
+                "type": "link",
+                "id": "VbSpn5tBRtMhV1fDK-GFE",
+                "startNodeId": "K6jnhA2iE5vSyjp1g1TkD",
+                "endNodeId": "4jhmlhGMOYR16I1gExSAq",
+                "sourceHandle": "4s5sd6no5VdmshS3Wg944",
+                "conditions": []
+              },
+              "nCjmT4HGPcGX2x4UKAsaB": {
+                "type": "link",
+                "id": "nCjmT4HGPcGX2x4UKAsaB",
+                "startNodeId": "K6jnhA2iE5vSyjp1g1TkD",
+                "endNodeId": "4jhmlhGMOYR16I1gExSAq",
+                "sourceHandle": "zYOM_VRjjreeVxBY7HM5x",
+                "conditions": []
+              }
+            },
+            "description": "Короткое описание"
+          },
+          "K6jnhA2iE5vSyjp1g1TkD": {
+            "type": "layer",
+            "id": "K6jnhA2iE5vSyjp1g1TkD",
+            "parentLayerId": "MWsqP1_L7wkfrFi2vuSng",
+            "name": "Слой в слое?",
+            "depth": 2,
+            "nodeIds": ["z4PXaW0Lbe2HZPQvOyP6V", "U1ucvxVzHSdbtpBG-92zU", "syaASL-QkIDNlngCodhYU", "4s5sd6no5VdmshS3Wg944", "zYOM_VRjjreeVxBY7HM5x"],
+            "nodes": {
+              "z4PXaW0Lbe2HZPQvOyP6V": {
+                "id": "z4PXaW0Lbe2HZPQvOyP6V",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 680,
+                  "y": 260
+                },
+                "data": {
+                  "title": "",
+                  "text": "Да, это слой в слое."
+                }
+              },
+              "U1ucvxVzHSdbtpBG-92zU": {
+                "id": "U1ucvxVzHSdbtpBG-92zU",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 1000,
+                  "y": 400
+                },
+                "data": {
+                  "title": "",
+                  "text": "Как в фильме Начало. Или как в хорошем сюжете."
+                }
+              },
+              "syaASL-QkIDNlngCodhYU": {
+                "id": "syaASL-QkIDNlngCodhYU",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 680,
+                  "y": 560
+                },
+                "data": {
+                  "title": "",
+                  "text": "Определенно, слой в слое."
+                }
+              },
+              "4s5sd6no5VdmshS3Wg944": {
+                "id": "4s5sd6no5VdmshS3Wg944",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 1457.2210642994587,
+                  "y": 235.4577418930471
+                },
+                "data": {
+                  "title": "",
+                  "text": "Выходим из слоя через этот путь, если другой путь с шансов 75% не сработал."
+                }
+              },
+              "zYOM_VRjjreeVxBY7HM5x": {
+                "id": "zYOM_VRjjreeVxBY7HM5x",
+                "type": "narrative",
+                "coordinates": {
+                  "x": 1460,
+                  "y": 560
+                },
+                "data": {
+                  "title": "",
+                  "text": "Cработал шанс в 75%, и мы выходим из слоя через этот путь."
+                }
+              }
+            },
+            "edges": {
+              "PtgVP2VoDeKdqpuA0FIvl": {
+                "id": "PtgVP2VoDeKdqpuA0FIvl",
+                "startNodeId": "z4PXaW0Lbe2HZPQvOyP6V",
+                "endNodeId": "U1ucvxVzHSdbtpBG-92zU",
+                "conditions": [],
+                "type": "link"
+              },
+              "C0f9xRxe4HFVl6aGqPEqM": {
+                "type": "link",
+                "id": "C0f9xRxe4HFVl6aGqPEqM",
+                "startNodeId": "syaASL-QkIDNlngCodhYU",
+                "endNodeId": "U1ucvxVzHSdbtpBG-92zU",
+                "conditions": []
+              },
+              "3ARXvKt8vpctwkpRdLrM1": {
+                "type": "link",
+                "id": "3ARXvKt8vpctwkpRdLrM1",
+                "startNodeId": "U1ucvxVzHSdbtpBG-92zU",
+                "endNodeId": "4s5sd6no5VdmshS3Wg944",
+                "conditions": []
+              },
+              "GrhnmaLEpNEd6cEZZqGId": {
+                "type": "link",
+                "id": "GrhnmaLEpNEd6cEZZqGId",
+                "startNodeId": "U1ucvxVzHSdbtpBG-92zU",
+                "endNodeId": "zYOM_VRjjreeVxBY7HM5x",
+                "conditions": [
+                  {
+                    "id": "y-cIonVylUjZ-GcBuSRdD",
+                    "operator": "AND",
+                    "conditions": [
+                      {
+                        "id": "kZlyjfVCz1LKxvIrdaySP",
+                        "type": "probability",
+                        "probability": 0.75
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            "description": ""
+          }
+        },
+        "lastLayerNumber": 3,
+        "variables": [
+          {
+            "id": "iEBsuoI5xwvg-i4vmXErA",
+            "name": "Монеты",
+            "internalName": "monety",
+            "type": "integer",
+            "value": 1000,
+            "description": ""
+          }
+        ]
+      }
+    }
+  },
+  "metadata": {
+    "exportedAt": "2025-05-21T17:56:30.133Z",
+    "version": "0.2.0",
+    "protocolVersion": 2
+  }
+}

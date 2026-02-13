@@ -1,0 +1,119 @@
+// Модель для типов сущностей (кастомные типы)
+model EntityType {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  projectId   String   @db.ObjectId
+  name        String   // Название типа (например, "Персонаж", "Локация")
+  type        String   // Уникальный идентификатор типа (например, "character", "location")
+  description String?  // Описание типа
+  isDefault   Boolean  @default(false) // Является ли предустановленным типом
+  order       Int      @default(0) // Порядок отображения
+  
+  // Связи
+  project     Project  @relation("ProjectEntityTypes", fields: [projectId], references: [id], onDelete: Cascade)
+  parameters  EntityTypeParameter[] // Параметры, привязанные к этому типу
+  entities    Entity[] @relation("EntityTypeEntities") // Сущности этого типа
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@unique([projectId, type]) // Уникальность типа в рамках проекта
+  @@map("entity_types")
+  @@index([projectId])
+}
+
+// Связующая модель между типами сущностей и параметрами
+model EntityTypeParameter {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  entityTypeId  String   @db.ObjectId
+  parameterId   String   @db.ObjectId
+  required      Boolean  @default(false) // Является ли параметр обязательным для этого типа
+  order         Int      @default(0) // Порядок отображения параметра в типе
+  
+  // Связи
+  entityType    EntityType @relation(fields: [entityTypeId], references: [id], onDelete: Cascade)
+  parameter     EntityParameter @relation("EntityTypeParameters", fields: [parameterId], references: [id], onDelete: Cascade)
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  @@unique([entityTypeId, parameterId]) // Один параметр может быть привязан к типу только один раз
+  @@map("entity_type_parameters")
+  @@index([entityTypeId])
+  @@index([parameterId])
+}
+
+// Модель для параметров сущностей (настраиваемые поля)
+model EntityParameter {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  projectId   String   @db.ObjectId
+  name        String   // Имя параметра (например, "Жанр", "Биография")
+  valueType   ParameterValueType // Тип значения
+  options     String[] @default([]) // Опции для выбора (для SINGLE_SELECT и MULTI_SELECT)
+  order       Int      @default(0) // Порядок отображения в общем списке параметров
+  
+  // Связи
+  project       Project  @relation("ProjectEntityParameters", fields: [projectId], references: [id], onDelete: Cascade)
+  entityValues  EntityValue[]
+  entityTypes   EntityTypeParameter[] @relation("EntityTypeParameters") // Типы, использующие этот параметр
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@map("entity_parameters")
+  @@index([projectId])
+}
+
+// Модель для сущностей
+model Entity {
+  id           String     @id @default(auto()) @map("_id") @db.ObjectId
+  projectId    String     @db.ObjectId
+  name         String     // Имя сущности
+  entityTypeId String     @db.ObjectId // Ссылка на кастомный тип (обязательное поле)
+  imageUrl     Json?      // Изображение сущности (MediaValue структура)
+  image        Json?      // Изображение сущности (MediaValue структура)
+  description  String?    // Краткое описание
+  
+  // Связи
+  project     Project     @relation("ProjectEntities", fields: [projectId], references: [id], onDelete: Cascade)
+  entityType  EntityType  @relation("EntityTypeEntities", fields: [entityTypeId], references: [id], onDelete: Cascade)
+  values      EntityValue[]
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@map("entities")
+  @@index([projectId, entityTypeId])
+}
+
+// Модель для значений параметров сущностей
+model EntityValue {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  entityId    String   @db.ObjectId
+  parameterId String   @db.ObjectId
+  value       Json     // Значение параметра (строка, массив, объект медиа и т.д.)
+  
+  // Связи
+  entity      Entity   @relation(fields: [entityId], references: [id], onDelete: Cascade)
+  parameter   EntityParameter @relation(fields: [parameterId], references: [id], onDelete: Cascade)
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@unique([entityId, parameterId]) // Один параметр может иметь только одно значение у сущности
+  @@map("entity_values")
+  @@index([entityId])
+  @@index([parameterId])
+}
+
+// Перечисление типов значений параметров
+enum ParameterValueType {
+  SHORT_TEXT    // Однострочный текст
+  TEXT          // Многострочный текст
+  NUMBER        // Число
+  BOOLEAN       // Булево значение (да/нет)
+  SINGLE_SELECT // Выбор одного значения из списка
+  MULTI_SELECT  // Выбор нескольких значений из списка
+  MEDIA         // Медиа файл (изображение)
+  SINGLE_ENTITY // Ссылка на одну сущность
+  MULTI_ENTITY  // Ссылки на множество сущностей
+} 

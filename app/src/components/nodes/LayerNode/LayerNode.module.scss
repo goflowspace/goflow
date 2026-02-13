@@ -1,0 +1,174 @@
+.wrapper {
+  position: relative;
+  width: 200px;
+  pointer-events: all;
+  overflow: visible;
+}
+
+.ghost {
+  position: absolute;
+  width: 200px;
+  height: 87px;
+  pointer-events: 'none';
+  opacity: 0.7;
+  z-index: 10;
+}
+
+.popup_toggle {
+  padding: 4px 10px;
+  width: 100%;
+  background-color: #d2bcfb;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+
+  &__start {
+    border-radius: 11px 11px 0 0;
+
+    &__active {
+      border-radius: 0;
+    }
+  }
+
+  &__end {
+    border-radius: 0 0 11px 11px;
+
+    &__active {
+      border-radius: 0;
+    }
+  }
+}
+
+.popup_toggle_text {
+  display: block;
+  width: 100%;
+}
+
+.tool_icon {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  margin: 0 4px;
+  color: #1c2024;
+}
+
+.card {
+  width: 230px;
+  border-radius: 12px;
+  outline: 1px solid #c5a8fc;
+  outline-offset: 0;
+  background: #f4eeff;
+
+  // box-shadow: 2px 2px 4px 0 #f0f0f0;
+}
+
+.node_content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.fake_handles {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &__left {
+    left: -25px;
+    right: auto;
+  }
+
+  &__right {
+    left: auto;
+    right: -25px;
+  }
+}
+
+.selected {
+  outline: 3px solid #8e56f8;
+  outline-offset: 0;
+}
+
+.header {
+  background: #f0f0f0;
+  padding: 8px 12px;
+  border-bottom: 1px solid #d9d9d9;
+  border-radius: 12px 12px 0 0;
+}
+
+.layer_name {
+  background: #f0f0f0;
+  height: auto !important;
+
+  input {
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-indent: 0;
+
+    &::placeholder {
+      color: #8d8d8d;
+    }
+  }
+}
+
+.layer_desc {
+  background: #f0f0f0;
+
+  input {
+    text-align: center;
+    letter-spacing: 0;
+    text-indent: 0;
+
+    &::placeholder {
+      color: #8d8d8d;
+    }
+  }
+}
+
+.active_popup {
+  visibility: hidden;
+
+  &.ending {
+    position: static;
+  }
+}
+
+.layer_name_static {
+  font-size: 16px;
+  font-weight: 500;
+  padding: 8px 12px;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #333;
+  background-color: transparent;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.layer_desc_static {
+  font-size: 14px;
+  padding: 6px 12px;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #555;
+  background-color: transparent;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+/* Режим фокусировки - полупрозрачность для нерелевантных узлов */
+.faded {
+  opacity: 0.3;
+}

@@ -1,0 +1,232 @@
+.widget {
+  display: flex;
+  align-items: center;
+  padding: 0 12px; // Стандартный padding как у кнопок Radix UI
+  height: 32px; // Точная высота кнопки size="2"
+  border-radius: 4px; // Стандартный radius кнопок Radix UI (medium)
+  background: var(--color-surface);
+  border: 1px solid var(--gray-6);
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--gray-7);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+  }
+
+  &.small {
+    padding: 0 12px; // Одинаковый padding для всех размеров
+    height: 32px; // Одинаковая высота с кнопками
+    border-radius: 4px;
+  }
+
+  &.medium {
+    padding: 0 12px;
+    height: 32px;
+    border-radius: 4px;
+  }
+
+  // Цветовая индикация по количеству кредитов
+  &.lowCredits {
+    // 0-50 кредитов - красный фон
+    background: var(--red-2);
+    border-color: var(--red-6);
+
+    &:hover {
+      background: var(--red-3);
+      border-color: var(--red-7);
+    }
+
+    .icon {
+      color: var(--red-9);
+    }
+
+    .amount {
+      color: var(--red-11);
+    }
+  }
+
+  &.mediumCredits {
+    // 51-250 кредитов - оранжевый фон
+    background: var(--orange-2);
+    border-color: var(--orange-6);
+
+    &:hover {
+      background: var(--orange-3);
+      border-color: var(--orange-7);
+    }
+
+    .icon {
+      color: var(--orange-9);
+    }
+
+    .amount {
+      color: var(--orange-11);
+    }
+  }
+
+  &.highCredits {
+    // >250 кредитов - зеленый фон
+    background: var(--green-2);
+    border-color: var(--green-6);
+
+    &:hover {
+      background: var(--green-3);
+      border-color: var(--green-7);
+    }
+
+    .icon {
+      color: var(--green-9);
+    }
+
+    .amount {
+      color: var(--green-11);
+    }
+  }
+
+  // Обратная совместимость для noCredits (когда 0 кредитов)
+  &.noCredits {
+    border-color: var(--red-7);
+    background: linear-gradient(135deg, var(--red-1), var(--red-2));
+
+    &:hover {
+      border-color: var(--red-8);
+      background: linear-gradient(135deg, var(--red-2), var(--red-3));
+    }
+
+    .icon {
+      color: var(--red-9);
+    }
+
+    .amount {
+      color: var(--red-11);
+    }
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  color: var(--amber-9); // Желтая молния
+  flex-shrink: 0;
+
+  .small & {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.amount {
+  color: var(--gray-12);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  min-width: fit-content;
+}
+
+.buyButton {
+  height: 20px;
+  font-size: 11px;
+  padding: 0 8px;
+  border-radius: 4px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.upgradeButton {
+  font-weight: 600;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  letter-spacing: 0.5px;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgb(59 130 246 / 30%);
+  }
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px 0;
+}
+
+.loadingDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--gray-9);
+  animation: loadingPulse 1.4s ease-in-out infinite both;
+
+  &:nth-child(1) {
+    animation-delay: -0.32s;
+  }
+
+  &:nth-child(2) {
+    animation-delay: -0.16s;
+  }
+
+  &:nth-child(3) {
+    animation-delay: 0s;
+  }
+}
+
+@keyframes loadingPulse {
+  0%,
+  80%,
+  100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+// Hover эффекты для улучшения UX - только для нейтрального состояния
+.widget:not(.noCredits, .lowCredits, .mediumCredits, .highCredits) {
+  .icon {
+    transition: color 0.2s ease;
+  }
+
+  &:hover .icon {
+    color: var(--amber-10); // Более яркий желтый при hover
+  }
+
+  &:hover .amount {
+    color: var(--amber-11);
+  }
+}
+
+// Адаптивность
+@media (width <= 768px) {
+  .widget {
+    padding: 0 10px;
+    height: 30px; // Немного меньше для мобильных
+
+    &.medium {
+      padding: 0 10px;
+      height: 30px;
+    }
+  }
+
+  .buyButton {
+    height: 18px;
+    font-size: 10px;
+    padding: 0 6px;
+  }
+}

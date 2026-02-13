@@ -1,0 +1,27 @@
+model BibleQuality {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  projectId String   @unique @db.ObjectId
+  
+  // Общий скор качества (0-100)
+  totalScore Int @default(0)
+  
+  // Детализация по категориям
+  completenessScore Int @default(0)    // Заполненность полей (0-100)
+  qualityScore      Int @default(0)    // Качество контента (0-100) 
+  consistencyScore  Int @default(0)    // Согласованность (0-100)
+  
+  // Детализация заполненности (JSON объект)
+  completeness Json
+  
+  // Рекомендации для улучшения (JSON массив)
+  recommendations Json @default("[]")
+  
+  // Метаданные
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Связь с проектом
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  
+  @@map("bible_quality")
+} 

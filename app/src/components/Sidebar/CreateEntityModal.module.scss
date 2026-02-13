@@ -1,0 +1,161 @@
+.modal {
+  max-width: 800px;
+  width: 90vw;
+  max-height: 90vh;
+  padding: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--dashboard-bg-secondary);
+  border: 1px solid var(--dashboard-border-secondary);
+  border-radius: 12px;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+  margin-top: 16px;
+}
+
+.formWrapper {
+  // Убираем sticky позиционирование для кнопок в модальном окне
+  :global(.actions) {
+    position: static !important;
+    background: var(--dashboard-bg-secondary) !important;
+    border: none !important;
+    border-top: 1px solid var(--dashboard-border-secondary) !important;
+    border-radius: 0 !important;
+    margin-top: 24px !important;
+    padding: 16px 0 0 !important;
+    z-index: auto !important;
+    box-shadow: none !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    gap: 12px !important;
+
+    button {
+      display: inline-flex !important;
+      align-items: center !important;
+      padding: 12px 24px !important;
+      border-radius: 8px !important;
+      font-size: 14px !important;
+      font-weight: 500 !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+    }
+  }
+
+  :global(.cancelButton) {
+    background: var(--dashboard-bg-secondary) !important;
+    border: 1px solid var(--dashboard-border-secondary) !important;
+    color: var(--dashboard-text-primary) !important;
+    padding: 12px 24px !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+
+    &:hover {
+      background: var(--dashboard-bg-hover) !important;
+      border-color: var(--dashboard-border-hover) !important;
+    }
+  }
+
+  :global(.saveButton) {
+    background: var(--dashboard-accent-primary) !important;
+    color: white !important;
+    border: 1px solid var(--dashboard-accent-primary) !important;
+    padding: 12px 24px !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    &:hover:not(:disabled) {
+      background: var(--dashboard-accent-hover) !important;
+    }
+
+    &:disabled {
+      background: var(--dashboard-border-secondary) !important;
+      border-color: var(--dashboard-border-secondary) !important;
+      opacity: 0.6 !important;
+      cursor: not-allowed !important;
+    }
+  }
+
+  :global(.input),
+  :global(.textarea),
+  :global(.select) {
+    border: 1px solid var(--dashboard-border-primary) !important;
+    background: var(--dashboard-bg-secondary) !important;
+    color: var(--dashboard-text-primary) !important;
+    padding: 12px 16px !important;
+    border-radius: 8px !important;
+    font-size: 14px !important;
+    transition: border-color 0.2s ease !important;
+    outline: none !important;
+
+    &:focus {
+      border-color: var(--dashboard-accent-primary) !important;
+      box-shadow: 0 0 0 1px var(--dashboard-accent-primary) !important;
+    }
+
+    &.error {
+      border-color: var(--dashboard-error) !important;
+    }
+  }
+
+  :global(.textarea) {
+    min-height: 100px !important;
+    resize: vertical !important;
+    line-height: 1.5 !important;
+  }
+
+  :global(.select) {
+    cursor: pointer !important;
+  }
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 60px 20px;
+  flex-direction: column;
+  color: var(--dashboard-text-secondary);
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--dashboard-border-primary);
+  border-top: 3px solid var(--dashboard-accent-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.title {
+  color: var(--dashboard-text-primary) !important;
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  margin: 0 0 16px !important;
+  word-break: break-word !important;
+  line-height: 1.3 !important;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

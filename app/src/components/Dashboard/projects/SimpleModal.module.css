@@ -1,0 +1,140 @@
+/* SimpleModal Component */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgb(0 0 0 / 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal {
+  background-color: var(--dashboard-bg-card);
+  border: 1px solid var(--dashboard-border-primary);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: var(--dashboard-shadow-xl);
+  position: relative;
+  z-index: 10000;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid var(--dashboard-border-primary);
+}
+
+.title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--dashboard-text-primary);
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--dashboard-text-tertiary);
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+  background-color: var(--dashboard-bg-hover);
+  color: var(--dashboard-text-primary);
+}
+
+.content {
+  padding: 16px;
+}
+
+.actions {
+  padding: 16px;
+  border-top: 1px solid var(--dashboard-border-primary);
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.cancelButton {
+  background-color: var(--dashboard-bg-tertiary);
+  color: var(--dashboard-text-primary);
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancelButton:hover {
+  background-color: var(--dashboard-bg-hover);
+}
+
+.primaryButton {
+  background-color: var(--dashboard-button-primary);
+  color: var(--dashboard-button-primary-text);
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.primaryButton:hover {
+  background-color: var(--dashboard-button-primary-hover);
+}
+
+.dangerButton {
+  background-color: var(--dashboard-error);
+  color: var(--dashboard-text-inverse);
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dangerButton:hover {
+  opacity: 0.9;
+}
+
+.input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--dashboard-border-secondary);
+  border-radius: 4px;
+  font-size: 14px;
+  margin-top: 8px;
+  background-color: var(--dashboard-bg-secondary);
+  color: var(--dashboard-text-primary);
+  transition: border-color 0.2s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--dashboard-accent-primary);
+}
+
+.input::placeholder {
+  color: var(--dashboard-text-muted);
+}
+
+.text {
+  font-size: 14px;
+  color: var(--dashboard-text-secondary);
+  margin: 0;
+}

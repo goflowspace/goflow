@@ -1,0 +1,432 @@
+/* Modal Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgb(0 0 0 / 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal {
+  background-color: var(--dashboard-bg-primary);
+  border: 1px solid var(--dashboard-border-primary);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  box-shadow: var(--dashboard-shadow-xl);
+  position: relative;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--dashboard-border-primary);
+  flex-shrink: 0;
+}
+
+.title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--dashboard-text-primary);
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--dashboard-text-secondary);
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+  background: var(--dashboard-bg-hover);
+  color: var(--dashboard-text-primary);
+}
+
+.closeButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.content {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.formRow {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.formGroup {
+  flex: 1;
+  margin-bottom: 16px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dashboard-text-primary);
+}
+
+.required::after {
+  content: '*';
+  color: var(--dashboard-error);
+  margin-left: 4px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--dashboard-border-primary);
+  border-radius: 6px;
+  font-size: 14px;
+  color: var(--dashboard-text-primary);
+  background: var(--dashboard-bg-secondary);
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--dashboard-accent-primary);
+  box-shadow: 0 0 0 3px var(--dashboard-accent-primary-alpha);
+}
+
+.input:disabled {
+  background: var(--dashboard-bg-tertiary);
+  color: var(--dashboard-text-tertiary);
+  cursor: not-allowed;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 10px 12px;
+  border: 1px solid var(--dashboard-border-primary);
+  border-radius: 6px;
+  font-size: 14px;
+  color: var(--dashboard-text-primary);
+  background: var(--dashboard-bg-secondary);
+  transition: border-color 0.2s ease;
+  resize: vertical;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--dashboard-accent-primary);
+  box-shadow: 0 0 0 3px var(--dashboard-accent-primary-alpha);
+}
+
+.textarea:disabled {
+  background: var(--dashboard-bg-tertiary);
+  color: var(--dashboard-text-tertiary);
+  cursor: not-allowed;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--dashboard-border-primary);
+  background: var(--dashboard-bg-secondary);
+  flex-shrink: 0;
+}
+
+.saveButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  background: var(--dashboard-accent-primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.saveButton:hover:not(:disabled) {
+  background: var(--dashboard-accent-hover);
+}
+
+.saveButton:disabled {
+  background: var(--dashboard-text-muted);
+  cursor: not-allowed;
+}
+
+.cancelButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  background: var(--dashboard-bg-secondary);
+  color: var(--dashboard-text-primary);
+  border: 1px solid var(--dashboard-border-primary);
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancelButton:hover:not(:disabled) {
+  background: var(--dashboard-bg-hover);
+  border-color: var(--dashboard-border-hover);
+}
+
+.cancelButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Parameters Section */
+.parametersSection {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--dashboard-border-primary);
+}
+
+.sectionTitle {
+  margin: 0 0 16px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--dashboard-text-primary);
+}
+
+.parametersList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.parameterItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid var(--dashboard-border-primary);
+  border-radius: 6px;
+  background: var(--dashboard-bg-secondary);
+}
+
+.parameterInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.parameterName {
+  font-weight: 500;
+  color: var(--dashboard-text-primary);
+}
+
+.parameterType {
+  font-size: 12px;
+  color: var(--dashboard-text-secondary);
+  text-transform: uppercase;
+}
+
+.parameterActions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.removeParameterButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: var(--dashboard-error);
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.removeParameterButton:hover:not(:disabled) {
+  background: var(--dashboard-error-hover);
+}
+
+.removeParameterButton:disabled {
+  background: var(--dashboard-text-muted);
+  cursor: not-allowed;
+}
+
+.addParameterButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px dashed var(--dashboard-border-primary);
+  background: var(--dashboard-bg-secondary);
+  color: var(--dashboard-text-primary);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  justify-content: center;
+}
+
+.addParameterButton:hover:not(:disabled) {
+  border-color: var(--dashboard-accent-primary);
+  color: var(--dashboard-accent-primary);
+  background: var(--dashboard-bg-hover);
+}
+
+.addParameterButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.addParameterForm {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--dashboard-border-primary);
+  border-radius: 6px;
+  background: var(--dashboard-bg-tertiary);
+}
+
+.parameterSelect {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--dashboard-border-primary);
+  border-radius: 4px;
+  font-size: 14px;
+  color: var(--dashboard-text-primary);
+  background: var(--dashboard-bg-secondary);
+  transition: border-color 0.2s ease;
+}
+
+.parameterSelect:focus {
+  outline: none;
+  border-color: var(--dashboard-accent-primary);
+  box-shadow: 0 0 0 3px var(--dashboard-accent-primary-alpha);
+}
+
+.cancelAddButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  background: var(--dashboard-text-secondary);
+  color: white;
+}
+
+.cancelAddButton:hover:not(:disabled) {
+  background: var(--dashboard-text-muted);
+}
+
+.noParametersText {
+  text-align: center;
+  color: var(--dashboard-text-secondary);
+  font-style: italic;
+  margin: 16px 0;
+}
+
+/* Responsive */
+@media (width <= 640px) {
+  .modal {
+    max-width: 95vw;
+    max-height: 95vh;
+    margin: 8px;
+  }
+
+  .formRow {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .actions {
+    flex-direction: column-reverse;
+  }
+
+  .parameterItem {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .parameterActions {
+    justify-content: flex-end;
+  }
+
+  .addParameterForm {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .addParameterActions {
+    align-self: center;
+  }
+
+  .content {
+    padding: 16px;
+  }
+
+  .header {
+    padding: 16px;
+  }
+
+  .actions {
+    padding: 12px 16px;
+  }
+}
+
+/* Очень маленькие экраны */
+@media (height <= 600px) {
+  .modal {
+    max-height: 98vh;
+  }
+
+  .content {
+    padding: 12px 16px;
+  }
+
+  .header {
+    padding: 12px 16px;
+  }
+
+  .actions {
+    padding: 8px 16px;
+  }
+
+  .parametersSection {
+    margin-top: 16px;
+    padding-top: 12px;
+  }
+}

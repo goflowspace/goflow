@@ -1,0 +1,62 @@
+// Модель для хранения операций
+model Operation {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  projectId   String   @db.ObjectId
+  type        String
+  timelineId  String   @default("base-timeline")
+  layerId     String
+  payload     Json
+  userId      String?  @db.ObjectId
+  deviceId    String
+  timestamp   BigInt
+  version     Int
+  createdAt   DateTime @default(now())
+  
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  user    User?   @relation(fields: [userId], references: [id], onDelete: SetNull)
+  
+  @@index([projectId, version])
+  @@index([projectId, timestamp])
+  @@index([projectId, timelineId])
+
+  @@map("operations")
+}
+
+// Модель для хранения снимков графа и таймлайнов
+model GraphSnapshot {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  projectId   String   @db.ObjectId
+  version     Int
+  layers      Json
+  metadata    Json
+  variables   Json
+  timestamp   BigInt
+  
+  // Поля для таймлайнов
+  name        String   @default("Main Timeline")
+  description String?
+  order       Int?     // Порядок отображения в списке
+  isActive    Boolean  @default(false) // Активный таймлайн в проекте
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId])
+  @@index([projectId, order])
+  @@index([projectId, isActive])
+  @@map("graph_snapshots")
+}
+
+// Модель для версионирования проектов
+model ProjectVersion {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  projectId   String   @unique @db.ObjectId
+  version     Int      @default(0)
+  lastSync    DateTime @default(now())
+  
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@map("project_versions")
+} 

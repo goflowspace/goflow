@@ -1,0 +1,495 @@
+{
+  "templates": [
+    {
+      "type": "interactive_story",
+      "nameTranslations": {
+        "en": "Interactive Story",
+        "ru": "Интерактивная история"
+      },
+      "descriptionTranslations": {
+        "en": "Template for creating interactive stories with characters, locations, events, items, world rules, factions, and quests",
+        "ru": "Шаблон для создания интерактивных историй с персонажами, локациями, событиями, предметами, правилами мира, фракциями и квестами"
+      },
+      "categories": ["creative", "gaming", "storytelling"],
+      "isDefault": true,
+      "order": 1,
+      "config": {
+        "projectInfo": {
+          "genres": [],
+          "formats": [],
+          "status": "concept",
+          "targetAudienceTranslations": {
+            "en": "",
+            "ru": ""
+          },
+          "mainThemesTranslations": {
+            "en": "",
+            "ru": ""
+          }
+        },
+        "entityTypes": [
+          {
+            "type": "character",
+            "nameTranslations": {
+              "en": "Character",
+              "ru": "Персонаж"
+            },
+            "descriptionTranslations": {
+              "en": "Story characters with detailed background and relationships",
+              "ru": "Персонажи истории с детальной предысторией и связями"
+            },
+            "order": 1,
+            "parameters": [
+              { 
+                "nameTranslations": { "en": "Age", "ru": "Возраст" }, 
+                "valueType": "NUMBER", 
+                "required": false, 
+                "order": 1 
+              },
+              { 
+                "nameTranslations": { "en": "Appearance Description", "ru": "Описание внешности" }, 
+                "valueType": "TEXT", 
+                "required": false, 
+                "order": 2 
+              },
+              { 
+                "nameTranslations": { "en": "Biography", "ru": "Биография" }, 
+                "valueType": "TEXT", 
+                "required": false, 
+                "order": 3 
+              },
+              { 
+                "nameTranslations": { "en": "Character", "ru": "Характер" }, 
+                "valueType": "TEXT", 
+                "required": false, 
+                "order": 4 
+              },
+              { 
+                "nameTranslations": { "en": "Motivation", "ru": "Мотивация" }, 
+                "valueType": "TEXT", 
+                "required": false, 
+                "order": 5 
+              },
+              { 
+                "nameTranslations": { "en": "Friends", "ru": "Друзья" }, 
+                "valueType": "MULTI_ENTITY", 
+                "required": false, 
+                "order": 6 
+              },
+              { 
+                "nameTranslations": { "en": "Enemies", "ru": "Враги" }, 
+                "valueType": "MULTI_ENTITY", 
+                "required": false, 
+                "order": 7 
+              },
+              { 
+                "nameTranslations": { "en": "Role in Story", "ru": "Роль в истории" }, 
+                "valueType": "SINGLE_SELECT", 
+                "required": false, 
+                "order": 8,
+                "optionsTranslations": {
+                  "en": ["Main Hero", "Antagonist", "Ally", "Mentor", "Obstacle", "Secondary Character", "Neutral Character"],
+                  "ru": ["Главный герой", "Антагонист", "Союзник", "Наставник", "Препятствие", "Второстепенный персонаж", "Нейтральный персонаж"]
+                }
+              },
+              { 
+                "nameTranslations": { "en": "Status", "ru": "Статус" }, 
+                "valueType": "SINGLE_SELECT", 
+                "required": false, 
+                "order": 9,
+                "optionsTranslations": {
+                  "en": ["Alive", "Dead", "Missing", "Unknown"],
+                  "ru": ["Жив", "Мертв", "Пропал", "Неопределен"]
+                }
+              }
+            ]
+          },
+          {
+            "type": "location",
+            "nameTranslations": {
+              "en": "Location",
+              "ru": "Локация"
+            },
+            "descriptionTranslations": {
+              "en": "Places where story events take place",
+              "ru": "Места, где происходят события истории"
+            },
+            "order": 2,
+            "parameters": [
+              { 
+                "nameTranslations": { "en": "Appearance Description", "ru": "Описание внешности" }, 
+                "valueType": "TEXT", 
+                "required": false, 
+                "order": 1 
+              },
+              { 
+                "nameTranslations": { "en": "Atmosphere", "ru": "Атмосфера" }, 
+                "valueType": "TEXT", 
+                "required": false, 
+                "order": 2
+              },
+              { 
+                "nameTranslations": { "en": "Key Features", "ru": "Ключевые особенности" }, 
+                "valueType": "TEXT", 
+                "required": false, 
+                "order": 3 
+              },
+              { 
+                "nameTranslations": { "en": "Related Characters", "ru": "Связанные персонажи" }, 
+                "valueType": "MULTI_ENTITY", 
+                "required": false, 
+                "order": 4 
+              },
+              { 
+                "nameTranslations": { "en": "Events in Location", "ru": "События в локации" }, 
+                "valueType": "MULTI_ENTITY", 
+                "required": false, 
+                "order": 5 
+              },
+              { 
+                "nameTranslations": { "en": "Location Type", "ru": "Тип локации" }, 
+                "valueType": "SINGLE_SELECT", 
+                "required": false, 
+                "order": 6,
+                "optionsTranslations": {
+                  "en": ["House", "Apartment", "Office", "School", "University", "Hospital", "Store", "Restaurant", "Park", "Forest", "Shore", "Open Water", "Mountains", "Cave", "Castle", "Village", "City", "Space", "Other Planet", "Mystical Place", "Other"],
+                  "ru": ["Дом", "Квартира", "Офис", "Школа", "Университет", "Больница", "Магазин", "Ресторан", "Парк", "Лес", "Берег", "Открытая вода", "Горы", "Пещера", "Замок", "Деревня", "Город", "Космос", "Другая планета", "Мистическое место", "Другое"]
+                }
+              }
+            ]
+          },
+          {
+            "type": "event",
+            "nameTranslations": {
+              "en": "Event",
+              "ru": "Событие"
+            },
+            "descriptionTranslations": {
+              "en": "Important story events and plot points",
+              "ru": "Важные события истории и поворотные моменты сюжета"
+            },
+            "order": 3,
+            "parameters": [
+              { 
+                "nameTranslations": { "en": "Date", "ru": "Дата" }, 
+                "valueType": "SHORT_TEXT", 
+                "required": false, 
+                "order": 1 
+              },
+              { 
+                "nameTranslations": { "en": "Participants", "ru": "Участники" }, 
+                "valueType": "MULTI_ENTITY", 
+                "required": false, 
+                "order": 2 
+              },
+              { 
+                "nameTranslations": { "en": "Event Location", "ru": "Локация события" }, 
+                "valueType": "MULTI_ENTITY", 
+                "required": false, 
+                "order": 3 
+              },
+              { 
+                "nameTranslations": { "en": "Consequences", "ru": "Последствия" }, 
+                "valueType": "TEXT", 
+                "required": false, 
+                "order": 4 
+              },
+              { 
+                "nameTranslations": { "en": "Event Type", "ru": "Тип события" }, 
+                "valueType": "SINGLE_SELECT", 
+                "required": false, 
+                "order": 5,
+                "optionsTranslations": {
+                  "en": ["Conflict", "Meeting", "Achievement", "Plot Twist", "Disaster", "Celebration", "Discovery", "Other"],
+                  "ru": ["Конфликт", "Встреча", "Достижение", "Поворот сюжета", "Катастрофа", "Празднование", "Открытие", "Другое"]
+                }
+              },
+              { 
+                "nameTranslations": { "en": "Importance", "ru": "Важность" }, 
+                "valueType": "SINGLE_SELECT", 
+                "required": false, 
+                "order": 6,
+                "optionsTranslations": {
+                  "en": ["Critical", "Important", "Secondary", "Background"],
+                  "ru": ["Критическое", "Важное", "Второстепенное", "Фоновое"]
+                }
+              }
+            ]
+          },
+          {
+            "type": "item",
+            "nameTranslations": {
+              "en": "Item",
+              "ru": "Предмет"
+            },
+            "descriptionTranslations": {
+              "en": "Objects, artifacts, and items in the story",
+              "ru": "Объекты, артефакты и предметы в истории"
+            },
+            "order": 4,
+            "parameters": [
+              { 
+                "nameTranslations": { "en": "Appearance Description", "ru": "Описание внешности" }, 
+                "valueType": "TEXT", 
+                "required": false, 
+                "order": 1 
+              },
+              { 
+                "nameTranslations": { "en": "Owner", "ru": "Владелец" }, 
+                "valueType": "MULTI_ENTITY", 
+                "required": false, 
+                "order": 2 
+              },
+              { 
+                "nameTranslations": { "en": "Location", "ru": "Местонахождение" }, 
+                "valueType": "MULTI_ENTITY", 
+                "required": false, 
+                "order": 3 
+              },
+              { 
+                "nameTranslations": { "en": "Plot Significance", "ru": "Значение для сюжета" }, 
+                "valueType": "TEXT", 
+                "required": false, 
+                "order": 4 
+              },
+              { 
+                "nameTranslations": { "en": "Item Type", "ru": "Тип предмета" }, 
+                "valueType": "SINGLE_SELECT", 
+                "required": false, 
+                "order": 5,
+                "optionsTranslations": {
+                  "en": ["Weapon", "Magical Artifact", "Technology Device", "Document", "Book", "Letter", "Key", "Treasure", "Tool", "Armor", "Jewelry", "Clothing", "Food", "Medicine", "Relic", "Other"],
+                  "ru": ["Оружие", "Магический артефакт", "Технологическое устройство", "Документ", "Книга", "Письмо", "Ключ", "Сокровище", "Инструмент", "Броня", "Украшение", "Одежда", "Еда", "Лекарство", "Реликвия", "Другое"]
+                }
+              },
+              { 
+                "nameTranslations": { "en": "Condition", "ru": "Состояние" }, 
+                "valueType": "SINGLE_SELECT", 
+                "required": false, 
+                "order": 6,
+                "optionsTranslations": {
+                  "en": ["New", "Good", "Worn", "Damaged", "Broken"],
+                  "ru": ["Новое", "Хорошее", "Изношенное", "Поврежденное", "Сломанное"]
+                }
+              }
+            ]
+          },
+          {
+            "type": "world_rule",
+            "nameTranslations": {
+              "en": "World Rule",
+              "ru": "Правило мира"
+            },
+            "descriptionTranslations": {
+              "en": "Laws and rules that govern the story world",
+              "ru": "Законы и правила, которые управляют миром истории"
+            },
+            "order": 5,
+            "parameters": [
+              { 
+                "nameTranslations": { "en": "Limitations", "ru": "Ограничения" }, 
+                "valueType": "TEXT", 
+                "required": false, 
+                "order": 1 
+              },
+              { 
+                "nameTranslations": { "en": "Exceptions", "ru": "Исключения" }, 
+                "valueType": "TEXT", 
+                "required": false, 
+                "order": 2 
+              },
+              { 
+                "nameTranslations": { "en": "Character Impact", "ru": "Влияние на персонажей" }, 
+                "valueType": "TEXT", 
+                "required": false, 
+                "order": 3 
+              },
+              { 
+                "nameTranslations": { "en": "Category", "ru": "Категория" }, 
+                "valueType": "SINGLE_SELECT", 
+                "required": false, 
+                "order": 4,
+                "optionsTranslations": {
+                  "en": ["Physical Laws", "Magic System", "Technology", "Social Norms", "Political System", "Economy", "Religion", "World History", "Other"],
+                  "ru": ["Физические законы", "Магическая система", "Технологии", "Социальные нормы", "Политическая система", "Экономика", "Религия", "История мира", "Другое"]
+                }
+              },
+              { 
+                "nameTranslations": { "en": "Scope", "ru": "Область действия" }, 
+                "valueType": "SINGLE_SELECT", 
+                "required": false, 
+                "order": 5,
+                "optionsTranslations": {
+                  "en": ["Entire World", "Specific Location", "Character Group", "Temporary Effect"],
+                  "ru": ["Весь мир", "Определенная локация", "Определенная группа персонажей", "Временное действие"]
+                }
+              }
+            ]
+          },
+          {
+            "type": "faction",
+            "nameTranslations": {
+              "en": "Faction",
+              "ru": "Фракция"
+            },
+            "descriptionTranslations": {
+              "en": "Groups, organizations, and factions in the story",
+              "ru": "Группы, организации и фракции в истории"
+            },
+            "order": 6,
+            "parameters": [
+              { 
+                "nameTranslations": { "en": "Goals", "ru": "Цели" }, 
+                "valueType": "TEXT", 
+                "required": false, 
+                "order": 1 
+              },
+              { 
+                "nameTranslations": { "en": "Allies", "ru": "Союзники" }, 
+                "valueType": "MULTI_ENTITY", 
+                "required": false, 
+                "order": 2 
+              },
+              { 
+                "nameTranslations": { "en": "Enemies", "ru": "Враги" }, 
+                "valueType": "MULTI_ENTITY", 
+                "required": false, 
+                "order": 3 
+              },
+              { 
+                "nameTranslations": { "en": "Neutral", "ru": "Нейтральные" }, 
+                "valueType": "MULTI_ENTITY", 
+                "required": false, 
+                "order": 4 
+              },
+              { 
+                "nameTranslations": { "en": "Competitors", "ru": "Конкуренты" }, 
+                "valueType": "MULTI_ENTITY", 
+                "required": false, 
+                "order": 5 
+              },
+              { 
+                "nameTranslations": { "en": "Subordinates", "ru": "Подчиненные" }, 
+                "valueType": "MULTI_ENTITY", 
+                "required": false, 
+                "order": 6 
+              },
+              { 
+                "nameTranslations": { "en": "Patrons", "ru": "Покровители" }, 
+                "valueType": "MULTI_ENTITY", 
+                "required": false, 
+                "order": 7 
+              },
+              { 
+                "nameTranslations": { "en": "Trade Partners", "ru": "Торговые партнеры" }, 
+                "valueType": "MULTI_ENTITY", 
+                "required": false, 
+                "order": 8 
+              },
+              { 
+                "nameTranslations": { "en": "Key Characters", "ru": "Ключевые персонажи" }, 
+                "valueType": "MULTI_ENTITY", 
+                "required": false, 
+                "order": 9 
+              },
+              { 
+                "nameTranslations": { "en": "Territory of Influence", "ru": "Территория влияния" }, 
+                "valueType": "MULTI_ENTITY", 
+                "required": false, 
+                "order": 10 
+              },
+              { 
+                "nameTranslations": { "en": "Reputation", "ru": "Репутация" }, 
+                "valueType": "SINGLE_SELECT", 
+                "required": false, 
+                "order": 11,
+                "optionsTranslations": {
+                  "en": ["Positive", "Neutral", "Negative", "Mixed", "Unknown"],
+                  "ru": ["Положительная", "Нейтральная", "Отрицательная", "Смешанная", "Неизвестная"]
+                }
+              },
+              { 
+                "nameTranslations": { "en": "Faction Type", "ru": "Тип фракции" }, 
+                "valueType": "SINGLE_SELECT", 
+                "required": false, 
+                "order": 12,
+                "optionsTranslations": {
+                  "en": ["Guild", "Military Organization", "Trading Company", "Religious Order", "Criminal Group", "Government", "Research Organization", "Cult", "Other"],
+                  "ru": ["Гильдия", "Военная организация", "Торговая компания", "Религиозный орден", "Преступная группировка", "Правительство", "Исследовательская организация", "Культ", "Другое"]
+                }
+              }
+            ]
+          },
+          {
+            "type": "quest",
+            "nameTranslations": {
+              "en": "Quest",
+              "ru": "Квест"
+            },
+            "descriptionTranslations": {
+              "en": "Tasks and missions in the story",
+              "ru": "Задания и миссии в истории"
+            },
+            "order": 7,
+            "parameters": [
+              { 
+                "nameTranslations": { "en": "Quest Giver", "ru": "Квестодатель" }, 
+                "valueType": "MULTI_ENTITY", 
+                "required": false, 
+                "order": 1 
+              },
+              { 
+                "nameTranslations": { "en": "Objective", "ru": "Цель" }, 
+                "valueType": "TEXT", 
+                "required": false, 
+                "order": 2 
+              },
+              { 
+                "nameTranslations": { "en": "Reward", "ru": "Награда" }, 
+                "valueType": "SHORT_TEXT", 
+                "required": false, 
+                "order": 3 
+              },
+              { 
+                "nameTranslations": { "en": "Requirements", "ru": "Требования" }, 
+                "valueType": "TEXT", 
+                "required": false, 
+                "order": 4 
+              },
+              { 
+                "nameTranslations": { "en": "Quest Type", "ru": "Тип квеста" }, 
+                "valueType": "SINGLE_SELECT", 
+                "required": false, 
+                "order": 5,
+                "optionsTranslations": {
+                  "en": ["Main Story", "Side Quest", "Daily", "Weekly", "Item Collection", "Monster Hunt", "Delivery", "Escort", "Exploration", "Puzzle", "Social", "Other"],
+                  "ru": ["Основной сюжетный", "Побочный", "Ежедневный", "Еженедельный", "Сбор предметов", "Убийство монстров", "Доставка", "Эскорт", "Исследование", "Головоломка", "Социальный", "Другое"]
+                }
+              },
+              { 
+                "nameTranslations": { "en": "Status", "ru": "Статус" }, 
+                "valueType": "SINGLE_SELECT", 
+                "required": false, 
+                "order": 6,
+                "optionsTranslations": {
+                  "en": ["Unavailable", "Available", "Active", "Completed Successfully", "Failed", "Cancelled", "Hidden"],
+                  "ru": ["Недоступен", "Доступен", "Активен", "Завершен успешно", "Провален", "Отменен", "Скрыт"]
+                }
+              },
+              { 
+                "nameTranslations": { "en": "Difficulty", "ru": "Сложность" }, 
+                "valueType": "SINGLE_SELECT", 
+                "required": false, 
+                "order": 7,
+                "optionsTranslations": {
+                  "en": ["Very Easy", "Easy", "Medium", "Hard", "Very Hard", "Epic"],
+                  "ru": ["Очень легкий", "Легкий", "Средний", "Сложный", "Очень сложный", "Эпический"]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+} 

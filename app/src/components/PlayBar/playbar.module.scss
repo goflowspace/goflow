@@ -1,0 +1,138 @@
+.playbar_wrapper {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 999;
+  display: flex;
+  justify-content: flex-end;
+  pointer-events: none;
+
+  > * {
+    pointer-events: auto;
+  }
+}
+
+.playbar_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  max-width: max-content;
+  min-width: 400px; /* Минимальная ширина для корректного отображения */
+
+  @include toolbar-container;
+}
+
+.left_section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.center_section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.right_section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.commentsButtonWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.commentsButton {
+  position: relative;
+}
+
+.unreadBadge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: var(--red-9);
+  color: white;
+  border-radius: 50%;
+  min-width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+  z-index: 1;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 20%);
+
+  // Анимация появления
+  animation: unreadBadgeAppear 0.2s ease-out;
+
+  // Добавляем пульсацию для привлечения внимания
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background-color: var(--red-9);
+    border-radius: 50%;
+    opacity: 0.4;
+    animation: unreadBadgePulse 2s infinite;
+  }
+}
+
+@keyframes unreadBadgeAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes unreadBadgePulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 0.2;
+  }
+}
+
+@media (width <= 768px) {
+  .playbar_container {
+    padding: 10px 15px;
+    height: 50px;
+  }
+
+  .center_section {
+    gap: 8px;
+  }
+
+  .unreadBadge {
+    top: -4px;
+    right: -4px;
+    min-width: 16px;
+    height: 16px;
+    font-size: 9px;
+  }
+}

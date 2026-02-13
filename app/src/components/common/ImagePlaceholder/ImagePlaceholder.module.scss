@@ -1,0 +1,30 @@
+.imagePlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--gray-3);
+  border-radius: 8px;
+  color: var(--gray-9);
+  font-size: 16px;
+
+  &.small {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+    border-radius: 4px;
+  }
+
+  &.medium {
+    width: 48px;
+    height: 48px;
+    font-size: 16px;
+    border-radius: 6px;
+  }
+
+  &.large {
+    width: 120px;
+    height: 120px;
+    font-size: 32px;
+    border-radius: 12px;
+  }
+}

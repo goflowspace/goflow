@@ -1,0 +1,4 @@
+GET http://localhost:{{port}}/config
+Accept: application/json
+
+###

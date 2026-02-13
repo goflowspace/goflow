@@ -1,0 +1,122 @@
+.note_wrapper {
+  position: relative;
+  width: 180px;
+  min-height: 120px;
+  background-color: #fffad1;
+  border-radius: 5px;
+  border: 1px solid #e6e0a5;
+  padding: 10px;
+  box-shadow: 2px 2px 5px rgb(0 0 0 / 10%);
+  font-family: Inter, sans-serif;
+  transform: rotate(-1deg);
+  transition: all 0s ease;
+  cursor: pointer;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+
+  &.nodrag {
+    cursor: text;
+  }
+}
+
+.ghost {
+  position: absolute;
+  width: 180px;
+  min-height: 120px;
+  pointer-events: none;
+  opacity: 0.7;
+  z-index: 10;
+  background-color: #fffad1;
+  border-radius: 5px;
+  border: 1px solid #e6e0a5;
+  padding: 10px;
+  font-family: Inter, sans-serif;
+  transform: none !important;
+  transition: none !important;
+  box-shadow: none !important;
+}
+
+.selected {
+  outline: 2px solid #c6b236;
+  outline-offset: 0;
+  box-shadow: 3px 3px 8px rgb(0 0 0 / 20%);
+  transform: rotate(0deg);
+  z-index: 5;
+}
+
+/* Стили для контейнера редактирования, чтобы перезаписать стили Radix */
+.note_input_container {
+  width: 100%;
+  flex: 1;
+  min-height: 100px;
+  display: flex;
+  overflow: hidden;
+}
+
+/* Переопределяем стили для TextArea от Radix UI */
+.note_input_container [class*='rt-TextAreaRoot'] {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+
+  --padding: 0px;
+
+  border: none !important;
+  outline: none !important;
+  cursor: text;
+}
+
+.note_input_container [class*='rt-TextAreaInput'] {
+  width: 100%;
+  height: auto;
+  min-height: 100px;
+  background: transparent;
+  border: none;
+  outline: none;
+  resize: none;
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 0;
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: inherit;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow-y: auto;
+}
+
+/* Скрываем скроллбар в Chrome, Safari и Opera */
+.note_input_container [class*='rt-TextAreaInput']::-webkit-scrollbar {
+  display: none;
+}
+
+.note_text {
+  width: 100%;
+  flex: 1;
+  min-height: 100px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 14px;
+  line-height: 1.4;
+  font-family: Inter, sans-serif;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Скрываем скроллбар в Chrome, Safari и Opera */
+.note_text::-webkit-scrollbar {
+  display: none;
+}
+
+/* Режим фокусировки - полупрозрачность для нерелевантных узлов */
+.faded {
+  opacity: 0.3;
+}

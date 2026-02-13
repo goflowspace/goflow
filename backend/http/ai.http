@@ -1,0 +1,197 @@
+### AI API Tests
+
+### 1. Получение AI настроек пользователя
+GET http://localhost:{{port}}/ai/settings
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+###
+
+### 2. Обновление AI настроек
+PUT http://localhost:{{port}}/ai/settings
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "proactiveMode": true,
+  "predictionRadius": 1,
+  "suggestionDelay": 3,
+  "preferredProvider": "OPENAI",
+  "creativityLevel": 0.7,
+  "activeTypes": ["STRUCTURE", "NARRATIVE"],
+  "learningEnabled": true
+}
+
+###
+
+### 3. Получение баланса кредитов
+GET http://localhost:{{port}}/ai/credits
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+###
+
+### 4. Генерация AI предложений для проекта
+POST http://localhost:{{port}}/ai/suggestions
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "projectId": "{{projectId}}",
+  "nodeId": "node-1",
+  "surroundingNodes": ["node-2", "node-3"]
+}
+
+###
+
+### 5. Принятие AI предложения
+POST http://localhost:{{port}}/ai/suggestions/{{suggestionId}}/accept
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "feedback": "Отличное предложение! Именно то, что нужно для развития сюжета."
+}
+
+###
+
+### 6. Отклонение AI предложения
+POST http://localhost:{{port}}/ai/suggestions/{{suggestionId}}/reject
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "feedback": "Не подходит к стилю проекта."
+}
+
+###
+
+### 7. История AI предложений
+GET http://localhost:{{port}}/ai/suggestions/history?projectId={{projectId}}&limit=10
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+###
+
+### 8. История предложений без фильтра проекта
+GET http://localhost:{{port}}/ai/suggestions/history?limit=20
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+###
+
+### 8. Получение среднего времени ответа AI за последний час
+GET http://localhost:{{port}}/ai/average-response-time?type=SUGGESTION&provider=OPENAI
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+###
+
+### 8.1. Получение среднего времени ответа для анализа
+GET http://localhost:{{port}}/ai/average-response-time?type=ANALYSIS&provider=OPENAI
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+###
+
+### 9. Генерация поля библии проекта через v2 пайплайн (synopsis)
+POST http://localhost:{{port}}/ai/project-bible-field-v2
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "projectId": "{{projectId}}",
+  "fieldType": "synopsis",
+  "baseDescription": "Фантастический приключенческий роман о молодом волшебнике, который должен спасти мир от древнего зла."
+}
+
+###
+
+### 10. Генерация жанров через v2 пайплайн
+POST http://localhost:{{port}}/ai/project-bible-field-v2
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "projectId": "{{projectId}}",
+  "fieldType": "genres",
+  "baseDescription": "Магическая школа, приключения, дружба и борьба со злом."
+}
+
+###
+
+### 11. Генерация логлайна через v2 пайплайн
+POST http://localhost:{{port}}/ai/project-bible-field-v2
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "projectId": "{{projectId}}",
+  "fieldType": "logline",
+  "baseDescription": "История о подростке-волшебнике, который открывает в себе магические способности и вступает в школу магии."
+}
+
+###
+
+### 12. Генерация целевой аудитории через v2 пайплайн
+POST http://localhost:{{port}}/ai/project-bible-field-v2
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "projectId": "{{projectId}}",
+  "fieldType": "targetAudience",
+  "baseDescription": "Молодежный фэнтези роман с элементами приключений и магии."
+}
+
+###
+
+### 13. Тест определения языка - русский
+POST http://localhost:{{port}}/ai/project-bible-field-v2
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "projectId": "{{projectId}}",
+  "fieldType": "mainThemes",
+  "baseDescription": "Создай темы на русском языке для детской сказки про путешествие игрушек"
+}
+
+###
+
+### 14. Тест определения языка - английский  
+POST http://localhost:{{port}}/ai/project-bible-field-v2
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "projectId": "{{projectId}}",
+  "fieldType": "synopsis",
+  "baseDescription": "Write a synopsis in English for a sci-fi story about space exploration"
+}
+
+###
+
+### 15. Тест определения языка - французский
+POST http://localhost:{{port}}/ai/project-bible-field-v2
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "projectId": "{{projectId}}",
+  "fieldType": "logline",
+  "baseDescription": "Écrivez en français une histoire d'amour romantique"
+}
+
+###
+
+### 16. Тест определения языка - испанский
+POST http://localhost:{{port}}/ai/project-bible-field-v2
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "projectId": "{{projectId}}",
+  "fieldType": "targetAudience",
+  "baseDescription": "Escribe en español para una audiencia joven"
+} 

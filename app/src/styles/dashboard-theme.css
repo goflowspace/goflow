@@ -1,0 +1,151 @@
+/* Dashboard Theme Variables */
+
+/* Светлая тема (по умолчанию) */
+:root {
+  /* Основные переменные (алиасы для совместимости) */
+  --primary-color: #3b82f6;
+  --primary-color-hover: #2563eb;
+  --background-primary: #fff;
+  --background-secondary: #f8fafc;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --border-primary: #e2e8f0;
+  --border-secondary: #cbd5e1;
+  --error-color: #ef4444;
+
+  /* Фоновые цвета */
+  --dashboard-bg-primary: #fff;
+  --dashboard-bg-secondary: #f8fafc;
+  --dashboard-bg-tertiary: #f1f5f9;
+  --dashboard-bg-card: #fff;
+  --dashboard-bg-hover: #f1f5f9;
+  --dashboard-bg-active: #e2e8f0;
+
+  /* Границы */
+  --dashboard-border-primary: #e2e8f0;
+  --dashboard-border-secondary: #cbd5e1;
+  --dashboard-border-hover: #94a3b8;
+
+  /* Текст */
+  --dashboard-text-primary: #0f172a;
+  --dashboard-text-secondary: #475569;
+  --dashboard-text-tertiary: #64748b;
+  --dashboard-text-muted: #94a3b8;
+  --dashboard-text-inverse: #fff;
+
+  /* Акцентные цвета */
+  --dashboard-accent-primary: #3b82f6;
+  --dashboard-accent-hover: #2563eb;
+  --dashboard-accent-active: #1d4ed8;
+  --dashboard-accent-light: #dbeafe;
+
+  /* Кнопки */
+  --dashboard-button-primary: #3b82f6;
+  --dashboard-button-primary-hover: #2563eb;
+  --dashboard-button-primary-text: #fff;
+
+  /* Навигация */
+  --dashboard-nav-active-bg: #3b82f6;
+  --dashboard-nav-active-text: #fff;
+
+  /* Состояния */
+  --dashboard-success: #10b981;
+  --dashboard-success-light: #d1fae5;
+  --dashboard-warning: #f59e0b;
+  --dashboard-warning-light: #fef3c7;
+  --dashboard-warning-bg: #fef3c7;
+  --dashboard-warning-border: #fbbf24;
+  --dashboard-warning-text: #92400e;
+  --dashboard-error: #ef4444;
+  --dashboard-error-light: #fee2e2;
+  --dashboard-error-bg: #fee2e2;
+  --dashboard-error-hover: #dc2626;
+
+  /* Альфа цвета */
+  --dashboard-accent-primary-alpha: rgb(59 130 246 / 10%);
+
+  /* Тени */
+  --dashboard-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 5%);
+  --dashboard-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -2px rgb(0 0 0 / 10%);
+  --dashboard-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -4px rgb(0 0 0 / 10%);
+  --dashboard-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 10%), 0 8px 10px -6px rgb(0 0 0 / 10%);
+}
+
+/* Темная тема */
+[data-theme='dark'] {
+  /* Основные переменные (алиасы для совместимости) */
+  --primary-color: #3b82f6;
+  --primary-color-hover: #2563eb;
+  --background-primary: #0c0c0c;
+  --background-secondary: #1a1a1a;
+  --text-primary: #f5f5f5;
+  --text-secondary: #e5e5e5;
+  --border-primary: #2a2a2a;
+  --border-secondary: #404040;
+  --error-color: #ef4444;
+
+  /* Фоновые цвета */
+  --dashboard-bg-primary: #0c0c0c;
+  --dashboard-bg-secondary: #1a1a1a;
+  --dashboard-bg-tertiary: #2a2a2a;
+  --dashboard-bg-card: #1a1a1a;
+  --dashboard-bg-hover: #2a2a2a;
+  --dashboard-bg-active: #404040;
+
+  /* Границы */
+  --dashboard-border-primary: #2a2a2a;
+  --dashboard-border-secondary: #404040;
+  --dashboard-border-hover: #525252;
+
+  /* Текст */
+  --dashboard-text-primary: #f5f5f5;
+  --dashboard-text-secondary: #e5e5e5;
+  --dashboard-text-tertiary: #a1a1aa;
+  --dashboard-text-muted: #71717a;
+  --dashboard-text-inverse: #0f172a;
+
+  /* Акцентные цвета */
+  --dashboard-accent-primary: #3b82f6;
+  --dashboard-accent-hover: #2563eb;
+  --dashboard-accent-active: #1d4ed8;
+  --dashboard-accent-light: rgb(59 130 246 / 10%);
+
+  /* Кнопки для темной темы - белые/серые */
+  --dashboard-button-primary: #fff;
+  --dashboard-button-primary-hover: #f5f5f5;
+  --dashboard-button-primary-text: #0f172a;
+
+  /* Навигация для темной темы - серая */
+  --dashboard-nav-active-bg: #404040;
+  --dashboard-nav-active-text: #f5f5f5;
+
+  /* Состояния */
+  --dashboard-success: #10b981;
+  --dashboard-success-light: rgb(16 185 129 / 10%);
+  --dashboard-warning: #f59e0b;
+  --dashboard-warning-light: rgb(245 158 11 / 10%);
+  --dashboard-warning-bg: rgb(245 158 11 / 10%);
+  --dashboard-warning-border: rgb(245 158 11 / 30%);
+  --dashboard-warning-text: #fbbf24;
+  --dashboard-error: #ef4444;
+  --dashboard-error-light: rgb(239 68 68 / 10%);
+  --dashboard-error-bg: rgb(239 68 68 / 10%);
+  --dashboard-error-hover: #f87171;
+
+  /* Альфа цвета */
+  --dashboard-accent-primary-alpha: rgb(59 130 246 / 10%);
+
+  /* Тени */
+  --dashboard-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 30%);
+  --dashboard-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 40%), 0 2px 4px -2px rgb(0 0 0 / 30%);
+  --dashboard-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 40%), 0 4px 6px -4px rgb(0 0 0 / 30%);
+  --dashboard-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 40%), 0 8px 10px -6px rgb(0 0 0 / 30%);
+}
+
+/* Переходы для плавной смены темы */
+* {
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}

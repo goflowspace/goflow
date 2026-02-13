@@ -1,0 +1,141 @@
+export const storyStyles = `
+:root {
+    --background: #ffffff;
+    --foreground: #11181c;
+    --card-background: #f1f3f5;
+    --button-background: #e9ecef;
+    --button-hover: #dee2e6;
+    --button-active: #ced4da;
+    --button-foreground: #11181c;
+    --button-disabled: #f8f9fa;
+    --button-disabled-foreground: #adb5bd;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #11181c;
+        --foreground: #ffffff;
+        --card-background: #1f2937;
+        --button-background: #374151;
+        --button-hover: #4b5563;
+        --button-active: #6b7280;
+        --button-foreground: #ffffff;
+        --button-disabled: #1f2937;
+        --button-disabled-foreground: #6b7280;
+    }
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    background-color: var(--background);
+    color: var(--foreground);
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in { 
+    animation: fade-in 0.3s ease-out; 
+}
+
+.rt-Container {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 24px 16px;
+}
+
+.rt-Heading {
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 24px;
+    color: var(--foreground);
+}
+
+.rt-Card {
+    background-color: var(--card-background);
+    border-radius: 8px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.rt-Flex {
+    display: flex;
+    gap: 8px;
+}
+
+.rt-Flex--column {
+    flex-direction: column;
+}
+
+.rt-Flex--between {
+    justify-content: space-between;
+}
+
+.rt-Button {
+    all: unset;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: var(--button-background);
+    color: var(--button-foreground);
+    transition: all 0.2s ease;
+}
+
+.rt-Button:hover {
+    background-color: var(--button-hover);
+    transform: scale(1.02);
+}
+
+.rt-Button:active {
+    background-color: var(--button-active);
+    transform: scale(0.98);
+}
+
+.rt-Button--outline {
+    border: 1px solid var(--button-background);
+}
+
+.rt-Button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--button-disabled);
+    color: var(--button-disabled-foreground);
+    transform: none;
+}
+
+.rt-Text {
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--foreground);
+}
+
+.rt-Text--title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--foreground);
+}
+
+#story-container {
+    margin-bottom: 24px;
+}
+
+.rt-Button--soft {
+    background-color: var(--button-background);
+    color: var(--button-foreground);
+}
+
+.rt-Button--soft:hover {
+    background-color: var(--button-hover);
+}`;

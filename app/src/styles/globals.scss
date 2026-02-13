@@ -1,0 +1,69 @@
+@import 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap';
+
+html,
+body {
+  max-width: 100vw;
+  min-height: 100%;
+  overflow-x: hidden;
+  font-family: Inter, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-wrap: balance;
+}
+
+html > body[data-scroll-locked] {
+  margin: 0 !important;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+p {
+  margin-block: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+.react-flow__edge.temp path {
+  stroke: #999;
+  stroke-dasharray: 5;
+  stroke-width: 2;
+}
+
+/* Стили для прямоугольника выделения */
+.react-flow__nodesselection-rect {
+  display: none !important;
+}
+
+/* Отключение масштабирования при прокрутке внутри узлов */
+.nowheel {
+  overflow: auto !important;
+  z-index: 5 !important;
+  touch-action: pan-y !important;
+}
+
+/* Обеспечиваем, что события колесика мыши обрабатываются внутри элементов с классом nowheel */
+.react-flow .nowheel {
+  pointer-events: all !important;
+  touch-action: pan-y !important;
+}
+
+/* Предотвращаем зум при скролле внутри элементов с классом nowheel */
+.nowheel * {
+  pointer-events: auto !important;
+  touch-action: pan-y !important;
+}

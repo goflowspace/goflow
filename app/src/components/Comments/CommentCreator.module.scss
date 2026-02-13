@@ -1,0 +1,148 @@
+.commentCreator {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 15%);
+  padding: 16px;
+  min-width: 320px;
+  max-width: 400px;
+  z-index: 1003;
+  pointer-events: all;
+}
+
+.creatorForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contextInfo {
+  font-size: 12px;
+  color: #6b7280;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.contextLabel {
+  font-weight: 500;
+  color: #374151;
+}
+
+.textarea {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 14px;
+  line-height: 1.4;
+  resize: vertical;
+  min-height: 80px;
+  font-family: inherit;
+
+  &:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgb(59 130 246 / 10%);
+  }
+
+  &::placeholder {
+    color: #9ca3af;
+  }
+
+  &:disabled {
+    background: #f9fafb;
+    color: #6b7280;
+    cursor: not-allowed;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.cancelButton {
+  background: white;
+  color: #374151;
+  border-color: #d1d5db;
+
+  &:hover:not(:disabled) {
+    background: #f9fafb;
+    border-color: #9ca3af;
+  }
+}
+
+.submitButton {
+  background: #3b82f6;
+  color: white;
+
+  &:hover:not(:disabled) {
+    background: #2563eb;
+  }
+
+  &:disabled {
+    background: #9ca3af;
+  }
+}
+
+// Темная тема
+[data-theme='dark'] .commentCreator {
+  background: #374151;
+  border-color: #4b5563;
+  color: #f3f4f6;
+
+  .contextInfo {
+    color: #9ca3af;
+    border-bottom-color: #4b5563;
+  }
+
+  .contextLabel {
+    color: #f3f4f6;
+  }
+
+  .textarea {
+    background: #4b5563;
+    border-color: #6b7280;
+    color: #f3f4f6;
+
+    &:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgb(59 130 246 / 10%);
+    }
+
+    &::placeholder {
+      color: #9ca3af;
+    }
+
+    &:disabled {
+      background: #374151;
+      color: #9ca3af;
+    }
+  }
+
+  .cancelButton {
+    background: #4b5563;
+    color: #f3f4f6;
+    border-color: #6b7280;
+
+    &:hover:not(:disabled) {
+      background: #374151;
+      border-color: #9ca3af;
+    }
+  }
+}

@@ -1,0 +1,515 @@
+/* Основной контейнер */
+.container {
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+  padding: 24px;
+  background: var(--background);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.titleSection {
+  flex: 1;
+}
+
+.mainTitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 16px;
+}
+
+.statsRow {
+  display: flex;
+  gap: 24px;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.statValue {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.statLabel {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filtersSection {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.titleIcon {
+  width: 24px;
+  height: 24px;
+  color: var(--dashboard-accent-primary);
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--dashboard-text-primary);
+  margin: 0;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.periodSelector {
+  padding: 8px 12px;
+  border: 1px solid var(--dashboard-border-secondary);
+  border-radius: 6px;
+  background-color: var(--dashboard-bg-secondary);
+  color: var(--dashboard-text-primary);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.refreshButton {
+  padding: 8px 16px;
+  background-color: var(--dashboard-button-primary);
+  color: var(--dashboard-button-primary-text);
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.refreshButton:hover {
+  background-color: var(--dashboard-button-primary-hover);
+}
+
+/* Content */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Stats Grid */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.statCard {
+  background-color: var(--dashboard-bg-card);
+  border: 1px solid var(--dashboard-border-primary);
+  border-radius: 12px;
+  padding: 24px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.statCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--dashboard-shadow-lg);
+}
+
+.statHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.statIcon {
+  width: 20px;
+  height: 20px;
+  color: var(--dashboard-accent-primary);
+}
+
+.statHeader h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--dashboard-text-primary);
+  margin: 0;
+}
+
+.statValue {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.mainNumber {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--dashboard-text-primary);
+  line-height: 1;
+}
+
+.unit {
+  font-size: 16px;
+  color: var(--dashboard-text-tertiary);
+  font-weight: 500;
+}
+
+.statSubtext {
+  font-size: 14px;
+  color: var(--dashboard-text-tertiary);
+}
+
+.planBadge {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dashboard-accent-primary);
+  background-color: var(--dashboard-bg-active);
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Progress Bar */
+.progressBar {
+  width: 100%;
+  height: 8px;
+  background-color: var(--dashboard-border-secondary);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.progressFill {
+  height: 100%;
+  background-color: var(--dashboard-accent-primary);
+  border-radius: 4px;
+  transition:
+    width 0.3s ease,
+    background-color 0.3s ease;
+}
+
+/* Sections */
+.section {
+  margin-bottom: 40px;
+}
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--dashboard-text-primary);
+  margin-bottom: 16px;
+}
+
+/* Transactions */
+.transactionsCard {
+  background-color: var(--dashboard-bg-card);
+  border: 1px solid var(--dashboard-border-primary);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.transactionsList {
+  display: flex;
+  flex-direction: column;
+}
+
+.transactionItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--dashboard-border-secondary);
+}
+
+.transactionItem:last-child {
+  border-bottom: none;
+}
+
+.transactionInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.transactionMeta {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.transactionUser {
+  font-size: 12px;
+  color: var(--text-secondary);
+  background: var(--background-secondary);
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.transactionDescription {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dashboard-text-primary);
+}
+
+.transactionDate {
+  font-size: 12px;
+  color: var(--dashboard-text-tertiary);
+}
+
+.transactionAmount {
+  display: flex;
+  align-items: center;
+}
+
+.amount {
+  font-size: 14px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.amount.positive {
+  color: var(--dashboard-status-success);
+}
+
+.amount.negative {
+  color: var(--dashboard-status-error);
+}
+
+/* Plans Grid */
+.plansGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.planCard {
+  background-color: var(--dashboard-bg-card);
+  border: 1px solid var(--dashboard-border-primary);
+  border-radius: 12px;
+  padding: 24px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.planCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--dashboard-shadow-lg);
+}
+
+.planCard h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--dashboard-text-primary);
+  margin: 0 0 8px;
+}
+
+.planPrice {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--dashboard-accent-primary);
+  margin-bottom: 16px;
+}
+
+.planFeatures {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.planFeatures li {
+  padding: 8px 0;
+  font-size: 14px;
+  color: var(--dashboard-text-secondary);
+  position: relative;
+  padding-left: 20px;
+}
+
+.planFeatures li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--dashboard-status-success);
+  font-weight: 600;
+}
+
+/* Loading State */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 16px;
+  background-color: var(--dashboard-bg-primary);
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--dashboard-border-primary);
+  border-top: 3px solid var(--dashboard-accent-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loadingContainer h2 {
+  font-size: 18px;
+  color: var(--dashboard-text-primary);
+  margin: 0;
+}
+
+/* Error State */
+.errorContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: var(--dashboard-bg-primary);
+}
+
+.errorContent {
+  text-align: center;
+  max-width: 400px;
+  padding: 32px;
+}
+
+.errorIcon {
+  width: 48px;
+  height: 48px;
+  color: var(--dashboard-status-error);
+  margin-bottom: 16px;
+}
+
+.errorContent h2 {
+  font-size: 20px;
+  color: var(--dashboard-text-primary);
+  margin: 0 0 8px;
+}
+
+.errorContent p {
+  font-size: 14px;
+  color: var(--dashboard-text-tertiary);
+  margin: 0 0 24px;
+}
+
+.retryButton {
+  padding: 12px 24px;
+  background-color: var(--dashboard-button-primary);
+  color: var(--dashboard-button-primary-text);
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.retryButton:hover {
+  background-color: var(--dashboard-button-primary-hover);
+}
+
+/* Empty State */
+.emptyState {
+  padding: 40px 24px;
+  text-align: center;
+}
+
+.emptyState p {
+  font-size: 14px;
+  color: var(--dashboard-text-tertiary);
+  margin: 0;
+}
+
+/* Animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive */
+@media (width <= 768px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+    padding: 16px 20px;
+  }
+
+  .statsRow {
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .statItem {
+    min-width: 120px;
+  }
+
+  .filtersSection {
+    width: 100%;
+  }
+
+  .transactionMeta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .statCard {
+    padding: 16px;
+  }
+
+  .mainNumber {
+    font-size: 24px;
+  }
+
+  .plansGrid {
+    grid-template-columns: 1fr;
+  }
+}

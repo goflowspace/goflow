@@ -1,0 +1,102 @@
+/* Общие стили для редактируемых компонентов узлов */
+
+/* Title field styles */
+.title_container {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+}
+
+.title_container [class*='rt-TextFieldRoot'] {
+  width: 100%;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.title_container [class*='rt-TextFieldInput'] {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.5;
+  padding: 4px 6px;
+  margin: 0;
+  color: #333;
+}
+
+.name_input_static {
+  padding: 1.5px 6px;
+  font-size: 14px;
+  font-weight: 800;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #333;
+  background-color: transparent;
+  cursor: pointer;
+  font-family: Inter, sans-serif;
+  line-height: 1.5;
+}
+
+/* Text area styles */
+.text_container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+}
+
+.text_container [class*='rt-TextAreaRoot'] {
+  width: 100%;
+  background: transparent;
+  box-shadow: none;
+  border: none !important;
+  outline: none !important;
+}
+
+.text_container [class*='rt-TextAreaInput'] {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  resize: none;
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: #111;
+  overflow-y: auto;
+  touch-action: pan-y !important;
+  pointer-events: auto !important;
+  z-index: 5;
+
+  @-moz-document url-prefix() {
+    scrollbar-width: thin;
+  }
+}
+
+.desc_input_static {
+  padding: 4px 6px;
+  font-size: 12px;
+  width: 100%;
+  min-height: 3rem;
+  color: #111;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  background-color: transparent;
+  cursor: pointer;
+  font-family: Inter, sans-serif;
+  line-height: 1.5;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  touch-action: pan-y !important;
+  pointer-events: auto !important;
+  z-index: 5;
+}

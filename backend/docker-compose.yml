@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: flow-mongodb
+    restart: unless-stopped
+    command: ["--replSet", "rs0", "--bind_ip_all", "--keyFile", "/etc/mongodb-keyfile"]
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password123
+      MONGO_INITDB_DATABASE: flow
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+      - ./scripts/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - ./scripts/mongodb-keyfile:/etc/mongodb-keyfile:ro
+    networks:
+      - flow-network
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mongodb-setup:
+    image: mongo:7.0
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    volumes:
+      - ./scripts/rs-init.sh:/scripts/rs-init.sh
+    networks:
+      - flow-network
+    entrypoint: [ "bash", "/scripts/rs-init.sh" ]
+    restart: "no"
+
+  backend:
+    build: .
+    container_name: flow-backend
+    restart: unless-stopped
+    depends_on:
+      - mongodb-setup
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: mongodb://admin:password123@mongodb:27017/flow?authSource=admin&replicaSet=rs0&directConnection=true
+    ports:
+      - "3002:8080"
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    networks:
+      - flow-network
+
+volumes:
+  mongodb_data:
+
+networks:
+  flow-network:
+    driver: bridge 

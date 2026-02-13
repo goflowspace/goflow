@@ -1,0 +1,79 @@
+// Командные кредиты для Team тарифов
+
+// Модель для командных кредитов (используется только на Team тарифах)
+model TeamCredits {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  teamId          String   @db.ObjectId  // ID команды
+  
+  // Балансы по типам кредитов (тратятся в порядке приоритета)
+  bonusCredits        Int      @default(0)      // Бонусные командные кредиты
+  subscriptionCredits Int      @default(0)      // Подписочные командные кредиты
+  
+  // Метаданные
+  purchasedBy         String   @db.ObjectId     // Кто купил подписку (для истории)
+  lastSubscriptionId  String?                   // ID последней активной подписки
+  
+  // Связи
+  team            Team                    @relation("TeamCreditsBalance", fields: [teamId], references: [id], onDelete: Cascade)
+  purchaser       User                    @relation("TeamCreditsPurchaser", fields: [purchasedBy], references: [id])
+  transactions    TeamCreditTransaction[]
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  @@unique([teamId])
+  @@map("team_credits")
+}
+
+// Транзакции командных кредитов
+model TeamCreditTransaction {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  teamCreditsId   String   @db.ObjectId
+  
+  // Детали транзакции
+  type            CreditTransactionType
+  creditType      CreditType              // Тип кредитов (бонусные/подписочные)
+  amount          Int                     // Положительное для пополнения, отрицательное для списания
+  description     String                  // Описание операции
+  
+  // Кто совершил действие (для списания - кто потратил, для пополнения - кто купил)
+  performedBy     String   @db.ObjectId
+  requestId       String?  @db.ObjectId   // Связь с AI запросом, если применимо
+  
+  // Stripe данные (для покупок)
+  stripePaymentIntentId String?           // ID платежа в Stripe
+  stripeSubscriptionId  String?           // ID подписки в Stripe
+  
+  // Связи
+  teamCredits     TeamCredits @relation(fields: [teamCreditsId], references: [id], onDelete: Cascade)
+  performer       User        @relation("TeamCreditTransactionPerformer", fields: [performedBy], references: [id])
+  
+  createdAt       DateTime @default(now())
+  
+  @@map("team_credit_transactions")
+  @@index([teamCreditsId, createdAt])
+  @@index([performedBy, createdAt])
+  @@index([stripePaymentIntentId])
+  @@index([stripeSubscriptionId])
+}
+
+// Статистика использования командных кредитов
+model TeamUsageStats {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  teamId          String   @db.ObjectId
+  period          UsagePeriod             // daily / monthly
+  
+  // Счетчики
+  used            Int      @default(0)    // Использовано в периоде
+  usedBy          Json     @default("{}")  // {"userId1": amount1, "userId2": amount2, ...}
+  resetDate       DateTime                // Дата сброса счетчика
+  
+  // Связи
+  team            Team     @relation("TeamUsageStatsRelation", fields: [teamId], references: [id], onDelete: Cascade)
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  @@unique([teamId, period])
+  @@map("team_usage_stats")
+}

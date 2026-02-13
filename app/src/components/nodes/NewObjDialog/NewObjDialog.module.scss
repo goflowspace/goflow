@@ -1,0 +1,145 @@
+.menu {
+  position: absolute;
+  background: transparent;
+  border-radius: 6px;
+  width: 100%;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  left: 231px;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 120px; // Увеличили ширину для помещения цены в одну строку
+}
+
+.text {
+  color: var(--gray-9);
+  font-size: 10px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.menuItem {
+  background-color: var(--gray-3);
+  color: var(--gray-12);
+  border-radius: 6px;
+  font-size: 10px;
+  height: 27px;
+  padding: 4px 6px 9px; // Увеличили боковые отступы
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  gap: 4px; // Добавили gap между элементами
+  white-space: nowrap; // Предотвращаем перенос строки
+
+  &:hover {
+    background: var(--gray-5);
+  }
+
+  // Специальный стиль для AI кнопки Next node
+  &.aiButton {
+    background: rgb(238 229 254); // Полупрозрачный фиолетовый фон
+    color: rgb(0 0 0);
+    border: 1px solid #b497e5; // Яркая фиолетовая обводка
+    border-radius: 6px; // Более мягкий радиус
+    height: 32px; // Увеличенная высота для AI кнопки
+    box-shadow: 0 2px 8px rgb(124 58 237 / 20%);
+    transition: all 0.2s ease;
+
+    &:hover:not(:disabled) {
+      background: rgb(204 188 232);
+      border-color: #bca7df; // Более темная обводка при hover
+      box-shadow: 0 4px 12px rgb(124 58 237 / 30%);
+    }
+
+    &:disabled {
+      background: rgb(156 163 175 / 20%); // Полупрозрачный серый фон
+      border-color: #9ca3af; // Серая обводка
+      box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    kbd {
+      border: 1px solid var(--gray-5);
+      background-color: var(--gray-3);
+      color: var(--gray-12);
+      border-radius: 4px; // Фиксированный радиус для kbd
+    }
+  }
+
+  kbd {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    border-radius: 6px;
+    border: 1px solid var(--gray-5);
+    background-color: var(--gray-3);
+    font-size: 8px;
+    line-height: 100%;
+    padding: 0 4px;
+  }
+}
+
+.icon {
+  color: var(--gray-12);
+  width: 16px;
+  height: 16px;
+}
+
+.spinner {
+  color: var(--gray-12);
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+}
+
+// Новые стили для кнопки Next node с молнией и ценой
+.lightningIcon {
+  color: var(--gray-12); // Черный цвет молнии как у других кнопок
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.buttonText {
+  flex-shrink: 0;
+  font-size: 10px;
+  line-height: 1;
+  color: var(--gray-12); // Черный цвет текста как у других кнопок
+}
+
+.priceTag {
+  background: rgb(124 58 237 / 10%); // Полупрозрачный фиолетовый фон
+  color: var(--gray-12); // Черный цвет текста
+  border: 1px solid rgb(124 58 237 / 30%);
+  border-radius: 6px; // Более мягкий радиус
+  padding: 1px 4px;
+  font-size: 8px;
+  font-weight: 600;
+  line-height: 1;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px; // Расстояние между молнией и ценой
+}
+
+.priceLightning {
+  color: #312f34; // Фиолетовый цвет молнии в цене
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

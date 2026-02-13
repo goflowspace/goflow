@@ -1,0 +1,254 @@
+.mentionTextareaContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.textareaWrapper {
+  position: relative;
+}
+
+.textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.4;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s ease;
+  background: transparent;
+  position: relative;
+  z-index: 2;
+  color: transparent;
+  caret-color: #333;
+  box-sizing: border-box;
+
+  &:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgb(0 123 255 / 10%);
+  }
+
+  &:disabled {
+    background-color: #f8f9fa;
+    color: #6c757d;
+    cursor: not-allowed;
+  }
+}
+
+.textareaOverlay {
+  position: absolute;
+  inset: 0;
+  padding: 8px 12px;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+  color: #333;
+  border: 1px solid transparent; /* Соответствует границе textarea */
+  border-radius: 6px; /* Соответствует textarea */
+  box-sizing: border-box; /* Важно для правильного выравнивания */
+}
+
+.suggestionsDropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+  max-height: 200px;
+  overflow-y: auto;
+  min-width: 250px;
+  z-index: 1000;
+  margin-top: 2px;
+}
+
+.suggestion {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s ease;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover,
+  &.selected {
+    background-color: #f8f9fa;
+  }
+
+  &.selected {
+    background-color: #e3f2fd;
+  }
+}
+
+.suggestionContent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.suggestionName {
+  font-weight: 500;
+  color: #212529;
+  flex: 1;
+}
+
+.suggestionEmail {
+  font-size: 12px;
+  color: #6c757d;
+  flex: 1;
+}
+
+.suggestionType {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+
+  &.user {
+    background-color: #e3f2fd;
+    color: #1976d2;
+  }
+
+  &.team {
+    background-color: #f3e5f5;
+    color: #7b1fa2;
+  }
+}
+
+// Темная тема
+[data-theme='dark'] {
+  .textarea {
+    background-color: #2d3748;
+    border-color: #4a5568;
+    color: #e2e8f0;
+
+    &:focus {
+      border-color: #63b3ed;
+      box-shadow: 0 0 0 2px rgb(99 179 237 / 10%);
+    }
+
+    &:disabled {
+      background-color: #1a202c;
+      color: #718096;
+    }
+  }
+
+  .suggestionsDropdown {
+    background: #2d3748;
+    border-color: #4a5568;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 30%);
+  }
+
+  .suggestion {
+    border-bottom-color: #4a5568;
+
+    &:hover,
+    &.selected {
+      background-color: #4a5568;
+    }
+
+    &.selected {
+      background-color: #2b6cb0;
+    }
+  }
+
+  .suggestionName {
+    color: #e2e8f0;
+  }
+
+  .suggestionEmail {
+    color: #a0aec0;
+  }
+
+  .suggestionType {
+    &.user {
+      background-color: rgb(99 179 237 / 20%);
+      color: #63b3ed;
+    }
+
+    &.team {
+      background-color: rgb(183 148 244 / 20%);
+      color: #b794f4;
+    }
+  }
+
+  .mentionOverlay {
+    &.user {
+      background-color: rgb(25 118 210 / 20%);
+      color: #90caf9;
+    }
+
+    &.team {
+      background-color: rgb(123 31 162 / 20%);
+      color: #ce93d8;
+    }
+  }
+
+  .textareaOverlay {
+    color: #e2e8f0;
+  }
+
+  .textarea {
+    caret-color: #e2e8f0;
+  }
+}
+
+.mentionOverlay {
+  display: inline;
+  background-color: #e3f2fd;
+  color: #1976d2;
+  border-radius: 4px;
+  font-weight: 500;
+  text-decoration: none;
+
+  // Критически важно: НЕ добавляем padding, чтобы не сбивать позиционирование
+  padding: 0;
+  margin: 0;
+
+  // Используем тот же шрифт и размеры, что и textarea
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+
+  // Небольшая подсветка фона для видимости
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0 -2px;
+    background-color: currentcolor;
+    opacity: 0.1;
+    border-radius: 4px;
+    z-index: -1;
+  }
+
+  &.user {
+    color: #1976d2;
+
+    &::before {
+      background-color: #1976d2;
+    }
+  }
+
+  &.team {
+    color: #7b1fa2;
+
+    &::before {
+      background-color: #7b1fa2;
+    }
+  }
+}

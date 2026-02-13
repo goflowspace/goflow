@@ -1,0 +1,22 @@
+### 👥 Добавить участника в проект
+POST http://localhost:3000/projects/{{PROJECT_ID}}/members
+Content-Type: application/json
+Authorization: Bearer {{TOKEN}}
+
+{
+  "userId": "{{USER_ID}}",
+  "role": "EDITOR"
+}
+
+### 📝 Изменить роль участника
+PUT http://localhost:3000/projects/{{PROJECT_ID}}/members/{{MEMBER_ID}}
+Content-Type: application/json
+Authorization: Bearer {{TOKEN}}
+
+{
+  "role": "ADMIN"
+}
+
+### ❌ Удалить участника из проекта
+DELETE http://localhost:3000/projects/{{PROJECT_ID}}/members/{{MEMBER_ID}}
+Authorization: Bearer {{TOKEN}}

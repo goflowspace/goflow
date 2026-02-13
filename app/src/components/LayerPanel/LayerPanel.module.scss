@@ -1,0 +1,68 @@
+.layer_panel_wrapper {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 100%;
+  z-index: 999;
+  display: flex;
+  justify-content: flex-start;
+  transition: transform 0.3s ease-in-out;
+  max-width: 325px;
+}
+
+.layer_panel_container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  @include toolbar-container;
+}
+
+.moved_toolbar {
+  transform: translateX(250px);
+}
+
+.icon_button {
+  margin: 0;
+  color: var(--gray-12);
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    color: var(--gray-8);
+  }
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.toggle_layer_btn--active {
+  background-color: var(--accent-a4);
+}
+
+.separator {
+  @include separator;
+}
+
+// Стили для подсказок
+.info_message {
+  display: block;
+  font-size: 0.8em;
+  color: var(--gray-8);
+}
+
+.hotkey_container {
+  display: flex;
+  align-items: center;
+}
+
+.kbd_style {
+  display: flex;
+  align-items: center;
+  font-size: 0.8em;
+  color: var(--gray-7);
+  margin-top: 4px;
+}

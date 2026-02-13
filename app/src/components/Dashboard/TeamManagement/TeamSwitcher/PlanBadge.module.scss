@@ -1,0 +1,23 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  border-radius: 12px;
+  border: 1px solid;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.small {
+  font-size: 10px;
+  padding: 2px 6px;
+  line-height: 1.2;
+}
+
+.medium {
+  font-size: 11px;
+  padding: 4px 8px;
+  line-height: 1.2;
+}

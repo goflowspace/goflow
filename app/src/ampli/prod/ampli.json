@@ -1,0 +1,10 @@
+{
+  "Zone": "us",
+  "Branch": "main",
+  "Version": "14.0.0",
+  "Runtime": "browser:typescript-ampli-v2",
+  "Platform": "Browser",
+  "Language": "TypeScript",
+  "SDK": "@amplitude/analytics-browser@^1.0",
+  "Path": "./gen"
+}

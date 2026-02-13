@@ -1,0 +1,75 @@
+.modal {
+  max-width: 90vw;
+  max-height: 90vh;
+  width: 1000px;
+  height: 600px;
+  padding: 0;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-primary);
+  flex-shrink: 0;
+  background-color: var(--background-secondary);
+}
+
+.closeButton {
+  flex-shrink: 0;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--text-primary);
+  }
+}
+
+.content {
+  flex: 1;
+  overflow: auto;
+  background-color: var(--background-primary);
+}
+
+.formWrapper {
+  padding: 24px;
+  background-color: var(--background-primary);
+}
+
+.loadingContainer,
+.errorContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.errorContainer {
+  color: var(--error-color);
+}
+
+// Адаптивность для мобильных устройств
+@media (width <= 768px) {
+  .modal {
+    width: 95vw;
+    height: 85vh;
+    margin: auto;
+  }
+
+  .header {
+    padding: 16px 20px;
+  }
+
+  .formWrapper {
+    padding: 20px;
+  }
+}

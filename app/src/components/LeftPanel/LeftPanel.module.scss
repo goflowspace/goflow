@@ -1,0 +1,16 @@
+.left_panel_wrapper {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+  width: max-content;
+  z-index: 999;
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.moved_toolbar {
+  transform: translate(250px, -50%);
+}

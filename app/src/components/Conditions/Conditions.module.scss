@@ -1,0 +1,793 @@
+// Стили для выбора типа условия (заимствованы из Sidebar.module.scss)
+.type_selection_grid {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 6px;
+  width: 100%;
+
+  // Адаптивность при разных экранах
+  @media (width <= 900px) {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  @media (width <= 650px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.type_select_item {
+  flex: 1 1 0;
+  min-width: 115px;
+  outline: 1px solid #e1e1e1;
+  border-radius: 6px;
+  padding: 10px 12px;
+  cursor: pointer;
+  background-color: white;
+  font-size: 13px;
+  transition: all 0.2s;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: none;
+
+  &[data-state='active'],
+  &.selected {
+    outline: 2px solid #3e63dd;
+  }
+
+  &:hover:not([data-state='active'], .selected, [data-disabled], .disabled) {
+    outline-color: #d1d5db;
+    background-color: #f9fafb;
+  }
+
+  &[data-disabled],
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #f0f0f0;
+    color: #888;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+      background-image: repeating-linear-gradient(45deg, transparent, transparent 5px, rgb(0 0 0 / 5%) 5px, rgb(0 0 0 / 5%) 10px);
+    }
+  }
+
+  // Адаптивность при узком экране
+  @media (width <= 900px) {
+    padding: 8px 10px;
+  }
+
+  @media (width <= 650px) {
+    min-width: auto;
+  }
+}
+
+.type_example {
+  font-size: 11px;
+  color: #6b7280;
+  margin-top: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Стили для Select компонентов */
+.select_content {
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 10%);
+  overflow: hidden;
+}
+
+.select_viewport {
+  padding: 6px;
+}
+
+.select_item {
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  outline: none;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.select_item[data-highlighted] {
+  background-color: #f5f5f5 !important;
+  color: #000 !important;
+}
+
+.select_item[data-state='checked'] {
+  background-color: #f0f4ff;
+  font-weight: 500;
+}
+
+.select_separator {
+  height: 1px;
+  background-color: #e1e1e1;
+  margin: 5px 0;
+}
+
+// Стили для модального окна условий
+.modal_content {
+  max-width: 700px;
+}
+
+.modal_title_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.step_container {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.step_label {
+  margin-bottom: 8px;
+}
+
+.step_label_bold {
+  margin-right: 4px;
+  font-weight: bold;
+}
+
+.preview_container {
+  padding-top: 16px;
+}
+
+.preview_title {
+  margin-top: 8px;
+  font-weight: bold;
+}
+
+.actions_container {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  padding-top: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.delete_button {
+  cursor: pointer;
+  margin-right: auto;
+}
+
+.delete_icon {
+  margin-right: 4px;
+}
+
+.cancel_button {
+  cursor: pointer;
+}
+
+.action_button {
+  cursor: pointer;
+}
+
+// Стили для компонента предпросмотра условия
+.condition_preview_container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.condition_description {
+  white-space: wrap;
+}
+
+.condition_preview_content {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.condition_preview_badge {
+  max-width: 120px !important;
+}
+
+.or_conditions_container {
+  background: #eae7ec;
+  border: 1px solid #bcbac7;
+  border-radius: 20px;
+  padding: 18px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+// Стили для компонента предпросмотра условий (ConditionsPreview)
+.empty_container {
+  width: 100%;
+  text-align: center;
+  color: #000;
+  padding: 0;
+}
+
+.add_first_condition_button {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.button_icon_container {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.condition_card {
+  width: 100%;
+  padding: 4px 4px 4px 6px;
+  background: #fcfcfc;
+  border: 1px solid #e8e8e8;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:active {
+    cursor: grabbing;
+    background: #f5f5f5;
+  }
+}
+
+.condition_icon_container {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1c2024;
+}
+
+.delete_condition_button {
+  background: rgb(243 0 13 / 8%);
+  border-radius: 4px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.trash_icon {
+  color: #ce2c31;
+}
+
+.operator_button {
+  width: fit-content;
+  height: 20px;
+  padding: 0 4px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #1c2024;
+}
+
+.intermediate_operator_button {
+  width: fit-content;
+  height: 20px;
+  padding: 0 4px;
+  margin: 4px auto;
+  background-color: #f9f9f9;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #1c2024;
+  position: relative;
+  z-index: 10;
+}
+
+.and_conditions_container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.add_condition_button {
+  width: auto;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin: 0 auto;
+  gap: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+// Основной контейнер для предпросмотра условий
+.conditions_preview_container {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background: #f2eff3;
+  border-radius: 20px;
+  border: 1px solid #bcbac7;
+  padding: 18px 14px;
+  width: 405px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  pointer-events: all;
+  box-shadow:
+    0 8px 30px rgb(0 0 0 / 12%),
+    0 2px 8px rgb(0 0 0 / 6%);
+  animation: fade-opacity 0.2s ease;
+}
+
+// Анимация для появления
+@keyframes fade-opacity {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+// Стили для оверлея предпросмотра условий
+.conditions_preview_overlay {
+  position: absolute;
+  pointer-events: all;
+  z-index: 9999;
+  transform-origin: center center;
+}
+
+// Стили для CustomEdge
+.hover_path {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 20;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 0;
+}
+
+.edge_button_foreignobject {
+  overflow: visible;
+  pointer-events: all;
+  z-index: 10;
+}
+
+.warning_button {
+  background: white;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+  padding: 0;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.warning_button_normal {
+  border: 1px solid #f59e0b;
+}
+
+.warning_button_hovered {
+  border: 1px solid #2b9a66;
+}
+
+.warning_icon_normal {
+  color: #f59e0b;
+}
+
+.warning_icon_hovered {
+  color: #2b9a66;
+}
+
+.add_condition_button_container {
+  background: white;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+  padding: 0;
+}
+
+.add_condition_button_error {
+  border: 1px solid #f59e0b;
+}
+
+.add_condition_button_normal {
+  border: 1px solid #2b9a66;
+}
+
+.add_condition_icon_error {
+  color: #f59e0b;
+}
+
+.add_condition_icon_normal {
+  color: #2b9a66;
+}
+
+.context_menu_item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.context_menu_content {
+  position: fixed;
+  z-index: 1000;
+}
+
+.modal_foreignobject {
+  overflow: visible;
+  pointer-events: all;
+  z-index: 10001;
+}
+
+.modal_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Стили для EdgeConditionBadge
+.badge_foreignobject {
+  overflow: visible;
+  pointer-events: all;
+  z-index: 10;
+}
+
+.badge_background_layer {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 6px;
+  z-index: 1;
+}
+
+.badge_background_bottom {
+  background: #f9f8f8;
+  border: 1px solid #e0e0e0;
+}
+
+.badge_background_middle {
+  background: #fafafa;
+  border: 1px solid #e4e4e4;
+  z-index: 2;
+}
+
+.badge_main {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background: #fcfcfc;
+  border: 1px solid #e8e8e8;
+  border-radius: 6px;
+  width: auto;
+  z-index: 3;
+}
+
+.badge_main_shadow_single {
+  box-shadow: 0 2px 4px rgb(0 0 0 / 5%);
+}
+
+.badge_main_shadow_multiple {
+  box-shadow: 0 2px 4px rgb(0 0 0 / 7%);
+}
+
+.badge_icon_container {
+  width: 24px;
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.badge_condition_icon {
+  color: #1c2024;
+}
+
+.badge_text {
+  width: 90%;
+  font-size: 14px;
+  font-weight: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 1;
+}
+
+.badge_error_container {
+  display: flex;
+  align-items: center;
+}
+
+.badge_error_icon {
+  color: #f59e0b;
+  margin-left: 4px;
+}
+
+// Стили для NodeHappenedSetup
+.search_container {
+  position: relative;
+  width: 469px;
+}
+
+.search_icon_container {
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.search_input {
+  width: 100%;
+  height: 35px;
+  padding-left: 30px;
+  padding-right: 50px;
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+  font-size: 14px;
+  background-color: white;
+}
+
+.clear_button {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.dropdown_button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.dropdown_menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 469px;
+  z-index: 100;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 4px;
+}
+
+.node_item_text {
+  width: 100%;
+}
+
+.node_item_subtext {
+  color: #666;
+  margin-top: 2px;
+  word-break: break-word;
+}
+
+.empty_result {
+  color: #999;
+}
+
+.node_preview {
+  border-radius: 10px;
+  width: 200px;
+  height: 126px;
+  padding: 0;
+  flex-direction: column;
+}
+
+.node_preview_active {
+  border: 1px solid #d9d9d9;
+}
+
+.node_preview_empty {
+  border: 1px dashed #d9d9d9;
+}
+
+.node_preview_header {
+  background-color: #f0f0f0;
+  padding: 5px 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.node_preview_title {
+  padding: 5px 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.node_preview_text {
+  padding: 10px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+
+// Стили для ProbabilitySetup
+.probability_card {
+  cursor: pointer;
+  background: #fcfcfc;
+  padding: 8px;
+}
+
+.probability_card_selected {
+  outline: 2px solid #3e63dd;
+}
+
+.probability_card_default {
+  outline: 1px solid #e8e8e8;
+}
+
+.custom_input {
+  width: 200px;
+}
+
+.info_text_container {
+  color: #1c2024;
+  display: flex;
+  align-items: center;
+}
+
+.info_text_label {
+  margin-right: 4px;
+}
+
+// Стили для VariableComparisonSetup
+.select_container {
+  max-width: 250px;
+  width: 100%;
+}
+
+.select_trigger {
+  width: 100%;
+}
+
+.compare_operator {
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  background: #ffffffe5;
+  width: 120px;
+  height: 60px;
+  text-align: center;
+  flex-direction: column;
+}
+
+.compare_operator_selected {
+  border: 2px solid #3e63dd;
+}
+
+.compare_operator_default {
+  border: 1px solid #e8e8e8;
+}
+
+.compare_operator_label {
+  line-height: 14px;
+}
+
+.radio_option {
+  cursor: pointer;
+}
+
+.custom_value_input {
+  width: 200px;
+}
+
+.boolean_button {
+  flex: 1;
+  min-width: 100px;
+  cursor: pointer;
+}
+
+.tabs_list {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+
+  // Адаптивность при разных экранах
+  @media (width <= 900px) {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  @media (width <= 650px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+// Стиль для обрезания длинного текста с многоточием
+.text_truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  color: black;
+}
+
+// Стили для целевой области перетаскивания
+.drop-target {
+  background-color: rgb(59 130 246 / 8%) !important;
+  border: 2px dashed rgb(59 130 246 / 40%) !important;
+  border-radius: 20px !important;
+  transition: all 0.2s ease-in-out;
+}
+
+// Анимация для связей к выделенным узлам
+@keyframes flowAnimation {
+  0% {
+    stroke-dashoffset: 12;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animated_edge {
+  animation: flowAnimation 1.5s linear infinite !important;
+  stroke-dasharray: 8 4 !important;
+}

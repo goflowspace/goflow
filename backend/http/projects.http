@@ -1,0 +1,56 @@
+### 📌 Создать новый проект
+POST http://localhost:{{port}}/projects
+Content-Type: application/json
+Authorization: Bearer {{TOKEN}}
+
+{
+  "name": "Мой проект"
+}
+
+### 📌 Создать новый проект из импорта
+POST http://localhost:3000/projects/import-file
+Content-Type: application/json
+Authorization: Bearer {{TOKEN}}
+
+{
+  "data": {
+    "name": "Проект с нодами",
+    "nodes": [
+      { "id": "1", "type": "text", "content": "Hello from data!" }
+    ]
+  }
+}
+
+### 📜 Получить список всех проектов пользователя
+GET http://localhost:{{port}}/projects
+Authorization: Bearer {{TOKEN}}
+
+### ✏️ Обновить проект
+PUT http://localhost:{{port}}/projects/{{PROJECT_ID}}
+Content-Type: application/json
+Authorization: Bearer {{TOKEN}}
+
+{
+  "name": "Обновленный проект"
+}
+
+### ❌ Удалить проект
+DELETE http://localhost:{{port}}/projects/{{PROJECT_ID}}
+Authorization: Bearer {{TOKEN}}
+
+
+### 📜 Получить JSON-данные проекта
+GET http://localhost:3000/projects/{{PROJECT_ID}}/data
+Authorization: Bearer {{TOKEN}}
+
+### 📝 Сохранить JSON-данные проекта
+POST http://localhost:3000/projects/{{PROJECT_ID}}/data
+Content-Type: application/json
+Authorization: Bearer {{TOKEN}}
+
+{
+  "nodes": [
+    { "id": "1", "type": "text", "content": "Hello" },
+    { "id": "2", "type": "shape", "color": "red" }
+  ]
+}

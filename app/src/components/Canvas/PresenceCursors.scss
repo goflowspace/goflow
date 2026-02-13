@@ -1,0 +1,166 @@
+.presence-cursors-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; // Курсоры не должны блокировать клики
+  z-index: 1000; // Поверх всех элементов Canvas
+  overflow: hidden; // Предотвращаем выход курсоров за границы
+}
+
+.presence-cursor {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1001;
+  top: 0;
+  left: 0;
+
+  // Используем CSS custom property для цвета курсора
+  color: var(--cursor-color, #3b82f6);
+
+  // Анимация появления
+  animation: cursor-appear 0.2s ease-out;
+
+  // Плавный переход позиции через transform
+  transition: transform 0.1s ease-out;
+
+  .cursor-icon {
+    display: block;
+    filter: drop-shadow(0 1px 3px rgb(0 0 0 / 20%));
+
+    // Анимация "пульса" для активных курсоров
+    animation: cursor-pulse 2s ease-in-out infinite;
+  }
+
+  .cursor-label {
+    position: absolute;
+    top: 20px;
+    left: 2px;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.2;
+    background-color: var(--cursor-color, #3b82f6);
+    color: white;
+    border-radius: 4px;
+    white-space: nowrap;
+
+    // Тень для читаемости
+    box-shadow: 0 1px 3px rgb(0 0 0 / 20%);
+
+    // Анимация появления с задержкой
+    animation: label-appear 0.3s ease-out 0.1s both;
+
+    // Ограничиваем длину имени
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    // Треугольник-указатель к курсору
+    &::before {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: 8px;
+      width: 0;
+      height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-bottom: 4px solid var(--cursor-color, #3b82f6);
+    }
+  }
+
+  // Состояние "недавно активный" - более яркий
+  &.recently-active {
+    .cursor-icon {
+      animation: cursor-pulse-active 1s ease-in-out infinite;
+    }
+  }
+
+  // Состояние "неактивный" - полупрозрачный
+  &.inactive {
+    opacity: 0.6;
+
+    .cursor-label {
+      opacity: 0.8;
+    }
+  }
+}
+
+// Анимации
+@keyframes cursor-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes label-appear {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes cursor-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes cursor-pulse-active {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 1px 3px rgb(0 0 0 / 20%));
+  }
+
+  50% {
+    transform: scale(1.1);
+    filter: drop-shadow(0 2px 6px rgb(0 0 0 / 30%));
+  }
+}
+
+// Адаптивность для мобильных устройств
+@media (width <= 768px) {
+  .presence-cursor {
+    .cursor-label {
+      font-size: 10px;
+      padding: 1px 4px;
+      max-width: 80px;
+    }
+  }
+}
+
+// Темная тема
+[data-theme='dark'] {
+  .presence-cursor {
+    .cursor-label {
+      box-shadow: 0 1px 3px rgb(0 0 0 / 40%);
+
+      &::before {
+        filter: drop-shadow(0 1px 1px rgb(0 0 0 / 20%));
+      }
+    }
+
+    .cursor-icon {
+      filter: drop-shadow(0 1px 3px rgb(0 0 0 / 40%));
+    }
+  }
+}

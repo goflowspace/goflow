@@ -1,0 +1,73 @@
+.tools_panel_wrapper {
+  display: flex;
+  justify-content: flex-start;
+  height: 100%;
+  max-width: 50px;
+}
+
+.tools_panel_container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+  width: 50px;
+  padding: 5px;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 2px 2px 5px 0 rgb(217 217 217 / 100%);
+}
+
+.icon_button {
+  margin: 0;
+  color: var(--gray-12);
+
+  &.active {
+    background-color: var(--accent-a4);
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    color: var(--gray-8);
+  }
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.tool_button_wrapper {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hotkey_badge {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  font-size: 8px;
+  font-weight: 590;
+  color: #80838d;
+  font-family: 'SF Pro', system-ui, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.disabled_hotkey {
+  opacity: 0.5;
+  color: var(--gray-8);
+}
+
+.small_hotkey {
+  font-size: 6px;
+}
+
+.modifier_key {
+  font-size: 6px;
+}

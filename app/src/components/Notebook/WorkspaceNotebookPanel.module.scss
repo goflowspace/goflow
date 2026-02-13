@@ -1,0 +1,167 @@
+.workspaceNotebook {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--dashboard-bg-primary);
+  overflow: hidden;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--dashboard-border-primary);
+    background: var(--dashboard-bg-secondary);
+    flex-shrink: 0;
+
+    .title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      h2 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--dashboard-text-primary);
+      }
+
+      .projectContext {
+        font-size: 12px;
+        color: var(--dashboard-text-secondary);
+        background: var(--dashboard-bg-tertiary);
+        padding: 4px 8px;
+        border-radius: 4px;
+      }
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+
+      .newNoteBtn {
+        padding: 10px 16px;
+        background: var(--accent-9);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-size: 14px;
+
+        &:hover:not(:disabled) {
+          background: var(--accent-10);
+          transform: translateY(-1px);
+          box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
+        }
+
+        &:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+          transform: none;
+          box-shadow: none;
+        }
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+
+    .sidebar {
+      width: 300px;
+      border-right: 1px solid var(--dashboard-border-primary);
+      display: flex;
+      flex-direction: column;
+      background: var(--dashboard-bg-secondary);
+      overflow: hidden;
+    }
+
+    .editor {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background: var(--dashboard-bg-primary);
+
+      .placeholder {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+        background: var(--dashboard-bg-primary);
+
+        .placeholderContent {
+          text-align: center;
+          max-width: 400px;
+
+          h3 {
+            margin: 0 0 12px;
+            font-size: 20px;
+            color: var(--dashboard-text-primary);
+          }
+
+          p {
+            margin: 0 0 24px;
+            color: var(--dashboard-text-secondary);
+            font-size: 16px;
+            line-height: 1.5;
+          }
+
+          .createFirstNote {
+            background: var(--accent-9);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+
+            &:hover {
+              background: var(--accent-10);
+              transform: translateY(-1px);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .noProject {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+    background: var(--dashboard-bg-primary);
+
+    h3 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      color: var(--dashboard-text-primary);
+    }
+
+    p {
+      margin: 0;
+      color: var(--dashboard-text-secondary);
+      font-size: 16px;
+    }
+  }
+
+  // Responsive
+  @media (width <= 768px) {
+    .content {
+      .sidebar {
+        width: 250px;
+      }
+    }
+  }
+}
