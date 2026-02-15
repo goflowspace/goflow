@@ -227,28 +227,25 @@ describe('ProjectInfoService', () => {
       const mockProject = {
         id: projectId,
         creatorId: userId,
-        members: []
+        members: [],
+        teamProjects: []
       };
 
       mockPrismaProject.findFirst.mockResolvedValue(mockProject);
 
       const result = await checkUserProjectAccess(userId, projectId);
 
-      expect(mockPrismaProject.findFirst).toHaveBeenCalledWith({
-        where: {
-          id: projectId,
-          OR: [
-            { creatorId: userId },
-            {
-              members: {
-                some: {
-                  userId: userId
-                }
-              }
-            }
-          ]
-        }
-      });
+      expect(mockPrismaProject.findFirst).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: expect.objectContaining({
+            id: projectId,
+            OR: expect.arrayContaining([
+              { creatorId: userId },
+              expect.objectContaining({ members: { some: { userId } } })
+            ])
+          })
+        })
+      );
       expect(result).toBe(true);
     });
 
@@ -256,7 +253,8 @@ describe('ProjectInfoService', () => {
       const mockProject = {
         id: projectId,
         creatorId: 'other-user',
-        members: [{ userId: userId, role: 'EDITOR' }]
+        members: [{ userId: userId, role: 'EDITOR' }],
+        teamProjects: []
       };
 
       mockPrismaProject.findFirst.mockResolvedValue(mockProject);

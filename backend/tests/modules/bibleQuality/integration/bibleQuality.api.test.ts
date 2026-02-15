@@ -52,6 +52,8 @@ describe('Bible Quality API Integration Tests', () => {
       id: projectId,
       name: 'Test Project',
       creatorId: userId,
+      members: [],
+      teamProjects: [],
       projectInfo: {
         logline: 'Качественный логлайн проекта достаточной длины для корректной оценки качества',
         synopsis: 'Развернутый синопсис проекта, который подробно описывает основные события, персонажей и сюжетные линии. Этот текст создан специально для тестирования алгоритма оценки качества библии проекта и содержит достаточное количество информации для получения высокой оценки качества контента.',
@@ -125,21 +127,17 @@ describe('Bible Quality API Integration Tests', () => {
         }
       });
 
-      expect(prisma.project.findFirst).toHaveBeenCalledWith({
-        where: {
-          id: projectId,
-          OR: [
-            { creatorId: userId },
-            {
-              members: {
-                some: {
-                  userId: userId
-                }
-              }
-            }
-          ]
-        }
-      });
+      expect(prisma.project.findFirst).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: expect.objectContaining({
+            id: projectId,
+            OR: expect.arrayContaining([
+              { creatorId: userId },
+              expect.objectContaining({ members: { some: { userId: userId } } })
+            ])
+          })
+        })
+      );
     });
 
     it('должен создать новую оценку если она не существует', async () => {
@@ -285,6 +283,8 @@ describe('Bible Quality API Integration Tests', () => {
       id: projectId,
       name: 'Test Project',
       creatorId: userId,
+      members: [],
+      teamProjects: [],
       projectInfo: {
         logline: 'Обновленный логлайн проекта с дополнительными деталями для лучшей оценки качества',
         synopsis: 'Полностью переработанный синопсис с детальным описанием сюжета, персонажей и ключевых поворотов. Этот текст значительно расширен и содержит больше информации о мире, конфликтах и развитии персонажей на протяжении всей истории.',
@@ -403,7 +403,8 @@ describe('Bible Quality API Integration Tests', () => {
       const memberProject = {
         ...mockProject,
         creatorId: 'other-user',
-        members: [{ userId: userId }]
+        members: [{ userId: userId }],
+        teamProjects: []
       };
 
       prisma.project.findFirst.mockResolvedValue(memberProject);
@@ -441,6 +442,8 @@ describe('Bible Quality API Integration Tests', () => {
         id: projectId,
         name: 'Test Project',
         creatorId: userId,
+        members: [],
+        teamProjects: [],
         projectInfo: {
           logline: 'A'.repeat(200), // очень длинный логлайн
           synopsis: 'B'.repeat(2000), // очень длинный синопсис
@@ -516,6 +519,8 @@ describe('Bible Quality API Integration Tests', () => {
         id: projectId,
         name: 'Test Project',
         creatorId: userId,
+        members: [],
+        teamProjects: [],
         projectInfo: {
           logline: 'Проект с символами: "кавычки", \'апострофы\', & амперсанды, <теги>, {скобки} и эмодзи 🎬',
           synopsis: 'Синопсис содержит различные специальные символы для проверки корректности обработки данных системой оценки качества библии проекта. Включает символы разных языков: русский, English, 中文, العربية, и специальные символы: @#$%^&*()_+-=[]{}|;:,.<>?',

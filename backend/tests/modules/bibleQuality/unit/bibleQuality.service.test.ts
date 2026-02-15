@@ -363,7 +363,9 @@ describe('BibleQualityService', () => {
     it('должен вернуть true если пользователь является создателем проекта', async () => {
       const mockProject = {
         id: projectId,
-        creatorId: userId
+        creatorId: userId,
+        members: [],
+        teamProjects: []
       };
 
       prisma.project.findFirst.mockResolvedValue(mockProject);
@@ -371,28 +373,25 @@ describe('BibleQualityService', () => {
       const result = await checkUserProjectAccess(userId, projectId);
 
       expect(result).toBe(true);
-      expect(prisma.project.findFirst).toHaveBeenCalledWith({
-        where: {
-          id: projectId,
-          OR: [
-            { creatorId: userId },
-            {
-              members: {
-                some: {
-                  userId: userId
-                }
-              }
-            }
-          ]
-        }
-      });
+      expect(prisma.project.findFirst).toHaveBeenCalledWith(
+        expect.objectContaining({
+          where: expect.objectContaining({
+            id: projectId,
+            OR: expect.arrayContaining([
+              { creatorId: userId },
+              expect.objectContaining({ members: { some: { userId } } })
+            ])
+          })
+        })
+      );
     });
 
     it('должен вернуть true если пользователь является участником проекта', async () => {
       const mockProject = {
         id: projectId,
         creatorId: 'other-user',
-        members: [{ userId: userId }]
+        members: [{ userId: userId }],
+        teamProjects: []
       };
 
       prisma.project.findFirst.mockResolvedValue(mockProject);
