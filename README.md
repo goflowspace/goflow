@@ -6,7 +6,7 @@
 
 **Open-source platform for interactive storytelling**
 
-Build branching narratives, visual novels, and dialogue systems on an infinite canvas — with AI co-authoring and real-time collaboration.
+Build branching narratives, visual novels, and dialogue systems on an infinite canvas.
 
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](LICENSE)
 [![GitHub Stars](https://img.shields.io/github/stars/goflowspace/goflow?style=social)](https://github.com/goflowspace/goflow)
@@ -33,20 +33,6 @@ Build branching narratives, visual novels, and dialogue systems on an infinite c
 
 ### Visual Story Editor
 Build complex, non-linear narratives using a node-based editor on an infinite canvas. Connect scenes, add branching choices, and see your entire story structure at a glance.
-
-</td>
-<td width="50%">
-
-### AI Co-Author
-Break through writer's block with integrated AI (OpenAI, Anthropic, Google). Generate dialogue, suggest plot twists, or build entire story branches from a prompt.
-
-</td>
-</tr>
-<tr>
-<td width="50%">
-
-### Real-Time Collaboration
-Work together with your team simultaneously. See live edits, leave comments, and manage projects — like Google Docs, but for branching stories.
 
 </td>
 <td width="50%">
@@ -78,14 +64,12 @@ Translate your stories into multiple languages with built-in localization suppor
 
 ## How Go Flow Compares
 
-Go Flow sits at the intersection of visual editing, collaboration, and game engine integration — a combination that didn't exist before in one open-source tool.
+Go Flow combines visual editing, a knowledge base, and game engine integration in one open-source tool.
 
 | | Go Flow | Twine | Ren'Py | ink | Yarn Spinner |
 |---|:---:|:---:|:---:|:---:|:---:|
 | Visual node editor | Yes | Yes | — | — | — |
 | No coding required | Yes | Yes | — | — | — |
-| Real-time collaboration | Yes | — | — | — | — |
-| AI co-authoring | Yes | — | — | — | — |
 | Built-in knowledge base | Yes | — | — | — | — |
 | Game engine export | Yes | — | Yes* | Yes | Yes |
 | Self-hosted / open source | Yes | Yes | Yes | Yes | Yes |
