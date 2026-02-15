@@ -199,7 +199,6 @@ See our [Wiki](https://github.com/goflowspace/goflow/wiki) for more details.
 - [Telegram Channel](https://t.me/goflowspace) — news and updates
 - [Telegram Community](https://t.me/flow_community_chat) — community chat
 - [GitHub Issues](https://github.com/goflowspace/goflow/issues) — bug reports and feature requests
-- [GitHub Discussions](https://github.com/goflowspace/goflow/discussions) — questions and ideas
 
 ## License
 
