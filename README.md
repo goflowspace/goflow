@@ -197,6 +197,8 @@ Have an idea? [Open an issue](https://github.com/goflowspace/goflow/issues/new) 
 
 Go Flow was created by [Artem Slizhik](https://www.linkedin.com/in/temaslizhik/) and [Egor Lyskov](https://www.linkedin.com/in/egor-lyskov/), with invaluable financial support from [Dmitrii Kobzar](https://www.linkedin.com/in/dmitriy-kobzar-01a3b266/) and [Ilya Saunkin](https://www.linkedin.com/in/ilya-saunkin-5a750459/).
 
+Special thanks to the indie gamedev community — over 35 interviews with game developers, narrative designers, and writers helped shape Go Flow into what it is today.
+
 ## License
 
 This project is licensed under the [GNU Affero General Public License v3.0](LICENSE).
