@@ -20,6 +20,7 @@
     "check:all": "npm run format && npm run lint:fix",
     "typecheck": "tsc --noEmit",
     "test": "jest",
+    "test:ci": "jest --maxWorkers=2 --forceExit --passWithNoTests",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "test:engine": "jest \"src/tests/(unit|integration)/.*\\.(ts|tsx)$\" --verbose"
