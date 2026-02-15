@@ -1,6 +1,97 @@
+<div align="center">
+
+<img src="landing/src/assets/icons/favicon.png" alt="Go Flow" width="64" />
+
 # Go Flow
 
-Open-source platform for creating nonlinear narratives — interactive stories, branching dialogues, visual novels, and more. Design complex story structures on an infinite canvas with real-time collaboration.
+**Open-source platform for interactive storytelling**
+
+Build branching narratives, visual novels, and dialogue systems on an infinite canvas — with AI co-authoring and real-time collaboration.
+
+[![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](LICENSE)
+[![GitHub Stars](https://img.shields.io/github/stars/goflowspace/goflow?style=social)](https://github.com/goflowspace/goflow)
+[![Discord](https://img.shields.io/discord/goflow?label=Discord&logo=discord&logoColor=white)](https://discord.gg/goflow)
+[![Wiki](https://img.shields.io/badge/Docs-Wiki-green)](https://github.com/goflowspace/goflow/wiki)
+
+[Website](https://goflow.space) | [Documentation](https://github.com/goflowspace/goflow/wiki) | [Discord](https://discord.gg/goflow)
+
+</div>
+
+<br/>
+
+<div align="center">
+  <img src="landing/public/images/Ai.jpg" alt="Go Flow Editor — branching narrative with AI co-authoring" width="100%" />
+</div>
+
+<br/>
+
+## Features
+
+<table>
+<tr>
+<td width="50%">
+
+### Visual Story Editor
+Build complex, non-linear narratives using a node-based editor on an infinite canvas. Connect scenes, add branching choices, and see your entire story structure at a glance.
+
+</td>
+<td width="50%">
+
+### AI Co-Author
+Break through writer's block with integrated AI (OpenAI, Anthropic, Google). Generate dialogue, suggest plot twists, or build entire story branches from a prompt.
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### Real-Time Collaboration
+Work together with your team simultaneously. See live edits, leave comments, and manage projects — like Google Docs, but for branching stories.
+
+</td>
+<td width="50%">
+
+### Export Anywhere
+Export to JSON, HTML, Ren'Py, Dialogic (Godot), Unity, or Unreal Engine. Go from story to playable experience without manual data transfer.
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### Entities & Knowledge Base
+Manage characters, locations, items, and lore in a built-in knowledge base. Keep your story world consistent as it grows.
+
+</td>
+<td width="50%">
+
+### Localization
+Translate your stories into multiple languages with built-in localization support. Reach a global audience without leaving the editor.
+
+</td>
+</tr>
+</table>
+
+<div align="center">
+  <img src="landing/public/images/Export.jpg" alt="Export to Ren'Py, Unity, Unreal Engine, Godot, and more" width="100%" />
+</div>
+
+## How Go Flow Compares
+
+Go Flow sits at the intersection of visual editing, collaboration, and game engine integration — a combination that didn't exist before in one open-source tool.
+
+| | Go Flow | Twine | Ren'Py | ink | Yarn Spinner |
+|---|:---:|:---:|:---:|:---:|:---:|
+| Visual node editor | Yes | Yes | — | — | — |
+| No coding required | Yes | Yes | — | — | — |
+| Real-time collaboration | Yes | — | — | — | — |
+| AI co-authoring | Yes | — | — | — | — |
+| Built-in knowledge base | Yes | — | — | — | — |
+| Game engine export | Yes | — | Yes* | Yes | Yes |
+| Self-hosted / open source | Yes | Yes | Yes | Yes | Yes |
+| Web-based | Yes | Yes | — | — | — |
+
+<sub>* Ren'Py is itself an engine. "—" means the feature is not built-in (may be available via plugins or workarounds).</sub>
 
 ## Quick Start
 
@@ -91,15 +182,25 @@ npm install
 npm run dev
 ```
 
-### Project structure
+## Contributing
 
-The repository is a monorepo with two main packages:
+We welcome contributions! Whether it's bug reports, feature requests, or pull requests — every bit helps.
 
-- `app/` — Next.js frontend application
-- `backend/` — Express API server
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes
+4. Push to the branch and open a Pull Request
+
+See our [Wiki](https://github.com/goflowspace/goflow/wiki) for more details.
+
+## Community
+
+- [Discord](https://discord.gg/goflow) — chat with the team and other creators
+- [GitHub Issues](https://github.com/goflowspace/goflow/issues) — bug reports and feature requests
+- [GitHub Discussions](https://github.com/goflowspace/goflow/discussions) — questions and ideas
 
 ## License
 
 This project is licensed under the [GNU Affero General Public License v3.0](LICENSE).
 
-This means you can freely use, modify, and distribute this software, but if you run a modified version on a server and let others interact with it, you must make the source code of your modified version available to them.
+You can freely use, modify, and distribute this software. If you run a modified version on a server and let others interact with it, you must make the source code of your modified version available to them.
