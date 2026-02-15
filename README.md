@@ -177,6 +177,15 @@ We welcome contributions! Whether it's bug reports, feature requests, or pull re
 
 See our [Wiki](https://github.com/goflowspace/goflow/wiki) for more details.
 
+## Roadmap
+
+We're actively developing the OSS edition. Here's what's coming next:
+
+- [ ] **AI features for OSS** — enable AI co-authoring with public providers (OpenAI, Anthropic, Google) and local models (Ollama, LM Studio) ([#5](https://github.com/goflowspace/goflow/issues/5))
+- [ ] **AI localization** — verify and fix AI-powered translation of story content ([#6](https://github.com/goflowspace/goflow/issues/6))
+
+Have an idea? [Open an issue](https://github.com/goflowspace/goflow/issues/new) or join the discussion in our community channels.
+
 ## Community
 
 - [Discord](https://discord.gg/goflow) — chat with the team and other creators
