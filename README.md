@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="landing/src/assets/icons/favicon.png" alt="Go Flow" width="64" />
+<img src="docs/images/logo.png" alt="Go Flow" width="64" />
 
 # Go Flow
 
@@ -20,7 +20,7 @@ Build branching narratives, visual novels, and dialogue systems on an infinite c
 <br/>
 
 <div align="center">
-  <img src="landing/public/images/Ai.jpg" alt="Go Flow Editor — branching narrative with AI co-authoring" width="100%" />
+  <img src="docs/images/editor.jpg" alt="Go Flow Editor — branching narrative with AI co-authoring" width="100%" />
 </div>
 
 <br/>
@@ -73,7 +73,7 @@ Translate your stories into multiple languages with built-in localization suppor
 </table>
 
 <div align="center">
-  <img src="landing/public/images/Export.jpg" alt="Export to Ren'Py, Unity, Unreal Engine, Godot, and more" width="100%" />
+  <img src="docs/images/export.jpg" alt="Export to Ren'Py, Unity, Unreal Engine, Godot, and more" width="100%" />
 </div>
 
 ## How Go Flow Compares
