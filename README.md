@@ -13,7 +13,7 @@ Build branching narratives, visual novels, and dialogue systems on an infinite c
 [![Discord](https://img.shields.io/discord/goflow?label=Discord&logo=discord&logoColor=white)](https://discord.gg/goflow)
 [![Wiki](https://img.shields.io/badge/Docs-Wiki-green)](https://github.com/goflowspace/goflow/wiki)
 
-[Website](https://goflow.space) | [Documentation](https://github.com/goflowspace/goflow/wiki) | [Discord](https://discord.gg/goflow)
+[Website](https://goflow.space) | [Documentation](https://github.com/goflowspace/goflow/wiki) | [Discord](https://discord.gg/goflow) | [Telegram](https://t.me/goflowspace)
 
 </div>
 
@@ -196,6 +196,8 @@ See our [Wiki](https://github.com/goflowspace/goflow/wiki) for more details.
 ## Community
 
 - [Discord](https://discord.gg/goflow) — chat with the team and other creators
+- [Telegram Channel](https://t.me/goflowspace) — news and updates
+- [Telegram Community](https://t.me/flow_community_chat) — community chat
 - [GitHub Issues](https://github.com/goflowspace/goflow/issues) — bug reports and feature requests
 - [GitHub Discussions](https://github.com/goflowspace/goflow/discussions) — questions and ideas
 
