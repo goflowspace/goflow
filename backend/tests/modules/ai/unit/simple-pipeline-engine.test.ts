@@ -92,6 +92,22 @@ class MockPipeline implements AIPipeline {
   estimateTime(_input: PipelineInput, _context: ExecutionContext): number {
     return this.steps.length * 1000; // 1 секунда на шаг
   }
+
+  getPipelineStructure() {
+    return { id: this.id, name: this.name, description: this.description, groups: [] };
+  }
+
+  prepareInput(..._args: any[]) {
+    return {};
+  }
+
+  transformResult(pipelineResult: any, _startTime: Date) {
+    return pipelineResult;
+  }
+
+  getDetailedReport(_pipelineResult: any) {
+    return 'Mock report';
+  }
 }
 
 describe('SimplePipelineEngine', () => {

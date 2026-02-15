@@ -153,12 +153,11 @@ describe('InputSanitizer', () => {
       expect(result.reasons).toContain('Содержит eval функцию');
     });
 
-    it('should detect template expressions', () => {
+    it('should not flag template expressions (patterns disabled)', () => {
       const input = 'Hello {{user.name}} with {{ dangerous.code }}';
       const result = InputSanitizer.detectSuspiciousContent(input);
-      
-      expect(result.isSuspicious).toBe(true);
-      expect(result.reasons).toContain('Подозрительные шаблонные выражения');
+
+      expect(result.isSuspicious).toBe(false);
     });
 
     it('should not flag safe content', () => {

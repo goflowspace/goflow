@@ -1,28 +1,8 @@
 import request from 'supertest';
+import express from 'express';
 import { TeamRole } from '@prisma/client';
 
-// Мокаем imageUtils для тестов
-jest.mock('../../../../src/utils/imageUtils', () => ({
-  downloadImageAsBase64: jest.fn().mockResolvedValue(null),
-  isBase64Image: jest.fn().mockReturnValue(false),
-  getBase64ImageSize: jest.fn().mockReturnValue(0),
-}));
-
-// Мокаем nanoid для избежания проблем с ES modules
-jest.mock('nanoid', () => ({
-  nanoid: jest.fn(() => 'mocked-nanoid-123'),
-}));
-
-// Мокаем Resend перед импортом app
-jest.mock('resend', () => ({
-  Resend: jest.fn().mockImplementation(() => ({
-    emails: {
-      send: jest.fn().mockResolvedValue({ id: 'test-email-id' })
-    }
-  }))
-}));
-
-// Мокаем сервисы команд перед импортом
+// Мокаем сервисы команд перед импортом контроллера
 const mockCreateTeamService = jest.fn();
 const mockGetUserTeamsService = jest.fn();
 const mockGetTeamByIdService = jest.fn();
@@ -39,6 +19,7 @@ const mockUpdateProjectAccessService = jest.fn();
 const mockRemoveProjectFromTeamService = jest.fn();
 const mockCheckTeamAccessService = jest.fn();
 const mockGetUserRoleInTeamService = jest.fn();
+const mockGetTeamMembersService = jest.fn();
 
 jest.mock('../../../../src/modules/team/team.service', () => ({
   createTeam: mockCreateTeamService,
@@ -57,48 +38,51 @@ jest.mock('../../../../src/modules/team/team.service', () => ({
   removeProjectFromTeam: mockRemoveProjectFromTeamService,
   checkTeamAccess: mockCheckTeamAccessService,
   getUserRoleInTeam: mockGetUserRoleInTeamService,
+  getTeamMembers: mockGetTeamMembersService,
 }));
 
-// Мокаем passport конфигурацию для избежания проблем с OAuth
-jest.mock('../../../../src/config/passportConfig', () => ({
-  authenticate: jest.fn(() => (_req: any, _res: any, next: any) => next()),
-  initialize: jest.fn(() => (_req: any, _res: any, next: any) => next()),
-  session: jest.fn(() => (_req: any, _res: any, next: any) => next()),
-}));
+// Импортируем контроллер (использует замоканный team.service)
+import * as teamController from '../../../../src/modules/team/team.controller';
+import { errorHandler } from '../../../../src/middlewares/errorHandler';
 
-// Мокаем auth контроллер для избежания зависимостей
-jest.mock('../../../../src/modules/auth/auth.controller', () => ({
-  loginController: jest.fn(),
-  registerController: jest.fn(),
-  resendVerificationToken: jest.fn(),
-  verifyEmail: jest.fn(),
-  refreshTokenController: jest.fn(),
-  logoutController: jest.fn(),
-  changePasswordController: jest.fn(),
-  getCurrentUser: jest.fn(),
-}));
+// Создаем тестовый app с нужными роутами (вместо импорта реального app.ts с top-level await)
+const mockAuthMiddleware = (req: any, _res: any, next: any) => {
+  req.user = { id: 'test-user-id' };
+  next();
+};
 
-// Мокаем auth сервис
-jest.mock('../../../../src/modules/auth/auth.service', () => ({
-  oauth: jest.fn(),
-}));
+const app = express();
+app.use(express.json());
+app.use(mockAuthMiddleware);
 
-// Мокаем auth middleware
-jest.mock('../../../../src/middlewares/auth.middleware', () => ({
-  authenticateToken: (req: any, _res: any, next: any) => {
-    req.user = { id: 'test-user-id' };
-    next();
-  },
-  authenticateJWT: (req: any, _res: any, next: any) => {
-    req.user = { id: 'test-user-id' };
-    next();
-  },
-  requireVerifiedEmail: (_req: any, _res: any, next: any) => {
-    next();
-  },
-}));
+// Роуты команд
+app.post('/teams', teamController.createTeam);
+app.get('/teams', teamController.getUserTeams);
+app.get('/teams/:teamId', teamController.getTeamById);
+app.put('/teams/:teamId', teamController.updateTeam);
+app.delete('/teams/:teamId', teamController.deleteTeam);
 
-import app from '../../../../src/app';
+// Участники
+app.post('/teams/:teamId/members/invite', teamController.inviteMember);
+app.put('/teams/:teamId/members/:memberId/role', teamController.updateMemberRole);
+app.delete('/teams/:teamId/members/:memberId', teamController.removeMember);
+
+// Приглашения
+app.post('/teams/invitations/:token/accept', teamController.acceptInvitation);
+app.post('/teams/invitations/:token/decline', teamController.declineInvitation);
+
+// Проекты команды
+app.post('/teams/:teamId/projects', teamController.addProjectToTeam);
+app.get('/teams/:teamId/projects', teamController.getTeamProjects);
+app.put('/teams/:teamId/projects/:projectId/access', teamController.updateProjectAccess);
+app.delete('/teams/:teamId/projects/:projectId', teamController.removeProjectFromTeam);
+
+// Вспомогательные
+app.get('/teams/:teamId/access', teamController.checkTeamAccess);
+app.get('/teams/:teamId/role', teamController.getUserRoleInTeam);
+
+// Обработчик ошибок
+app.use(errorHandler);
 
 describe('Team API Integration Tests', () => {
   const userId = 'test-user-id';
@@ -240,7 +224,7 @@ describe('Team API Integration Tests', () => {
         .get(`/teams/${teamId}`)
         .set('Authorization', authToken)
         .expect(500);
-      
+
       expect(response.body.error).toBe('Внутренняя ошибка сервера');
     });
   });
@@ -281,7 +265,7 @@ describe('Team API Integration Tests', () => {
         .set('Authorization', authToken)
         .send({ name: 'New Name' })
         .expect(500);
-      
+
       expect(response.body.error).toBe('Внутренняя ошибка сервера');
     });
   });
@@ -437,7 +421,7 @@ describe('Team API Integration Tests', () => {
         .set('Authorization', authToken)
         .send({ role: TeamRole.ADMINISTRATOR })
         .expect(500);
-      
+
       expect(response.body.error).toBe('Внутренняя ошибка сервера');
     });
   });
@@ -465,7 +449,7 @@ describe('Team API Integration Tests', () => {
         .delete(`/teams/${teamId}/members/${memberId}`)
         .set('Authorization', authToken)
         .expect(500);
-      
+
       expect(response.body.error).toBe('Внутренняя ошибка сервера');
     });
   });
@@ -594,7 +578,8 @@ describe('Team API Integration Tests', () => {
 
       expect(mockGetUserRoleInTeamService).toHaveBeenCalledWith(teamId, userId);
       expect(response.body.success).toBe(true);
-      expect(response.body.data).toEqual(mockMember);
+      // Контроллер возвращает только { role: member.role }
+      expect(response.body.data).toEqual({ role: TeamRole.ADMINISTRATOR });
     });
   });
-}); 
+});
